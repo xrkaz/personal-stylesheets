@@ -1,3 +1,4 @@
+@-moz-document domain("diksiyonaryo.ph") {
 body {
     background-color: #21222C;
     color: #7991E8;
@@ -96,4 +97,5 @@ hr {
     visibility: hidden;
     margin-top: 5px;
     margin-bottom: 5px;
+}
 }
