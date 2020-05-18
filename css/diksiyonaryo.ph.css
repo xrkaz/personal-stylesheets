@@ -3,6 +3,10 @@ body {
     background-color: #21222C;
     color: #7991E8;
 }
+/* hide scrollbar webkit */
+::-webkit-scrollbar {
+    display: none;
+}
 .footer {
     background-color: #282A36;
 }
