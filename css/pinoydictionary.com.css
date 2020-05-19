@@ -151,10 +151,10 @@ input[id="search-box"]::placeholder {
     box-shadow: none;
     outline: 0;
 }
-a.blank, a.blank:visited {
+a[class="blank"] {
     color: #3779CE;
 }
-a.blank:hover, a.blank:active, a.blank:focus {
+a[class="blank"]:hover {
     color: #3794FF;
 }
 }
