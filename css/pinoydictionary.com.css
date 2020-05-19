@@ -154,7 +154,8 @@ input[id="search-box"]::placeholder {
 a[class="blank"] {
     color: #3779CE;
 }
-a[class="blank"]:hover {
+a[class="blank"]:hover, a[class="blank"]:active, a[class="blank"]:focus {
     color: #3794FF;
+    text-decoration: none;
 }
 }
