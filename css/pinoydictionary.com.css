@@ -158,4 +158,7 @@ a[class="blank"]:hover, a[class="blank"]:active, a[class="blank"]:focus {
     color: #3794FF;
     text-decoration: none;
 }
+.content h1 {
+    display: none;
+}
 }
