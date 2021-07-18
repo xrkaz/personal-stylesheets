@@ -1,105 +1,134 @@
 @-moz-document domain("diksiyonaryo.ph") {
 body {
-    background-color: #21222C;
-    color: #7991E8;
-}
-/* hide scrollbar webkit */
-::-webkit-scrollbar {
-    display: none;
-}
-.footer {
-    background-color: #282A36;
-}
-.navigation, .navigation a {
-    background-color: #282A36;
-    color: #BD93F9;
-}
-.navigation a:hover, .navigation a:focus {
-    color: #FF79C6;
-}
-.btn-default {
-    background-color: #44475A;
-    border: none;
-    color: #91A8E2;
-    border-radius: 0px;
-}
-.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover, .btn-default:hover, .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default, .btn-default.focus, .btn-default:focus {
-    background-color: #52556C;
-    border: none;
-    color: #91A8E2;
-    outline: 0;
-}
-.well {
-    background-color: #383A59;
-    border: none;
-    border-radius: 0px;
-    box-shadow: none;
-}
-.gray {
-    color: #7991E8;
-}
-a {
-    color: #3779CE;
-}
-a:focus, a:hover {
-    text-decoration: none;
-    color: #3794FF;
-}
-.letter-list .letter {
-    color: #3779CE;
-    border: none;
-    padding-right: 4px;
-    padding-left: 4px;
-}
-.letter-list .letter-selected {
-    color: #BD93F9;
-}
-.letter-list .letter-selected:hover, .letter-list .letter-selected:focus {
-    color: #FF79C6;
-}
-.letter:hover, .letter:focus {
-    color: #3794FF;
-}
-.pronunciation, .pos, .headword, .etymology, .domain, .alternate-pronunciation, .derivative {
-    color: #91A8E2;
+    background-color: #1c1c1c;
+    color: #ccc;
+    font-family: 'Futura Medium';
+    font-size: 18px;
 }
 .definition-example, .definition-text, .sense-counter, .sense-confer, .sense-synonyms, .sense-variant {
-    color: #7991E8;
+    font-family: 'Times';
 }
-.pagination-list a {
-    color: #3779CE;
+.word>div>h4>.pronunciation {
+    font-size: 25px;
 }
-.pagination-list a:hover, .pagination-list a:focus {
-    color: #3794FF;
+
+/* try to hide ads, or use an adblocker ffs. */
+.ad-content-handler, .center-block, #google_esf, .adsbygoogle, #aswift_3_expand, #aswift_3_anchor, #aswift_3 {
+    display: none;
 }
-.pagination-list .page-selected {
-    color: #BD93F9;
+
+/* links */
+a {
+    color: #678FFF;
 }
-.pagination-list .page-selected:hover, .pagination-list .page-selected:focus {
-    color: #FF79C6;
+a:hover, a:focus {
+    color: #99B4FF;
+    text-decoration: none;
 }
-input.search-bar {
-    border-radius: 0px;
-    color: #7991E8;
-    background-color: #191A21;
-    border: none;
-    transition: none;
+
+/* header section */
+.navigation {
+    background-color: #161616;
+    border-bottom: 1px solid #282828;
+    color: #ccc;
 }
-.form-control:focus {
-    border: none;
+.navigation a {
+    color: #ccc;
+}
+.navigation-offset {
+    padding-bottom: 5px;
+}
+
+/* footer section */
+.footer {
+    background-color: #161616;
+    border-top: 1px solid #282828;
+}
+
+/* search bar */
+.form-control {
+    background-color: #333;
+    color: #ccc;
+    border: 0;
     box-shadow: none;
 }
-/* search bar autofill webkit */
-input:-internal-autofill-selected, input:-internal-autofill-selected:focus, input:-internal-autofill-previewed:focus {
-    -webkit-box-shadow: 0 0 0 50px #191A21 inset;
-    -webkit-text-fill-color: #7991E8;
+.form-control:focus {
+    border: 0;
+    box-shadow: none;
 }
-input[class="search-bar form-control"]::placeholder {
-    color: #62729A;
+.search-button {
+    background-color: #444444;
+    border: 0;
+}
+.btn {
+    z-index: 100 !important;
+    outline: none !important;
+}
+.btn-default:hover {
+    border: 0;
+    background-color: #6F6F6F;
+    outline: none !important;
+}
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    background-color: #444444;
+    border: 0;
+    outline: none !important;
+}
+.input-group {
+    box-shadow: 0 1px 3px #00000080;
+}
+
+/* dividers */
+.double {
+    border: 0 !important;
 }
 hr {
-    visibility: hidden;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    border-top: 0;
 }
+
+/* hide redundant headword */
+.headword {
+    display: none;
+}
+
+/* no results */
+.well {
+    background-color: #282828;
+    border: 0;
+    box-shadow: 0 1px 3px #00000080;
+}
+.gray {
+    color: #ccc;
+}
+
+/* hide non-working buttons */
+.pull-right {
+    display: none;
+}
+
+/* headwords, etc. */
+.pronunciation, .pos, .headword, .etymology, .domain, .alternate-pronunciation, .derivative {
+    color: #ccc;
+}
+
+/* entry list */
+.word {
+    padding: 10px 20px 20px 20px;
+    margin: 0 0 -20px 0;
+    background-color: #282828;
+    box-shadow: 0 1px 3px #00000080;
+    border-radius: 4px;
+}
+
+/* scroll bar */
+body::-webkit-scrollbar {
+    width: 15px;
+}
+body::-webkit-scrollbar-track {
+    background: #161616;
+    border-left: 1px solid #282828;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #282828;
+    border-radius: 0;
 }
