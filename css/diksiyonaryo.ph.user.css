@@ -1,3 +1,11 @@
+/* ==UserStyle==
+@name           Diksiyonaryo.ph - Lunar Duck
+@namespace      https://github.com/sabakuran/personal-stylesheets
+@author         sabakuran
+@description    DDG inspired theme for Diksiyonaryo.ph
+@license        WTFPL V2
+@version        1.0.0
+==/UserStyle== */
 @-moz-document domain("diksiyonaryo.ph") {
 body {
     background-color: #1c1c1c;
@@ -131,4 +139,5 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: #282828;
     border-radius: 0;
+}
 }
