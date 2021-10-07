@@ -3,15 +3,15 @@
 @name         nyaa.si - Lunar Duck
 @namespace    sabakuran
 @description  DDG inspired theme for nyaa.si
-@author       sabakuran (https://github.com/sabakuran)
+@author       sabakuran <sabakuran@pm.me> (https://github.com/sabakuran)
 @homepageURL  https://github.com/sabakuran/personal-stylesheets
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor default
 @version      1.0.0
-@license      WTFPL (https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/LICENSE)
+@license      WTFPL
 
-@var checkbox dark-toggle "Hide Dark Mode Toggle" 1
+@var checkbox darkToggle "Hide Dark Mode Toggle" 1
 ==/UserStyle== */
 body {
     background-color: #1C1C1C;
@@ -241,9 +241,7 @@ table.torrent-list tbody .comments {
     background-color: #6F6F6F;
     color: #ccc;
 }
-if dark-toggle {
-    footer {
-        display: none;
-    }
+footer {
+    display: var(--darkToggle);
 }
 }
