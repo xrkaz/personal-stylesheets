@@ -3,13 +3,13 @@
 @name         nyaa.si - Lunar Duck
 @namespace    sabakuran
 @description  DDG inspired theme for nyaa.si
-@author       sabakuran <sabakuran@pm.me> (https://github.com/sabakuran)
+@author       sabakuran (https://github.com/sabakuran)
 @homepageURL  https://github.com/sabakuran/personal-stylesheets
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor default
 @version      1.0.0
-@license      WTFPL
+@license      WTFPL <https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/LICENSE>
 
 @var checkbox darkToggle "Hide Dark Mode Toggle" 1
 ==/UserStyle== */
