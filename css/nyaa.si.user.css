@@ -262,7 +262,7 @@ if(browser is chromium) {
 } else if(browser is firefox) {
     /* firefox scrollbar */
     html {
-        scrollbar-color: red white;
+        scrollbar-color: #282828 #161616;
         scrollbar-width: auto;
     }
 }   
