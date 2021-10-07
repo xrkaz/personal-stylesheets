@@ -7,7 +7,7 @@
 @homepageURL  https://github.com/sabakuran/personal-stylesheets
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
-@preprocessor default
+@preprocessor stylus
 @version      1.0.0
 @license      WTFPL
 
@@ -241,7 +241,9 @@ table.torrent-list tbody .comments {
     background-color: #6F6F6F;
     color: #ccc;
 }
+if darkToggle {
 footer {
-    display: var(--darkToggle);
+    display: none !important;
+}
 }
 }
