@@ -1,4 +1,3 @@
-@-moz-document domain("nyaa.si") {
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
 @namespace    sabakuran
@@ -10,9 +9,14 @@
 @preprocessor stylus
 @version      1.0.0
 @license      WTFPL
-
+===================
 @var checkbox darkToggle "Hide Dark Mode Toggle" 1
+@var select browser "Browser" {
+    "Chromium*":"chromium",
+    "Firefox":"firefox",
+}
 ==/UserStyle== */
+@-moz-document domain("nyaa.si") {
 body {
     background-color: #1C1C1C;
     color: #CCCCCC;
@@ -241,6 +245,27 @@ table.torrent-list tbody .comments {
     background-color: #6F6F6F;
     color: #ccc;
 }
+/* browser compatibility */
+if(browser is chromium) {
+    /* chromium scrollbar */
+    body::-webkit-scrollbar {
+    width: 15px;
+    }
+    body::-webkit-scrollbar-track {
+    background: #161616;
+    border-left: 1px solid #282828;
+    }
+    body::-webkit-scrollbar-thumb {
+    background-color: #282828;
+    border-radius: 0;
+    }
+} else if(browser is firefox) {
+    /* firefox scrollbar */
+    html {
+        scrollbar-color: #282828 #161616;
+        scrollbar-width: auto;
+    }
+}   
 if darkToggle {
 footer {
     display: none !important;
