@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      1.0.0
+@version      1.0.1
 @license      WTFPL
 ===================
 @var checkbox darkToggle "Hide Dark Mode Toggle" 1
@@ -38,6 +38,10 @@ img {
     border-color: #282828;
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+    color: #ccc;
+    background-color: #282828;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
     color: #ccc;
     background-color: #282828;
 }
@@ -148,7 +152,9 @@ img {
     border: 1px solid #444444;
 }
 .dropdown-menu {
-    background-color: #1c1c1c;
+    background-color: #282828;
+    border: 1px solid #282828;
+    box-shadow: 0 1px 3px #00000080;
 }
 .dropdown-menu>li>a {
     color: #ccc;
@@ -244,6 +250,39 @@ table.torrent-list tbody .comments {
 .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
     background-color: #6F6F6F;
     color: #ccc;
+}
+kbd {
+    box-shadow: 0 1px 3px #00000080;
+    color: #ccc;
+    padding: 1px 5px;
+}
+.panel-body>pre {
+    background-color: #434343;
+    border: 0;
+    box-shadow: 0 1px 3px #00000080;
+    color: #ccc;
+}
+blockquote {
+    background-color: #1c1c1c;
+    border-left: 5px solid #434343;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px #00000080;
+}
+hr {
+    border-top: 1px solid #ccc;
+}
+/* seed/leech colors */
+.col-md-5>span[style="color: green;"] {
+    color: #58B792 !important;
+}
+.col-md-5>span[style="color: red;"] {
+    color: #DE5833 !important;
+}
+table.torrent-list td:nth-child(6), body.dark table.torrent-list > tbody > tr.success > td:nth-child(6), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(6) {
+    color: #58B792;
+}
+table.torrent-list td:nth-child(7), body.dark table.torrent-list > tbody > tr.success > td:nth-child(7), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7) {
+    color: #DE5833;
 }
 /* browser compatibility */
 if(browser is chromium) {
