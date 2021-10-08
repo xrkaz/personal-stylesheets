@@ -10,7 +10,7 @@
 @version      1.0.0
 @license      WTFPL
 ===================
-@var text info "This theme breaks the site. It's because of their use of aggresive scripts. Installing uBlock Origin is a must." "'https://github.com/gorhill/uBlock'"
+@var text info "The site uses aggressive scripts, so it suddenly breaking cannot be avoided once you apply this theme. Installing uBlock Origin fixes this." "'https://github.com/gorhill/uBlock'"
 @var select browser "Browser" {
     "Chromium*":"chromium",
     "Firefox":"firefox",
