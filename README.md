@@ -1,6 +1,6 @@
 My Personal Stylesheets for Stylus
 
-<a href="https://github.com/openstyles/stylus" target="_blank"><img src="https://shields.io/badge/Get-Stylus-blue?&style=for-the-badge" alt="Get Stylus"/></a>
+<a href="https://github.com/openstyles/stylus" target="_blank" rel="noopener noreferrer"><img src="https://shields.io/badge/Get-Stylus-blue?&style=for-the-badge" alt="Get Stylus"/></a>
 
 |Lunar Duck|Install|
 |:------------------------------------------|:-----------------------------------------|
