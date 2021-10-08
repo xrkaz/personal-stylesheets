@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/diksiyonaryo.ph.user.css
 @preprocessor stylus
-@version      1.0.1
+@version      1.0.2
 @license      WTFPL
 ===================
 @var select browser "Browser" {
@@ -130,7 +130,6 @@ hr {
 /* entry list */
 .word {
     padding: 10px 20px 20px 20px;
-    margin: 0 0 -20px 0;
     background-color: #282828;
     box-shadow: 0 1px 3px #00000080;
     border-radius: 4px;
@@ -150,11 +149,19 @@ if(browser is chromium) {
     background-color: #282828;
     border-radius: 0;
     }
+    /* entry list */
+    .word {
+        margin: 0 0 -20px 0;
+    }
 } else if(browser is firefox) {
     /* firefox scrollbar */
     html {
         scrollbar-color: #282828 #161616;
         scrollbar-width: auto;
+    }
+    /* entry list */
+    .word {
+        margin: 0 0 0 0;
     }
 }
 }
