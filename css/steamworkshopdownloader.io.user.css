@@ -1,0 +1,25 @@
+/* ==UserStyle==
+@name         steamworkshopdownloader.io - Lunar Duck
+@namespace    sabakuran
+@description  DDG inspired theme for steamworkshopdownloader.io
+@author       sabakuran (https://github.com/sabakuran)
+@homepageURL  https://github.com/sabakuran/personal-stylesheets
+@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/steamworkshopdownloader.io.user.css
+@preprocessor stylus
+@version      1.0.0
+@license      WTFPL
+===================
+@var text info "Installing uBlock Origin is a must as this theme breaks the site due to their use of aggressive scripts." "'https://github.com/gorhill/uBlock'"
+@var select browser "Browser" {
+    "Chromium*":"chromium",
+    "Firefox":"firefox",
+}
+@var checkbox darkToggle "Hide Dark Mode Toggle" 1
+==/UserStyle== */
+@-moz-document domain("steamworkshopdownloader.io") {
+/* attempt to hide ads, though it breaks the site due to their usage of aggressive scripts */
+    .glass.alert-secondary {
+        display: none;
+    }
+}
