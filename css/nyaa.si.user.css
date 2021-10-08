@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      1.0.1
+@version      1.0.2
 @license      WTFPL
 ===================
 @var checkbox darkToggle "Hide Dark Mode Toggle" 1
@@ -233,6 +233,22 @@ table.torrent-list tbody .comments {
 .table-bordered {
     border: 5px solid #282828;
 }
+#torrent-description>.table.table-striped.table-bordered {
+    background-color: #1c1c1c;
+    border: 3px solid #383838;
+    box-shadow: 0 1px 3px #00000080;
+}
+.well>.table.table-striped.table-bordered {
+    background-color: #1c1c1c;
+    border: 3px solid #383838;
+    box-shadow: 0 1px 3px #00000080;
+}
+#torrent-description>.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #383838;
+}
+.well>.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #383838;
+}
 .pagination {
     box-shadow: 0 1px 3px #00000080;
 }
@@ -251,6 +267,9 @@ table.torrent-list tbody .comments {
     background-color: #6F6F6F;
     color: #ccc;
 }
+.text-success {
+    color: #58B792;
+}
 kbd {
     box-shadow: 0 1px 3px #00000080;
     color: #ccc;
@@ -261,6 +280,16 @@ kbd {
     border: 0;
     box-shadow: 0 1px 3px #00000080;
     color: #ccc;
+}
+code {
+    background-color: #434343;
+    color: #ccc;
+    padding: 2px 5px 4px 5px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px #00000080;
+}
+pre>code {
+    box-shadow: none;
 }
 blockquote {
     background-color: #1c1c1c;
