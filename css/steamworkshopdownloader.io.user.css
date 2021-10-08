@@ -10,7 +10,7 @@
 @version      1.0.0
 @license      WTFPL
 ===================
-@var text info "Installing uBlock Origin is a must as this theme breaks the site due to their use of aggressive scripts." "'https://github.com/gorhill/uBlock'"
+@var text info "This theme breaks the site. It's because of their use of aggresive scripts. Installing uBlock Origin is a must." "'https://github.com/gorhill/uBlock'"
 @var select browser "Browser" {
     "Chromium*":"chromium",
     "Firefox":"firefox",
@@ -18,7 +18,7 @@
 @var checkbox darkToggle "Hide Dark Mode Toggle" 1
 ==/UserStyle== */
 @-moz-document domain("steamworkshopdownloader.io") {
-/* attempt to hide ads, though it breaks the site due to their usage of aggressive scripts */
+/* attempt to hide ads, though it breaks the site due to their use of aggressive scripts */
     .glass.alert-secondary {
         display: none;
     }
