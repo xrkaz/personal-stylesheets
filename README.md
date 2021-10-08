@@ -1,6 +1,6 @@
 My Personal Stylesheets for Stylus
 
-Also available at [Userstyles.world](https://userstyles.world/user/sabakuran)
+Also available at [UserStyles.world](https://userstyles.world/user/sabakuran)
 
 <a href="https://github.com/openstyles/stylus"><img src="https://shields.io/badge/Get-Stylus-blue?&style=for-the-badge" alt="Get Stylus"/></a>
 
