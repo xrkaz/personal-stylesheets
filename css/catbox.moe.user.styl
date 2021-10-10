@@ -27,6 +27,12 @@
             text-decoration: none;
         }
     }
+    form a {
+        color: #678FFF;
+        &:hover {
+            color: #99B4FF;
+        }
+    }
     //suppress default logo
     header>img {
         content: url(pictures/logo_white.png);
@@ -117,13 +123,92 @@
     span[style="font-weight: 600;"] {
         font-size: 18px;
     }
+    span[style="color: red;"] {
+        color: #DE5833 !important;
+    }
     //login page
+    .hometab {
+        background-image: url(#);
+        background-color: #282828;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px #00000080;
+        padding: 10px 1px 10px 1px;
+    }
+    a.homebutton {
+        color: #9d9d9d;
+        text-decoration: none;
+        &:hover {
+            color: #ccc;
+            text-decoration: none;
+        }
+    }
+    .welcome {
+        color: #2A6DA1;
+    }
+    .welcomesub {
+        color: #2A6DA1;
+    }
+    .notesmall {
+        border: 0;
+        border-radius: 4px;
+        background-image: url(#);
+        background-color: #282828;
+        padding: 20px;
+        box-shadow: 0 1px 3px #00000080;
+    }
     form.genericform {
         background-image: url(#);
         background-color: #282828;
         border: 0;
         box-shadow: 0 1px 3px #00000080;
         border-radius: 4px;
+    }
+    input[type=text].stylized {
+        background-color: #333;
+        border: 0;
+        color: #ccc;
+        text-align: center;
+    }
+    input[type=password] {
+        background-color: #333;
+        border: 0;
+        color: #ccc;
+        text-align: center;
+        outline: none;
+    }
+    input[type=submit] {
+        background-color: #153650;
+        border: 1px solid #153650;
+        border-radius: 4px;
+        color: #ccc;
+        box-shadow: 0 1px 3px #00000080;
+        &:hover {
+            background-color: #2A6DA1;
+            transition: none;
+            color: #ccc;
+        }
+    }
+    //legal section
+    .legalSection {
+        background-color: #282828;
+        border-radius: 4px;
+        padding: 20px;
+        box-shadow: 0 1px 3px #00000080;
+    }
+    span.legalRowText {
+        background-color: #282828;
+        border-radius: 4px;
+        border: 0;
+        color: #9d9d9d;
+        box-shadow: 0 1px 3px #00000080;
+        &:hover {
+            text-decoration: none;
+            color: #ccc;
+        }
+    }
+    span.legalRowText.active {
+        color: #ccc;
     }
     if dmToggle {
         #changeTheme.linkbutton {
