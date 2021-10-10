@@ -1,0 +1,102 @@
+/* ==UserStyle==
+@name         catbox.moe - Lunar Duck
+@namespace    sabakuran
+@description  DDG inspired theme for catbox.moe
+@author       sabakuran (https://github.com/sabakuran)
+@homepageURL  https://github.com/sabakuran/personal-stylesheets
+@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/catbox.moe.user.styl
+@preprocessor stylus
+@version      1.0.0
+@license      WTFPL
+===================
+@var checkbox dmToggle "Hide on-site dark mode toggle" 1
+@var checkbox animeToggle "Hide on-site anime pictures" 0
+==/UserStyle== */
+
+@-moz-document domain("catbox.moe") {
+    body {
+        background-image: url(#);
+        background-color: #1c1c1c;
+        color: #ccc;
+    }
+    a.linkbutton {
+        color: #678FFF;
+        &:hover {
+            color: #99B4FF;
+            text-decoration: none;
+        }
+    }
+    header>img {
+        content: url(pictures/logo_white.png);
+    }
+    form.dz-clickable {
+        background-color: #153650;
+        border: 1px solid #153650;
+        border-radius: 4px;
+        &:hover {
+            background-color: #2A6DA1;
+            transition: none;
+        }
+    }
+    .dz-default.dz-message {
+        color: #3FA4F2;
+    }
+    input[name=url] {
+        background-color: #333333;
+        border: 0;
+        border-radius: 4px;
+        color: #ccc;
+    }
+    button.urlUpSubmit {
+        border: 0;
+        background-color: #153650;
+        border-radius: 4px;
+        color: #3FA4F2;
+        &:hover {
+            background-color: #2A6DA1;
+            transition: none;
+        }
+    }
+    //hide separators
+    .linkrow {
+        color: transparent;
+    }
+    //store button
+    a.linkbutton[style="color: goldenrod"],a.linkbutton[style="color: goldenrod;"],a.linkbutton[style="color: goldenrod; outline-width: 0px !important; user-select: auto !important;"] {
+        color: #678FFF !important;
+        &:hover {
+            color: #99B4FF !important;
+            text-decoration: none !important;
+        }
+    }
+    .notetiny {
+        background-image: url(#);
+        background-color: #282828;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px #00000080;
+    }
+    .patreonProgressBarBacking {
+        background-color: #153650;
+        border: 2px solid #153650;
+        border-radius: 4px;
+    }
+    .patreonProgressBar {
+        background-color: #2A6DA1;
+        border-radius: 4px;
+    }
+    span[style="font-weight: 600;"] {
+        font-size: 18px;
+    }
+    if dmToggle {
+        #changeTheme.linkbutton {
+            display: none;
+        }
+    }
+    if animeToggle {
+        .image {
+            display: none;
+        }
+    }
+}
