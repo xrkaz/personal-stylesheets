@@ -1,5 +1,5 @@
 /* ==UserStyle==
-@name         catbox.moe - Lunar Duck
+@name         catbox.moe - Lunar Duck WIP
 @namespace    sabakuran
 @description  DDG inspired theme for catbox.moe
 @author       sabakuran (https://github.com/sabakuran)
@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/catbox.moe.user.styl
 @preprocessor stylus
-@version      1.0.0
+@version      0.0.1
 @license      WTFPL
 ===================
 @var checkbox dmToggle "Hide on-site dark mode toggle" 1
@@ -27,6 +27,7 @@
             text-decoration: none;
         }
     }
+    //suppress default logo
     header>img {
         content: url(pictures/logo_white.png);
     }
@@ -58,6 +59,32 @@
             transition: none;
         }
     }
+    div.dz-preview {
+        background-image: url(#);
+        background-color: #1c1c1c;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px #00000080;
+        padding-bottom: 20px;
+        border: 5px solid #383838;
+    }
+    div.dz-success {
+        border: 5px solid #383838;
+    }
+    div.responseText {
+        background-color: #153650;
+        border: 0;
+        border-radius: 2px;
+        &:hover {
+            background-color: #2A6DA1;
+            transition: none;
+        }
+    }
+    .dz-upload {
+        background-color: #3A7A61 !important;
+    }
+    .dz-complete.dz-success.dz-processing.dz-file-preview.dz-preview {
+        border-color: #333 !important;
+    }
     //hide separators
     .linkrow {
         color: transparent;
@@ -76,6 +103,7 @@
         border: 0;
         border-radius: 4px;
         box-shadow: 0 1px 3px #00000080;
+        padding: 20px;
     }
     .patreonProgressBarBacking {
         background-color: #153650;
@@ -88,6 +116,14 @@
     }
     span[style="font-weight: 600;"] {
         font-size: 18px;
+    }
+    //login page
+    form.genericform {
+        background-image: url(#);
+        background-color: #282828;
+        border: 0;
+        box-shadow: 0 1px 3px #00000080;
+        border-radius: 4px;
     }
     if dmToggle {
         #changeTheme.linkbutton {
