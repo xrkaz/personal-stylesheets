@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/steamworkshopdownloader.io.user.styl
 @preprocessor stylus
-@version      1.0.0
+@version      TO-BE-REWRITTEN
 @license      WTFPL
 ===================
 @var select browser "Browser" {
@@ -31,6 +31,9 @@
             text-decoration: none;
         }
     }
+    .bg-light {
+        background-color: red !important;
+    }
     // searchbar
     .input-group-text {
         background-color: #333;
@@ -48,6 +51,38 @@
             border: 0;
             box-shadow: none;
         }
+    }
+    // checkbox
+    .custom-control {
+        border: 0;
+    }
+    .custom-control-input {
+        border: 0;
+        box-shadow: none;
+        outline: none;
+    }
+    .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+        color: #ccc;
+        background-color: #333;
+        border: 0;
+    }
+    .custom-control-label::after {
+        background: no-repeat 50% / 50% 50% #333;
+        border: 0;
+    }
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+        animation: none;
+    }
+    .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #333;
+        color: #ccc;
+        border: 0;
+    }
+    .custom-control-label::before, .custom-file-label, .custom-select {
+        transition: none;
+    }
+    input[type="radio"], input[type="checkbox"] {
+        border: 0;
     }
     .list-group-item {
         background-color: #1C1C1C;
@@ -127,8 +162,10 @@
         }
     }
     .glass {
+        box-shadow: none;
         &:before {
             filter: none;
+            background-color: #282828;
         }
     }
     .glass.card {
@@ -137,6 +174,10 @@
     // footer
     .glass.alert-warning {
         background-color: #544603;
+    }
+    .glass.alert-secondary {
+        background-color: #282828;
+        opacity: 100%;
     }
     .alert-warning {
         color: #FDD20A;
@@ -174,6 +215,11 @@
     }
     if hidSettings {
         [href="/settings"]>.m-1.btn-primary.btn-sm.btn {
+            display: none;
+        }
+    }
+    if leftover {
+        .p-1.do-not-darkmode-but-darken.row {
             display: none;
         }
     }
