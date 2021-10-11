@@ -8,3 +8,4 @@ Also available at [UserStyles.world](https://userstyles.world/user/sabakuran)
 |:------------------------------------------|:-----------------------------------------|
 |[diksiyonaryo.ph](https://diksiyonaryo.ph)|[![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-285959.svg)](https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/diksiyonaryo.ph.user.css)|
 |[nyaa.si](https://nyaa.si)|[![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-285959.svg)](https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css)|
+|[catbox.moe](https://catbox.moe)|[![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-285959.svg)](https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/catbox.moe.user.styl)|
