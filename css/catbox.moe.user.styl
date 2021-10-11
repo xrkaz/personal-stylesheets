@@ -1,5 +1,5 @@
 /* ==UserStyle==
-@name         catbox.moe - Lunar Duck WIP
+@name         catbox.moe - Lunar Duck
 @namespace    sabakuran
 @description  DDG inspired theme for catbox.moe
 @author       sabakuran (https://github.com/sabakuran)
@@ -7,9 +7,13 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/catbox.moe.user.styl
 @preprocessor stylus
-@version      0.0.1
+@version      1.0.0
 @license      WTFPL
 ===================
+@var select browser "Browser" {
+    "Chromium*":"chromium",
+    "Firefox":"firefox",
+}
 @var checkbox dmToggle "Hide on-site dark mode toggle" 1
 @var checkbox animeToggle "Hide on-site anime pictures" 0
 ==/UserStyle== */
@@ -169,6 +173,7 @@
         border: 0;
         color: #ccc;
         text-align: center;
+        box-shadow: 0 1px 3px #00000080;
     }
     input[type=password] {
         background-color: #333;
@@ -210,6 +215,92 @@
     span.legalRowText.active {
         color: #ccc;
     }
+    //faq
+    dl.faq {
+        background-color: #282828;
+        border-radius: 4px;
+        padding: 20px 50px 20px 50px;
+        box-shadow: 0 1px 3px #00000080;
+        text-align: center;
+    }
+    dd.answer {
+        margin: 5px 0 0 0;
+    }
+    //contributors
+    div.contributor {
+        border: 0;
+        border-radius: 4px;
+        background-image: url(#);
+        background-color: #282828;
+        box-shadow: 0 1px 3px #00000080;
+        text-align: center;
+    }
+    div.contributor > p > span {
+        color: #3FA4F2;
+    }
+    span[style="color: green;"] {
+        color: #58B792 !important;
+    }
+    //usermgt
+    ul li.home {
+        border: 0;
+        border-radius: 4px;
+        background-image: url(#);
+        background-color: #282828;
+        box-shadow: 0 1px 3px #00000080;
+    }
+    img.previewimg, video.previewimg {
+        filter: invert(1);
+    }
+    textarea {
+        background-color: #333;
+        border: 0;
+        outline: none;
+        color: #ccc;
+        text-align: center;
+        padding: 10px;
+        box-shadow: 0 1px 3px #00000080;
+    }
+    select {
+        background-color: #333;
+        border: 0;
+        border-radius: 4px;
+        outline: none;
+        color: #ccc;
+        padding: 2px 10px 2px 10px;
+        box-shadow: 0 1px 3px #00000080;
+    }
+    button {
+        background-color: #333;
+        color: #ccc;
+        border: 0;
+        border-radius: 2px;
+        padding: 5px 10px 5px 10px !important;
+        box-shadow: 0 1px 3px #00000080;
+    }
+    // browser compatibility
+    if (browser is chromium) {
+        // chromium scrollbar
+        html {
+            &::-webkit-scrollbar {
+                width: 15px;
+            }
+            &::-webkit-scrollbar-track {
+                background: #161616;
+                border-left: 1px solid #282828;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #282828;
+                border-radius: 0;
+            }
+        }
+    } else if (browser is firefox) {
+        // firefox scrollbar
+        html {
+            scrollbar-color: #282828 #161616;
+            scrollbar-width: auto;
+        }
+    }
     if dmToggle {
         #changeTheme.linkbutton {
             display: none;
@@ -219,5 +310,67 @@
         .image {
             display: none;
         }
+    }
+}
+@-moz-document domain("blog.catbox.moe") {
+    [src="https://catbox.moe/pictures/bloglogo.png"] {
+        filter: invert(1);
+    }
+    a {
+        color: #678FFF;
+        &:hover {
+            color: #99B4FF;
+        }
+    }
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+        color: #678FFF;
+    }
+    .entry-meta-header .date a, .nav a {
+        color: #678FFF;
+        &:hover {
+            color: #99B4FF;
+        }
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #ccc !important;
+    }
+    .like_and_reblog_buttons li {
+        filter: invert(1);
+    }
+}
+@-moz-document domain("status.catbox.moe") {
+    a {
+        color: #678FFF;
+        text-decoration: none;
+        &:hover {
+            color: #99B4FF;
+        }
+    }
+    .siteHeader {
+        background: #161616;
+        border-bottom: 1px solid #282828;
+    }
+    .siteFooter {
+        background: #161616;
+        border-top: 1px solid #282828;
+    }
+    .siteFooter__nav li a {
+        color: #678FFF;
+        &:hover {
+            color: #99B4FF;
+        }
+    }
+    .serviceList__item:nth-child(even) {
+        background: #282828;
+    }
+    .serviceList__item {
+        border-bottom: 0;
+    }
+    .serviceList {
+        border: 5px solid #282828;
+        border-radius: 4px;
+    }
+    .serviceList__item:last-child {
+        border-radius: 0;
     }
 }
