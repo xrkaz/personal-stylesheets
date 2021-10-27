@@ -7,10 +7,10 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      1.0.5
+@version      1.0.6
 @license      WTFPL
 ===================
-@var checkbox darkToggle "Hide Dark Mode Toggle" 1
+@var checkbox darkToggle "Hide on-site dark mode toggle" 1
 @var select browser "Browser" {
     "Chromium*":"chromium",
     "Firefox":"firefox",
@@ -146,10 +146,10 @@ img {
     background-color: #333;
     border: 1px solid #333;
 }
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:active:hover, .btn-primary.active:hover, .open>.dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open>.dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open>.dropdown-toggle.btn-primary.focus, .btn-primary:focus, .btn-primary.focus {
     color: #ccc;
-    background-color: #444444;
-    border: 1px solid #444444;
+    background-color: #6F6F6F;
+    border: 1px solid #6F6F6F;
 }
 .dropdown-menu {
     background-color: #282828;
@@ -253,7 +253,7 @@ table.torrent-list tbody .comments {
     box-shadow: 0 1px 3px #00000080;
 }
 .pagination>li>a, .pagination>li>span {
-    background-color: #444;
+    background-color: #333;
     color: #ccc;
     border: 0;
 }
@@ -261,7 +261,7 @@ table.torrent-list tbody .comments {
     background-color: #282828;
 }
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
-    background-color: #6F6F6F;
+    background-color: #444;
 }
 .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
     background-color: #6F6F6F;
