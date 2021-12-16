@@ -6,17 +6,62 @@
 @homepageURL  https://github.com/sabakuran/personal-stylesheets
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/kwfdiksiyonaryo.ph.user.css
-@preprocessor stylus
-@version      0.0.1
+@preprocessor default
+@version      1.0.0
 @license      WTFPL
 ==/UserStyle== */
-
 @-moz-document domain("kwfdiksiyonaryo.ph") {
     body {
         color: #ccc;
         background-color: #1c1c1c;
     }
+    a {
+        color: #678FFF;
+    }
+    a:focus, a:hover {
+        color: #99B4FF;
+        text-decoration: none;
+    }
+    .btn-link {
+        color: #678FFF;
+    }
+    .btn-link:focus, .btn-link:hover {
+        color: #99B4FF;
+        text-decoration: none;
+    }
+    .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+        outline: none;
+    }
+    .btn-info {
+        color: #ccc;
+        background-color: #333;
+        border: 0;
+    }
+    .btn-info:hover, .btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus, .open>.dropdown-toggle.btn-info:hover, .btn-info.focus, .btn-info:focus, .btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info {
+        color: #ccc;
+        background-color: #6F6F6F;
+        border: 0;
+    }
+    .btn-primary {
+        color: #ccc;
+        background-color: #444444;
+        border: 0;
+    }
+    .btn-primary:hover, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover, .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary, .btn-primary.focus, .btn-primary:focus {
+        color: #ccc;
+        background-color: #6F6F6F;
+    }
+    #toTop .fa {
+        margin-right: 0;
+    }
+    .com-header {
+        color: #ccc;
+        text-decoration: none;
+    }
     .com-body {
+        color: #ccc;
+    }
+    .com-body-kontak {
         color: #ccc;
     }
     .navbar-inverse {
@@ -24,10 +69,48 @@
         background-color: #161616;
         border-bottom: solid 8px #282828;
     }
+    .navbar-inverse .navbar-nav > li > a {
+        color: #9d9d9d;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+        color: #ccc;
+    }
+    .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+        color: #ccc;
+        background-color: #282828;
+        border-radius: 0;
+    }
+    .modal-header {
+        border-bottom: 0;
+        background-color: #333;
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+    }
+    .modal-title {
+        color: #ccc !important;
+    }
     .modal-content {
         background-color: #282828 !important;
     }
     .modal-body {
+        color: #ccc !important;
+    }
+    .alert-info {
+        background-color: #282828;
+    }
+    .alert {
+        border: 0;
+    }
+    span[style="color: #000080;"] {
+        color: #3FA4F2 !important;
+    }
+    span[style="color:#337ab7;"] {
+        color: #ccc !important;
+    }
+    h3[style="font-family: 'Georgia', serif; color: #ff8c1a; font-size: 40px; text-align: center; font-weight:bold; letter-spacing: 2px;"] {
+        color: #3FA4F2 !important;
+    }
+    h2[style="margin:0; color:#337ab7; font-weight:bold; font-family: 'Georgia', serif;"] {
         color: #ccc !important;
     }
     .panel-default>.panel-heading {
@@ -35,5 +118,97 @@
     }
     .list-group-item {
         background-color: #282828;
+        border: 0;
+    }
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+        border-top: 0;
+    }
+    .panel-group .panel-heading+.panel-collapse>.list-group, .panel-group .panel-heading+.panel-collapse>.panel-body {
+        border-top: 0;
+    }
+    .panel {
+        background-color: #1c1c1c;
+        border: 0;
+    }
+    #collapseOne>.panel-body, #collapseTwo>.panel-body, #collapseThree>.panel-body {
+        background-color: #282828;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    .panel.panel-default {
+        box-shadow: 0 1px 3px rgb(0 0 0 / 50%);
+    }
+    .panel-heading {
+        border-bottom: 0;
+    }
+    .input-search {
+        color: #ccc;
+        border: 0;
+    }
+    .search-header {
+        color: #ccc;
+    }
+    #search-btn {
+        top: 0;
+        border: 0;
+        border-radius: 0;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        padding: 8px 15px;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    #search-clear {
+        right: 70px;
+    }
+    #search-btn:hover, #search-btn:focus, #search-btn:active {
+        background-color: #6F6F6F;
+    }
+    #entri {
+        box-shadow: 0 1px 3px rgb(0 0 0 / 50%);
+    }
+    .form-control {
+        background-color: #333;
+    }
+    .form-control:focus {
+        box-shadow: none;
+    }
+    .label-primary {
+        background-color: #383838;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 50%);
+    }
+    .label {
+        color: #ccc;
+        padding: 5px 5px 5px 5px;
+        border-radius: 2px;
+    }
+    .dropdown-menu {
+        background-color: #282828;
+        border: 1px solid #282828;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 50%);
+    }
+    .dropdown-menu>li>a {
+    color: #ccc;
+    }
+    .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+    background-color: #434343;
+    color: #ccc;
+    }
+    .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+    color: #ccc;
+    background-color: #434343;
+    }
+}
+@-moz-document url-prefix("https://docs.google.com/forms/d/e/1FAIpQLScllcz-Xr68h2s7n1hKa6Z5xVUVvf2UQX0LnTFxYXhErNI3DQ") {
+    /* gforms WIP */
+    .freebirdFormviewerViewReceiptText {
+        color: #ccc;
+    }
+    .freebirdFormviewerComponentsQuestionBaseRoot {
+        background-color: #282828;
+        border: 0;
+    }
+    .freebirdFormviewerComponentsQuestionBaseTitle {
+        color: #ccc;
     }
 }
