@@ -1,0 +1,39 @@
+/* ==UserStyle==
+@name         kwfdiksiyonaryo.ph - Lunar Duck
+@namespace    sabakuran
+@description  DDG inspired theme for kwfdiksiyonaryo.ph
+@author       sabakuran (https://github.com/sabakuran)
+@homepageURL  https://github.com/sabakuran/personal-stylesheets
+@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/kwfdiksiyonaryo.ph.user.css
+@preprocessor stylus
+@version      0.0.1
+@license      WTFPL
+==/UserStyle== */
+
+@-moz-document domain("kwfdiksiyonaryo.ph") {
+    body {
+        color: #ccc;
+        background-color: #1c1c1c;
+    }
+    .com-body {
+        color: #ccc;
+    }
+    .navbar-inverse {
+        color: #ccc !important;
+        background-color: #161616;
+        border-bottom: solid 8px #282828;
+    }
+    .modal-content {
+        background-color: #282828 !important;
+    }
+    .modal-body {
+        color: #ccc !important;
+    }
+    .panel-default>.panel-heading {
+        background-color: #333;
+    }
+    .list-group-item {
+        background-color: #282828;
+    }
+}
