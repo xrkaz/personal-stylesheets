@@ -16,7 +16,7 @@
     "Firefox":"firefox",
 }
 ==/UserStyle== */
-@-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.one)\\/.*") {
+@-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*") {
 body {
     background-color: #1C1C1C;
     color: #CCCCCC;
