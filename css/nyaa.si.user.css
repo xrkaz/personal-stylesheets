@@ -7,339 +7,428 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      1.0.8
+@version      2.0.0
 @license      WTFPL
 ===================
-@var checkbox darkToggle "Hide on-site dark mode toggle" 1
-@var select browser "Browser" {
-    "Chromium*":"chromium",
-    "Firefox":"firefox",
+@var select variant "Color scheme" {
+    "Default*":"default",
+    "Desert Orchid":"sabakuran"
 }
+@var checkbox darkTgl "Hide on-site dark mode toggle" 1
+@var checkbox imgSat "Adjust image saturation" 1
+@var checkbox avaSat "Adjust avatar saturation" 1
+@var checkbox imgShad "Enable image shadows" 1
+@var checkbox avaShad "Enable avatar shadows" 1
+@var checkbox avaRound "Enable rounded avatars" 0
+@var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
-@-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*") {
-body {
-    background-color: #1C1C1C;
-    color: #CCCCCC;
-}
-a {
-    color: #678FFF;
-}
-a:hover, a:focus {
-    color: #99B4FF;
-    text-decoration: none;
-    outline: none;
-}
-img {
-    border-radius: 4px;
-    box-shadow: 0 1px 3px #00000080;
-}
-.navbar-inverse {
-    background-color: #161616;
-    border-color: #282828;
-}
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
-    color: #ccc;
-    background-color: #282828;
-}
-.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
-    color: #ccc;
-    background-color: #282828;
-}
-.nav-tabs {
-    border-bottom: 1px solid #1c1c1c;
-}
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-    color: #ccc;
-    background-color: #444;
-    border: 1px solid #444;
-}
-.nav>li>a {
-    color: #ccc;
-}
-.nav>li>a:hover, .nav>li>a:focus {
-    background-color: #444;
-    border: 0;
-    color: #ccc;
-}
-.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
-    border: 0;
-}
-.well {
-    background-color: #282828;
-    border: 1px solid #282828;
-    box-shadow: none;
-}
-.torrent-list > tbody > tr > td > a {
-    color: #678FFF !important;
-}
-.category-icon {
-    filter: saturate(50%);
-}
-.form-control {
-    background-color: #333;
-    color: #ccc;
-    border: 1px solid #333;
-    transition: none;
-    box-shadow: none;
-}
-.form-control:focus {
-    box-shadow: none;
-    border-color: #333;
-}
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-    background-color: #282828;
-}
-.input-group .form-control:last-child, .input-group-addon:last-child {
-    border: 1px solid #282828;
-}
-.btn-default  {
-    background-color: #333;
-    color: #ccc;
-    border-color: #333;
-}
-.btn-default:hover, .btn-default:active:hover, .btn-default.active:hover, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default, .open>.dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open>.dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open>.dropdown-toggle.btn-default.focus {
-    background-color: #6F6F6F;
-    color: #ccc;
-    border: 1px solid #6F6F6F;
-}
-.btn-default:focus, .btn-default.focus {
-    background-color: #333;
-    color: #ccc;
-    border: 1px solid #333;
-}
-.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
-    outline: none;
-}
-.btn-danger {
-    color: #ccc;
-    background-color: #4A1D11;
-    border: 1px solid #4A1D11;
-}
-.btn-danger:hover {
-    color: #ccc;
-    background-color: #DE5833;
-    border: 1px solid #DE5833;
-}
-.btn-warning {
-    background-color: #513613; 
-    color: #ccc;
-    border: 1px solid #513613;
-}
-.btn-warning:hover {
-    background-color: #F5A339; 
-    color: #ccc;
-    border: 1px solid #F5A339;
-}
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
-    background-color: #434343;
-    color: #ccc;
-}
-.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
-    color: #ccc;
-    background-color: #434343;
-}
-.bootstrap-select .dropdown-toggle:focus {
-    outline: none !important;
-}
-.btn-primary {
-    color: #ccc;
-    background-color: #333;
-    border: 1px solid #333;
-}
-.btn-primary:hover, .btn-primary:active:hover, .btn-primary.active:hover, .open>.dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open>.dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open>.dropdown-toggle.btn-primary.focus, .btn-primary:focus, .btn-primary.focus {
-    color: #ccc;
-    background-color: #6F6F6F;
-    border: 1px solid #6F6F6F;
-}
-.dropdown-menu {
-    background-color: #282828;
-    border: 1px solid #282828;
-    box-shadow: 0 1px 3px #00000080;
-}
-.dropdown-menu>li>a {
-    color: #ccc;
-}
-.table-hover>tbody>tr:hover, .table-striped>tbody>tr:nth-of-type(odd):hover {
-    background-color: #434343;
-}
-.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: #282828;
-}
-.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
-    border: 0;
-}
-table.torrent-list tbody .comments {
-    background-color: #333;
-    border: 0;
-    color: #ccc !important;
-}
-.table>thead>tr>td.success, .table>tbody>tr>td.success, .table>tfoot>tr>td.success, .table>thead>tr>th.success, .table>tbody>tr>th.success, .table>tfoot>tr>th.success, .table>thead>tr.success>td, .table>tbody>tr.success>td, .table>tfoot>tr.success>td, .table>thead>tr.success>th, .table>tbody>tr.success>th, .table>tfoot>tr.success>th {
-    background-color: #1D3D30;
-}
-.table-hover>tbody>tr>td.success:hover, .table-hover>tbody>tr>th.success:hover, .table-hover>tbody>tr.success:hover>td, .table-hover>tbody>tr:hover>.success, .table-hover>tbody>tr.success:hover>th {
-    background-color: #484848;
-}
-.table-hover>tbody>tr>td.danger:hover, .table-hover>tbody>tr>th.danger:hover, .table-hover>tbody>tr.danger:hover>td, .table-hover>tbody>tr:hover>.danger, .table-hover>tbody>tr.danger:hover>th {
-    background-color: #484848;
-}
-.alert-info {
-    background-color: #153650;
-    color: #3FA4F2;
-    border: 0;
-}
-.panel-success, .panel-danger {
-    border: 0;
-}
-.panel-success>.panel-heading {
-    background-color: #1D3D30;
-    color: #58B792;
-    border: 0;
-}
-.panel-danger>.panel-heading {
-    background-color: #4A1D11;
-    color: #DE5833;
-    border: 0;
-}
-.panel {
-    background-color: #282828;
-    box-shadow: 0 1px 3px #00000080;
-}
-.panel-default {
-    border: 0;
-}
-.panel-default>.panel-heading {
-    background-color: #333;
-    color: #ccc;
-    border: 0;
-}
-.panel-body {
-    background-color: #282828;
-    border-radius: 4px;
-}
-.panel-footer {
-    background-color: #333;
-    border-top: 0;
-}
-.table {
-    margin-bottom: 0;
-}
-.table>thead>tr>td.danger, .table>tbody>tr>td.danger, .table>tfoot>tr>td.danger, .table>thead>tr>th.danger, .table>tbody>tr>th.danger, .table>tfoot>tr>th.danger, .table>thead>tr.danger>td, .table>tbody>tr.danger>td, .table>tfoot>tr.danger>td, .table>thead>tr.danger>th, .table>tbody>tr.danger>th, .table>tfoot>tr.danger>th {
-    background-color: #4A1D11;
-}
-.table-responsive {
-    border-radius: 4px;
-    box-shadow: 0 1px 3px #00000080;
-}
-.table-bordered {
-    border: 5px solid #282828;
-}
-#torrent-description>.table.table-striped.table-bordered {
-    background-color: #1c1c1c;
-    border: 3px solid #383838;
-    box-shadow: 0 1px 3px #00000080;
-}
-.well>.table.table-striped.table-bordered {
-    background-color: #1c1c1c;
-    border: 3px solid #383838;
-    box-shadow: 0 1px 3px #00000080;
-}
-#torrent-description>.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: #383838;
-}
-.well>.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: #383838;
-}
-.pagination {
-    box-shadow: 0 1px 3px #00000080;
-}
-.pagination-page-info {
-    margin-top: 20px;
-}
-.pagination>li>a, .pagination>li>span {
-    background-color: #333;
-    color: #ccc;
-    border: 0;
-}
-.pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus {
-    background-color: #282828;
-}
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
-    background-color: #444;
-}
-.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
-    background-color: #6F6F6F;
-    color: #ccc;
-}
-.text-success {
-    color: #58B792;
-}
-kbd {
-    box-shadow: 0 1px 3px #00000080;
-    color: #ccc;
-    padding: 1px 5px;
-}
-.panel-body>pre {
-    background-color: #434343;
-    border: 0;
-    box-shadow: 0 1px 3px #00000080;
-    color: #ccc;
-}
-code {
-    background-color: #434343;
-    color: #ccc;
-    padding: 2px 5px 4px 5px;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px #00000080;
-}
-pre>code {
-    box-shadow: none;
-}
-blockquote {
-    background-color: #1c1c1c;
-    border-left: 5px solid #434343;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px #00000080;
-}
-hr {
-    border-top: 1px solid #ccc;
-}
-/* seed/leech colors */
-.col-md-5>span[style="color: green;"] {
-    color: #58B792 !important;
-}
-.col-md-5>span[style="color: red;"] {
-    color: #DE5833 !important;
-}
-table.torrent-list td:nth-child(6), body.dark table.torrent-list > tbody > tr.success > td:nth-child(6), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(6) {
-    color: #58B792;
-}
-table.torrent-list td:nth-child(7), body.dark table.torrent-list > tbody > tr.success > td:nth-child(7), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7) {
-    color: #DE5833;
-}
-/* browser compatibility */
-if(browser is chromium) {
-    /* chromium scrollbar */
-    body::-webkit-scrollbar {
-    width: 15px;
-    }
-    body::-webkit-scrollbar-track {
-    background: #161616;
-    border-left: 1px solid #282828;
-    }
-    body::-webkit-scrollbar-thumb {
-    background-color: #282828;
-    border-radius: 0;
-    }
-} else if(browser is firefox) {
-    /* firefox scrollbar */
-    html {
-        scrollbar-color: #282828 #161616;
-        scrollbar-width: auto;
-    }
-}   
-if darkToggle {
-footer {
-    display: none !important;
-}
-}
-}
+@-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
+  
+  // variables
+  i = !important
+  pshad = 0 1px 3px #00000080
+  prad = 4px
+  
+  // root entries
+  :root
+    if variant == "default"
+      --main-clr #cccccc
+      --main-clr-act #ffffff
+      --main-bg #1c1c1c
+      --second-bg #161616
+      --panel-bg #282828
+      --third-bg #434343
+      --search-bg #333333
+      --search-act #6f6f6f
+      --link-clr #678fff
+      --link-act #99b4ff
+      --success-clr #58b792
+      --success-clr-act #8fcfb6
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
+    else if variant == "sabakuran"
+      --main-clr #f5dbef
+      --main-clr-act #ffffff
+      --main-bg #3b2732
+      --second-bg #412d38
+      --panel-bg #493540
+      --third-bg #85787f
+      --search-bg #45313c
+      --search-act #83757d
+      --link-clr #ff368f
+      --link-act #ff79b4
+      --success-clr #58b792
+      --success-clr-act #8fcfb6
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
+    // == custom text for showing off ^_^
+    --attrib "Lunar Duck v2.0.0 🌸 sabakuran"
+
+  // scrollbar
+  html
+    // == chromium
+    ::-webkit-scrollbar
+      width 15px
+    ::-webkit-scrollbar-track
+      background-color var(--second-bg)
+      border-left 1px solid var(--panel-bg)
+    ::-webkit-scrollbar-thumb
+      background-color var(--search-bg)
+      border-radius 0
+      &:hover
+        background-color var(--search-act)
+    // == firefox
+    scrollbar-color var(--search-bg) var(--second-bg)
+    scrollbar-width auto
+    
+  // backbone
+  body
+    background-color var(--main-bg)
+    color var(--main-clr)
+  a
+    color var(--link-clr)
+    background-color transparent
+    &:hover, &:focus
+      color var(--link-act)
+      text-decoration none
+      outline none
+  blockquote
+    background-color var(--main-bg)
+    border-left 5px solid var(--third-bg)
+    border-radius prad
+    box-shadow pshad
+  pre
+    background-color var(--main-bg)
+    color var(--main-clr)
+    box-shadow pshad
+    border-radius prad
+    border-color var(--main-bg)
+  code
+    background-color var(--third-bg)
+    color var(--main-clr)
+    border-radius prad
+    box-shadow pshad
+  pre code
+    box-shadow none
+  kbd
+    box-shadow pshad
+    border-radius prad
+    color var(--main-clr)
+    background-color var(--search-bg)
+  hr
+    border-top 1px solid var(--search-bg)
+    
+  // navbar
+  .navbar-inverse
+    background-color var(--second-bg)
+    border-color var(--panel-bg)
+  .navbar-inverse .navbar-brand
+    color var(--main-clr)
+  .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus
+    color var(--main-clr-act)
+    background-color transparent
+  .navbar-inverse .navbar-nav > li > a
+    color var(--main-clr)
+  .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus
+    background-color transparent
+    color var(--main-clr-act)
+  .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus
+    background-color var(--panel-bg)
+    color var(--main-clr-act)
+  .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus
+    background-color var(--panel-bg)
+    color var(--main-clr-act)
+  // == navbar mobile
+  .navbar-toggle
+    background-color var(--search-bg)
+    border-radius prad
+  .navbar-inverse .navbar-toggle
+    border-color var(--search-bg)
+  .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus
+    background-color var(--search-act)
+  // == dropdown menu
+  .dropdown-menu
+    background-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+    box-shadow pshad
+    border-radius prad
+    li a
+      color var(--main-clr)
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
+    background-color var(--third-bg)
+    color var(--main-clr)
+  .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus
+    background-color var(--third-bg)
+    color var(--main-clr)
+  .bootstrap-select .dropdown-toggle:focus
+    outline none i
+  // == searchbar
+  .form-control
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border 1px solid var(--search-bg)
+    transition none
+    box-shadow pshad
+    border-radius prad
+    &:focus
+      box-shadow none
+      border-color var(--search-bg)
+  .form-control.search-bar
+    box-shadow none
+  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
+    background-color var(--panel-bg)
+  .input-group .form-control:last-child, .input-group-addon:last-child
+    border 1px solid var(--panel-bg)
+  .navbar-form .input-group
+    box-shadow pshad
+  .input-group-btn .btn // === disable shadow in searchbar
+    box-shadow none
+    
+  // buttons
+  .btn-default
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border-color var(--search-bg)
+  .btn-default:hover, .btn-default:active:hover, .btn-default.active:hover, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus
+    background-color var(--search-act)
+    color var(--main-clr)
+    border 1px solid var(--search-act)
+  .btn-default:focus, .btn-default.focus
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border: 1px solid var(--search-bg)
+  .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus
+    outline none
+  .btn-primary
+    color var(--main-clr)
+    background-color var(--search-bg)
+    border 1px solid var(--search-bg)
+    box-shadow pshad
+  .btn-primary:hover, .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus, .btn-primary:focus, .btn-primary.focus
+    color var(--main-clr)
+    background-color var(--search-act)
+    border: 1px solid var(--search-act)
+  
+  // pagination
+  .pagination
+    box-shadow pshad
+  .pagination-page-info
+    margin-top 20px
+  .pagination > li > a, .pagination > li > span
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border 0
+  .pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus
+    background-color var(--panel-bg)
+  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
+    background-color var(--third-bg)
+  .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus
+    background-color var(--search-act)
+    color var(--main-clr)
+    
+  // table
+  // == torrent list odd row
+  .table-striped > tbody > tr:nth-of-type(2n+1)
+    background-color var(--panel-bg)
+  // == torrent list remake
+  .table > thead > tr > td.danger, .table > tbody > tr > td.danger, .table > tfoot > tr > td.danger, .table > thead > tr > th.danger, .table > tbody > tr > th.danger, .table > tfoot > tr > th.danger, .table > thead > tr.danger > td, .table > tbody > tr.danger > td, .table > tfoot > tr.danger > td, .table > thead > tr.danger > th, .table > tbody > tr.danger > th, .table > tfoot > tr.danger > th
+    background-color var(--danger-bg)
+  // == torrent list trusted
+  .table > thead > tr > td.success, .table > tbody > tr > td.success, .table > tfoot > tr > td.success, .table > thead > tr > th.success, .table > tbody > tr > th.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > tbody > tr.success > td, .table > tfoot > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr.success > th, .table > tfoot > tr.success > th
+    background-color var(--success-bg)
+  // == torrent list comments
+  table.torrent-list tbody .comments
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border 1px solid var(--search-bg)
+    box-shadow pshad
+    border-radius prad
+  // == torrent list borders
+  .table
+    margin-bottom 0
+  .table-bordered
+    border 5px solid var(--panel-bg)
+  .table-responsive
+    border-radius prad
+    box-shadow pshad
+  .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td
+    border 0
+  // == selection highlighting
+  .table-hover > tbody > tr:hover,
+  .table-hover > tbody > tr > td.danger:hover, .table-hover > tbody > tr > th.danger:hover, .table-hover > tbody > tr.danger:hover > td, .table-hover > tbody > tr:hover > .danger, .table-hover > tbody > tr.danger:hover > th,
+  .table-hover > tbody > tr > td.success:hover, .table-hover > tbody > tr > th.success:hover, .table-hover > tbody > tr.success:hover > td, .table-hover > tbody > tr:hover > .success, .table-hover > tbody > tr.success:hover > th
+    background-color var(--third-bg)
+  // == torrent description
+  #torrent-description .table-bordered
+    border 5px solid var(--search-bg)
+  #torrent-description .table-striped > tbody > tr:nth-of-type(2n+1)
+    background-color var(--search-bg)
+  #torrent-description .table
+    margin-bottom 20px
+  
+  // seed/leech colors
+  // == individual torrent meta
+  .col-md-5 span[style="color: green;"]
+    color var(--success-clr) i
+  .col-md-5 span[style="color: red;"]
+    color var(--danger-clr) i
+  // == torrent list
+  table.torrent-list td:nth-child(6), body.dark table.torrent-list > tbody > tr.success > td:nth-child(6), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(6)
+    color var(--success-clr)
+  table.torrent-list td:nth-child(7), body.dark table.torrent-list > tbody > tr.success > td:nth-child(7), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7)
+    color var(--danger-clr)
+    
+  // panels
+  .panel
+    background-color var(--panel-bg)
+    border-radius prad
+    box-shadow pshad
+  .panel-default
+    border-color var(--panel-bg)
+  .panel-success
+    border-color var(--success-bg)
+  .panel-danger
+    border-color var(--danger-bg)
+  // == panel headings
+  .panel-default .panel-heading
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border-color var(--panel-bg)
+    box-shadow pshad
+  .panel-success .panel-heading
+    background-color var(--success-bg)
+    color var(--success-clr)
+    border-color var(--success-bg)
+    box-shadow pshad
+  .panel-danger .panel-heading
+    background-color var(--danger-bg)
+    color var(--danger-clr)
+    border-color var(--danger-bg)
+    box-shadow pshad
+  // == panel footer
+  .panel-footer
+    background-color var(--search-bg)
+    border-top 1px solid var(--panel-bg)
+  // == notification panels
+  .alert-info
+    background-color var(--info-bg)
+    color var(--info-clr)
+    border-color var(--info-bg)
+  // == comment panels
+  .comment-panel
+    background-color var(--search-bg)
+    box-shadow pshad
+    border-color var(--search-bg)
+  // === targeted comment (if user clicks on timestamp)
+  .comment-panel:target
+    background-color var(--info-bg)
+    border-color var(--info-bg)
+    box-shadow pshad
+  
+  // category icons
+  .category-icon
+    filter saturate(50%)
+    
+  // submitter colors
+  .text-success
+    color var(--success-clr)
+    &:hover, &:focus
+      color var(--success-clr-act) i
+  
+  // upload page
+  // == markdown preview
+  .well
+    background-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+    border-radius prad
+    box-shadow pshad
+  .well blockquote
+    border-color var(--third-bg)
+  .well .table-bordered
+    border 5px solid var(--search-bg)
+  .well .table-striped > tbody > tr:nth-of-type(2n+1)
+    background-color var(--search-bg)
+  .well .table
+    margin-bottom 20px
+  .well img
+    border-radius prad
+    box-shadow none
+  // == input
+  #description.form-control
+    background-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+  .nav-tabs
+    border-bottom 0
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
+    color var(--main-clr)
+    background-color var(--panel-bg)
+    border-bottom-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+  .nav-tabs > li > a:hover
+    border-color var(--panel-bg)
+  .nav > li > a:hover, .nav > li > a:focus
+    background-color var(--second-bg)
+  // == buttons
+  .btn-danger
+    color var(--main-clr)
+    background-color var(--danger-bg)
+    border-color var(--danger-bg)
+  .btn-warning
+    color var(--main-clr)
+    background-color var(--warning-bg)
+    border-color var(--warning-bg)
+  .btn-grey
+    color var(--main-clr)
+    background-color var(--search-bg)
+    border-color var(--search-bg)
+  
+  // images
+  // == torrent description
+  #torrent-description img
+    border-radius prad
+    box-shadow none
+  // == user avatars
+  .avatar
+    border-radius prad
+    box-shadow none
+  .comment-content img
+    border-radius prad
+    box-shadow none
+  // == round avatars
+  if avaRound
+    .avatar
+      border-radius 100%
+  // == desaturate
+  if imgSat
+    #torrent-description img, .comment-content img, .well img
+      filter saturate(50%)
+  if avaSat
+    .avatar
+      filter saturate(50%)
+  // == img box shadows
+  if imgShad
+    #torrent-description img, .comment-content img, .well img
+      box-shadow pshad
+  if avaShad
+    .avatar
+      box-shadow pshad
+    
+  // dark mode toggle visibility
+  if darkTgl
+    footer p
+      visibility hidden
+      
+  // show userstyle attribution
+  if about
+    footer::before
+        content var(--attrib)
