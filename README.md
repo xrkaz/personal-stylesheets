@@ -1,8 +1,12 @@
-My Personal Stylesheets for Stylus
+**My Personal Stylesheets for Stylus**
+<br>Also available at [UserStyles.world](https://userstyles.world/user/sabakuran)
 
-Also available at [UserStyles.world](https://userstyles.world/user/sabakuran)
+For the best experience, install [uBlock Origin](https://github.com/gorhill/uBlock).
+<br>Ads not taken into consideration, so be aware if you see it break stuff.
 
-<a href="https://github.com/openstyles/stylus"><img src="https://shields.io/badge/Get-Stylus-blue?&style=for-the-badge" alt="Get Stylus"/></a>
+Don't have Stylus yet?
+<br>Get it now below.<br>
+<br><a href="https://github.com/openstyles/stylus"><img src="https://shields.io/badge/Get-Stylus-blue?&style=for-the-badge" alt="Get Stylus"/></a>
 
 |Lunar Duck|Install|
 |:------------------------------------------|:-----------------------------------------|
