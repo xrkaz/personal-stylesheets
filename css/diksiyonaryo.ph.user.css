@@ -7,161 +7,253 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/diksiyonaryo.ph.user.css
 @preprocessor stylus
-@version      1.0.2
+@version      2.0.0
 @license      WTFPL
 ===================
 @var select browser "Browser" {
-    "Chromium*":"chromium",
-    "Firefox":"firefox",
+    "Chromium*":"webkit",
+    "Firefox":"gecko"
 }
+@var select variant "Color scheme" {
+    "Default*":"default",
+    "Desert Orchid":"sabakuran"
+}
+@var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
-@-moz-document domain("diksiyonaryo.ph") {
-body {
-    background-color: #1c1c1c;
-    color: #ccc;
-    font-size: 18px;
-}
-.definition-example, .definition-text, .sense-counter, .sense-confer, .sense-synonyms, .sense-variant {
-    font-family: 'Times';
-}
-.word>div>h4>.pronunciation {
-    font-size: 25px;
-}
 
-/* try to hide ads, or use an adblocker ffs. */
-.ad-content-handler, .center-block, #google_esf, .adsbygoogle, #aswift_3_expand, #aswift_3_anchor, #aswift_3 {
-    display: none;
-}
+@-moz-document domain("diksiyonaryo.ph")
+  
+  // variables
+  i = !important
+  pshad = 0 1px 3px #00000080
+  prad = 4px
+  
+  // root entries
+  :root
+    if variant == "default"
+      --main-clr #cccccc
+      --main-clr-act #ffffff
+      --main-bg #1c1c1c
+      --second-bg #161616
+      --panel-bg #282828
+      --third-bg #434343
+      --search-bg #333333
+      --search-act #6f6f6f
+      --link-clr #678fff
+      --link-act #99b4ff
+      --success-clr #58b792
+      --success-clr-act #8fcfb6
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
+    else if variant == "sabakuran"
+      --main-clr #f5dbef
+      --main-clr-act #ffffff
+      --main-bg #3b2732
+      --second-bg #412d38
+      --panel-bg #493540
+      --third-bg #85787f
+      --search-bg #45313c
+      --search-act #83757d
+      --link-clr #ff368f
+      --link-act #ff79b4
+      --success-clr #58b792
+      --success-clr-act #8fcfb6
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
+    // == custom text for showing off ^_^
+    --attrib "Lunar Duck v2.0.0 🌸 sabakuran"
 
-/* links */
-a {
-    color: #678FFF;
-}
-a:hover, a:focus {
-    color: #99B4FF;
-    text-decoration: none;
-}
-
-/* header section */
-.navigation {
-    background-color: #161616;
-    border-bottom: 1px solid #282828;
-    color: #ccc;
-}
-.navigation a {
-    color: #ccc;
-}
-.navigation-offset {
-    padding-bottom: 5px;
-}
-
-/* footer section */
-.footer {
-    background-color: #161616;
-    border-top: 1px solid #282828;
-}
-
-/* search bar */
-.form-control {
-    background-color: #333;
-    color: #ccc;
-    border: 0;
-    box-shadow: none;
-}
-.form-control:focus {
-    border: 0;
-    box-shadow: none;
-}
-.search-button {
-    background-color: #444444;
-    border: 0;
-}
-.btn {
-    z-index: 100 !important;
-    outline: none !important;
-}
-.btn-default:hover {
-    border: 0;
-    background-color: #6F6F6F;
-    outline: none !important;
-}
-.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
-    background-color: #444444;
-    border: 0;
-    outline: none !important;
-}
-.input-group {
-    box-shadow: 0 1px 3px #00000080;
-}
-
-/* dividers */
-.double {
-    border: 0 !important;
-}
-hr {
-    border-top: 0;
-}
-
-/* hide redundant headword */
-.headword {
-    display: none;
-}
-
-/* no results */
-.well {
-    background-color: #282828;
-    border: 0;
-    box-shadow: 0 1px 3px #00000080;
-}
-.gray {
-    color: #ccc;
-}
-
-/* hide non-working buttons */
-.pull-right {
-    display: none;
-}
-
-/* headwords, etc. */
-.pronunciation, .pos, .headword, .etymology, .domain, .alternate-pronunciation, .derivative {
-    color: #ccc;
-}
-
-/* entry list */
-.word {
-    padding: 10px 20px 20px 20px;
-    background-color: #282828;
-    box-shadow: 0 1px 3px #00000080;
-    border-radius: 4px;
-}
-
-/* browser compatibility */
-if(browser is chromium) {
-    /* chromium scrollbar */
-    body::-webkit-scrollbar {
-    width: 15px;
-    }
-    body::-webkit-scrollbar-track {
-    background: #161616;
-    border-left: 1px solid #282828;
-    }
-    body::-webkit-scrollbar-thumb {
-    background-color: #282828;
-    border-radius: 0;
-    }
-    /* entry list */
-    .word {
-        margin: 0 0 -20px 0;
-    }
-} else if(browser is firefox) {
-    /* firefox scrollbar */
-    html {
-        scrollbar-color: #282828 #161616;
-        scrollbar-width: auto;
-    }
-    /* entry list */
-    .word {
-        margin: 0 0 0 0;
-    }
-}
-}
+  // scrollbar
+  html
+    // == chromium
+    ::-webkit-scrollbar
+      width 15px
+    ::-webkit-scrollbar-track
+      background-color var(--second-bg)
+      border-left 1px solid var(--panel-bg)
+    ::-webkit-scrollbar-thumb
+      background-color var(--search-bg)
+      border-radius 0
+      &:hover
+        background-color var(--search-act)
+    // == firefox
+    scrollbar-color var(--search-bg) var(--second-bg)
+    scrollbar-width auto
+    
+  // backbone
+  body
+    background-color var(--main-bg)
+    color var(--main-clr)
+    font-size 18px
+  a
+    color var(--link-clr)
+    background-color transparent
+    text-decoration none
+    &:hover, &:focus
+      color var(--link-act)
+      text-decoration none
+      outline none
+  pre
+    color var(--main-clr)
+    background-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+    border-radius prad
+    box-shadow pshad
+  hr.double
+    border 0
+    margin-top 0
+  hr
+    border 0
+  .h1, .h2, .h3, h1, h2, h3
+    color var(--main-clr)
+  .page-handler // === remove excess space below
+    margin-bottom -40px
+    
+  // notifications
+  .well
+    background-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+    box-shadow pshad
+    border-radius prad
+      
+  // navigation header
+  .navigation
+    background-color var(--second-bg)
+    border-bottom 1px solid var(--panel-bg)
+    color var(--main-clr)
+    box-shadow pshad
+  .navigation a
+    color var(--main-clr)
+  .navigation-offset
+    padding-bottom 5px
+  .pull-right // == hide non-working buttons
+    visibility hidden
+    
+  // search bar
+  .form-control
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border 1px solid var(--search-bg)
+    transition none
+    box-shadow pshad
+    border-radius prad
+    &:focus
+      box-shadow none
+      border-color var(--search-bg)
+  .form-control.search-bar
+    box-shadow none
+  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
+    background-color var(--panel-bg)
+  .input-group .form-control:last-child, .input-group-addon:last-child
+    border 1px solid var(--panel-bg)
+  .input-group
+    box-shadow pshad
+  .input-group-btn > .btn:active, .input-group-btn > .btn:focus, .input-group-btn > .btn:hover
+    background-color var(--search-act)
+    border 1px solid var(--search-act)
+    
+  // buttons
+  .btn-default
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border-color var(--search-bg)
+  .btn-default:hover, .btn-default:active:hover, .btn-default.active:hover, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus
+    background-color var(--search-act)
+    color var(--main-clr)
+    border 1px solid var(--search-act)
+  .btn-default:focus, .btn-default.focus
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border: 1px solid var(--search-bg)
+  .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus
+    outline none
+  .btn-primary
+    color var(--main-clr)
+    background-color var(--search-bg)
+    border 1px solid var(--search-bg)
+    box-shadow pshad
+  .btn-primary:hover, .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus, .btn-primary:focus, .btn-primary.focus
+    color var(--main-clr)
+    background-color var(--search-act)
+    border: 1px solid var(--search-act)
+  
+  // entries
+  // == entry list
+  .word
+    background-color var(--panel-bg)
+    box-shadow pshad
+    border-radius prad
+    padding 10px 20px 20px 20px
+    
+  // == compatibility
+  if (browser is webkit)
+    .word
+      margin 0 0 -20px 0
+  else if (browser is gecko)
+    .word
+      margin 0
+  // == lemma
+  .pronunciation
+    font-size 25px
+  // == headwords, etc.
+  .pronunciation, .pos, .headword, .etymology, .domain, .alternate-pronunciation, .derivative
+    color var(--main-clr)
+  .headword // === redundant
+    display none
+    
+  // letter list
+  .letter-list
+    max-width 750px
+  .letter-list .letter
+    color var(--link-clr)
+    background-color transparent
+    text-decoration none
+    &:hover, &:focus
+      color var(--link-act)
+      text-decoration none
+      outline none
+    border 0
+      
+  // pagination
+  .pagination-list a
+    color var(--link-clr)
+    background-color transparent
+    text-decoration none
+    &:hover, &:focus
+      color var(--link-act)
+      text-decoration none
+      outline none
+  .pagination-list .page-selected
+    color var(--link-act)
+  .pagination-list:nth-of-type(3) // === add spacing
+    margin-bottom 20px
+    
+  // ad management
+  .ad-content-handler
+    display none i
+  .center-block .adsbygoogle
+    display none i
+    
+  // footer
+  .footer
+    background-color var(--second-bg)
+    border-top 1px solid var(--panel-bg)
+    
+  // show userstyle attribution
+  if about
+    .footer::after
+        content var(--attrib)
+        color var(--main-clr)
+        font-size 14px
+        display block
+        padding 9px 10px
