@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.0.0
+@version      2.0.1
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -271,6 +271,11 @@
   // == torrent description
   #torrent-description .table-bordered
     border 5px solid var(--search-bg)
+    box-shadow pshad
+    border-radius prad
+    border-collapse separate
+  #torrent-description .table-bordered thead
+    background-color var(--main-bg)
   #torrent-description .table-striped > tbody > tr:nth-of-type(2n+1)
     background-color var(--search-bg)
   #torrent-description .table
@@ -356,6 +361,11 @@
     border-color var(--third-bg)
   .well .table-bordered
     border 5px solid var(--search-bg)
+    box-shadow pshad
+    border-radius prad
+    border-collapse separate
+  .well .table-bordered thead
+    background-color var(--main-bg)
   .well .table-striped > tbody > tr:nth-of-type(2n+1)
     background-color var(--search-bg)
   .well .table
