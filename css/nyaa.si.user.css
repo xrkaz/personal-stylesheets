@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.0.2
+@version      2.0.3
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -15,11 +15,12 @@
     "Desert Orchid":"sabakuran"
 }
 @var checkbox darkTgl "Hide on-site dark mode toggle" 1
+@var checkbox navStick "Enable sticky navbar" 1
 @var checkbox imgSat "Adjust image saturation" 1
 @var checkbox avaSat "Adjust avatar saturation" 1
 @var checkbox imgShad "Enable image shadows" 1
 @var checkbox avaShad "Enable avatar shadows" 1
-@var checkbox avaRound "Enable rounded avatars" 0
+@var checkbox avaRound "Enable rounded avatars" 1
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
 @-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
@@ -32,7 +33,7 @@
   // root entries
   :root
     // == custom text for showing off ^_^
-    --attrib "Lunar Duck v2.0.2 🌸 sabakuran"
+    --attrib "Lunar Duck v2.0.3 🌸 sabakuran"
     // == color schemes
     if variant == "default"
       --main-clr #cccccc
@@ -130,6 +131,8 @@
     border-top 1px solid var(--search-bg)
     
   // navbar
+  .navbar
+    box-shadow pshad
   .navbar-inverse
     background-color var(--second-bg)
     border-color var(--panel-bg)
@@ -194,6 +197,19 @@
     box-shadow pshad
   .input-group-btn .btn // === disable shadow in searchbar
     box-shadow none
+  // == make navbar sticky
+  if navStick
+    .navbar
+      position sticky
+      top 0
+  // == make navbar glassy (not implementing atm)
+  /*
+  @var checkbox navGlass "Glassmorphic navbar" 0
+  if navGlass
+    .navbar
+      backdrop-filter blur(4px)
+      background-color #161616bf
+  */
     
   // buttons
   .btn-default
