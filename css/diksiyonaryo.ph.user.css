@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/diksiyonaryo.ph.user.css
 @preprocessor stylus
-@version      2.0.0
+@version      2.1.0
 @license      WTFPL
 ===================
 @var select browser "Browser" {
@@ -16,7 +16,8 @@
 }
 @var select variant "Color scheme" {
     "Default*":"default",
-    "Desert Orchid":"sabakuran"
+    "Desert Orchid":"sabakuran",
+    "Jade Vine":"hisuikazura"
 }
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
@@ -30,6 +31,9 @@
   
   // root entries
   :root
+    // == custom text for showing off ^_^
+    --attrib "Lunar Duck v2.1.0 🌸 sabakuran"
+    // == color schemes
     if variant == "default"
       --main-clr #cccccc
       --main-clr-act #ffffff
@@ -51,16 +55,16 @@
       --info-clr #3fa4f2
       --info-bg #153650
     else if variant == "sabakuran"
-      --main-clr #f5dbef
+      --main-clr #ecd3e6
       --main-clr-act #ffffff
-      --main-bg #3b2732
-      --second-bg #412d38
-      --panel-bg #493540
-      --third-bg #85787f
-      --search-bg #45313c
-      --search-act #83757d
-      --link-clr #ff368f
-      --link-act #ff79b4
+      --main-bg #251822
+      --second-bg #181016
+      --panel-bg #3b2732
+      --third-bg #56414c
+      --search-bg #493540
+      --search-act #85787f
+      --link-clr #c66d94
+      --link-act #d99db7
       --success-clr #58b792
       --success-clr-act #8fcfb6
       --success-bg #1d3d30
@@ -70,8 +74,26 @@
       --danger-bg #4a1d11
       --info-clr #3fa4f2
       --info-bg #153650
-    // == custom text for showing off ^_^
-    --attrib "Lunar Duck v2.0.0 🌸 sabakuran"
+    else if variant == "hisuikazura"
+      --main-clr #e2eff0
+      --main-clr-act #ffffff
+      --main-bg #002629
+      --second-bg #00191b
+      --panel-bg #004d52
+      --third-bg #587576
+      --search-bg #385a5c
+      --search-act #7a9192
+      --link-clr #8dc1c4
+      --link-act #b3d5d7
+      --success-clr #00dd87
+      --success-clr-act #55e8af
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
 
   // scrollbar
   html
