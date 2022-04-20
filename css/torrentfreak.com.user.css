@@ -1,0 +1,356 @@
+/* ==UserStyle==
+@name         torrentfreak.com - Lunar Duck
+@namespace    sabakuran
+@description  DDG inspired theme for torrentfreak.com
+@author       sabakuran (https://github.com/sabakuran)
+@homepageURL  https://github.com/sabakuran/personal-stylesheets
+@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/torrentfreak.com.user.css
+@preprocessor stylus
+@version      1.0.0
+@license      WTFPL
+===================
+@var select variant "Color scheme" {
+    "Default*":"default",
+    "Desert Orchid":"sabakuran",
+    "Jade Vine":"hisuikazura"
+}
+@var checkbox navStick "Enable sticky navbar" 1
+@var checkbox imgSat "Adjust image saturation" 1
+@var checkbox comBox "Hide comment box" 1
+@var checkbox social "Hide socials" 1
+@var checkbox about "Show userstyle attribution" 0
+==/UserStyle== */
+
+@-moz-document domain("torrentfreak.com")
+  
+  // variables
+  i = !important
+  pshad = 0 1px 3px #00000080
+  prad = 4px
+  
+  // root entries
+  :root
+    //> custom text for showing off ^_^
+    --attrib "Lunar Duck v1.0.0 🌸 sabakuran"
+    //> color schemes
+    if variant == "default"
+      --main-clr #cccccc
+      --main-clr-act #ffffff
+      --sub-clr #999999
+      --main-bg #1c1c1c
+      --second-bg #161616
+      --panel-bg #282828
+      --third-bg #434343
+      --search-bg #333333
+      --search-act #6f6f6f
+      --link-clr #678fff
+      --link-act #99b4ff
+      --success-clr #58b792
+      --success-clr-act #8fcfb6
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
+    else if variant == "sabakuran"
+      --main-clr #ecd3e6
+      --main-clr-act #ffffff
+      --sub-clr #999999
+      --main-bg #251822
+      --second-bg #181016
+      --panel-bg #3b2732
+      --third-bg #56414c
+      --search-bg #493540
+      --search-act #85787f
+      --link-clr #c66d94
+      --link-act #d99db7
+      --success-clr #58b792
+      --success-clr-act #8fcfb6
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
+    else if variant == "hisuikazura"
+      --main-clr #e2eff0
+      --main-clr-act #ffffff
+      --sub-clr #999999
+      --main-bg #002629
+      --second-bg #00191b
+      --panel-bg #004d52
+      --third-bg #587576
+      --search-bg #385a5c
+      --search-act #7a9192
+      --link-clr #8dc1c4
+      --link-act #b3d5d7
+      --success-clr #00dd87
+      --success-clr-act #55e8af
+      --success-bg #1d3d30
+      --warning-clr #f5a339
+      --warning-bg #513613
+      --danger-clr #de5833
+      --danger-bg #4a1d11
+      --info-clr #3fa4f2
+      --info-bg #153650
+
+  // scrollbar
+  html
+    //> chromium
+    ::-webkit-scrollbar
+      width 15px
+    ::-webkit-scrollbar-track
+      background-color var(--second-bg)
+      border-left 1px solid var(--panel-bg)
+    ::-webkit-scrollbar-thumb
+      background-color var(--search-bg)
+      border-radius 0
+      &:hover
+        background-color var(--search-act)
+    //> firefox
+    scrollbar-color var(--search-bg) var(--second-bg)
+    scrollbar-width auto
+    
+  // backbone
+  a
+    color var(--link-clr)
+    text-decoration none
+    &:hover, &:focus
+      color var(--link-act)
+      text-decoration none
+  html
+    color var(--main-clr)
+    background var(--main-bg)
+  main
+    background-color var(--main-bg)
+    
+  // header
+  @media screen and (min-width: 48em)
+    .header__fixed
+      border-top 8px solid var(--panel-bg)
+      box-shadow pshad
+  .header
+    background-color var(--second-bg)
+    border-bottom 1px solid var(--panel-bg)
+    box-shadow pshad
+    z-index 99
+  //> navigation
+  @media screen and (min-width: 48em)
+    .menu__link:before
+      background var(--panel-bg)
+      color var(--main-clr)
+  .menu__list .sub-menu
+    border 1px solid var(--panel-bg)
+    border-radius prad
+    box-shadow pshad
+  .menu__list .sub-menu li a
+    color var(--main-clr)
+    background var(--panel-bg)
+  .menu__list .sub-menu li a:hover, .menu__list .sub-menu li a:active, .menu__list .sub-menu li a:focus
+    color var(--main-clr)
+    background var(--third-bg)
+  
+  //> make navbar sticky
+  if navStick
+    .header
+      position sticky
+      top 0
+
+  //> searchbar
+  .o-input--widget
+    color var(--main-clr)
+    background-color var(--search-bg)
+    border 1px solid var(--search-bg)
+    box-shadow pshad
+    border-radius prad
+  //> logo
+  .logo
+    background-color var(--panel-bg)
+  
+  // content
+  .page__content
+    background-color var(--main-bg)
+  @media screen and (min-width: 64em)
+    .container.container--main:after
+      background-color var(--main-bg)
+  .page__sidebar
+    background-color var(--main-bg)
+  //> pagination
+  .navigation__link:hover
+    text-decoration none
+  .navigation__link--right img
+    display none
+  .navigation__link--right::after
+    content ("»")
+  .navigation__link--left img
+    display none
+  .navigation__link--left::before
+    content ("«")
+  .tool-pagination>ul li:not(.navigation__item) a
+    background var(--panel-bg)
+    border-radius prad
+    color var(--main-clr)
+    padding 3px 5px
+    box-shadow pshad
+    &:hover
+      background var(--search-act)
+  .tool-pagination>ul li:not(.navigation__item) .current
+    background var(--third-bg)
+    border-radius prad
+    box-shadow pshad
+    color var(--main-clr)
+    padding 3px 5px
+  // search result heading text
+  .page__heading span, .hero__title span
+    color var(--main-clr)
+    font-style italic
+    
+  // articles
+  .article
+    background-color var(--panel-bg)
+    border-radius prad
+    box-shadow pshad
+    padding 20px 30px 20px 30px
+    margin-bottom 35px
+  //> article body
+  .article__body img
+    border-radius prad
+    box-shadow pshad
+  .article__body p
+    color var(--main-clr)
+  .article__excerpt
+    color var(--main-clr)
+  .article__body h2
+    color var(--main-clr-act)
+  .article__body a:visited
+    color var(--link-clr)
+    &:hover
+      color var(--link-act)
+  .article__body blockquote
+    background-color var(--main-bg)
+    border-left 5px solid var(--third-bg)
+    border-radius 4px
+    box-shadow pshad
+    padding 10px 20px
+    margin-right 0
+  //> article author
+  .hero__published a, .hero__published span
+    color var(--link-clr)
+    &:hover
+      color var(--link-act)
+  //> posts
+  .preview-article
+    background-color var(--panel-bg)
+    box-shadow pshad
+    border 1px solid var(--panel-bg)
+    border-radius prad
+    transition ease 0.1s
+    &:hover
+      transform translateY(-4px)
+  .preview-article__excerpt
+    color var(--sub-clr)
+  .preview-article__title
+    color var(--main-clr)
+  .preview-article__published
+    color var(--main-clr)
+  .preview-article:hover .preview-article__title
+    text-decoration none
+  //> post category
+  .preview-article__category
+    background-color var(--third-bg)
+    color var(--main-clr)
+    box-shadow pshad
+    &:before
+      background-color var(--third-bg)
+  //> post header img
+  .preview-article__photo
+    border-radius 4px 4px 0 0
+    box-shadow pshad
+    
+  // sidebar
+  //> popular posts
+  .o-widget__title
+    background-color var(--third-bg)
+    box-shadow pshad
+    color var(--main-clr)
+  //> background
+  .o-widget--back
+    background-color var(--panel-bg)
+    border-radius prad
+    box-shadow pshad
+  //> post titles
+  .widget-popular__title
+    color var(--main-clr)
+  //> thumbnail
+  .widget-popular__photo
+    border-radius prad
+    box-shadow pshad
+  //> img slider
+  .widget-slider .cycle-pager span.cycle-pager-active
+    color var(--search-act)
+  .widget-slider .cycle-pager span
+    color var(--search-bg)
+    &:hover
+      color var(--search-act)
+  #widget-slider-next svg g path, #widget-slider-prev svg g path
+    fill var(--search-act)
+  .widget-slider
+    background var(--panel-bg)
+    box-shadow pshad
+    &:before, &:after
+      background var(--panel-bg)
+      box-shadow pshad
+  .cycle-slide__link
+    color var(--sub-clr)
+    &:hover, &:focus
+      color var(--main-clr)
+  
+  // footer
+  .footer
+    border-bottom 0 // inconsistent
+    border-top 1px solid var(--panel-bg)
+    background-color var(--second-bg)
+  .footer__title
+    color var(--main-clr)
+  //> stats
+  .stats__value
+    color var(--main-clr)
+  .stats__description
+    color var(--link-clr)
+  a.stats__link:hover .stats__description
+    color var(--link-act)
+    text-decoration none
+  //> legal links
+  .copyright a:hover
+    text-decoration none
+  
+  // hide comment box
+  if comBox
+    #tf-comments
+      display none
+      
+  // hide social buttons
+  if social
+    .socials, .widget_block.o-widget
+      display none
+      
+  // adjust image saturation
+  if imgSat
+    img, .cycle-slide__image
+      filter saturate(50%)
+    
+  // ad management
+  .widget_custom_html.o-widget.widget_text
+    display none
+    
+  // show userstyle attribution
+  if about
+    .copyright::after
+      content var(--attrib)
+      color var(--main-clr)
+      display block
+    
