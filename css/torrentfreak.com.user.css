@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/torrentfreak.com.user.css
 @preprocessor stylus
-@version      1.0.0
+@version      1.0.1
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -143,6 +143,8 @@
     .menu__link:before
       background var(--panel-bg)
       color var(--main-clr)
+    .menu__link--active
+      background-color var(--panel-bg)
   .menu__list .sub-menu
     border 1px solid var(--panel-bg)
     border-radius prad
@@ -237,6 +239,10 @@
     box-shadow pshad
     padding 10px 20px
     margin-right 0
+  //> bullet points
+  .article__body ul li:after
+    background-color var(--third-bg)
+    box-shadow pshad
   //> article author
   .hero__published a, .hero__published span
     color var(--link-clr)
@@ -308,6 +314,18 @@
     color var(--sub-clr)
     &:hover, &:focus
       color var(--main-clr)
+      
+  // comment box
+  .comments
+    background-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+    box-shadow pshad
+    border-radius prad
+  .comments .comments__icon
+    if variant == "default"
+      filter saturate(0) brightness(80%)
+    else if variant == "hisuikazura"
+      filter hue-rotate(210deg)
   
   // footer
   .footer
@@ -353,4 +371,3 @@
       content var(--attrib)
       color var(--main-clr)
       display block
-    
