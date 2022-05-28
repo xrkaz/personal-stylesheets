@@ -32,7 +32,7 @@
   // root entries
   :root
     //> custom text for showing off ^_^
-    --attrib "Lunar Duck v1.0.0 🌸 sabakuran"
+    --attrib "Lunar Duck v1.0.1 🌸 sabakuran"
     //> color schemes
     if variant == "default"
       --main-clr #cccccc
