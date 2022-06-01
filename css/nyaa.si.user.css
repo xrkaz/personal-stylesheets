@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.1.0
+@version      2.1.1
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -24,78 +24,75 @@
 @var checkbox avaRound "Enable rounded avatars" 1
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
+
+attrib = "Lunar Duck v2.1.1 🌸 sabakuran"
+i = !important
+pshad = 0 1px 3px #00000080
+prad = 4px
+
+:root
+  if variant == "default"
+    --main-clr hsla(0, 0%, 100%, .8)
+    --main-clr-act hsl(0, 0%, 100%)
+    --main-bg hsl(0, 0%, 10%)
+    --second-bg hsl(0, 0%, 5%)
+    --panel-bg hsl(0, 0%, 15%)
+    --third-bg hsl(0, 0%, 25%)
+    --search-bg hsl(0, 0%, 20%)
+    --search-act hsl(0, 0%, 45%)
+    --link-clr hsl(225, 100%, 70%)
+    --link-act hsl(225, 100%, 80%)
+    --success-clr hsl(150, 50%, 50%)
+    --success-clr-act hsl(150, 50%, 80%)
+    --success-bg hsl(150, 30%, 20%)
+    --warning-clr hsl(35, 50%, 50%)
+    --warning-bg hsl(35, 30%, 20%)
+    --danger-clr hsl(360, 50%, 50%)
+    --danger-bg hsl(360, 30%, 20%)
+    --info-clr hsl(225, 50%, 50%)
+    --info-bg hsl(225, 30%, 20%)
+  else if variant == "sabakuran"
+    --main-clr hsla(0, 0%, 100%, .8)
+    --main-clr-act hsl(0, 0%, 100%)
+    --main-bg hsl(314, 21%, 12%)
+    --second-bg hsl(315, 20%, 8%)
+    --panel-bg hsl(327, 20%, 19%)
+    --third-bg hsl(329, 14%, 30%)
+    --search-bg hsl(327, 16%, 25%)
+    --search-act hsl(328, 5%, 50%)
+    --link-clr hsl(334, 44%, 60%)
+    --link-act hsl(334, 44%, 73%)
+    --success-clr hsl(150, 50%, 50%)
+    --success-clr-act hsl(150, 50%, 80%)
+    --success-bg hsl(150, 30%, 20%)
+    --warning-clr hsl(35, 50%, 50%)
+    --warning-bg hsl(35, 30%, 20%)
+    --danger-clr hsl(360, 50%, 50%)
+    --danger-bg hsl(360, 30%, 20%)
+    --info-clr hsl(225, 50%, 50%)
+    --info-bg hsl(225, 30%, 20%)
+  else if variant == "hisuikazura"
+    --main-clr hsla(0, 0%, 100%, .8)
+    --main-clr-act hsl(0, 0%, 100%)
+    --main-bg hsl(184, 100%, 8%)
+    --second-bg hsl(184, 100%, 5%)
+    --panel-bg hsl(184, 100%, 16%)
+    --third-bg hsl(182, 15%, 40%)
+    --search-bg hsl(183, 24%, 29%)
+    --search-act hsl(183, 10%, 53%)
+    --link-clr hsl(183, 32%, 66%)
+    --link-act hsl(183, 31%, 77%)
+    --success-clr hsl(150, 50%, 50%)
+    --success-clr-act hsl(150, 50%, 80%)
+    --success-bg hsl(150, 30%, 20%)
+    --warning-clr hsl(35, 50%, 50%)
+    --warning-bg hsl(35, 30%, 20%)
+    --danger-clr hsl(360, 50%, 50%)
+    --danger-bg hsl(360, 30%, 20%)
+    --info-clr hsl(225, 50%, 50%)
+    --info-bg hsl(225, 30%, 20%)
+
 @-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
-  
-  // variables
-  i = !important
-  pshad = 0 1px 3px #00000080
-  prad = 4px
-  
-  // root entries
-  :root
-    // == custom text for showing off ^_^
-    --attrib "Lunar Duck v2.1.0 🌸 sabakuran"
-    // == color schemes
-    if variant == "default"
-      --main-clr #cccccc
-      --main-clr-act #ffffff
-      --main-bg #1c1c1c
-      --second-bg #161616
-      --panel-bg #282828
-      --third-bg #434343
-      --search-bg #333333
-      --search-act #6f6f6f
-      --link-clr #678fff
-      --link-act #99b4ff
-      --success-clr #58b792
-      --success-clr-act #8fcfb6
-      --success-bg #1d3d30
-      --warning-clr #f5a339
-      --warning-bg #513613
-      --danger-clr #de5833
-      --danger-bg #4a1d11
-      --info-clr #3fa4f2
-      --info-bg #153650
-    else if variant == "sabakuran"
-      --main-clr #ecd3e6
-      --main-clr-act #ffffff
-      --main-bg #251822
-      --second-bg #181016
-      --panel-bg #3b2732
-      --third-bg #56414c
-      --search-bg #493540
-      --search-act #85787f
-      --link-clr #c66d94
-      --link-act #d99db7
-      --success-clr #58b792
-      --success-clr-act #8fcfb6
-      --success-bg #1d3d30
-      --warning-clr #f5a339
-      --warning-bg #513613
-      --danger-clr #de5833
-      --danger-bg #4a1d11
-      --info-clr #3fa4f2
-      --info-bg #153650
-    else if variant == "hisuikazura"
-      --main-clr #e2eff0
-      --main-clr-act #ffffff
-      --main-bg #002629
-      --second-bg #00191b
-      --panel-bg #004d52
-      --third-bg #587576
-      --search-bg #385a5c
-      --search-act #7a9192
-      --link-clr #8dc1c4
-      --link-act #b3d5d7
-      --success-clr #00dd87
-      --success-clr-act #55e8af
-      --success-bg #1d3d30
-      --warning-clr #f5a339
-      --warning-bg #513613
-      --danger-clr #de5833
-      --danger-bg #4a1d11
-      --info-clr #3fa4f2
-      --info-bg #153650
 
   // scrollbar
   html
@@ -487,4 +484,4 @@
   // show userstyle attribution
   if about
     footer::before
-        content var(--attrib)
+        content attrib
