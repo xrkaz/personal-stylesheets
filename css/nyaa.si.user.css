@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.1.2
+@version      2.1.3
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -25,7 +25,7 @@
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
 
-attrib = "Lunar Duck v2.1.2 🌸 sabakuran"
+attrib = "Lunar Duck v2.1.3 🌸 sabakuran"
 i = !important
 pshad = 0 1px 3px #00000080
 prad = 4px
@@ -33,9 +33,18 @@ prad = 4px
 @-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
     
   :root
+    --main-clr hsla(0, 0%, 100%, .8)
+    --main-clr-act hsl(0, 0%, 100%)
+    --success-clr hsl(150, 50%, 50%)
+    --success-clr-act hsl(150, 50%, 80%)
+    --success-bg hsl(150, 30%, 20%)
+    --warning-clr hsl(35, 50%, 50%)
+    --warning-bg hsl(35, 30%, 20%)
+    --danger-clr hsl(360, 50%, 50%)
+    --danger-bg hsl(360, 30%, 20%)
+    --info-clr hsl(225, 50%, 50%)
+    --info-bg hsl(225, 30%, 20%)
     if variant == "default"
-      --main-clr hsla(0, 0%, 100%, .8)
-      --main-clr-act hsl(0, 0%, 100%)
       --main-bg hsl(0, 0%, 10%)
       --second-bg hsl(0, 0%, 5%)
       --panel-bg hsl(0, 0%, 15%)
@@ -44,59 +53,28 @@ prad = 4px
       --search-act hsl(0, 0%, 45%)
       --link-clr hsl(225, 100%, 70%)
       --link-act hsl(225, 100%, 80%)
-      --success-clr hsl(150, 50%, 50%)
-      --success-clr-act hsl(150, 50%, 80%)
-      --success-bg hsl(150, 30%, 20%)
-      --warning-clr hsl(35, 50%, 50%)
-      --warning-bg hsl(35, 30%, 20%)
-      --danger-clr hsl(360, 50%, 50%)
-      --danger-bg hsl(360, 30%, 20%)
-      --info-clr hsl(225, 50%, 50%)
-      --info-bg hsl(225, 30%, 20%)
     else if variant == "sabakuran"
-      --main-clr hsla(0, 0%, 100%, .8)
-      --main-clr-act hsl(0, 0%, 100%)
-      --main-bg hsl(314, 21%, 12%)
-      --second-bg hsl(315, 20%, 8%)
-      --panel-bg hsl(327, 20%, 19%)
-      --third-bg hsl(329, 14%, 30%)
-      --search-bg hsl(327, 16%, 25%)
-      --search-act hsl(328, 5%, 50%)
-      --link-clr hsl(334, 44%, 60%)
-      --link-act hsl(334, 44%, 73%)
-      --success-clr hsl(150, 50%, 50%)
-      --success-clr-act hsl(150, 50%, 80%)
-      --success-bg hsl(150, 30%, 20%)
-      --warning-clr hsl(35, 50%, 50%)
-      --warning-bg hsl(35, 30%, 20%)
-      --danger-clr hsl(360, 50%, 50%)
-      --danger-bg hsl(360, 30%, 20%)
-      --info-clr hsl(225, 50%, 50%)
-      --info-bg hsl(225, 30%, 20%)
+      --main-bg hsl(315, 20%, 10%)
+      --second-bg hsl(315, 20%, 5%)
+      --panel-bg hsl(325, 20%, 20%)
+      --third-bg hsl(330, 15%, 30%)
+      --search-bg hsl(330, 15%, 25%)
+      --search-act hsl(330, 15%, 50%)
+      --link-clr hsl(335, 45%, 60%)
+      --link-act hsl(335, 45%, 80%)
     else if variant == "hisuikazura"
-      --main-clr hsla(0, 0%, 100%, .8)
-      --main-clr-act hsl(0, 0%, 100%)
-      --main-bg hsl(184, 100%, 8%)
-      --second-bg hsl(184, 100%, 5%)
-      --panel-bg hsl(184, 100%, 16%)
-      --third-bg hsl(182, 15%, 40%)
-      --search-bg hsl(183, 24%, 29%)
-      --search-act hsl(183, 10%, 53%)
-      --link-clr hsl(183, 32%, 66%)
-      --link-act hsl(183, 31%, 77%)
-      --success-clr hsl(150, 50%, 50%)
-      --success-clr-act hsl(150, 50%, 80%)
-      --success-bg hsl(150, 30%, 20%)
-      --warning-clr hsl(35, 50%, 50%)
-      --warning-bg hsl(35, 30%, 20%)
-      --danger-clr hsl(360, 50%, 50%)
-      --danger-bg hsl(360, 30%, 20%)
-      --info-clr hsl(225, 50%, 50%)
-      --info-bg hsl(225, 30%, 20%)
+      --main-bg hsl(185, 20%, 10%)
+      --second-bg hsl(185, 20%, 5%)
+      --panel-bg hsl(185, 100%, 10%)
+      --third-bg hsl(185, 15%, 40%)
+      --search-bg hsl(185, 30%, 20%)
+      --search-act hsl(185, 30%, 45%)
+      --link-clr hsl(190, 45%, 60%)
+      --link-act hsl(190, 45%, 80%)
 
   // scrollbar
   html
-    // == chromium
+    // chromium
     ::-webkit-scrollbar
       width 15px
     ::-webkit-scrollbar-track
@@ -107,7 +85,7 @@ prad = 4px
       border-radius 0
       &:hover
         background-color var(--search-act)
-    // == firefox
+    // firefox
     scrollbar-color var(--search-bg) var(--second-bg)
     scrollbar-width auto
     
