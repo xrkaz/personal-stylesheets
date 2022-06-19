@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.1.3
+@version      2.1.4
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -17,18 +17,21 @@
 }
 @var checkbox darkTgl "Hide on-site dark mode toggle" 1
 @var checkbox navStick "Enable sticky navbar" 1
-@var checkbox imgSat "Adjust image saturation" 1
-@var checkbox avaSat "Adjust avatar saturation" 1
+@var checkbox avaRound "Enable circle avatars" 1
+@var checkbox rcorn "Rounded corners" 1
 @var checkbox imgShad "Enable image shadows" 1
 @var checkbox avaShad "Enable avatar shadows" 1
-@var checkbox avaRound "Enable rounded avatars" 1
+@var range imgSat "Image saturation" [100, 5, 100, 5, "%"]
+@var range avaSat "Avatar saturation" [100, 5, 100, 5, "%"]
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
 
-attrib = "Lunar Duck v2.1.3 🌸 sabakuran"
+attrib = "Lunar Duck v2.1.4 🌸 sabakuran"
 i = !important
 pshad = 0 1px 3px #00000080
-prad = 4px
+prad = 0
+if rcorn
+  prad = 4px
 
 @-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
     
@@ -193,6 +196,12 @@ prad = 4px
     box-shadow pshad
   .input-group-btn .btn // === disable shadow in searchbar
     box-shadow none
+  #navFilter-criteria > .bootstrap-select:first-child > button
+    border-top-left-radius 0 i
+    border-bottom-left-radius 0 i
+    if rcorn
+      border-top-left-radius prad i
+      border-bottom-left-radius prad i
   // == make navbar sticky
   if navStick
     .navbar
@@ -208,6 +217,8 @@ prad = 4px
   */
     
   // buttons
+  .btn
+    border-radius prad
   .btn-default
     background-color var(--search-bg)
     color var(--main-clr)
@@ -326,6 +337,12 @@ prad = 4px
   .panel-danger
     border-color var(--danger-bg)
   // == panel headings
+  .panel-heading
+    border-top-right-radius 0
+    border-top-left-radius 0
+    if rcorn
+      border-top-right-radius prad
+      border-top-left-radius prad
   .panel-default .panel-heading
     background-color var(--search-bg)
     color var(--main-clr)
@@ -345,6 +362,11 @@ prad = 4px
   .panel-footer
     background-color var(--search-bg)
     border-top 1px solid var(--panel-bg)
+    border-bottom-right-radius 0
+    border-bottom-left-radius 0
+    if rcorn
+      border-bottom-right-radius prad
+      border-bottom-left-radius prad
   // == notification panels
   .alert-info
     background-color var(--info-bg)
@@ -398,6 +420,9 @@ prad = 4px
   #description.form-control
     background-color var(--panel-bg)
     border 1px solid var(--panel-bg)
+    border-radius 0
+    if rcorn
+      border-radius 0px 4px 4px 4px
   .nav-tabs
     border-bottom 0
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
@@ -405,6 +430,12 @@ prad = 4px
     background-color var(--panel-bg)
     border-bottom-color var(--panel-bg)
     border 1px solid var(--panel-bg)
+    box-shadow pshad
+    z-index -1
+  .nav-tabs > li > a
+    border-radius 0
+    if rcorn
+      border-radius 4px 4px 0 0
   .nav-tabs > li > a:hover
     border-color var(--panel-bg)
   .nav > li > a:hover, .nav > li > a:focus
@@ -439,13 +470,11 @@ prad = 4px
   if avaRound
     .avatar
       border-radius 100%
-  // == desaturate
-  if imgSat
-    #torrent-description img, .comment-content img, .well img
-      filter saturate(50%)
-  if avaSat
-    .avatar
-      filter saturate(50%)
+  // == adjust image saturation
+  #torrent-description img, .comment-content img, .well img
+    filter saturate(imgSat)
+  .avatar
+    filter saturate(avaSat)
   // == img box shadows
   if imgShad
     #torrent-description img, .comment-content img, .well img
