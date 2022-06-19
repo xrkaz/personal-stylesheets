@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/torrentfreak.com.user.css
 @preprocessor stylus
-@version      1.0.2
+@version      1.0.3
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -15,17 +15,24 @@
     "Desert Orchid":"sabakuran",
     "Jade Vine":"hisuikazura"
 }
+@var select hanim "Hover animation" {
+    "Float*":"usw",
+    "Shrink":"animix"
+}
 @var checkbox navStick "Enable sticky navbar" 1
-@var checkbox imgSat "Adjust image saturation" 1
 @var checkbox comBox "Hide comment box" 1
 @var checkbox social "Hide socials" 1
+@var checkbox rcorn "Rounded corners" 1
+@var range imgSat "Image saturation" [100, 50, 100, 5, "%"]
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
 
-attrib = "Lunar Duck v1.0.2 🌸 sabakuran"
+attrib = "Lunar Duck v1.0.3 🌸 sabakuran"
 i = !important
 pshad = 0 1px 3px #00000080
-prad = 4px
+prad = 0
+if rcorn
+  prad = 4px
 
 @-moz-document domain("torrentfreak.com")
   
@@ -144,6 +151,15 @@ prad = 4px
   //> logo
   .logo
     background-color var(--panel-bg)
+    
+  // hero
+  .hero:after
+    if variant == "default"
+      background linear-gradient(180deg,hsla(0, 0%, 15%, .8) 0,hsla(0, 0%, 10%, .95))
+    else if variant == "sabakuran"
+      background linear-gradient(180deg,hsla(325, 20%, 20%, .8) 0,hsla(315, 20%, 10%, .95))
+    else if variant == "hisuikazura"
+      background linear-gradient(180deg,hsla(185, 100%, 10%, .8) 0,hsla(185, 20%, 10%, .95))
   
   // content
   .page__content
@@ -188,7 +204,7 @@ prad = 4px
     background-color var(--panel-bg)
     border-radius prad
     box-shadow pshad
-    padding 20px 30px 20px 30px
+    padding 30px
     margin-bottom 35px
   //> article body
   .article__body img
@@ -211,6 +227,25 @@ prad = 4px
     box-shadow pshad
     padding 10px 20px
     margin-right 0
+  //> article table
+  .article__body table
+    border 5px solid var(--search-bg)
+    box-shadow pshad
+    border-radius prad
+    border-collapse separate
+    border-spacing 0
+    margin-bottom 25px
+    text-align center
+  .article__body table thead
+    background-color var(--main-bg)
+    color var(--main-clr)
+  .article__body table tfoot
+    background-color var(--main-bg)
+  .article__body table td, .article__body table th
+    border 0
+    padding 8px
+  .article__body table tbody tr:nth-child(odd)
+    background-color var(--search-bg)
   //> bullet points
   .article__body ul li:after
     background-color var(--third-bg)
@@ -228,7 +263,12 @@ prad = 4px
     border-radius prad
     transition ease 0.1s
     &:hover
-      transform translateY(-4px)
+      if hanim == "usw"
+        transform translateY(-4px)
+        background-color var(--search-bg)
+      else if hanim == "animix"
+        transform scale(.98)
+        background-color var(--search-bg)
   .preview-article__excerpt
     color var(--sub-clr)
   .preview-article__title
@@ -246,8 +286,10 @@ prad = 4px
       background-color var(--third-bg)
   //> post header img
   .preview-article__photo
-    border-radius 4px 4px 0 0
+    border-radius 0
     box-shadow pshad
+    if rcorn
+      border-radius 4px 4px 0 0
     
   // sidebar
   //> popular posts
@@ -329,9 +371,8 @@ prad = 4px
       display none
       
   // adjust image saturation
-  if imgSat
-    img, .cycle-slide__image
-      filter saturate(50%)
+  img, .cycle-slide__image
+    filter saturate(imgSat)
     
   // ad management
   .widget_custom_html.o-widget.widget_text
