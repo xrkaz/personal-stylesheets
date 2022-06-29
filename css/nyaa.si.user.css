@@ -7,7 +7,7 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.1.4
+@version      2.1.5
 @license      WTFPL
 ===================
 @var select variant "Color scheme" {
@@ -15,10 +15,10 @@
     "Desert Orchid":"sabakuran",
     "Jade Vine":"hisuikazura"
 }
-@var checkbox darkTgl "Hide on-site dark mode toggle" 1
+@var checkbox darkTgl "Hide dark mode toggle" 1
 @var checkbox navStick "Enable sticky navbar" 1
 @var checkbox avaRound "Enable circle avatars" 1
-@var checkbox rcorn "Rounded corners" 1
+@var checkbox rcorn "Enable rounded corners" 1
 @var checkbox imgShad "Enable image shadows" 1
 @var checkbox avaShad "Enable avatar shadows" 1
 @var range imgSat "Image saturation" [100, 5, 100, 5, "%"]
@@ -26,7 +26,7 @@
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
 
-attrib = "Lunar Duck v2.1.4 🌸 sabakuran"
+attrib = "Lunar Duck v2.1.5 🌸 sabakuran"
 i = !important
 pshad = 0 1px 3px #00000080
 prad = 0
@@ -38,6 +38,8 @@ if rcorn
   :root
     --main-clr hsla(0, 0%, 100%, .8)
     --main-clr-act hsl(0, 0%, 100%)
+    --sub-clr hsla(0, 0%, 100%, .5)
+    --ph-clr hsla(0, 0%, 100%, .3)
     --success-clr hsl(150, 50%, 50%)
     --success-clr-act hsl(150, 50%, 80%)
     --success-bg hsl(150, 30%, 20%)
@@ -128,7 +130,7 @@ if rcorn
     background-color var(--search-bg)
   hr
     border-top 1px solid var(--search-bg)
-    
+  
   // navbar
   .navbar
     box-shadow pshad
@@ -186,6 +188,9 @@ if rcorn
     &:focus
       box-shadow none
       border-color var(--search-bg)
+  .form-control::placeholder
+    color var(--ph-clr)
+    opacity 1 // firefox
   .form-control.search-bar
     box-shadow none
   .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
@@ -207,14 +212,6 @@ if rcorn
     .navbar
       position sticky
       top 0
-  // == make navbar glassy (not implementing atm)
-  /*
-  @var checkbox navGlass "Glassmorphic navbar" 0
-  if navGlass
-    .navbar
-      backdrop-filter blur(4px)
-      background-color #161616bf
-  */
     
   // buttons
   .btn
@@ -231,6 +228,8 @@ if rcorn
     background-color var(--search-bg)
     color var(--main-clr)
     border: 1px solid var(--search-bg)
+    &:hover
+      background-color var(--search-act)
   .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus
     outline none
   .btn-primary
@@ -252,6 +251,18 @@ if rcorn
     background-color var(--search-bg)
     color var(--main-clr)
     border 0
+  .pagination > li:first-child > a, .pagination > li:first-child > span
+    border-top-left-radius 0
+    border-bottom-left-radius 0
+    if rcorn
+      border-top-left-radius prad
+      border-bottom-left-radius prad
+  .pagination > li:last-child > a, .pagination > li:last-child > span
+    border-top-right-radius 0
+    border-bottom-right-radius 0
+    if rcorn
+      border-top-right-radius prad
+      border-bottom-right-radius prad
   .pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus
     background-color var(--panel-bg)
   .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
