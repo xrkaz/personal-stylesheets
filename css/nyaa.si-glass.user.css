@@ -1,0 +1,423 @@
+/* ==UserStyle==
+==========================================================
+NOTICE FOR FIREFOX USERS:
+The "backdrop-filter" CSS property is disabled by default
+in Firefox. It means, blur effects that make glassmorphism
+work will not apply to the website. Here's what you need
+to do first so that it displays as intended.
+----------------------------------------------------------
+1. In your browser's address bar, go visit "about:config".
+2. Click "Accept the Risk and Continue".
+3. Search for "layout.css.backdrop-filter.enabled"
+   and set it to "true".
+4. Search for "gfx.webrender.all" and set it to "true".
+5. No, this will not make your device explode. Maybe.
+6. No, I will not make convoluted tricks to make it
+   work with Firefox out of the box. Blame Mozilla.
+==========================================================
+@name         nyaa.si - Touch Glass
+@namespace    sabakuran
+@description  Why touch grass, when you can instead touch glass, right here, right now? Literally.
+@author       sabakuran (https://github.com/sabakuran)
+@homepageURL  https://github.com/sabakuran/personal-stylesheets
+@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si-glass.user.css
+@preprocessor stylus
+@version      0.1.0
+@license      WTFPL
+===================
+@var select variant "Color scheme" {
+    "Dark*":"darkcs",
+    "Light":"lightcs",
+    "Pink":"pinkcs",
+    "Cyan":"cyancs"
+}
+@var select bgImg "Background image" {
+  "Default*":"bg0",
+  "Custom":"custom",
+  "Classic Miku":"miku",
+  "Background 1":"bg1",
+  "Background 2":"bg2",
+  "Background 3":"bg3",
+  "Background 4":"bg4",
+  "Background 5":"bg5",
+  "Background 6":"bg6",
+  "Background 7":"bg7",
+  "Background 8":"bg8",
+  "Background 9":"bg9",
+  "Background 10":"bg10"
+}
+@var text bgurl "Custom image URL (with quotes)" ""https://files.catbox.moe/55r8py.png""
+@var select pblur "Blur intensity" {
+  "None":"0",
+  "Default*":"4px",
+  "8px":"8px",
+  "12px":"12px",
+  "16px":"16px",
+  "20px":"20px"
+}
+@var select prad "Rounded corners" {
+  "None":"0",
+  "Default*":"4px",
+  "8px":"8px",
+  "12px":"12px",
+  "16px":"16px",
+  "20px":"20px"
+}
+@var checkbox navStick "Enable sticky navbar" 1
+@var checkbox nodarkbtn "Hide dark mode toggle" 1
+@var checkbox about "Show userstyle attribution" 0
+==/UserStyle== */
+
+// helpers
+attrib = "Touch Glass v0.1.0-pre 🌸 sabakuran"
+i = !important
+pshad = 0 1px 3px hsla(0, 0%, 0%, .500)
+
+// background options
+if bgImg == "bg0"
+  img-custom = "https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg1"
+  img-custom = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg2"
+  img-custom = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg3"
+  img-custom = "https://images.unsplash.com/photo-1594671581654-cc7ed83167bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg4"
+  img-custom = "https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg5"
+  img-custom = "https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg6"
+  img-custom = "https://images.unsplash.com/photo-1607499699372-7bb722dff7e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg7"
+  img-custom = "https://images.unsplash.com/photo-1605478264999-8d1cd66e9c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg8"
+  img-custom = "https://images.unsplash.com/photo-1524169113253-c6ba17f68498?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg9"
+  img-custom = "https://images.unsplash.com/photo-1590077211339-724573dc4121?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "bg10"
+  img-custom = "https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+else if bgImg == "miku"
+  img-custom = "https://files.catbox.moe/cy0m2j.jpg"
+else if bgImg == "custom"
+  img-custom = bgurl
+
+@-moz-document domain("nyaa.si")
+
+  :root
+    --sub-clr hsla(0, 0%, 100%, .5)
+    --ph-clr hsla(0, 0%, 100%, .3)
+    --success-clr hsl(150, 50%, 50%)
+    --success-clr-act hsl(150, 50%, 80%)
+    --success-bg hsla(150, 30%, 20%, .75)
+    --warning-clr hsl(35, 50%, 50%)
+    --warning-bg hsl(35, 30%, 20%)
+    --danger-clr hsl(360, 50%, 50%)
+    --danger-bg hsla(360, 30%, 20%, .75)
+    --info-clr hsl(225, 50%, 50%)
+    --info-bg hsl(225, 30%, 20%)
+    if variant == "darkcs"
+      --main-clr hsla(0, 0%, 100%, .8)
+      --main-clr-act hsl(0, 0%, 100%)
+      --main-bg hsl(0, 0%, 10%)
+      --second-bg hsl(0, 0%, 5%)
+      --panel-bg hsla(220, 40%, 10%, .75)
+      --third-bg hsl(0, 0%, 25%)
+      --search-bg hsl(0, 0%, 20%)
+      --search-act hsl(0, 0%, 45%)
+      --link-clr hsl(220, 100%, 70%)
+      --link-act hsl(220, 100%, 80%)
+    else if variant == "lightcs"
+      --main-clr hsla(0, 0%, 0%, 1)
+      --main-clr-act hsl(0, 0%, 100%)
+      --main-bg hsl(315, 20%, 10%)
+      --second-bg hsl(315, 20%, 5%)
+      --panel-bg hsla(0, 0%, 100%, .75)
+      --third-bg hsl(330, 15%, 30%)
+      --search-bg hsl(330, 15%, 25%)
+      --search-act hsl(330, 15%, 50%)
+      --link-clr hsl(335, 45%, 60%)
+      --link-act hsl(335, 45%, 80%)
+    else if variant == "pinkcs"
+      --main-clr hsla(0, 0%, 100%, .8)
+      --main-clr-act hsl(0, 0%, 100%)
+      --main-bg hsl(185, 20%, 10%)
+      --second-bg hsl(185, 20%, 5%)
+      --panel-bg hsl(185, 100%, 10%)
+      --third-bg hsl(185, 15%, 40%)
+      --search-bg hsl(185, 30%, 20%)
+      --search-act hsl(185, 30%, 45%)
+      --link-clr hsl(190, 45%, 60%)
+      --link-act hsl(190, 45%, 80%)
+    else if variant == "cyancs"
+      --main-clr hsla(0, 0%, 100%, .8)
+      --main-clr-act hsl(0, 0%, 100%)
+      --main-bg hsl(185, 20%, 10%)
+      --second-bg hsl(185, 20%, 5%)
+      --panel-bg hsl(185, 100%, 10%)
+      --third-bg hsl(185, 15%, 40%)
+      --search-bg hsl(185, 30%, 20%)
+      --search-act hsl(185, 30%, 45%)
+      --link-clr hsl(190, 45%, 60%)
+      --link-act hsl(190, 45%, 80%)
+      
+  glass()
+    backdrop-filter blur(pblur) saturate(180%)
+    -webkit-backdrop-filter blur(pblur) saturate(180%) // safari
+    background-color var(--panel-bg)
+  glass-panel()
+    glass()
+    box-shadow pshad
+    border-radius prad i
+    border 1px solid hsla(0, 0%, 100%, .125)
+      
+  body
+    background-image url(img-custom)
+    background-repeat no-repeat
+    background-attachment fixed
+    background-position center
+    background-size cover
+    color var(--main-clr)
+  a
+    color var(--link-clr)
+    &:hover, &:focus
+      color var(--link-act)
+      text-decoration none
+      
+  // navbar
+  .navbar
+    box-shadow pshad
+  .navbar-inverse
+    backdrop-filter blur(20px) saturate(180%)
+    -webkit-backdrop-filter blur(20px) saturate(180%) // safari
+    background-color var(--panel-bg)
+    border-color hsla(0, 0%, 100%, .1)
+  .navbar-inverse .navbar-brand
+    color var(--main-clr)
+  .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus
+    color var(--main-clr-act)
+    background-color transparent
+  .navbar-inverse .navbar-nav > li > a
+    color var(--main-clr)
+  .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus
+    background-color transparent
+    color var(--main-clr-act)
+  .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus
+    background-color var(--panel-bg)
+    color var(--main-clr-act)
+  .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus
+    background-color var(--panel-bg)
+    color var(--main-clr-act)
+  // == navbar mobile
+  .navbar-toggle
+    background-color var(--search-bg)
+    border-radius prad
+  .navbar-inverse .navbar-toggle
+    border-color var(--search-bg)
+  .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus
+    background-color var(--search-act)
+  // == dropdown menu
+  .dropdown-menu
+    background-color var(--panel-bg)
+    border 1px solid var(--panel-bg)
+    box-shadow pshad
+    border-radius prad
+    li a
+      color var(--main-clr)
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
+    background-color var(--third-bg)
+    color var(--main-clr)
+  .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus
+    background-color var(--third-bg)
+    color var(--main-clr)
+  .bootstrap-select .dropdown-toggle:focus
+    outline none i
+  // == searchbar
+  .form-control
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border 1px solid var(--search-bg)
+    transition none
+    box-shadow pshad
+    border-radius prad
+    &:focus
+      box-shadow none
+      border-color var(--search-bg)
+  .form-control::placeholder
+    color var(--ph-clr)
+    opacity 1 // firefox
+  .form-control.search-bar
+    box-shadow none
+  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
+    background-color var(--panel-bg)
+  .input-group .form-control:last-child, .input-group-addon:last-child
+    border 1px solid var(--panel-bg)
+  .navbar-form .input-group
+    box-shadow pshad
+  .input-group-btn .btn // === disable shadow in searchbar
+    box-shadow none
+  #navFilter-criteria > .bootstrap-select:first-child > button
+    border-top-left-radius prad i
+    border-bottom-left-radius prad i
+  // make navbar sticky
+  if navStick
+    .navbar
+      position sticky
+      top 0
+      
+  // buttons
+  .btn
+    border-radius prad
+  .btn-default
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border-color var(--search-bg)
+  .btn-default:hover, .btn-default:active:hover, .btn-default.active:hover, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus
+    background-color var(--search-act)
+    color var(--main-clr)
+    border 1px solid var(--search-act)
+  .btn-default:focus, .btn-default.focus
+    background-color var(--search-bg)
+    color var(--main-clr)
+    border: 1px solid var(--search-bg)
+    &:hover
+      background-color var(--search-act)
+  .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus
+    outline none
+  .btn-primary
+    color var(--main-clr)
+    background-color var(--search-bg)
+    border 1px solid var(--search-bg)
+    box-shadow pshad
+  .btn-primary:hover, .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus, .btn-primary:focus, .btn-primary.focus
+    color var(--main-clr)
+    background-color var(--search-act)
+    border: 1px solid var(--search-act)
+  
+  // panels
+  .panel
+    glass-panel()
+  // panel headings
+  .panel-heading
+    border-top-right-radius prad
+    border-top-left-radius prad
+  .panel-default .panel-heading
+    background-color transparent
+    color var(--main-clr)
+    border-color hsla(0, 0%, 100%, .1)
+  .panel-success .panel-heading
+    background-color var(--success-bg)
+    color var(--success-clr)
+    border-color hsla(0, 0%, 100%, .1)
+  .panel-danger .panel-heading
+    background-color var(--danger-bg)
+    color var(--danger-clr)
+    border-color hsla(0, 0%, 100%, .1)
+  // panel footer
+  .panel-footer
+    background-color transparent
+    border-top 1px solid hsla(0, 0%, 100%, .1)
+    border-bottom-right-radius prad
+    border-bottom-left-radius prad
+    
+  // tables
+  .table
+    glass()
+    margin-bottom 0
+  // torrentlist odd rows
+  .table-striped > tbody > tr:nth-of-type(odd)
+    background-color transparent
+  // torrentlist remake
+  .table > thead > tr > td.danger, .table > tbody > tr > td.danger, .table > tfoot > tr > td.danger, .table > thead > tr > th.danger, .table > tbody > tr > th.danger, .table > tfoot > tr > th.danger, .table > thead > tr.danger > td, .table > tbody > tr.danger > td, .table > tfoot > tr.danger > td, .table > thead > tr.danger > th, .table > tbody > tr.danger > th, .table > tfoot > tr.danger > th
+    background-color var(--danger-bg)
+  // torrentlist trusted
+  .table > thead > tr > td.success, .table > tbody > tr > td.success, .table > tfoot > tr > td.success, .table > thead > tr > th.success, .table > tbody > tr > th.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > tbody > tr.success > td, .table > tfoot > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr.success > th, .table > tfoot > tr.success > th
+    background-color var(--success-bg)
+  .table-bordered
+    border 0
+  // torrentlist suppress column borders
+  .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td
+    border 0
+    border-bottom 1px solid hsla(0, 0%, 100%, .1)
+  // torrentlist supress extra border bottom
+  .table-bordered > tbody > tr:last-child
+    border-bottom hidden
+  // torrentlist container
+  .table-responsive
+    border-radius prad
+    box-shadow pshad
+    border 1px solid hsla(0, 0%, 100%, .125)
+  // torrentlist link color
+  //table.torrent-list tbody tr td a
+    //color var(--link-clr)
+  // torrentlist suppress visited link state
+  table.torrent-list tbody tr td a:visited
+    color var(--link-clr)
+    &:hover, &:focus
+      color var(--link-act)
+  // torrentlist widen padding
+  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td
+  table.torrent-list td:first-child
+    padding 10px
+  // suppress selection highlighting
+  .table-hover > tbody > tr:hover
+    background-color transparent
+  .table-hover > tbody > tr > td.danger:hover, .table-hover > tbody > tr > th.danger:hover, .table-hover > tbody > tr.danger:hover > td, .table-hover > tbody > tr:hover > .danger, .table-hover > tbody > tr.danger:hover > th
+    background-color var(--danger-bg)
+  .table-hover > tbody > tr > td.success:hover, .table-hover > tbody > tr > th.success:hover, .table-hover > tbody > tr.success:hover > td, .table-hover > tbody > tr:hover > .success, .table-hover > tbody > tr.success:hover > th
+    background-color var(--success-bg)
+    
+  // seed/leech colors
+  // individual torrent meta
+  .col-md-5 span[style="color: green;"]
+    color var(--success-clr) i
+  .col-md-5 span[style="color: red;"]
+    color var(--danger-clr) i
+  // torrent list
+  table.torrent-list td:nth-child(6), body.dark table.torrent-list > tbody > tr.success > td:nth-child(6), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(6)
+    color var(--success-clr)
+  table.torrent-list td:nth-child(7), body.dark table.torrent-list > tbody > tr.success > td:nth-child(7), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7)
+    color var(--danger-clr)
+    
+  // category icons
+  .category-icon
+    filter saturate(50%)
+    
+  // submitter colors
+  .text-success
+    color var(--success-clr)
+    &:hover, &:focus
+      color var(--success-clr-act) i
+    
+  // dark mode toggle visibility
+  if nodarkbtn
+    footer p
+      visibility hidden
+      
+  // show userstyle attribution
+  if about
+    footer::before
+      glass-panel()
+      padding 5px 10px 5px 10px
+      content attrib
+        
+@-moz-document url("https://nyaa.si/upload")
+  body > .container
+    glass-panel()
+    padding 0 20px 20px 20px
+
+@-moz-document url("https://nyaa.si/rules")
+  body > .container
+    glass-panel()
+    padding 0 20px 20px 20px
+
+@-moz-document url("https://nyaa.si/help")
+  body > .container
+    glass-panel()
+    padding 0 20px 20px 20px
+
+@-moz-document url("https://nyaa.si/login")
+  body > .container
+    glass-panel()
+    padding 0 20px 20px 20px
+    
