@@ -1,3 +1,5 @@
+us = "Lunar Duck v2.2.0 🌸 sabakuran"
+
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
 @namespace    sabakuran
@@ -7,392 +9,467 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.1.5
+@version      2.2.0
 @license      WTFPL
 ===================
-@var select variant "Color scheme" {
-    "Default*":"default",
-    "Desert Orchid":"sabakuran",
-    "Jade Vine":"hisuikazura"
+@var select cs "Color scheme" {
+    "Default*":"cs-dark",
+    "Miku":"cs-cyan",
+    "Luka":"cs-pink",
+    "Rin":"cs-yellow",
+    "Teto":"cs-red",
+    "Gumi":"cs-green",
+    "Kaito":"cs-blue",
 }
-@var checkbox darkTgl "Hide dark mode toggle" 1
-@var checkbox navStick "Enable sticky navbar" 1
-@var checkbox avaRound "Enable circle avatars" 1
-@var checkbox rcorn "Enable rounded corners" 1
-@var checkbox imgShad "Enable image shadows" 1
-@var checkbox avaShad "Enable avatar shadows" 1
-@var range imgSat "Image saturation" [100, 5, 100, 5, "%"]
-@var range avaSat "Avatar saturation" [100, 5, 100, 5, "%"]
-@var checkbox about "Show userstyle attribution" 0
+@var checkbox xdarkbtn "Hide dark mode toggle" 1
+@var checkbox navstick "Enable sticky navbar" 1
+@var checkbox avarnd "Enable rounded avatars" 1
+@var checkbox imgshad "Enable image shadows" 1
+@var checkbox avashad "Enable avatar shadows" 1
+@var select imgsat "Image saturation" {
+  "Greyscale":"0%",
+  "10%":"10%",
+  "20%":"20%",
+  "30%":"30%",
+  "40%":"40%",
+  "Half":"50%",
+  "60%":"60%",
+  "70%":"70%",
+  "80%":"80%",
+  "90%":"90%",
+  "Default*":"100%"
+}
+@var select avasat "Avatar saturation" {
+  "Greyscale":"0%",
+  "10%":"10%",
+  "20%":"20%",
+  "30%":"30%",
+  "40%":"40%",
+  "Half":"50%",
+  "60%":"60%",
+  "70%":"70%",
+  "80%":"80%",
+  "90%":"90%",
+  "Default*":"100%"
+}
+@var select density "Table density" {
+    "Default*":"none",
+    "Comfortable":"10px",
+    "Compact":"0"
+}
+@var select prad "Rounded corners" {
+  "None":"0",
+  "Default*":"4px",
+  "8px":"8px",
+  "12px":"12px"
+}
+@var checkbox xcw "Adjust container width" 0
+@var range cw "Container width" [1400, 1150, 1900, 10,"px"]
+@var checkbox xus "Show userstyle attribution" 1
 ==/UserStyle== */
 
-attrib = "Lunar Duck v2.1.5 🌸 sabakuran"
-i = !important
-pshad = 0 1px 3px #00000080
-prad = 0
-if rcorn
-  prad = 4px
-
 @-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
-    
+  
+  i = !important
+  
   :root
-    --main-clr hsla(0, 0%, 100%, .8)
-    --main-clr-act hsl(0, 0%, 100%)
-    --sub-clr hsla(0, 0%, 100%, .5)
-    --ph-clr hsla(0, 0%, 100%, .3)
-    --success-clr hsl(150, 50%, 50%)
-    --success-clr-act hsl(150, 50%, 80%)
-    --success-bg hsl(150, 30%, 20%)
-    --warning-clr hsl(35, 50%, 50%)
-    --warning-bg hsl(35, 30%, 20%)
-    --danger-clr hsl(360, 50%, 50%)
-    --danger-bg hsl(360, 30%, 20%)
-    --info-clr hsl(225, 50%, 50%)
-    --info-bg hsl(225, 30%, 20%)
-    if variant == "default"
-      --main-bg hsl(0, 0%, 10%)
-      --second-bg hsl(0, 0%, 5%)
-      --panel-bg hsl(0, 0%, 15%)
-      --third-bg hsl(0, 0%, 25%)
-      --search-bg hsl(0, 0%, 20%)
-      --search-act hsl(0, 0%, 45%)
-      --link-clr hsl(225, 100%, 70%)
-      --link-act hsl(225, 100%, 80%)
-    else if variant == "sabakuran"
-      --main-bg hsl(315, 20%, 10%)
-      --second-bg hsl(315, 20%, 5%)
-      --panel-bg hsl(325, 20%, 20%)
-      --third-bg hsl(330, 15%, 30%)
-      --search-bg hsl(330, 15%, 25%)
-      --search-act hsl(330, 15%, 50%)
-      --link-clr hsl(335, 45%, 60%)
-      --link-act hsl(335, 45%, 80%)
-    else if variant == "hisuikazura"
-      --main-bg hsl(185, 20%, 10%)
-      --second-bg hsl(185, 20%, 5%)
-      --panel-bg hsl(185, 100%, 10%)
-      --third-bg hsl(185, 15%, 40%)
-      --search-bg hsl(185, 30%, 20%)
-      --search-act hsl(185, 30%, 45%)
-      --link-clr hsl(190, 45%, 60%)
-      --link-act hsl(190, 45%, 80%)
+    --txt hsla(0, 0%, 100%, .8)
+    --txt-act hsl(0, 0%, 100%)
+    --txt-sub hsla(0, 0%, 100%, .5)
+    --txt-ph hsla(0, 0%, 100%, .3)
+    --txt-succ hsl(150, 50%, 50%)
+    --txt-succ-act hsl(150, 50%, 80%)
+    --bg-succ hsl(150, 30%, 20%)
+    --txt-warn hsl(35, 50%, 50%)
+    --bg-warn hsl(35, 30%, 20%)
+    --txt-dang hsl(360, 50%, 50%)
+    --bg-dang hsl(360, 30%, 20%)
+    --txt-info hsl(225, 50%, 50%)
+    --bg-info hsl(225, 30%, 20%)
+    if cs == "cs-dark"
+      --bg-1 hsl(0, 0%, 10%)
+      --bg-2 hsl(0, 0%, 5%)
+      --bg-3 hsl(0, 0%, 15%)
+      --bg-4 hsl(0, 0%, 20%)
+      --bg-5 hsl(0, 0%, 25%)
+      --bg-6 hsl(0, 0%, 45%)
+      --txt-lnk hsl(225, 100%, 70%)
+      --txt-lnk-act hsl(225, 100%, 80%)
+    else if cs == "cs-pink"
+      --bg-1 hsl(315, 20%, 10%)
+      --bg-2 hsl(315, 20%, 5%)
+      --bg-3 hsl(325, 20%, 20%)
+      --bg-4 hsl(330, 15%, 25%)
+      --bg-5 hsl(330, 15%, 30%)
+      --bg-6 hsl(330, 15%, 50%)
+      --txt-lnk hsl(335, 45%, 60%)
+      --txt-lnk-act hsl(335, 45%, 80%)
+    else if cs == "cs-cyan"
+      --bg-1 hsl(185, 20%, 10%)
+      --bg-2 hsl(185, 20%, 5%)
+      --bg-3 hsl(185, 100%, 10%)
+      --bg-4 hsl(185, 30%, 20%)
+      --bg-5 hsl(185, 15%, 40%)
+      --bg-6 hsl(185, 30%, 45%)
+      --txt-lnk hsl(190, 45%, 60%)
+      --txt-lnk-act hsl(190, 45%, 80%)
+    else if cs == "cs-yellow"
+      --bg-1 hsl(50, 20%, 10%)
+      --bg-2 hsl(50, 20%, 5%)
+      --bg-3 hsl(50, 100%, 10%)
+      --bg-4 hsl(50, 30%, 20%)
+      --bg-5 hsl(50, 15%, 40%)
+      --bg-6 hsl(50, 30%, 45%)
+      --txt-lnk hsl(50, 45%, 60%)
+      --txt-lnk-act hsl(50, 45%, 80%)
+    else if cs == "cs-red"
+      --bg-1 hsl(0, 20%, 10%)
+      --bg-2 hsl(0, 20%, 5%)
+      --bg-3 hsl(0, 100%, 10%)
+      --bg-4 hsl(0, 30%, 20%)
+      --bg-5 hsl(0, 15%, 40%)
+      --bg-6 hsl(0, 30%, 45%)
+      --txt-lnk hsl(0, 45%, 60%)
+      --txt-lnk-act hsl(0, 45%, 80%)
+    else if cs == "cs-green"
+      --bg-1 hsl(140, 20%, 10%)
+      --bg-2 hsl(140, 20%, 5%)
+      --bg-3 hsl(140, 100%, 10%)
+      --bg-4 hsl(140, 30%, 20%)
+      --bg-5 hsl(140, 15%, 40%)
+      --bg-6 hsl(140, 30%, 45%)
+      --txt-lnk hsl(140, 45%, 60%)
+      --txt-lnk-act hsl(140, 45%, 80%)
+    else if cs == "cs-blue"
+      --bg-1 hsl(200, 20%, 10%)
+      --bg-2 hsl(200, 20%, 5%)
+      --bg-3 hsl(200, 100%, 10%)
+      --bg-4 hsl(200, 30%, 20%)
+      --bg-5 hsl(200, 15%, 40%)
+      --bg-6 hsl(200, 30%, 45%)
+      --txt-lnk hsl(200, 45%, 60%)
+      --txt-lnk-act hsl(200, 45%, 80%)
 
+  pan1()
+    background-color var(--bg-1)
+    color var(--txt)
+  shad()
+    box-shadow 0 1px 3px hsla(0, 0%, 0%, .5)
+  rad()
+    border-radius prad
+  sharad()
+    shad()
+    rad()
+    
   // scrollbar
   html
     // chromium
     ::-webkit-scrollbar
       width 15px
     ::-webkit-scrollbar-track
-      background-color var(--second-bg)
-      border-left 1px solid var(--panel-bg)
+      background-color var(--bg-2)
+      border-left 1px solid var(--bg-3)
     ::-webkit-scrollbar-thumb
-      background-color var(--search-bg)
+      background-color var(--bg-4)
       border-radius 0
       &:hover
-        background-color var(--search-act)
+        background-color var(--bg-6)
     // firefox
-    scrollbar-color var(--search-bg) var(--second-bg)
+    scrollbar-color var(--bg-4) var(--bg-2)
     scrollbar-width auto
     
-  // backbone
+  // adjust container width
+  if xcw
+    .container
+      width cw
+  
+  // torrentlist adjust padding
+  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td
+  table.torrent-list td:first-child
+    padding density
+      
+  // workaround for table border radius
+  th:first-child
+    border-top-left-radius prad - 6px
+  th:last-child
+    border-top-right-radius prad -6px
+  tr:last-child td:last-child
+    border-bottom-right-radius prad - 6px
+  tr:last-child td:first-child
+    border-bottom-left-radius prad - 6px
+      
   body
-    background-color var(--main-bg)
-    color var(--main-clr)
+    pan1()
   a
-    color var(--link-clr)
-    background-color transparent
+    color var(--txt-lnk)
     &:hover, &:focus
-      color var(--link-act)
+      color var(--txt-lnk-act)
       text-decoration none
-      outline none
+      outline none // for cats in search
   blockquote
-    background-color var(--main-bg)
-    border-left 5px solid var(--third-bg)
-    border-radius prad
-    box-shadow pshad
+    sharad()
+    background-color var(--bg-1)
+    border-left 5px solid var(--bg-5)
   pre
-    background-color var(--main-bg)
-    color var(--main-clr)
-    box-shadow pshad
-    border-radius prad
-    border-color var(--main-bg)
+    pan1()
+    sharad()
+    border-color var(--bg-1)
   code
-    background-color var(--third-bg)
-    color var(--main-clr)
-    border-radius prad
-    box-shadow pshad
+    sharad()
+    background-color var(--bg-5)
+    color var(--txt)
   pre code
     box-shadow none
   kbd
-    box-shadow pshad
-    border-radius prad
-    color var(--main-clr)
-    background-color var(--search-bg)
+    sharad()
+    color var(--txt)
+    background-color var(--bg-4)
   hr
-    border-top 1px solid var(--search-bg)
+    border-top 1px solid var(--bg-4)
   
   // navbar
   .navbar
-    box-shadow pshad
+    shad()
   .navbar-inverse
-    background-color var(--second-bg)
-    border-color var(--panel-bg)
+    background-color var(--bg-2)
+    border-color var(--bg-3)
   .navbar-inverse .navbar-brand
-    color var(--main-clr)
+    color var(--txt)
   .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus
-    color var(--main-clr-act)
+    color var(--txt-act)
     background-color transparent
   .navbar-inverse .navbar-nav > li > a
-    color var(--main-clr)
+    color var(--txt)
   .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus
     background-color transparent
-    color var(--main-clr-act)
+    color var(--txt-act)
   .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus
-    background-color var(--panel-bg)
-    color var(--main-clr-act)
+    background-color var(--bg-3)
+    color var(--txt-act)
   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus
-    background-color var(--panel-bg)
-    color var(--main-clr-act)
-  // == navbar mobile
+    background-color var(--bg-3)
+    color var(--txt-act)
+  // navbar mobile
   .navbar-toggle
-    background-color var(--search-bg)
-    border-radius prad
+    background-color var(--bg-4)
+    rad()
   .navbar-inverse .navbar-toggle
-    border-color var(--search-bg)
+    border-color var(--bg-4)
   .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus
-    background-color var(--search-act)
-  // == dropdown menu
+    background-color var(--bg-6)
+  // dropdown menu
   .dropdown-menu
-    background-color var(--panel-bg)
-    border 1px solid var(--panel-bg)
-    box-shadow pshad
-    border-radius prad
+    sharad()
+    background-color var(--bg-3)
+    border 1px solid var(--bg-3)
     li a
-      color var(--main-clr)
+      color var(--txt)
   .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
-    background-color var(--third-bg)
-    color var(--main-clr)
+    background-color var(--bg-5)
+    color var(--txt)
   .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus
-    background-color var(--third-bg)
-    color var(--main-clr)
+    background-color var(--bg-5)
+    color var(--txt)
   .bootstrap-select .dropdown-toggle:focus
     outline none i
-  // == searchbar
+  // searchbar
   .form-control
-    background-color var(--search-bg)
-    color var(--main-clr)
-    border 1px solid var(--search-bg)
+    sharad()
+    background-color var(--bg-4)
+    color var(--txt)
+    border 1px solid var(--bg-4)
     transition none
-    box-shadow pshad
-    border-radius prad
     &:focus
       box-shadow none
-      border-color var(--search-bg)
+      border-color var(--bg-4)
   .form-control::placeholder
-    color var(--ph-clr)
+    color var(--txt-ph)
     opacity 1 // firefox
   .form-control.search-bar
     box-shadow none
   .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
-    background-color var(--panel-bg)
+    background-color var(--bg-3)
   .input-group .form-control:last-child, .input-group-addon:last-child
-    border 1px solid var(--panel-bg)
+    border 1px solid var(--bg-3)
   .navbar-form .input-group
-    box-shadow pshad
-  .input-group-btn .btn // === disable shadow in searchbar
+    shad()
+  .input-group-btn .btn // suppress shadow in search button
     box-shadow none
   #navFilter-criteria > .bootstrap-select:first-child > button
-    border-top-left-radius 0 i
-    border-bottom-left-radius 0 i
-    if rcorn
-      border-top-left-radius prad i
-      border-bottom-left-radius prad i
-  // == make navbar sticky
-  if navStick
+    border-top-left-radius prad i
+    border-bottom-left-radius prad i
+    
+  // make navbar sticky
+  if navstick
     .navbar
       position sticky
       top 0
     
   // buttons
   .btn
-    border-radius prad
+    rad()
   .btn-default
-    background-color var(--search-bg)
-    color var(--main-clr)
-    border-color var(--search-bg)
+    background-color var(--bg-4)
+    color var(--txt)
+    border-color var(--bg-4)
   .btn-default:hover, .btn-default:active:hover, .btn-default.active:hover, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus
-    background-color var(--search-act)
-    color var(--main-clr)
-    border 1px solid var(--search-act)
+    background-color var(--bg-6)
+    color var(--txt)
+    border 1px solid var(--bg-6)
   .btn-default:focus, .btn-default.focus
-    background-color var(--search-bg)
-    color var(--main-clr)
-    border: 1px solid var(--search-bg)
+    background-color var(--bg-4)
+    color var(--txt)
+    border: 1px solid var(--bg-4)
     &:hover
-      background-color var(--search-act)
+      background-color var(--bg-6)
   .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus
     outline none
   .btn-primary
-    color var(--main-clr)
-    background-color var(--search-bg)
-    border 1px solid var(--search-bg)
-    box-shadow pshad
+    shad()
+    color var(--txt)
+    background-color var(--bg-4)
+    border 1px solid var(--bg-4)
   .btn-primary:hover, .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus, .btn-primary:focus, .btn-primary.focus
-    color var(--main-clr)
-    background-color var(--search-act)
-    border: 1px solid var(--search-act)
+    color var(--txt)
+    background-color var(--bg-6)
+    border: 1px solid var(--bg-6)
   
   // pagination
   .pagination
-    box-shadow pshad
+    shad()
   .pagination-page-info
     margin-top 20px
   .pagination > li > a, .pagination > li > span
-    background-color var(--search-bg)
-    color var(--main-clr)
+    background-color var(--bg-4)
+    color var(--txt)
     border 0
   .pagination > li:first-child > a, .pagination > li:first-child > span
-    border-top-left-radius 0
-    border-bottom-left-radius 0
-    if rcorn
-      border-top-left-radius prad
-      border-bottom-left-radius prad
+    border-top-left-radius prad
+    border-bottom-left-radius prad
   .pagination > li:last-child > a, .pagination > li:last-child > span
-    border-top-right-radius 0
-    border-bottom-right-radius 0
-    if rcorn
-      border-top-right-radius prad
-      border-bottom-right-radius prad
+    border-top-right-radius prad
+    border-bottom-right-radius prad
   .pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus
-    background-color var(--panel-bg)
+    background-color var(--bg-3)
   .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
-    background-color var(--third-bg)
+    background-color var(--bg-5)
   .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus
-    background-color var(--search-act)
-    color var(--main-clr)
+    background-color var(--bg-6)
+    color var(--txt)
     
   // table
-  // == torrent list odd row
+  // torrent list odd row
   .table-striped > tbody > tr:nth-of-type(2n+1)
-    background-color var(--panel-bg)
-  // == torrent list remake
+    background-color var(--bg-3)
+  // torrent list remake
   .table > thead > tr > td.danger, .table > tbody > tr > td.danger, .table > tfoot > tr > td.danger, .table > thead > tr > th.danger, .table > tbody > tr > th.danger, .table > tfoot > tr > th.danger, .table > thead > tr.danger > td, .table > tbody > tr.danger > td, .table > tfoot > tr.danger > td, .table > thead > tr.danger > th, .table > tbody > tr.danger > th, .table > tfoot > tr.danger > th
-    background-color var(--danger-bg)
-  // == torrent list trusted
+    background-color var(--bg-dang)
+  // torrent list trusted
   .table > thead > tr > td.success, .table > tbody > tr > td.success, .table > tfoot > tr > td.success, .table > thead > tr > th.success, .table > tbody > tr > th.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > tbody > tr.success > td, .table > tfoot > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr.success > th, .table > tfoot > tr.success > th
-    background-color var(--success-bg)
-  // == torrent list comments
+    background-color var(--bg-succ)
+  // torrent list comments
   table.torrent-list tbody .comments
-    background-color var(--search-bg)
-    color var(--main-clr) i
-    border 1px solid var(--search-bg)
-    box-shadow pshad
-    border-radius prad
-  // == torrent list borders
+    sharad()
+    background-color var(--bg-4)
+    color var(--txt) i
+    border 1px solid var(--bg-4)
+  // torrent list borders
   .table
     margin-bottom 0
   .table-bordered
-    border 5px solid var(--panel-bg)
+    border 5px solid var(--bg-3)
   .table-responsive
-    border-radius prad
-    box-shadow pshad
+    sharad()
   @media screen and (max-width: 991px)
     .table-responsive
-      border 5px solid var(--panel-bg)    
+      border 5px solid var(--bg-3)    
   .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td
     border 0
-  // == torrent list suppress visited link state
+  // torrent list suppress visited link state
   table.torrent-list tbody tr td a:visited
-    color var(--link-clr)
+    color var(--txt-lnk)
     &:hover, &:focus
-      color var(--link-act)
-  // == selection highlighting
+      color var(--txt-lnk-act)
+  // selection highlighting
   .table-hover > tbody > tr:hover,
   .table-hover > tbody > tr > td.danger:hover, .table-hover > tbody > tr > th.danger:hover, .table-hover > tbody > tr.danger:hover > td, .table-hover > tbody > tr:hover > .danger, .table-hover > tbody > tr.danger:hover > th,
   .table-hover > tbody > tr > td.success:hover, .table-hover > tbody > tr > th.success:hover, .table-hover > tbody > tr.success:hover > td, .table-hover > tbody > tr:hover > .success, .table-hover > tbody > tr.success:hover > th
-    background-color var(--third-bg)
-  // == torrent description
+    background-color var(--bg-5)
+  // torrent description
   #torrent-description .table-bordered
-    border 5px solid var(--search-bg)
-    box-shadow pshad
-    border-radius prad
+    sharad()
+    border 5px solid var(--bg-4)
     border-collapse separate
   #torrent-description .table-bordered thead
-    background-color var(--main-bg)
+    background-color var(--bg-1)
   #torrent-description .table-striped > tbody > tr:nth-of-type(2n+1)
-    background-color var(--search-bg)
+    background-color var(--bg-4)
   #torrent-description .table
     margin-bottom 20px
   
   // seed/leech colors
-  // == individual torrent meta
+  // individual torrent meta
   .col-md-5 span[style="color: green;"]
-    color var(--success-clr) i
+    color var(--txt-succ) i
   .col-md-5 span[style="color: red;"]
-    color var(--danger-clr) i
-  // == torrent list
+    color var(--txt-dang) i
+  // torrent list
   table.torrent-list td:nth-child(6), body.dark table.torrent-list > tbody > tr.success > td:nth-child(6), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(6)
-    color var(--success-clr)
+    color var(--txt-succ)
   table.torrent-list td:nth-child(7), body.dark table.torrent-list > tbody > tr.success > td:nth-child(7), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7)
-    color var(--danger-clr)
+    color var(--txt-dang)
     
   // panels
   .panel
-    background-color var(--panel-bg)
-    border-radius prad
-    box-shadow pshad
+    sharad()
+    background-color var(--bg-3)
   .panel-default
-    border-color var(--panel-bg)
+    border-color var(--bg-3)
   .panel-success
-    border-color var(--success-bg)
+    border-color var(--bg-succ)
   .panel-danger
-    border-color var(--danger-bg)
-  // == panel headings
+    border-color var(--bg-dang)
+  // panel headings
   .panel-heading
-    border-top-right-radius 0
-    border-top-left-radius 0
-    if rcorn
-      border-top-right-radius prad
-      border-top-left-radius prad
+    border-top-right-radius prad
+    border-top-left-radius prad
   .panel-default .panel-heading
-    background-color var(--search-bg)
-    color var(--main-clr)
-    border-color var(--panel-bg)
-    box-shadow pshad
+    shad()
+    background-color var(--bg-4)
+    color var(--txt)
+    border-color var(--bg-3)
   .panel-success .panel-heading
-    background-color var(--success-bg)
-    color var(--success-clr)
-    border-color var(--success-bg)
-    box-shadow pshad
+    shad()
+    background-color var(--bg-succ)
+    color var(--txt-succ)
+    border-color var(--bg-succ)
   .panel-danger .panel-heading
-    background-color var(--danger-bg)
-    color var(--danger-clr)
-    border-color var(--danger-bg)
-    box-shadow pshad
-  // == panel footer
+    shad()
+    background-color var(--bg-dang)
+    color var(--txt-dang)
+    border-color var(--bg-dang)
+  // panel footer
   .panel-footer
-    background-color var(--search-bg)
-    border-top 1px solid var(--panel-bg)
-    border-bottom-right-radius 0
-    border-bottom-left-radius 0
-    if rcorn
-      border-bottom-right-radius prad
-      border-bottom-left-radius prad
-  // == notification panels
+    background-color var(--bg-4)
+    border-top 1px solid var(--bg-3)
+    border-bottom-right-radius prad
+    border-bottom-left-radius prad
+    
+  // notification panels
   .alert-info
-    background-color var(--info-bg)
-    color var(--info-clr)
-    border-color var(--info-bg)
-  // == comment panels
+    background-color var(--bg-info)
+    color var(--txt-info)
+    border-color var(--bg-info)
+  // comment panels
   .comment-panel
-    background-color var(--search-bg)
-    box-shadow pshad
-    border-color var(--search-bg)
-  // === targeted comment (if user clicks on timestamp)
+    shad()
+    background-color var(--bg-4)
+    border-color var(--bg-4)
+  // targeted comment (if user clicks on timestamp)
   .comment-panel:target
-    background-color var(--info-bg)
-    border-color var(--info-bg)
-    box-shadow pshad
+    shad()
+    background-color var(--bg-info)
+    border-color var(--bg-info)
   
   // category icons
   .category-icon
@@ -400,106 +477,139 @@ if rcorn
     
   // submitter colors
   .text-success
-    color var(--success-clr)
+    color var(--txt-succ)
     &:hover, &:focus
-      color var(--success-clr-act) i
+      color var(--txt-succ-act) i
   
   // upload page
-  // == markdown preview
+  // markdown preview
   .well
-    background-color var(--panel-bg)
-    border 1px solid var(--panel-bg)
-    border-radius prad
-    box-shadow pshad
+    sharad()
+    background-color var(--bg-3)
+    border 1px solid var(--bg-3)
   .well blockquote
-    border-color var(--third-bg)
+    border-color var(--bg-5)
   .well .table-bordered
-    border 5px solid var(--search-bg)
-    box-shadow pshad
-    border-radius prad
+    sharad()
+    border 5px solid var(--bg-4)
     border-collapse separate
   .well .table-bordered thead
-    background-color var(--main-bg)
+    background-color var(--bg-1)
   .well .table-striped > tbody > tr:nth-of-type(2n+1)
-    background-color var(--search-bg)
+    background-color var(--bg-4)
   .well .table
     margin-bottom 20px
   .well img
-    border-radius prad
+    rad()
     box-shadow none
-  // == input
+  // input
   #description.form-control
-    background-color var(--panel-bg)
-    border 1px solid var(--panel-bg)
-    border-radius 0
-    if rcorn
-      border-radius 0px 4px 4px 4px
+    background-color var(--bg-3)
+    border 1px solid var(--bg-3)
+    border-radius 0px prad prad prad
   .nav-tabs
     border-bottom 0
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
-    color var(--main-clr)
-    background-color var(--panel-bg)
-    border-bottom-color var(--panel-bg)
-    border 1px solid var(--panel-bg)
-    box-shadow pshad
+    shad()
+    color var(--txt)
+    background-color var(--bg-3)
+    border-bottom-color var(--bg-3)
+    border 1px solid var(--bg-3)
     z-index -1
   .nav-tabs > li > a
-    border-radius 0
-    if rcorn
-      border-radius 4px 4px 0 0
+    border-radius prad prad 0 0
   .nav-tabs > li > a:hover
-    border-color var(--panel-bg)
+    border-color var(--bg-3)
   .nav > li > a:hover, .nav > li > a:focus
-    background-color var(--second-bg)
-  // == buttons
+    background-color var(--bg-2)
+  // buttons
   .btn-danger
-    color var(--main-clr)
-    background-color var(--danger-bg)
-    border-color var(--danger-bg)
+    color var(--txt)
+    background-color var(--bg-dang)
+    border-color var(--bg-dang)
   .btn-warning
-    color var(--main-clr)
-    background-color var(--warning-bg)
-    border-color var(--warning-bg)
+    color var(--txt)
+    background-color var(--bg-warn)
+    border-color var(--bg-warn)
   .btn-grey
-    color var(--main-clr)
-    background-color var(--search-bg)
-    border-color var(--search-bg)
+    color var(--txt)
+    background-color var(--bg-4)
+    border-color var(--bg-4)
   
   // images
-  // == torrent description
+  // torrent description
   #torrent-description img
-    border-radius prad
+    rad()
     box-shadow none
-  // == user avatars
+  // user avatars
   .avatar
-    border-radius prad
+    rad()
     box-shadow none
   .comment-content img
-    border-radius prad
+    rad()
     box-shadow none
-  // == round avatars
-  if avaRound
+  // round avatars
+  if avarnd
     .avatar
       border-radius 100%
-  // == adjust image saturation
+  // adjust image saturation
   #torrent-description img, .comment-content img, .well img
-    filter saturate(imgSat)
+    filter saturate(imgsat)
   .avatar
-    filter saturate(avaSat)
-  // == img box shadows
-  if imgShad
+    filter saturate(avasat)
+  // img box shadows
+  if imgshad
     #torrent-description img, .comment-content img, .well img
-      box-shadow pshad
-  if avaShad
+      shad()
+  if avashad
     .avatar
-      box-shadow pshad
+      shad()
     
   // dark mode toggle visibility
-  if darkTgl
+  if xdarkbtn
     footer p
       visibility hidden
-      
+
+  // rotating color animation
+  @keyframes rainbow
+    0%
+      color hsl(335, 45%, 60%)
+      text-shadow 0 0 10px hsl(335, 45%, 60%)
+    10%
+      color hsl(225, 100%, 70%)
+      text-shadow 0 0 10px hsl(225, 100%, 70%)
+    20%
+      color hsl(190, 45%, 60%)
+      text-shadow 0 0 10px hsl(190, 45%, 60%)
+    30%
+      color hsl(50, 45%, 60%)
+      text-shadow 0 0 10px hsl(50, 45%, 60%)
+    40%
+      color hsl(0, 45%, 60%)
+      text-shadow 0 0 10px hsl(0, 45%, 60%)
+    50%
+      color hsl(140, 45%, 60%)
+      text-shadow 0 0 10px hsl(140, 45%, 60%)
+    60%
+      color hsl(200, 45%, 60%)
+      text-shadow 0 0 10px hsl(200, 45%, 60%)
+    70%
+      color hsl(35, 60%, 40%)
+      text-shadow 0 0 10px hsl(35, 60%, 40%)
+    80%
+      color hsl(10, 70%, 70%)
+      text-shadow 0 0 10px hsl(10, 70%, 70%)
+    90%
+      color hsl(50, 100%, 50%)
+      text-shadow 0 0 10px hsl(50, 100%, 50%)
+    100%
+      color hsl(335, 45%, 60%)
+      text-shadow 0 0 10px hsl(335, 45%, 60%)
+
   // show userstyle attribution
-  if about
+  if xus
     footer::before
-        content attrib
+      content us
+      font-weight bold
+      animation rainbow 5s infinite
+    
