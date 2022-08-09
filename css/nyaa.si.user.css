@@ -1,4 +1,4 @@
-us = "Lunar Duck v2.2.0 🌸 sabakuran"
+us = "Lunar Duck v2.2.1 🌸 sabakuran"
 
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
@@ -9,7 +9,7 @@ us = "Lunar Duck v2.2.0 🌸 sabakuran"
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.2.0
+@version      2.2.1
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -55,7 +55,7 @@ us = "Lunar Duck v2.2.0 🌸 sabakuran"
 @var select density "Table density" {
     "Default*":"none",
     "Comfortable":"10px",
-    "Compact":"0"
+    "Compact":"dens-compact"
 }
 @var select prad "Rounded corners" {
   "None":"0",
@@ -184,8 +184,10 @@ us = "Lunar Duck v2.2.0 🌸 sabakuran"
       width cw
   
   // torrentlist adjust padding
-  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td
+  .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td
   table.torrent-list td:first-child
+    if density == "dens-compact"
+      padding 0 5px 0 5px
     padding density
       
   // workaround for table border radius
@@ -612,4 +614,3 @@ us = "Lunar Duck v2.2.0 🌸 sabakuran"
       content us
       font-weight bold
       animation rainbow 5s infinite
-    
