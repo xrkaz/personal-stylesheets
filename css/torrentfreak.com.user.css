@@ -1,3 +1,5 @@
+us = "Lunar Duck v1.1.0 🌸 sabakuran"
+
 /* ==UserStyle==
 @name         torrentfreak.com - Lunar Duck
 @namespace    sabakuran
@@ -7,75 +9,141 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/torrentfreak.com.user.css
 @preprocessor stylus
-@version      1.0.3
+@version      1.1.0
 @license      WTFPL
 ===================
-@var select variant "Color scheme" {
-    "Default*":"default",
-    "Desert Orchid":"sabakuran",
-    "Jade Vine":"hisuikazura"
+@var select cs "Color scheme" {
+  "Default*":"cs-dark",
+  "Miku":"cs-cyan",
+  "Luka":"cs-pink",
+  "Rin":"cs-yellow",
+  "Teto":"cs-red",
+  "Gumi":"cs-green",
+  "Kaito":"cs-blue",
 }
 @var select hanim "Hover animation" {
-    "Float*":"usw",
-    "Shrink":"animix"
+  "Float*":"usw",
+  "Shrink":"animix"
 }
-@var checkbox navStick "Enable sticky navbar" 1
-@var checkbox comBox "Hide comment box" 1
+@var select imgsat "Image saturation" {
+  "Greyscale":"0%",
+  "10%":"10%",
+  "20%":"20%",
+  "30%":"30%",
+  "40%":"40%",
+  "Half":"50%",
+  "60%":"60%",
+  "70%":"70%",
+  "80%":"80%",
+  "90%":"90%",
+  "Default*":"100%"
+}
+@var select prad "Rounded corners" {
+  "None":"0",
+  "Default*":"4px",
+  "8px":"8px",
+  "12px":"12px"
+}
+@var checkbox navstick "Enable sticky navbar" 1
+@var checkbox combox "Hide comment box" 1
 @var checkbox social "Hide socials" 1
-@var checkbox rcorn "Rounded corners" 1
-@var range imgSat "Image saturation" [100, 50, 100, 5, "%"]
-@var checkbox about "Show userstyle attribution" 0
+@var checkbox xcw "Adjust container width" 0
+@var range cw "Container width" [77, 66, 120, 1,"rem"]
+@var checkbox xus "Show userstyle attribution" 1
 ==/UserStyle== */
-
-attrib = "Lunar Duck v1.0.3 🌸 sabakuran"
-i = !important
-pshad = 0 1px 3px #00000080
-prad = 0
-if rcorn
-  prad = 4px
 
 @-moz-document domain("torrentfreak.com")
   
+  i = !important
+  
   :root
-    --main-clr hsla(0, 0%, 100%, .8)
-    --main-clr-act hsl(0, 0%, 100%)
-    --sub-clr hsla(0, 0%, 100%, .5)
-    --success-clr hsl(150, 50%, 50%)
-    --success-clr-act hsl(150, 50%, 80%)
-    --success-bg hsl(150, 30%, 20%)
-    --warning-clr hsl(35, 50%, 50%)
-    --warning-bg hsl(35, 30%, 20%)
-    --danger-clr hsl(360, 50%, 50%)
-    --danger-bg hsl(360, 30%, 20%)
-    --info-clr hsl(225, 50%, 50%)
-    --info-bg hsl(225, 30%, 20%)
-    if variant == "default"
-      --main-bg hsl(0, 0%, 10%)
-      --second-bg hsl(0, 0%, 5%)
-      --panel-bg hsl(0, 0%, 15%)
-      --third-bg hsl(0, 0%, 25%)
-      --search-bg hsl(0, 0%, 20%)
-      --search-act hsl(0, 0%, 45%)
-      --link-clr hsl(225, 100%, 70%)
-      --link-act hsl(225, 100%, 80%)
-    else if variant == "sabakuran"
-      --main-bg hsl(315, 20%, 10%)
-      --second-bg hsl(315, 20%, 5%)
-      --panel-bg hsl(325, 20%, 20%)
-      --third-bg hsl(330, 15%, 30%)
-      --search-bg hsl(330, 15%, 25%)
-      --search-act hsl(330, 15%, 50%)
-      --link-clr hsl(335, 45%, 60%)
-      --link-act hsl(335, 45%, 80%)
-    else if variant == "hisuikazura"
-      --main-bg hsl(185, 20%, 10%)
-      --second-bg hsl(185, 20%, 5%)
-      --panel-bg hsl(185, 100%, 10%)
-      --third-bg hsl(185, 15%, 40%)
-      --search-bg hsl(185, 30%, 20%)
-      --search-act hsl(185, 30%, 45%)
-      --link-clr hsl(190, 45%, 60%)
-      --link-act hsl(190, 45%, 80%)
+    --txt hsla(0, 0%, 100%, .8)
+    --txt-act hsl(0, 0%, 100%)
+    --txt-sub hsla(0, 0%, 100%, .5)
+    --txt-ph hsla(0, 0%, 100%, .3)
+    --txt-succ hsl(150, 50%, 50%)
+    --txt-succ-act hsl(150, 50%, 80%)
+    --bg-succ hsl(150, 30%, 20%)
+    --txt-warn hsl(35, 50%, 50%)
+    --bg-warn hsl(35, 30%, 20%)
+    --txt-dang hsl(360, 50%, 50%)
+    --bg-dang hsl(360, 30%, 20%)
+    --txt-info hsl(225, 50%, 50%)
+    --bg-info hsl(225, 30%, 20%)
+    if cs == "cs-dark"
+      --bg-1 hsl(0, 0%, 10%)
+      --bg-2 hsl(0, 0%, 5%)
+      --bg-3 hsl(0, 0%, 15%)
+      --bg-4 hsl(0, 0%, 20%)
+      --bg-5 hsl(0, 0%, 25%)
+      --bg-6 hsl(0, 0%, 45%)
+      --txt-lnk hsl(225, 100%, 70%)
+      --txt-lnk-act hsl(225, 100%, 80%)
+    else if cs == "cs-pink"
+      --bg-1 hsl(315, 20%, 10%)
+      --bg-2 hsl(315, 20%, 5%)
+      --bg-3 hsl(325, 20%, 20%)
+      --bg-4 hsl(330, 15%, 25%)
+      --bg-5 hsl(330, 15%, 30%)
+      --bg-6 hsl(330, 15%, 50%)
+      --txt-lnk hsl(335, 45%, 60%)
+      --txt-lnk-act hsl(335, 45%, 80%)
+    else if cs == "cs-cyan"
+      --bg-1 hsl(185, 20%, 10%)
+      --bg-2 hsl(185, 20%, 5%)
+      --bg-3 hsl(185, 100%, 10%)
+      --bg-4 hsl(185, 30%, 20%)
+      --bg-5 hsl(185, 15%, 40%)
+      --bg-6 hsl(185, 30%, 45%)
+      --txt-lnk hsl(190, 45%, 60%)
+      --txt-lnk-act hsl(190, 45%, 80%)
+    else if cs == "cs-yellow"
+      --bg-1 hsl(50, 20%, 10%)
+      --bg-2 hsl(50, 20%, 5%)
+      --bg-3 hsl(50, 100%, 10%)
+      --bg-4 hsl(50, 30%, 20%)
+      --bg-5 hsl(50, 15%, 40%)
+      --bg-6 hsl(50, 30%, 45%)
+      --txt-lnk hsl(50, 45%, 60%)
+      --txt-lnk-act hsl(50, 45%, 80%)
+    else if cs == "cs-red"
+      --bg-1 hsl(0, 20%, 10%)
+      --bg-2 hsl(0, 20%, 5%)
+      --bg-3 hsl(0, 100%, 10%)
+      --bg-4 hsl(0, 30%, 20%)
+      --bg-5 hsl(0, 15%, 40%)
+      --bg-6 hsl(0, 30%, 45%)
+      --txt-lnk hsl(0, 45%, 60%)
+      --txt-lnk-act hsl(0, 45%, 80%)
+    else if cs == "cs-green"
+      --bg-1 hsl(140, 20%, 10%)
+      --bg-2 hsl(140, 20%, 5%)
+      --bg-3 hsl(140, 100%, 10%)
+      --bg-4 hsl(140, 30%, 20%)
+      --bg-5 hsl(140, 15%, 40%)
+      --bg-6 hsl(140, 30%, 45%)
+      --txt-lnk hsl(140, 45%, 60%)
+      --txt-lnk-act hsl(140, 45%, 80%)
+    else if cs == "cs-blue"
+      --bg-1 hsl(200, 20%, 10%)
+      --bg-2 hsl(200, 20%, 5%)
+      --bg-3 hsl(200, 100%, 10%)
+      --bg-4 hsl(200, 30%, 20%)
+      --bg-5 hsl(200, 15%, 40%)
+      --bg-6 hsl(200, 30%, 45%)
+      --txt-lnk hsl(200, 45%, 60%)
+      --txt-lnk-act hsl(200, 45%, 80%)
+        
+  pan1()
+    background-color var(--bg-1)
+    color var(--txt)
+  shad()
+    box-shadow 0 1px 3px hsla(0, 0%, 0%, .5)
+  rad()
+    border-radius prad
+  sharad()
+    shad()
+    rad()
 
   // scrollbar
   html
@@ -83,76 +151,107 @@ if rcorn
     ::-webkit-scrollbar
       width 15px
     ::-webkit-scrollbar-track
-      background-color var(--second-bg)
-      border-left 1px solid var(--panel-bg)
+      background-color var(--bg-2)
+      border-left 1px solid var(--bg-3)
     ::-webkit-scrollbar-thumb
-      background-color var(--search-bg)
+      background-color var(--bg-4)
       border-radius 0
       &:hover
-        background-color var(--search-act)
+        background-color var(--bg-6)
     // firefox
-    scrollbar-color var(--search-bg) var(--second-bg)
+    scrollbar-color var(--bg-4) var(--bg-2)
     scrollbar-width auto
+    
+  // adjust container width
+  if xcw
+    :root
+      --global-container-max-width cw
+      
+  // language selector
+  #trp-floater-ls
+    shad()
+    border-radius prad prad 0 0
+  #trp-floater-ls.trp-color-dark
+    background var(--bg-5)
     
   // backbone
   a
-    color var(--link-clr)
+    color var(--txt-lnk)
     text-decoration none
     &:hover, &:focus
-      color var(--link-act)
+      color var(--txt-lnk-act)
       text-decoration none
   html
-    color var(--main-clr)
-    background var(--main-bg)
+    color var(--txt)
+    background var(--bg-1)
   main
-    background-color var(--main-bg)
+    background-color var(--bg-1)
     
   // header
   @media screen and (min-width: 48em)
     .header__fixed
-      border-top 8px solid var(--panel-bg)
-      box-shadow pshad
+      //shad()
+      //border-top 8px solid var(--bg-3)
+      border-top 0 // preference
+      position absolute // preference
   .header
-    background-color var(--second-bg)
-    border-bottom 1px solid var(--panel-bg)
-    box-shadow pshad
+    shad()
+    background-color var(--bg-2)
+    border-bottom 1px solid var(--bg-3)
     z-index 99
-  //> navigation
-  @media screen and (min-width: 48em)
+  // navigation
+  @media only screen and (min-width 48em) // suppress animation
+    .menu__link:hover:before
+      transform none
     .menu__link:before
-      background var(--panel-bg)
-      color var(--main-clr)
+      background-color var(--bg-3)
+      color var(--txt)
+      transform none
+      transition none
     .menu__link--active
-      background-color var(--panel-bg)
+      background-color var(--bg-3)
+  .menu__link
+    color var(--txt)
+    &:focus, &:active
+      color var(--txt) // maintain color
   .menu__list .sub-menu
-    border 1px solid var(--panel-bg)
-    border-radius prad
-    box-shadow pshad
+    sharad()
+    border 1px solid var(--bg-3)
   .menu__list .sub-menu li a
-    color var(--main-clr)
-    background var(--panel-bg)
+    color var(--txt)
+    background var(--bg-3)
   .menu__list .sub-menu li a:hover, .menu__list .sub-menu li a:active, .menu__list .sub-menu li a:focus
-    color var(--main-clr)
-    background var(--third-bg)
+    color var(--txt)
+    background var(--bg-5)
+  .o-input::placeholder
+    color var(--txt-ph) i
+    opacity 1 // firefox
   
-  //> make navbar sticky
-  if navStick
+  // make navbar sticky
+  if navstick
     .header
       position sticky
       top 0
 
-  //> searchbar
-  .o-input--widget
-    color var(--main-clr)
-    background-color var(--search-bg)
-    border 1px solid var(--search-bg)
-    box-shadow pshad
-    border-radius prad
-  //> logo
+  // searchbar
+  .o-input
+    sharad()
+    color var(--txt)
+    background-color var(--bg-4)
+    border 1px solid var(--bg-4)
+    
+  // logo
   .logo
-    background-color var(--panel-bg)
+    background-color var(--bg-3)
+    height 90px // preference
     
   // hero
+  .hero
+    background-color var(--txt-lnk)
+  .hero__description
+    color var(--txt-sub)
+  a.hero:hover .hero__title // don't alter hero title on hover
+    opacity 1
   .hero:after
     if variant == "default"
       background linear-gradient(180deg,hsla(0, 0%, 15%, .8) 0,hsla(0, 0%, 10%, .95))
@@ -163,13 +262,13 @@ if rcorn
   
   // content
   .page__content
-    background-color var(--main-bg)
+    background-color var(--bg-1)
   @media screen and (min-width: 64em)
     .container.container--main:after
-      background-color var(--main-bg)
+      background-color var(--bg-1)
   .page__sidebar
-    background-color var(--main-bg)
-  //> pagination
+    background-color var(--bg-1)
+  // pagination
   .navigation__link:hover
     text-decoration none
   .navigation__link--right img
@@ -181,206 +280,239 @@ if rcorn
   .navigation__link--left::before
     content ("«")
   .tool-pagination>ul li:not(.navigation__item) a
-    background var(--panel-bg)
-    border-radius prad
-    color var(--main-clr)
+    sharad()
+    background var(--bg-3)
+    color var(--txt)
     padding 3px 5px
-    box-shadow pshad
     &:hover
-      background var(--search-act)
+      background var(--bg-6)
   .tool-pagination>ul li:not(.navigation__item) .current
-    background var(--third-bg)
-    border-radius prad
-    box-shadow pshad
-    color var(--main-clr)
+    sharad()
+    background var(--bg-5)
+    color var(--txt)
     padding 3px 5px
   // search result heading text
   .page__heading span, .hero__title span
-    color var(--main-clr)
+    color var(--txt)
     font-style italic
     
   // articles
   .article
-    background-color var(--panel-bg)
-    border-radius prad
-    box-shadow pshad
+    sharad()
+    background-color var(--bg-3)
     padding 30px
     margin-bottom 35px
-  //> article body
+  // article body
   .article__body img
-    border-radius prad
-    box-shadow pshad
+    sharad()
   .article__body p
-    color var(--main-clr)
+    color var(--txt)
   .article__excerpt
-    color var(--main-clr)
+    color var(--txt)
   .article__body h2
-    color var(--main-clr-act)
+    color var(--txt-act)
   .article__body a:visited
-    color var(--link-clr)
+    color var(--txt-lnk)
     &:hover
-      color var(--link-act)
+      color var(--txt-lnk-act)
   .article__body blockquote
-    background-color var(--main-bg)
-    border-left 5px solid var(--third-bg)
-    border-radius 4px
-    box-shadow pshad
+    sharad()
+    background-color var(--bg-1)
+    border-left 5px solid var(--bg-5)
     padding 10px 20px
     margin-right 0
-  //> article table
+  // article table
   .article__body table
-    border 5px solid var(--search-bg)
-    box-shadow pshad
-    border-radius prad
+    sharad()
+    border 5px solid var(--bg-4)
     border-collapse separate
     border-spacing 0
     margin-bottom 25px
     text-align center
   .article__body table thead
-    background-color var(--main-bg)
-    color var(--main-clr)
+    pan1()
   .article__body table tfoot
-    background-color var(--main-bg)
+    background-color var(--bg-1)
   .article__body table td, .article__body table th
     border 0
     padding 8px
   .article__body table tbody tr:nth-child(odd)
-    background-color var(--search-bg)
-  //> bullet points
+    background-color var(--bg-4)
+  // bullet points
   .article__body ul li:after
-    background-color var(--third-bg)
-    box-shadow pshad
-  //> article author
+    shad()
+    background-color var(--bg-5)
+  // article author
   .hero__published a, .hero__published span
-    color var(--link-clr)
+    color var(--txt-lnk)
     &:hover
-      color var(--link-act)
-  //> posts
+      color var(--txt-lnk-act)
+  // posts
   .preview-article
-    background-color var(--panel-bg)
-    box-shadow pshad
-    border 1px solid var(--panel-bg)
-    border-radius prad
+    sharad()
+    background-color var(--bg-3)
+    border 1px solid var(--bg-3)
     transition ease 0.1s
-    &:hover
+    &:hover // hover animation
+      background-color var(--bg-4)
       if hanim == "usw"
         transform translateY(-4px)
-        background-color var(--search-bg)
       else if hanim == "animix"
         transform scale(.98)
-        background-color var(--search-bg)
   .preview-article__excerpt
-    color var(--sub-clr)
+    color var(--txt-sub)
   .preview-article__title
-    color var(--main-clr)
+    color var(--txt)
   .preview-article__published
-    color var(--main-clr)
+    color var(--txt)
   .preview-article:hover .preview-article__title
     text-decoration none
-  //> post category
+  // post category
   .preview-article__category
-    background-color var(--third-bg)
-    color var(--main-clr)
-    box-shadow pshad
+    shad()
+    background-color var(--bg-5)
+    color var(--txt)
     &:before
-      background-color var(--third-bg)
-  //> post header img
+      background-color var(--bg-5)
+  // post header img
   .preview-article__photo
-    border-radius 0
-    box-shadow pshad
-    if rcorn
-      border-radius 4px 4px 0 0
+    shad()
+    border-radius prad prad 0 0
     
   // sidebar
-  //> popular posts
+  // popular posts
   .o-widget__title
-    background-color var(--third-bg)
-    box-shadow pshad
-    color var(--main-clr)
-  //> background
+    shad()
+    background-color var(--bg-5)
+    color var(--txt)
+  // background
   .o-widget--back
-    background-color var(--panel-bg)
-    border-radius prad
-    box-shadow pshad
-  //> post titles
+    sharad()
+    background-color var(--bg-3)
+  // post titles
   .widget-popular__title
-    color var(--main-clr)
-  //> thumbnail
-  .widget-popular__photo
-    border-radius prad
-    box-shadow pshad
-  //> img slider
-  .widget-slider .cycle-pager span.cycle-pager-active
-    color var(--search-act)
-  .widget-slider .cycle-pager span
-    color var(--search-bg)
-    &:hover
-      color var(--search-act)
-  #widget-slider-next svg g path, #widget-slider-prev svg g path
-    fill var(--search-act)
-  .widget-slider
-    background var(--panel-bg)
-    box-shadow pshad
-    &:before, &:after
-      background var(--panel-bg)
-      box-shadow pshad
-  .cycle-slide__link
-    color var(--sub-clr)
+    color var(--txt-sub)
     &:hover, &:focus
-      color var(--main-clr)
+      color var(--txt)
+  // thumbnail
+  .widget-popular__photo
+    sharad()
+  // img slider
+  .widget-slider .cycle-pager span.cycle-pager-active
+    color var(--bg-6)
+  .widget-slider .cycle-pager span
+    color var(--bg-4)
+    &:hover
+      color var(--bg-6)
+  #widget-slider-next svg g path, #widget-slider-prev svg g path
+    fill var(--bg-6)
+  .widget-slider
+    shad()
+    background var(--bg-3)
+    &:before, &:after
+      shad()
+      background var(--bg-3)
+  .cycle-slide__link
+    color var(--txt-sub)
+    &:hover, &:focus
+      color var(--txt)
       
   // comment box
   .comments
-    background-color var(--panel-bg)
-    border 1px solid var(--panel-bg)
-    box-shadow pshad
-    border-radius prad
+    sharad()
+    background-color var(--bg-3)
+    border 1px solid var(--bg-3)
   .comments .comments__icon
-    if variant == "default"
+    if cs == "cs-dark"
       filter saturate(0) brightness(80%)
-    else if variant == "hisuikazura"
+    else if cs == "cs-cyan"
       filter hue-rotate(210deg)
+    else if cs == "cs-yellow"
+      filter hue-rotate(100deg)
+    else if cs == "cs-red"
+      filter hue-rotate(30deg)
+    else if cs == "cs-green"
+      filter hue-rotate(150deg)
+    else if cs == "cs-blue"
+      filter hue-rotate(250deg)
   
   // footer
   .footer
-    border-bottom 0 // inconsistent
-    border-top 1px solid var(--panel-bg)
-    background-color var(--second-bg)
+    border-bottom 0 // preference
+    border-top 1px solid var(--bg-3)
+    background-color var(--bg-2)
   .footer__title
-    color var(--main-clr)
-  //> stats
+    color var(--txt)
+  // stats
   .stats__value
-    color var(--main-clr)
+    color var(--txt)
   .stats__description
-    color var(--link-clr)
+    color var(--txt-lnk)
   a.stats__link:hover .stats__description
-    color var(--link-act)
+    color var(--txt-lnk-act)
     text-decoration none
-  //> legal links
+  // legal links
   .copyright a:hover
     text-decoration none
   
   // hide comment box
-  if comBox
+  if combox
     #tf-comments
       display none
       
   // hide social buttons
   if social
-    .socials, .widget_block.o-widget
+    .socials
       display none
       
   // adjust image saturation
-  img, .cycle-slide__image
-    filter saturate(imgSat)
+  img, .cycle-slide__image, .hero
+    filter saturate(imgsat)
     
   // ad management
   .widget_custom_html.o-widget.widget_text
     display none
+  
+  // rotating color animation
+  @keyframes rainbow
+    0%
+      color hsl(335, 45%, 60%)
+      text-shadow 0 0 10px hsl(335, 45%, 60%)
+    10%
+      color hsl(225, 100%, 70%)
+      text-shadow 0 0 10px hsl(225, 100%, 70%)
+    20%
+      color hsl(190, 45%, 60%)
+      text-shadow 0 0 10px hsl(190, 45%, 60%)
+    30%
+      color hsl(50, 45%, 60%)
+      text-shadow 0 0 10px hsl(50, 45%, 60%)
+    40%
+      color hsl(0, 45%, 60%)
+      text-shadow 0 0 10px hsl(0, 45%, 60%)
+    50%
+      color hsl(140, 45%, 60%)
+      text-shadow 0 0 10px hsl(140, 45%, 60%)
+    60%
+      color hsl(200, 45%, 60%)
+      text-shadow 0 0 10px hsl(200, 45%, 60%)
+    70%
+      color hsl(35, 60%, 40%)
+      text-shadow 0 0 10px hsl(35, 60%, 40%)
+    80%
+      color hsl(10, 70%, 70%)
+      text-shadow 0 0 10px hsl(10, 70%, 70%)
+    90%
+      color hsl(50, 100%, 50%)
+      text-shadow 0 0 10px hsl(50, 100%, 50%)
+    100%
+      color hsl(335, 45%, 60%)
+      text-shadow 0 0 10px hsl(335, 45%, 60%)  
     
   // show userstyle attribution
-  if about
+  if xus
     .copyright::after
-      content attrib
-      color var(--main-clr)
+      content us
       display block
+      font-family monospace
+      animation rainbow 5s infinite
