@@ -1,4 +1,4 @@
-us = "Lunar Duck v1.1.0 🌸 sabakuran"
+us = "Lunar Duck v1.1.1 🌸 sabakuran"
 
 /* ==UserStyle==
 @name         torrentfreak.com - Lunar Duck
@@ -9,7 +9,7 @@ us = "Lunar Duck v1.1.0 🌸 sabakuran"
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/torrentfreak.com.user.css
 @preprocessor stylus
-@version      1.1.0
+@version      1.1.1
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -247,18 +247,28 @@ us = "Lunar Duck v1.1.0 🌸 sabakuran"
     
   // hero
   .hero
+    shad()
+    margin-bottom 5px
     background-color var(--txt-lnk)
   .hero__description
     color var(--txt-sub)
   a.hero:hover .hero__title // don't alter hero title on hover
     opacity 1
   .hero:after
-    if variant == "default"
+    if cs == "cs-dark"
       background linear-gradient(180deg,hsla(0, 0%, 15%, .8) 0,hsla(0, 0%, 10%, .95))
-    else if variant == "sabakuran"
+    else if cs == "cs-pink"
       background linear-gradient(180deg,hsla(325, 20%, 20%, .8) 0,hsla(315, 20%, 10%, .95))
-    else if variant == "hisuikazura"
+    else if cs == "cs-cyan"
       background linear-gradient(180deg,hsla(185, 100%, 10%, .8) 0,hsla(185, 20%, 10%, .95))
+    else if cs == "cs-yellow"
+      background linear-gradient(180deg,hsla(50, 100%, 10%, .8) 0,hsla(50, 20%, 10%, .95))
+    else if cs == "cs-red"
+      background linear-gradient(180deg,hsla(0, 100%, 10%, .8) 0,hsla(0, 20%, 10%, .95))
+    else if cs == "cs-green"
+      background linear-gradient(180deg,hsla(140, 100%, 10%, .8) 0,hsla(140, 20%, 10%, .95))
+    else if cs == "cs-blue"
+      background linear-gradient(180deg,hsla(200, 100%, 10%, .8) 0,hsla(200, 20%, 10%, .95))
   
   // content
   .page__content
