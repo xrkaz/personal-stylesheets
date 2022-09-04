@@ -1,3 +1,5 @@
+us = "\ALunar Duck 2.0.0 🌸 sabakuran"
+
 /* ==UserStyle==
 @name         stylus-lang.com - Lunar Duck
 @namespace    sabakuran
@@ -7,199 +9,268 @@
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/stylus-lang.com.user.css
 @preprocessor stylus
-@version      1.1.1
+@version      2.0.0
 @license      WTFPL
 ===================
-@var select variant "Color scheme" {
-    "Default*":"default",
-    "Desert Orchid":"sabakuran",
-    "Jade Vine":"hisuikazura"
+@var select cs "Color scheme" {
+    "Default*":"cs-dark",
+    "Miku":"cs-cyan",
+    "Luka":"cs-pink",
+    "Rin":"cs-yellow",
+    "Teto":"cs-red",
+    "Gumi":"cs-green",
+    "Kaito":"cs-blue",
 }
-@var checkbox divpanel "Column-mode divider" 0
-@var checkbox about "Show userstyle attribution" 0
+@var select prad "Rounded corners" {
+  "None":"0",
+  "Default*":"4px",
+  "8px":"8px",
+  "12px":"12px"
+}
+@var checkbox xdarkbtn "Hide on-site color scheme toggle" 0
+@var checkbox sb "Enable custom scrollbar" 1
+@var checkbox notify "Show userstyle notification" 1
+@var checkbox xus "Show userstyle attribution" 1
 ==/UserStyle== */
-
-attrib = "Lunar Duck v1.1.1 🌸 sabakuran"
-i = !important
-pshad = 0 1px 3px #00000080
-prad = 4px
 
 @-moz-document domain("stylus-lang.com")
   
+  if notify
+    header::before
+      content "USERSTYLE NOTICE:\aWelcome to version 2! o7\aMake sure to use the on-site dark mode, or this style won't apply as intended.\aTo hide this msg, go to config and toggle 'Show userstyle notification.'\a-sabakuran"
+      font-family monospace
+      padding 10px
+      background black
+      color lime
+      white-space pre-wrap
+      display block
+  
+  i = !important
+  
   :root
-    --main-clr hsla(0, 0%, 100%, .8)
-    --main-clr-act hsl(0, 0%, 100%)
-    --sub-clr hsla(0, 0%, 100%, .5)
-    --success-clr hsl(150, 50%, 50%)
-    --success-clr-act hsl(150, 50%, 80%)
-    --success-bg hsl(150, 30%, 20%)
-    --warning-clr hsl(35, 50%, 50%)
-    --warning-bg hsl(35, 30%, 20%)
-    --danger-clr hsl(360, 50%, 50%)
-    --danger-bg hsl(360, 30%, 20%)
-    --info-clr hsl(225, 50%, 50%)
-    --info-bg hsl(225, 30%, 20%)
-    if variant == "default"
-      --main-bg hsl(0, 0%, 10%)
-      --second-bg hsl(0, 0%, 5%)
-      --panel-bg hsl(0, 0%, 15%)
-      --third-bg hsl(0, 0%, 25%)
-      --search-bg hsl(0, 0%, 20%)
-      --search-act hsl(0, 0%, 45%)
-      --link-clr hsl(225, 100%, 70%)
-      --link-act hsl(225, 100%, 80%)
-    else if variant == "sabakuran"
-      --main-bg hsl(315, 20%, 10%)
-      --second-bg hsl(315, 20%, 5%)
-      --panel-bg hsl(325, 20%, 20%)
-      --third-bg hsl(330, 15%, 30%)
-      --search-bg hsl(330, 15%, 25%)
-      --search-act hsl(330, 15%, 50%)
-      --link-clr hsl(335, 45%, 60%)
-      --link-act hsl(335, 45%, 80%)
-    else if variant == "hisuikazura"
-      --main-bg hsl(185, 20%, 10%)
-      --second-bg hsl(185, 20%, 5%)
-      --panel-bg hsl(185, 100%, 10%)
-      --third-bg hsl(185, 15%, 40%)
-      --search-bg hsl(185, 30%, 20%)
-      --search-act hsl(185, 30%, 45%)
-      --link-clr hsl(190, 45%, 60%)
-      --link-act hsl(190, 45%, 80%)
+    --txt hsla(0, 0%, 100%, .8)
+    --txt-act hsl(0, 0%, 100%)
+    --txt-sub hsla(0, 0%, 100%, .5)
+    --txt-ph hsla(0, 0%, 100%, .3)
+    --txt-succ hsl(150, 50%, 50%)
+    --txt-succ-act hsl(150, 50%, 80%)
+    --bg-succ hsl(150, 30%, 20%)
+    --txt-warn hsl(35, 50%, 50%)
+    --bg-warn hsl(35, 30%, 20%)
+    --txt-dang hsl(360, 50%, 50%)
+    --bg-dang hsl(360, 30%, 20%)
+    --txt-info hsl(225, 50%, 50%)
+    --bg-info hsl(225, 30%, 20%)
+    if cs == "cs-dark"
+      --bg-1 hsl(0, 0%, 10%)
+      --bg-2 hsl(0, 0%, 5%)
+      --bg-3 hsl(0, 0%, 15%)
+      --bg-4 hsl(0, 0%, 20%)
+      --bg-5 hsl(0, 0%, 25%)
+      --bg-6 hsl(0, 0%, 45%)
+      --txt-lnk hsl(225, 100%, 70%)
+      --txt-lnk-act hsl(225, 100%, 80%)
+    else if cs == "cs-pink"
+      --bg-1 hsl(315, 20%, 10%)
+      --bg-2 hsl(315, 20%, 5%)
+      --bg-3 hsl(325, 20%, 20%)
+      --bg-4 hsl(330, 15%, 25%)
+      --bg-5 hsl(330, 15%, 30%)
+      --bg-6 hsl(330, 15%, 50%)
+      --txt-lnk hsl(335, 45%, 60%)
+      --txt-lnk-act hsl(335, 45%, 80%)
+    else if cs == "cs-cyan"
+      --bg-1 hsl(185, 20%, 10%)
+      --bg-2 hsl(185, 20%, 5%)
+      --bg-3 hsl(185, 100%, 10%)
+      --bg-4 hsl(185, 30%, 20%)
+      --bg-5 hsl(185, 15%, 40%)
+      --bg-6 hsl(185, 30%, 45%)
+      --txt-lnk hsl(190, 45%, 60%)
+      --txt-lnk-act hsl(190, 45%, 80%)
+    else if cs == "cs-yellow"
+      --bg-1 hsl(50, 20%, 10%)
+      --bg-2 hsl(50, 20%, 5%)
+      --bg-3 hsl(50, 100%, 10%)
+      --bg-4 hsl(50, 30%, 20%)
+      --bg-5 hsl(50, 15%, 40%)
+      --bg-6 hsl(50, 30%, 45%)
+      --txt-lnk hsl(50, 45%, 60%)
+      --txt-lnk-act hsl(50, 45%, 80%)
+    else if cs == "cs-red"
+      --bg-1 hsl(0, 20%, 10%)
+      --bg-2 hsl(0, 20%, 5%)
+      --bg-3 hsl(0, 100%, 10%)
+      --bg-4 hsl(0, 30%, 20%)
+      --bg-5 hsl(0, 15%, 40%)
+      --bg-6 hsl(0, 30%, 45%)
+      --txt-lnk hsl(0, 45%, 60%)
+      --txt-lnk-act hsl(0, 45%, 80%)
+    else if cs == "cs-green"
+      --bg-1 hsl(140, 20%, 10%)
+      --bg-2 hsl(140, 20%, 5%)
+      --bg-3 hsl(140, 100%, 10%)
+      --bg-4 hsl(140, 30%, 20%)
+      --bg-5 hsl(140, 15%, 40%)
+      --bg-6 hsl(140, 30%, 45%)
+      --txt-lnk hsl(140, 45%, 60%)
+      --txt-lnk-act hsl(140, 45%, 80%)
+    else if cs == "cs-blue"
+      --bg-1 hsl(200, 20%, 10%)
+      --bg-2 hsl(200, 20%, 5%)
+      --bg-3 hsl(200, 100%, 10%)
+      --bg-4 hsl(200, 30%, 20%)
+      --bg-5 hsl(200, 15%, 40%)
+      --bg-6 hsl(200, 30%, 45%)
+      --txt-lnk hsl(200, 45%, 60%)
+      --txt-lnk-act hsl(200, 45%, 80%)
 
+  pan1()
+    background-color var(--bg-1)
+    color var(--txt)
+  shad()
+    box-shadow 0 1px 3px hsla(0, 0%, 0%, .5)
+  rad()
+    border-radius prad
+  sharad()
+    shad()
+    rad()
+        
   // scrollbar
-  html
-    // chromium
-    ::-webkit-scrollbar
-      width 15px
-    ::-webkit-scrollbar-track
-      background-color var(--second-bg)
-      border-left 1px solid var(--panel-bg)
-    ::-webkit-scrollbar-thumb
-      background-color var(--search-bg)
-      border-radius 0
-      &:hover
-        background-color var(--search-act)
-    // firefox
-    scrollbar-color var(--search-bg) var(--second-bg)
-    scrollbar-width auto
-    
+  if sb
+    html
+      // chromium
+      ::-webkit-scrollbar
+        width 15px
+      ::-webkit-scrollbar-track
+        background-color var(--bg-2)
+        border-left 1px solid var(--bg-3)
+      ::-webkit-scrollbar-thumb
+        background-color var(--bg-4)
+        border-radius 0
+        &:hover
+          background-color var(--bg-6)
+      // firefox
+      scrollbar-color var(--bg-4) var(--bg-2)
+      scrollbar-width auto
+  
   // backbone
   a
-    color var(--link-clr)
-    background-color transparent
-    text-decoration none
+    color var(--txt-lnk)
     &:hover, &:focus
-      color var(--link-act)
-      text-decoration none
-      outline none
-  li
-    color var(--main-clr)
-  hr
-    color var(--search-bg)
-  h1
-    color var(--main-clr)
-  h2
-    color var(--danger-clr)
-  p
-    color var(--main-clr)
-    line-height 25px
-  pre, code
-    background var(--panel-bg)
-    color var(--main-clr)
-    border 1px solid var(--panel-bg)
-    border-radius prad
-    box-shadow pshad
-  code
-    background var(--third-bg)
-    border 1px solid var(--third-bg)
-  pre code
-    box-shadow none
-    background transparent
-  .content
-    background var(--main-bg)
-  .sidebar
-    background var(--second-bg)
-    border-bottom 0
-  .sidebar p a
-    color var(--link-clr)
+      color var(--txt-lnk-act)
+  .vp-doc a
+    color var(--txt-lnk)
     &:hover, &:focus
-      color var(--link-act)
-      text-decoration none
-      outline none
-  .sidebar nav
-    border 5px solid var(--panel-bg)
+      color var(--txt-lnk-act)
+      
+  // navbar
+  .VPNavBar[data-v-3a03f684]
+    background-color var(--bg-2)
+    border-bottom 1px solid var(--bg-3)
+    shad()
+  .VPNavBar.has-sidebar .content[data-v-3a03f684]
+    backdrop-filter none
+    -webkit-backdrop-filter none
+  .VPNavBarTitle.has-sidebar[data-v-2f91c8e3]
+    border-bottom-color transparent
+    background-color unset
+  
+  // code blocks
+  .vp-doc div[class*=language-]
+    border 1px solid var(--bg-3)
+    sharad()
+    
+  .dark
+    --vp-c-text-1 var(--txt)
+    --vp-c-bg var(--bg-1)
+    --vp-c-bg-soft var(--bg-3)
+    --vp-c-bg-alt var(--bg-2)
+    --vp-code-block-bg var(--bg-3)
+    --vp-c-brand var(--txt-lnk)
+    --vp-c-text-2 var(--txt-sub)
+  
+  // landing page
+  .tagline[data-v-edc7fb52]
+    color var(--txt-sub)
+  // landing page boxes
+  .VPBox[data-v-22eabb70]
+    border 1px solid var(--bg-3)
+    sharad()
+  .details[data-v-22eabb70]
+    color var(--txt-sub)
+  // landing page buttons
+  .VPButton.alt[data-v-cd96e374]
+    border-color var(--bg-3)
+    color var(--txt)
+    background-color var(--bg-3)
+    &:hover, &:focus
+      background-color var(--bg-5)
+      border-color var(--bg-5)
+  .VPButton.medium[data-v-cd96e374]
     border-radius prad
-    box-shadow pshad
-  .sidebar nav a:nth-of-type(2n+1)
-    background-color var(--panel-bg)
-  .sidebar nav a:first-child, .sidebar nav strong:first-child
-    border 0
-  .sidebar nav a, .sidebar nav strong
-    border 0
-  // == selection highlighting
-  .sidebar nav a:hover, .sidebar nav strong
-    background var(--third-bg)
-    
-  // try stylus section
-  .stylus + .CodeMirror
-    border 1px solid var(--second-bg)
-    background var(--second-bg)
-    box-shadow pshad
-    border-radius prad
-    &:hover
-      border 1px solid var(--second-bg)
-  .css + .CodeMirror
-    background var(--panel-bg)
-    box-shadow pshad
-    border-radius prad
-    border 1px solid var(--panel-bg)
-  .CodeMirror pre
-    box-shadow none
-  // == cursor color
-  .CodeMirror-cursor
-    border-left 1px solid var(--main-clr) i
-  // prev/next buttons
-  #prev, #next
-    background var(--panel-bg)
-    border 1px solid var(--panel-bg)
-    box-shadow pshad
-    color var(--main-clr)
-    &:hover
-      box-shadow pshad
-      background var(--third-bg)
-    
-  // images
-  // == logo
-  .logo img
-    filter invert(100%)
-  // == github logo
-  .meow img
-    filter invert(100%)
-  // == credits
-  .sidebar .credit
-    filter grayscale(100%)
-    
-  // hide unnecessary elements
-  .sidebar .credit, .sidebar p
-    display none
-    
-  // show userstyle attribution
-  if about
-    .sidebar::after
-        content attrib
-        font-family 'Unica One', sans-serif
-        font-size 16px
-        text-transform uppercase
-        color var(--main-clr)
-        display block
-        background var(--panel-bg)
-        padding 0.5em 0 0.5em 0
-        margin -1rem 0 2rem 0
-        border-radius prad
-        box-shadow pshad
-        
-  // optional divider for vertical arrangements
-  if divpanel
-    .sidebar
-      border-bottom 5px solid var(--panel-bg)
+    sharad()
+  .VPButton.brand[data-v-cd96e374]
+    border-color var(--txt-lnk)
+    &:hover, &:focus
+      background-color var(--txt-lnk-act)
+      border-color var(--txt-lnk-act)
+  
+  // pagination
+  .pager-link:hover .title[data-v-cbe39522]
+    color var(--txt-lnk-act)
+  
+  // footer
+  .VPFooter[data-v-32972742]
+    background-color var(--bg-2)
+      
+  // dark mode toggle visibility
+  if xdarkbtn
+    .VPNavBarAppearance.appearance
+      display none
+  
+  // rotating color animation
+  @keyframes rainbow
+    0%
+      color hsl(335, 45%, 60%)
+      text-shadow 0 0 10px hsl(335, 45%, 60%)
+    10%
+      color hsl(225, 100%, 70%)
+      text-shadow 0 0 10px hsl(225, 100%, 70%)
+    20%
+      color hsl(190, 45%, 60%)
+      text-shadow 0 0 10px hsl(190, 45%, 60%)
+    30%
+      color hsl(50, 45%, 60%)
+      text-shadow 0 0 10px hsl(50, 45%, 60%)
+    40%
+      color hsl(0, 45%, 60%)
+      text-shadow 0 0 10px hsl(0, 45%, 60%)
+    50%
+      color hsl(140, 45%, 60%)
+      text-shadow 0 0 10px hsl(140, 45%, 60%)
+    60%
+      color hsl(200, 45%, 60%)
+      text-shadow 0 0 10px hsl(200, 45%, 60%)
+    70%
+      color hsl(35, 60%, 40%)
+      text-shadow 0 0 10px hsl(35, 60%, 40%)
+    80%
+      color hsl(10, 70%, 70%)
+      text-shadow 0 0 10px hsl(10, 70%, 70%)
+    90%
+      color hsl(50, 100%, 50%)
+      text-shadow 0 0 10px hsl(50, 100%, 50%)
+    100%
+      color hsl(335, 45%, 60%)
+      text-shadow 0 0 10px hsl(335, 45%, 60%)    
+      
+  // userstyle attribution
+  if xus
+    footer::after
+      content us
+      font-family monospace
+      display block
+      text-align center
+      white-space pre-wrap
+      animation rainbow 5s infinite
