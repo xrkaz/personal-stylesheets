@@ -1,4 +1,4 @@
-us = "Lunar Duck v2.2.1 🌸 sabakuran"
+us = "Lunar Duck v2.2.2 🌸 sabakuran"
 
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
@@ -9,7 +9,7 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
 @supportURL   https://github.com/sabakuran/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.2.1
+@version      2.2.2
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -19,13 +19,8 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
     "Rin":"cs-yellow",
     "Teto":"cs-red",
     "Gumi":"cs-green",
-    "Kaito":"cs-blue",
+    "Kaito":"cs-blue"
 }
-@var checkbox xdarkbtn "Hide dark mode toggle" 1
-@var checkbox navstick "Enable sticky navbar" 1
-@var checkbox avarnd "Enable rounded avatars" 1
-@var checkbox imgshad "Enable image shadows" 1
-@var checkbox avashad "Enable avatar shadows" 1
 @var select imgsat "Image saturation" {
   "Greyscale":"0%",
   "10%":"10%",
@@ -63,9 +58,25 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
   "8px":"8px",
   "12px":"12px"
 }
-@var checkbox xcw "Adjust container width" 0
+@var checkbox xdarkbtn "On-site color scheme toggle" 0
+@var checkbox sb "Custom scrollbar" 1
+@var checkbox navstick "Sticky navbar" 1
+@var checkbox avarnd "Circle avatars" 1
+@var checkbox imgshad "Image shadows" 1
+@var checkbox avashad "Avatar shadows" 1
+@var checkbox xaccent "Override link color" 0
+@var select accent "Link color" {
+    "Default":"lnk-dark",
+    "Miku":"lnk-cyan",
+    "Luka":"lnk-pink",
+    "Rin":"lnk-yellow",
+    "Teto":"lnk-red",
+    "Gumi":"lnk-green",
+    "Kaito":"lnk-blue"
+}
+@var checkbox xcw "Override container width" 0
 @var range cw "Container width" [1400, 1150, 1900, 10,"px"]
-@var checkbox xus "Show userstyle attribution" 1
+@var checkbox xus "Userstyle attribution" 1
 ==/UserStyle== */
 
 @-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
@@ -149,6 +160,31 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
       --bg-6 hsl(200, 30%, 45%)
       --txt-lnk hsl(200, 45%, 60%)
       --txt-lnk-act hsl(200, 45%, 80%)
+  
+  // override link color
+  if xaccent
+    :root
+      if accent == "lnk-dark"
+        --txt-lnk hsl(225, 100%, 70%)
+        --txt-lnk-act hsl(225, 100%, 80%)
+      else if accent == "lnk-pink"
+        --txt-lnk hsl(335, 45%, 60%)
+        --txt-lnk-act hsl(335, 45%, 80%)
+      else if accent == "lnk-cyan"
+        --txt-lnk hsl(190, 45%, 60%)
+        --txt-lnk-act hsl(190, 45%, 80%)
+      else if accent == "lnk-yellow"
+        --txt-lnk hsl(50, 45%, 60%)
+        --txt-lnk-act hsl(50, 45%, 80%)
+      else if accent == "lnk-red"
+        --txt-lnk hsl(0, 45%, 60%)
+        --txt-lnk-act hsl(0, 45%, 80%)
+      else if accent == "lnk-green"
+        --txt-lnk hsl(140, 45%, 60%)
+        --txt-lnk-act hsl(140, 45%, 80%)
+      else if accent == "lnk-blue"
+        --txt-lnk hsl(200, 45%, 60%)
+        --txt-lnk-act hsl(200, 45%, 80%)
 
   pan1()
     background-color var(--bg-1)
@@ -162,21 +198,22 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
     rad()
     
   // scrollbar
-  html
-    // chromium
-    ::-webkit-scrollbar
-      width 15px
-    ::-webkit-scrollbar-track
-      background-color var(--bg-2)
-      border-left 1px solid var(--bg-3)
-    ::-webkit-scrollbar-thumb
-      background-color var(--bg-4)
-      border-radius 0
-      &:hover
-        background-color var(--bg-6)
-    // firefox
-    scrollbar-color var(--bg-4) var(--bg-2)
-    scrollbar-width auto
+  if sb
+    html
+      // chromium
+      ::-webkit-scrollbar
+        width 15px
+      ::-webkit-scrollbar-track
+        background-color var(--bg-2)
+        border-left 1px solid var(--bg-3)
+      ::-webkit-scrollbar-thumb
+        background-color var(--bg-4)
+        border-radius 0
+        &:hover
+          background-color var(--bg-6)
+      // firefox
+      scrollbar-color var(--bg-4) var(--bg-2)
+      scrollbar-width auto
     
   // adjust container width
   if xcw
@@ -194,7 +231,7 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
   th:first-child
     border-top-left-radius prad - 6px
   th:last-child
-    border-top-right-radius prad -6px
+    border-top-right-radius prad - 6px
   tr:last-child td:last-child
     border-bottom-right-radius prad - 6px
   tr:last-child td:first-child
@@ -550,7 +587,7 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
   .comment-content img
     rad()
     box-shadow none
-  // round avatars
+  // circle avatars
   if avarnd
     .avatar
       border-radius 100%
@@ -567,10 +604,12 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
     .avatar
       shad()
     
-  // dark mode toggle visibility
+  // color scheme toggle visibility
+  footer p
+    visibility hidden
   if xdarkbtn
     footer p
-      visibility hidden
+      visibility visible
 
   // rotating color animation
   @keyframes rainbow
@@ -612,5 +651,5 @@ us = "Lunar Duck v2.2.1 🌸 sabakuran"
   if xus
     footer::before
       content us
-      font-weight bold
+      font-family monospace
       animation rainbow 5s infinite
