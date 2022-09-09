@@ -1,5 +1,5 @@
 **My Personal Stylesheets for Stylus**
-<br>Also available at [UserStyles.world](https://userstyles.world/user/sabakuran)
+<br>Also available at [UserStyles.world](https://userstyles.world/user/kaz)
 
 Not required, but for the best experience, install [uBlock Origin](https://github.com/gorhill/uBlock/#readme).
 
