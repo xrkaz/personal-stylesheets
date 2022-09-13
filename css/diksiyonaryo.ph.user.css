@@ -1,13 +1,15 @@
+attrib = "Lunar Duck v2.1.2 🌸 kaz.cx"
+
 /* ==UserStyle==
 @name         diksiyonaryo.ph - Lunar Duck
-@namespace    sabakuran
+@namespace    kaz.cx
 @description  DDG inspired theme for diksiyonaryo.ph
-@author       sabakuran (https://github.com/sabakuran)
-@homepageURL  https://github.com/sabakuran/personal-stylesheets
-@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
-@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/diksiyonaryo.ph.user.css
+@author       kaz <x@kaz.cx> (https://kaz.cx)
+@homepageURL  https://kaz.cx/lunar-duck
+@supportURL   https://github.com/xrkaz/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/diksiyonaryo.ph.user.css
 @preprocessor stylus
-@version      2.1.1
+@version      2.1.2
 @license      WTFPL
 ===================
 @var select browser "Browser" {
@@ -22,7 +24,6 @@
 @var checkbox about "Show userstyle attribution" 0
 ==/UserStyle== */
 
-attrib = "Lunar Duck v2.1.1 🌸 sabakuran"
 i = !important
 pshad = 0 1px 3px #00000080
 prad = 4px
