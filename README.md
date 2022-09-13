@@ -1,5 +1,3 @@
-**NOTICE: I WILL BE CHANGING MY NAME IN A FEW DAYS. LINKS MAY BREAK, ESPECIALLY IF YOU INSTALLED FROM GITHUB. USERSTYLES INSTALLED FROM USw REMAIN UNAFFECTED. JUST BE AWARE ;)**
-
 **My Personal Stylesheets for Stylus**
 <br>Also available at [UserStyles.world](https://userstyles.world/user/kaz)
 
