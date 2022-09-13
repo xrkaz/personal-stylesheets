@@ -1,15 +1,15 @@
-us = "\ALunar Duck 2.0.0 🌸 sabakuran"
+us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         stylus-lang.com - Lunar Duck
-@namespace    sabakuran
+@namespace    kaz.cx
 @description  DDG inspired theme for stylus-lang.com
-@author       sabakuran (https://github.com/sabakuran)
-@homepageURL  https://github.com/sabakuran/personal-stylesheets
-@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
-@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/stylus-lang.com.user.css
+@author       kaz <x@kaz.cx> (https://kaz.cx)
+@homepageURL  https://kaz.cx/lunar-duck
+@supportURL   https://github.com/xrkaz/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/stylus-lang.com.user.css
 @preprocessor stylus
-@version      2.0.0
+@version      2.0.1
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
