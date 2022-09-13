@@ -1,15 +1,15 @@
-us = "Lunar Duck v1.1.1 🌸 sabakuran"
+us = "Lunar Duck v1.1.2 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         torrentfreak.com - Lunar Duck
-@namespace    sabakuran
+@namespace    kaz.cx
 @description  DDG inspired theme for torrentfreak.com
-@author       sabakuran (https://github.com/sabakuran)
-@homepageURL  https://github.com/sabakuran/personal-stylesheets
-@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
-@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/torrentfreak.com.user.css
+@author       kaz (https://github.com/xrkaz)
+@homepageURL  https://github.com/xrkaz/personal-stylesheets
+@supportURL   https://github.com/xrkaz/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/torrentfreak.com.user.css
 @preprocessor stylus
-@version      1.1.1
+@version      1.1.2
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
