@@ -1,15 +1,15 @@
-us = "Lunar Duck v2.2.2 🌸 sabakuran"
+us = "Lunar Duck v2.2.3 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
-@namespace    sabakuran
+@namespace    kaz.cx
 @description  DDG inspired theme for nyaa.si
-@author       sabakuran (https://github.com/sabakuran)
-@homepageURL  https://github.com/sabakuran/personal-stylesheets
-@supportURL   https://github.com/sabakuran/personal-stylesheets/issues
-@updateURL    https://raw.githubusercontent.com/sabakuran/personal-stylesheets/master/css/nyaa.si.user.css
+@author       kaz <x@kaz.cx> (https://kaz.cx)
+@homepageURL  https://kaz.cx/lunar-duck
+@supportURL   https://github.com/xrkaz/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.2.2
+@version      2.2.3
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
