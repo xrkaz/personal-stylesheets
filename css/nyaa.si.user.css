@@ -1,4 +1,4 @@
-us = "Lunar Duck v2.2.3 🌸 kaz.cx"
+us = "Lunar Duck v2.2.4 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
@@ -9,7 +9,7 @@ us = "Lunar Duck v2.2.3 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.2.3
+@version      2.2.4
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -58,6 +58,7 @@ us = "Lunar Duck v2.2.3 🌸 kaz.cx"
   "8px":"8px",
   "12px":"12px"
 }
+@var checkbox alert "Userstyle conflict alert" 1
 @var checkbox xdarkbtn "On-site color scheme toggle" 0
 @var checkbox sb "Custom scrollbar" 1
 @var checkbox navstick "Sticky navbar" 1
@@ -74,8 +75,12 @@ us = "Lunar Duck v2.2.3 🌸 kaz.cx"
     "Gumi":"lnk-green",
     "Kaito":"lnk-blue"
 }
-@var checkbox xcw "Override container width" 0
-@var range cw "Container width" [1400, 1150, 1900, 10,"px"]
+@var checkbox xcw "Override layout width" 0
+@var range cw "Layout width" [1400, 1150, 1900, 10,"px"]
+@var checkbox xfont "Override font" 0
+@var text base "Base font" "Default"
+@var text mono "Monospace font" "Default"
+@var checkbox inputs "Monospaced input" 0
 @var checkbox xus "Userstyle attribution" 1
 ==/UserStyle== */
 
@@ -214,7 +219,76 @@ us = "Lunar Duck v2.2.3 🌸 kaz.cx"
       // firefox
       scrollbar-color var(--bg-4) var(--bg-2)
       scrollbar-width auto
-    
+      
+  // alert user if using dark mode
+  if alert
+    .dark::before
+      content "USERSTYLE CONFLICT: \a On-site dark mode detected. Switch to light mode to apply proper styling.\aTo hide this message regardless, toggle 'Userstyle conflict alert' via config."
+      shad()
+      font-family monospace
+      font-size 14px
+      padding 10px
+      border-bottom 2px solid pink
+      background black
+      color pink
+      white-space pre-wrap
+      display block
+      z-index 1001
+      position sticky
+      top 0
+      
+  // custom font code integrated from https://userstyles.world/style/85
+  // credits: vednoc
+  if xfont
+    // Exclude default code areas.
+    n ?= ':not(code):not(pre):not(pre > span):not(code > span)'
+    // Exclude icon fonts.
+    n += ':not(.i):not(.icon)'
+    n += ':not(.fa):not(.fab):not(.fad):not(.fal):not(.far):not(.fas)'
+    n += ':not([class*="octicon-"])' // github
+    n += ':not(.glyphicon)' // searx
+    n += ':not([aria-hidden=true])' // google meet
+    n += ':not([class*=material-icons])' // material icons
+    n += ':not([class*=icofont])' // icofont icons
+    n += ':not([class*=selector__glyph][data-bind])' // fontello icons
+    // Exclude icons on DuckDuckGo.
+    n += ':not(input[id^="search"][type=submit][value=S])' // search bar
+    n += ':not([class*="js-side-menu-"])' // navbar menu
+    n += ':not(.ddgsi):not(.btn--icon)' // misc icons
+    // Exclude code areas on GitHub.
+    n += ':not([class^="blob-"]):not([class^="blob-"] > span)'
+    // Exclude code areas on GitLab.
+    n += ':not(.diff-line-num):not(pre > code > span span)'
+    n += ':not(.diff-viewer *)' // commit diff
+    // Editors.
+    n += ':not(.ace_editor):not(.ace_editor *)' // #2
+    n += ':not(.CodeMirror):not(.CodeMirror *)'
+    n += ':not(.monaco-editor *)'
+    n += ':not(#squire *)' // protonmail
+    // Use monospace input font on Discord.
+    if inputs
+      n += ':not([data-slate-editor=true] *)'
+    // Exclude Gmail composer and font menu.
+    n += ':not(div[jsaction][jslog] *)'
+    n += ':not([id][style*="font-family"]):not([id][style*="font-family"] *)'
+    // Exclude utility classes for fonts.
+    n += ':not(.monospace):not(.text-mono)'
+    // Feat -> Change base fonts in input areas.
+    if inputs
+      n += ':not(input):not(textarea)'
+      // Gmail elements.
+      $d ?= ':not([g_editable])'
+      $i ?= ':not([name="subjectbox"])'
+      // Workaround for specificity issues.
+      :not(#z)
+        [contenteditable="true"]{ $d } *,
+        input{ $i },
+        textarea
+          font-family: mono, monospace i
+    // Generate.
+    { n }
+      font-family: base, serif i
+  
   // adjust container width
   if xcw
     .container
