@@ -1,4 +1,4 @@
-us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
+us = "\ALunar Duck 2.0.2 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         stylus-lang.com - Lunar Duck
@@ -9,17 +9,17 @@ us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/stylus-lang.com.user.css
 @preprocessor stylus
-@version      2.0.1
+@version      2.0.2
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
-    "Default*":"cs-dark",
-    "Miku":"cs-cyan",
-    "Luka":"cs-pink",
-    "Rin":"cs-yellow",
-    "Teto":"cs-red",
-    "Gumi":"cs-green",
-    "Kaito":"cs-blue",
+  "Default*":"cs-dark",
+  "Miku":"cs-cyan",
+  "Luka":"cs-pink",
+  "Rin":"cs-yellow",
+  "Teto":"cs-red",
+  "Gumi":"cs-green",
+  "Kaito":"cs-blue",
 }
 @var select prad "Rounded corners" {
   "None":"0",
@@ -27,23 +27,27 @@ us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
   "8px":"8px",
   "12px":"12px"
 }
-@var checkbox xdarkbtn "Hide on-site color scheme toggle" 0
-@var checkbox sb "Enable custom scrollbar" 1
-@var checkbox notify "Show userstyle notification" 1
-@var checkbox xus "Show userstyle attribution" 1
+@var checkbox alert "Userstyle conflict alert" 1
+@var checkbox xdarkbtn "On-site color scheme toggle" 0
+@var checkbox sb "Custom scrollbar" 1
+@var checkbox xaccent "Override link color" 0
+@var select accent "Link color" {
+  "Default":"lnk-dark",
+  "Miku":"lnk-cyan",
+  "Luka":"lnk-pink",
+  "Rin":"lnk-yellow",
+  "Teto":"lnk-red",
+  "Gumi":"lnk-green",
+  "Kaito":"lnk-blue"
+}
+@var checkbox xfont "Override font" 0
+@var text base "Base font" "Default"
+@var text mono "Monospace font" "Default"
+@var checkbox inputs "Monospaced input" 0
+@var checkbox xus "Userstyle attribution" 1
 ==/UserStyle== */
 
 @-moz-document domain("stylus-lang.com")
-  
-  if notify
-    header::before
-      content "USERSTYLE NOTICE:\aWelcome to version 2! o7\aMake sure to use the on-site dark mode, or this style won't apply as intended.\aTo hide this msg, go to config and toggle 'Show userstyle notification.'\a-sabakuran"
-      font-family monospace
-      padding 10px
-      background black
-      color lime
-      white-space pre-wrap
-      display block
   
   i = !important
   
@@ -124,6 +128,31 @@ us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
       --bg-6 hsl(200, 30%, 45%)
       --txt-lnk hsl(200, 45%, 60%)
       --txt-lnk-act hsl(200, 45%, 80%)
+        
+  // override link color
+  if xaccent
+    :root
+      if accent == "lnk-dark"
+        --txt-lnk hsl(225, 100%, 70%)
+        --txt-lnk-act hsl(225, 100%, 80%)
+      else if accent == "lnk-pink"
+        --txt-lnk hsl(335, 45%, 60%)
+        --txt-lnk-act hsl(335, 45%, 80%)
+      else if accent == "lnk-cyan"
+        --txt-lnk hsl(190, 45%, 60%)
+        --txt-lnk-act hsl(190, 45%, 80%)
+      else if accent == "lnk-yellow"
+        --txt-lnk hsl(50, 45%, 60%)
+        --txt-lnk-act hsl(50, 45%, 80%)
+      else if accent == "lnk-red"
+        --txt-lnk hsl(0, 45%, 60%)
+        --txt-lnk-act hsl(0, 45%, 80%)
+      else if accent == "lnk-green"
+        --txt-lnk hsl(140, 45%, 60%)
+        --txt-lnk-act hsl(140, 45%, 80%)
+      else if accent == "lnk-blue"
+        --txt-lnk hsl(200, 45%, 60%)
+        --txt-lnk-act hsl(200, 45%, 80%)
 
   pan1()
     background-color var(--bg-1)
@@ -144,7 +173,7 @@ us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
         width 15px
       ::-webkit-scrollbar-track
         background-color var(--bg-2)
-        border-left 1px solid var(--bg-3)
+        border 1px solid var(--bg-3)
       ::-webkit-scrollbar-thumb
         background-color var(--bg-4)
         border-radius 0
@@ -154,6 +183,95 @@ us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
       scrollbar-color var(--bg-4) var(--bg-2)
       scrollbar-width auto
   
+  // conflict detection
+  // alert user if using light mode
+  if alert
+    html::before
+      content "USERSTYLE CONFLICT: \a Light mode detected. Use the site's built-in dark mode to apply proper styling.\aTo hide this message regardless, toggle 'Userstyle conflict alert' via config."
+      shad()
+      font-family monospace
+      font-size 14px
+      padding 10px
+      border-bottom 2px solid pink
+      background black
+      color pink
+      white-space pre-wrap
+      display block
+      z-index 21
+      position sticky
+      top 0
+    .dark::before
+      display none
+  // make color scheme toggle noticeable
+  .VPNavBarAppearance.appearance
+    shad()
+    position fixed
+    top 130px
+    left 10px
+    padding 10px
+    border 2px solid pink
+    display flex i
+    animation noticeme 1s infinite
+  // hide color scheme toggle if user switches to dark mode
+  .dark .VPNavBarAppearance.appearance
+    display none i
+  // toggle display of color scheme toggle ignoring conditions
+  if xdarkbtn
+    .dark .VPNavBarAppearance.appearance
+      display inherit i
+      
+  // custom font code integrated from https://userstyles.world/style/85
+  // credits: vednoc
+  if xfont
+    // Exclude default code areas.
+    n ?= ':not(code):not(pre):not(pre > span):not(code > span)'
+    // Exclude icon fonts.
+    n += ':not(.i):not(.icon)'
+    n += ':not(.fa):not(.fab):not(.fad):not(.fal):not(.far):not(.fas)'
+    n += ':not([class*="octicon-"])' // github
+    n += ':not(.glyphicon)' // searx
+    n += ':not([aria-hidden=true])' // google meet
+    n += ':not([class*=material-icons])' // material icons
+    n += ':not([class*=icofont])' // icofont icons
+    n += ':not([class*=selector__glyph][data-bind])' // fontello icons
+    // Exclude icons on DuckDuckGo.
+    n += ':not(input[id^="search"][type=submit][value=S])' // search bar
+    n += ':not([class*="js-side-menu-"])' // navbar menu
+    n += ':not(.ddgsi):not(.btn--icon)' // misc icons
+    // Exclude code areas on GitHub.
+    n += ':not([class^="blob-"]):not([class^="blob-"] > span)'
+    // Exclude code areas on GitLab.
+    n += ':not(.diff-line-num):not(pre > code > span span)'
+    n += ':not(.diff-viewer *)' // commit diff
+    // Editors.
+    n += ':not(.ace_editor):not(.ace_editor *)' // #2
+    n += ':not(.CodeMirror):not(.CodeMirror *)'
+    n += ':not(.monaco-editor *)'
+    n += ':not(#squire *)' // protonmail
+    // Use monospace input font on Discord.
+    if inputs
+      n += ':not([data-slate-editor=true] *)'
+    // Exclude Gmail composer and font menu.
+    n += ':not(div[jsaction][jslog] *)'
+    n += ':not([id][style*="font-family"]):not([id][style*="font-family"] *)'
+    // Exclude utility classes for fonts.
+    n += ':not(.monospace):not(.text-mono)'
+    // Feat -> Change base fonts in input areas.
+    if inputs
+      n += ':not(input):not(textarea)'
+      // Gmail elements.
+      $d ?= ':not([g_editable])'
+      $i ?= ':not([name="subjectbox"])'
+      // Workaround for specificity issues.
+      :not(#z)
+        [contenteditable="true"]{ $d } *,
+        input{ $i },
+        textarea
+          font-family: mono, monospace i
+    // Generate.
+    { n }
+      font-family: base, serif i
+      
   // backbone
   a
     color var(--txt-lnk)
@@ -223,11 +341,6 @@ us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
   // footer
   .VPFooter[data-v-32972742]
     background-color var(--bg-2)
-      
-  // dark mode toggle visibility
-  if xdarkbtn
-    .VPNavBarAppearance.appearance
-      display none
   
   // rotating color animation
   @keyframes rainbow
@@ -263,11 +376,20 @@ us = "\ALunar Duck 2.0.1 🌸 kaz.cx"
       text-shadow 0 0 10px hsl(50, 100%, 50%)
     100%
       color hsl(335, 45%, 60%)
-      text-shadow 0 0 10px hsl(335, 45%, 60%)    
+      text-shadow 0 0 10px hsl(335, 45%, 60%)
+      
+  // blink animation
+  @keyframes noticeme
+    0%
+      background-color pink
+    50%
+      background-color black
+    100%
+      background-color pink
       
   // userstyle attribution
   if xus
-    footer::after
+    .VPFooter::after, .VPDocFooter::after
       content us
       font-family monospace
       display block
