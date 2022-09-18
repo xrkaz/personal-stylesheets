@@ -1,4 +1,4 @@
-us = "Lunar Duck v2.2.4 🌸 kaz.cx"
+us = "Lunar Duck v2.2.5 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
@@ -9,7 +9,7 @@ us = "Lunar Duck v2.2.4 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.2.4
+@version      2.2.5
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -210,7 +210,7 @@ us = "Lunar Duck v2.2.4 🌸 kaz.cx"
         width 15px
       ::-webkit-scrollbar-track
         background-color var(--bg-2)
-        border-left 1px solid var(--bg-3)
+        border 1px solid var(--bg-3)
       ::-webkit-scrollbar-thumb
         background-color var(--bg-4)
         border-radius 0
@@ -223,7 +223,7 @@ us = "Lunar Duck v2.2.4 🌸 kaz.cx"
   // alert user if using dark mode
   if alert
     .dark::before
-      content "USERSTYLE CONFLICT: \a On-site dark mode detected. Switch to light mode to apply proper styling.\aTo hide this message regardless, toggle 'Userstyle conflict alert' via config."
+      content "USERSTYLE CONFLICT: \a Dark mode detected. Use the site's built-in light mode to apply proper styling.\aTo hide this message regardless, toggle 'Userstyle conflict alert' via config."
       shad()
       font-family monospace
       font-size 14px
@@ -236,6 +236,29 @@ us = "Lunar Duck v2.2.4 🌸 kaz.cx"
       z-index 1001
       position sticky
       top 0
+  .dark footer p
+    shad()
+    position fixed
+    top 130px
+    left 10px
+    padding 10px
+    border 2px solid pink
+    display block i
+    z-index 1001
+    animation noticeme 1s infinite
+  footer p
+    display none
+  if xdarkbtn
+    footer p
+      shad()
+      position fixed
+      top 130px
+      left 10px
+      padding 10px
+      border 2px solid pink
+      display block i
+      z-index 1001
+      animation noticeme 1s infinite
       
   // custom font code integrated from https://userstyles.world/style/85
   // credits: vednoc
@@ -677,13 +700,6 @@ us = "Lunar Duck v2.2.4 🌸 kaz.cx"
   if avashad
     .avatar
       shad()
-    
-  // color scheme toggle visibility
-  footer p
-    visibility hidden
-  if xdarkbtn
-    footer p
-      visibility visible
 
   // rotating color animation
   @keyframes rainbow
@@ -720,10 +736,23 @@ us = "Lunar Duck v2.2.4 🌸 kaz.cx"
     100%
       color hsl(335, 45%, 60%)
       text-shadow 0 0 10px hsl(335, 45%, 60%)
+      
+  // blink animation
+  @keyframes noticeme
+    0%
+      background-color pink
+    50%
+      background-color black
+    100%
+      background-color pink
 
   // show userstyle attribution
   if xus
-    footer::before
+    html::after
       content us
       font-family monospace
+      font-size 14px
+      display block
+      text-align center
+      margin-bottom 30px
       animation rainbow 5s infinite
