@@ -1,4 +1,4 @@
-us = "Lunar Duck v2.2.5 🌸 kaz.cx"
+us = "Lunar Duck v2.2.6 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
@@ -9,7 +9,7 @@ us = "Lunar Duck v2.2.5 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.2.5
+@version      2.2.6
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -34,8 +34,34 @@ us = "Lunar Duck v2.2.5 🌸 kaz.cx"
   "90%":"90%",
   "Default*":"100%"
 }
+@var select imglumen "Image brightness" {
+  "Black":"0%",
+  "10%":"10%",
+  "20%":"20%",
+  "30%":"30%",
+  "40%":"40%",
+  "Half":"50%",
+  "60%":"60%",
+  "70%":"70%",
+  "80%":"80%",
+  "90%":"90%",
+  "Default*":"100%"
+}
 @var select avasat "Avatar saturation" {
   "Greyscale":"0%",
+  "10%":"10%",
+  "20%":"20%",
+  "30%":"30%",
+  "40%":"40%",
+  "Half":"50%",
+  "60%":"60%",
+  "70%":"70%",
+  "80%":"80%",
+  "90%":"90%",
+  "Default*":"100%"
+}
+@var select avalumen "Avatar brightness" {
+  "Black":"0%",
   "10%":"10%",
   "20%":"20%",
   "30%":"30%",
@@ -59,7 +85,6 @@ us = "Lunar Duck v2.2.5 🌸 kaz.cx"
   "12px":"12px"
 }
 @var checkbox alert "Userstyle conflict alert" 1
-@var checkbox xdarkbtn "On-site color scheme toggle" 0
 @var checkbox sb "Custom scrollbar" 1
 @var checkbox navstick "Sticky navbar" 1
 @var checkbox avarnd "Circle avatars" 1
@@ -79,8 +104,8 @@ us = "Lunar Duck v2.2.5 🌸 kaz.cx"
 @var range cw "Layout width" [1400, 1150, 1900, 10,"px"]
 @var checkbox xfont "Override font" 0
 @var text base "Base font" "Default"
-@var text mono "Monospace font" "Default"
 @var checkbox inputs "Monospaced input" 0
+@var text mono "Monospace font" "Default"
 @var checkbox xus "Userstyle attribution" 1
 ==/UserStyle== */
 
@@ -223,7 +248,7 @@ us = "Lunar Duck v2.2.5 🌸 kaz.cx"
   // alert user if using dark mode
   if alert
     .dark::before
-      content "USERSTYLE CONFLICT: \a Dark mode detected. Use the site's built-in light mode to apply proper styling.\aTo hide this message regardless, toggle 'Userstyle conflict alert' via config."
+      content "USERSTYLE CONFLICT: \a Dark mode detected. Use the site's built-in light mode to apply proper styling.\aTo ignore this issue, toggle 'Userstyle conflict alert' via config."
       shad()
       font-family monospace
       font-size 14px
@@ -236,29 +261,18 @@ us = "Lunar Duck v2.2.5 🌸 kaz.cx"
       z-index 1001
       position sticky
       top 0
-  .dark footer p
-    shad()
-    position fixed
-    top 130px
-    left 10px
-    padding 10px
-    border 2px solid pink
-    display block i
-    z-index 1001
-    animation noticeme 1s infinite
-  footer p
-    display none
-  if xdarkbtn
-    footer p
+    .dark footer p
       shad()
       position fixed
       top 130px
       left 10px
       padding 10px
       border 2px solid pink
-      display block i
+      display block
       z-index 1001
       animation noticeme 1s infinite
+  footer p
+    display none
       
   // custom font code integrated from https://userstyles.world/style/85
   // credits: vednoc
@@ -690,9 +704,9 @@ us = "Lunar Duck v2.2.5 🌸 kaz.cx"
       border-radius 100%
   // adjust image saturation
   #torrent-description img, .comment-content img, .well img
-    filter saturate(imgsat)
+    filter saturate(imgsat) brightness(imglumen)
   .avatar
-    filter saturate(avasat)
+    filter saturate(avasat) brightness(avalumen)
   // img box shadows
   if imgshad
     #torrent-description img, .comment-content img, .well img
