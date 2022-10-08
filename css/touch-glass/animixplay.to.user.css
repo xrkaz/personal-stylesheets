@@ -1,0 +1,807 @@
+us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
+
+/* ==UserStyle==
+@name         animixplay.to - Touch Glass
+@namespace    kaz.cx
+@description  Why touch grass, when you can instead touch glass?
+@author       kaz <x@kaz.cx> (https://kaz.cx)
+@homepageURL  https://kaz.cx/touch-glass
+@supportURL   https://github.com/xrkaz/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
+@preprocessor stylus
+@version      0.1.0
+@license      WTFPL
+===================
+@var select cs "Color scheme" {
+  "Piko*":"csdrk",
+  "Miku":"cscyn",
+  "Luka":"cspnk",
+  "Rin":"csylo",
+  "Teto":"csred",
+  "Gumi":"csgrn",
+  "Kaito":"csblu",
+  "Ia":"cslit"
+}
+@var select bgimg "Background image" {
+  "Default*":"bgx0",
+  "Custom":"custom",
+  "Hatsune Miku":"miku",
+  "Background 1":"bgx1",
+  "Background 2":"bgx2",
+  "Background 3":"bgx3",
+  "Background 4":"bgx4",
+  "Background 5":"bgx5",
+  "Background 6":"bgx6",
+  "Background 7":"bgx7",
+  "Background 8":"bgx8",
+  "Background 9":"bgx9",
+  "Background 10":"bgx10"
+}
+@var text bgurl "Custom image URL (with quotes)" ""https://files.catbox.moe/55r8py.png""
+@var select prad "Rounded corners" {
+  "Disabled":"0",
+  "Enabled*":"4px"
+}
+@var checkbox sb "Custom scrollbar" 1
+@var checkbox notify "Userstyle notice" 1
+@var checkbox xus "Userstyle attribution" 1
+==/UserStyle== */
+
+@-moz-document domain("animixplay.to")
+  
+  i = !important
+  
+  // static colors (for contrast)
+  c0 = hsl(350, 100%, 88%) // pink
+  c1 = hsl(0, 0%, 0%) // black
+  c2 = hsl(0, 0%, 100%) // white
+  c3 = hsl(300, 100%, 25%) // purple
+  c4 = hsl(300, 100%, 50%) // fuchsia
+  c5 = hsl(180, 100%, 25%) // teal
+  c6 = hsl(180, 100%, 50%) // aqua
+  c7 = hsl(60, 100%, 25%) // olive
+  c8 = hsl(60, 100%, 50%) // yellow
+  c9 = hsl(0, 100%, 25%) // maroon
+  c10 = hsl(0, 100%, 50%) // red
+  c11 = hsl(120, 100%, 25%) // green
+  c12 = hsl(120, 100%, 50%) // lime
+  c13 = hsl(240, 100%, 25%) // navy
+  c14 = hsl(240, 100%, 50%) // blue
+  c15 = hsl(40, 100%, 50%) // orange
+  
+  // color schemes
+  txt = c2
+  if cs == "csdrk"
+    bg1 = hsl(0, 0%, 10%)
+    bg2 = hsl(0, 0%, 5%)
+    bg3 = hsl(0, 0%, 15%)
+    bg4 = hsl(0, 0%, 20%)
+    bg5 = hsl(0, 0%, 25%)
+    bg6 = hsl(0, 0%, 45%)
+    //acc = hsl(180, 100%, 50%)
+    //act = hsl(180, 100%, 80%)
+    acc = hsl(225, 100%, 70%)
+    act = hsl(225, 100%, 80%)
+  else if cs == "cspnk"
+    bg1 = hsl(315, 100%, 10%)
+    bg2 = hsl(315, 100%, 5%)
+    bg3 = hsl(325, 50%, 20%)
+    bg4 = hsl(330, 50%, 25%)
+    bg5 = hsl(330, 15%, 30%)
+    bg6 = hsl(330, 15%, 50%)
+    acc = hsl(335, 45%, 60%)
+    act = hsl(335, 45%, 80%)
+  else if cs == "cscyn"
+    bg1 = hsl(185, 20%, 10%)
+    bg2 = hsl(185, 20%, 5%)
+    bg3 = hsl(185, 100%, 10%)
+    bg4 = hsl(185, 30%, 20%)
+    bg5 = hsl(185, 15%, 40%)
+    bg6 = hsl(185, 30%, 45%)
+    acc = hsl(190, 45%, 60%)
+    act = hsl(190, 45%, 80%)
+  else if cs == "csylo"
+    bg1 = hsl(50, 20%, 10%)
+    bg2 = hsl(50, 20%, 5%)
+    bg3 = hsl(50, 100%, 10%)
+    bg4 = hsl(50, 30%, 20%)
+    bg5 = hsl(50, 15%, 40%)
+    bg6 = hsl(50, 30%, 45%)
+    acc = hsl(50, 45%, 60%)
+    act = hsl(50, 45%, 80%)
+  else if cs == "csred"
+    bg1 = hsl(0, 20%, 10%)
+    bg2 = hsl(0, 20%, 5%)
+    bg3 = hsl(0, 100%, 10%)
+    bg4 = hsl(0, 30%, 20%)
+    bg5 = hsl(0, 15%, 40%)
+    bg6 = hsl(0, 30%, 45%)
+    acc = hsl(0, 45%, 60%)
+    act = hsl(0, 45%, 80%)
+  else if cs == "csgrn"
+    bg1 = hsl(140, 20%, 10%)
+    bg2 = hsl(140, 20%, 5%)
+    bg3 = hsl(140, 100%, 10%)
+    bg4 = hsl(140, 30%, 20%)
+    bg5 = hsl(140, 15%, 40%)
+    bg6 = hsl(140, 30%, 45%)
+    acc = hsl(140, 45%, 60%)
+    act = hsl(140, 45%, 80%)
+  else if cs == "csblu"
+    bg1 = hsl(200, 20%, 10%)
+    bg2 = hsl(200, 20%, 5%)
+    bg3 = hsl(200, 100%, 10%)
+    bg4 = hsl(200, 30%, 20%)
+    bg5 = hsl(200, 15%, 40%)
+    bg6 = hsl(200, 30%, 45%)
+    acc = hsl(200, 45%, 60%)
+    act = hsl(200, 45%, 80%)
+  else if cs == "cslit"
+    bg1 = hsl(30, 20%, 90%)
+    bg2 = hsl(30, 20%, 95%)
+    bg3 = hsl(30, 100%, 90%)
+    bg4 = hsl(30, 30%, 80%)
+    bg5 = hsl(30, 15%, 60%)
+    bg6 = hsl(30, 30%, 55%)
+    acc = hsl(330, 100%, 40%)
+    act = hsl(330, 100%, 20%)
+    txt = hsl(0, 0%, 0%)
+    
+  // background options
+  if bgimg == "bgx0"
+    bgsrc = "https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx1"
+    bgsrc = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx2"
+    bgsrc = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx3"
+    bgsrc = "https://images.unsplash.com/photo-1594671581654-cc7ed83167bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx4"
+    bgsrc = "https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx5"
+    bgsrc = "https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx6"
+    bgsrc = "https://images.unsplash.com/photo-1607499699372-7bb722dff7e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx7"
+    bgsrc = "https://images.unsplash.com/photo-1605478264999-8d1cd66e9c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx8"
+    bgsrc = "https://images.unsplash.com/photo-1524169113253-c6ba17f68498?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx9"
+    bgsrc = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "bgx10"
+    bgsrc = "https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+  else if bgimg == "miku"
+    bgsrc = "https://files.catbox.moe/yxagrh.jpg"
+    //bgsrc = "https://files.catbox.moe/k7wjcw.jpg"
+  else if bgimg == "custom"
+    bgsrc = bgurl
+
+  bg(k)
+    background k
+  bgc(k)
+    background-color k
+  c(k)
+    color k
+  dx()
+    display none
+  ff(k)
+    font-family k
+  b(k)
+    border k
+  br(k)
+    border-radius k
+  bc(k)
+    border-color k
+  bcc(k, z)
+    background-color k
+    color z
+  m(k)
+    margin k
+  p(k)
+    padding k
+  ts(k)
+    text-shadow k
+  ft(k)
+    filter k
+  z(k)
+    z-index k
+  bf(k)
+    backdrop-filter k
+  st()
+    position sticky
+    top 0
+  shad()
+    //box-shadow 0 1px 3px alpha(black, 0.5)
+    //box-shadow alpha(c1, 0.16) 0px 3px 6px, alpha(c1, 0.23) 0px 3px 6px
+    box-shadow alpha(c1, 0.12) 0px 1px 3px, alpha(c1, 0.24) 0px 1px 2px
+  rad()
+    br(prad)
+  sharad()
+    shad()
+    rad()
+  uss()
+    content us
+    ff(monospace)
+    font-size 14px
+    display block
+    animation rainbow 5s infinite
+    
+  // scrollbar (need to fix)
+  if sb
+    html
+      // chromium
+      ::-webkit-scrollbar
+        width 15px
+      ::-webkit-scrollbar-track
+        bgc(bg2)
+        b(1px solid bg2)
+      ::-webkit-scrollbar-thumb
+        bgc(bg6)
+        br(0)
+        &:hover
+          bgc(bg5)
+      // firefox
+      scrollbar-color bg6 bg2
+      scrollbar-width auto
+  
+  if notify
+    html::before
+      content "USERSTYLE NOTICE:\a Be aware that this userstyle is a work-in-progress. Tweaks are incomplete and stuff may change in the following days.\a Always check for updates via 'Manage' in Stylus. ^-^\aReport issues here: (https://github.com/xrkaz/personal-stylesheets/issues) \aTo hide this message, toggle 'Userstyle notice' via config."
+      shad()
+      ff(monospace)
+      font-size 14px
+      p(10px)
+      border-bottom 2px solid c0
+      bg(c1)
+      c(c0)
+      white-space pre-wrap
+      display block
+      z(1001)
+      st()
+      
+  body
+    bgc(bg1 i)
+    background-image url(bgsrc)
+    background-size cover
+    background-repeat no-repeat
+    background-attachment fixed
+    background-position center
+    
+  // navbar
+  .floattopsearch
+    shad()
+    bgc(alpha(bg2, 0.8))
+    bf(blur(16px))
+  .topmenubtn
+    c(txt)
+  #homeicon, #homeicon2, #backiconhome, #backicon
+    c(txt)
+  // logo
+  .webtitle
+    if cs == "cslit"
+      ft(invert(1) hue-rotate(200deg) brightness(2))
+  // username
+  #usernametop
+    c(txt)
+      
+  // middle
+  .middle
+    c(txt)
+    
+  // featured
+  #featuredcard
+    shad()
+    bcc(bg3, txt)
+  #featuredtext
+    c(txt)
+  #featuredNext, #featuredBack
+    c(acc)
+  #featuredgenre
+    c(txt)
+    
+  // announcement
+  #announcement
+    bcc(alpha(bg3, 0.8), txt)
+    bf(blur(16px))
+    border-top-left-radius prad
+    border-top-right-radius prad
+    shad()
+  #readmorebtn
+    bcc(alpha(bg3, 0.8), txt)
+    bf(blur(16px))
+    br(0 0 prad prad)
+    clip-path inset(0 -5px -5px -5px)
+    shad()
+    opacity 1
+    
+  // anime categories
+  #navtab
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    p(5px)
+  .nav-tabs
+    border-bottom none
+  .nav-tabs li a
+    bcc(bg4, txt)
+  .nav-tabs li a:hover
+    bgc(bg6)
+  .nav-tabs > li > a
+    border-bottom none
+  #dubbtn a
+    border-bottom 0 i
+  .nav-tabs .active a
+    margin-top 0
+    border none
+    bgc(acc i)
+    
+  // schedule button
+  #openschedulebtn
+    bgc(bg4)
+    border 0
+    border-radius 0 i
+    position relative
+    top 12px
+    right 5px
+    z(1)
+    
+  // anime population
+  .searchresult li, .items li
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    b(3px solid transparent)
+  .searchresult li:hover, .items li:hover
+    bgc(alpha(bg4, 0.8))
+    bf(blur(16px))
+  .infotext
+    c(txt)
+    
+  // popular sort
+  #resultplace div[style="margin:-10px 10px 15px 20px;padding:2px;background-color:#202020;text-align:center;"]
+    bgc(alpha(bg3, 0.8)i)
+    sharad()
+    bf(blur(16px))
+    p(5px i)
+    
+  // genre sort
+  .genretitle
+    bg(alpha(bg3, 0.8))
+    sharad()
+    bf(blur(16px))
+    margin 0 10px 15px 20px
+  #genresortbtn
+    margin-right 10px
+    margin-bottom 5px
+    padding-top 5px
+    bcc(alpha(bg3, 0.8), txt)
+    sharad()
+    bf(blur(16px))
+    
+  // player page
+  .toppart
+    st()
+    z(10)
+  #playertopmenu
+    bg(alpha(bg2, 0.8))
+  .subpart
+    c(txt)
+  .playerpage
+    sharad()
+    bcc(alpha(bg3, 0.8) i, txt)
+    bf(blur(16px))
+  #status, #genres
+    c(txt)
+  .epsavailable
+    c(txt)
+  #playercountdown
+    c(txt i)
+  #flexbottom
+    border-top 1px solid txt
+  #animebtn2
+    bgc(bg3)
+    b(0)
+  .glyphicon-transfer.glyphicon.proxybtn
+    c(txt i)
+  // episode buttons
+  .btn-primary
+    bgc(acc)
+    c(txt)
+    bc(acc)
+  .btn-primary:hover, .btn-primary:focus, .btn-primary.active, .btn-primary:active
+    bgc(bg3)
+  .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active:focus, .btn-primary:active:hover
+    bgc(bg3)
+  .btn
+    b(0)
+    
+  // anime info page
+  #topcover
+    shad()
+  #songContent
+    height unset
+    bgc(alpha(bg2, 0.8))
+    bf(16px)
+    background-image none
+  #panelplace
+    sharad()
+    bcc(alpha(bg3, 0.8), txt)
+    bf(blur(16px))
+    p(10px)
+    margin-top 10px
+  #animepagetitle
+    c(txt)
+  #showstreambtn
+    bgc(bg3)
+    b(0)
+  #animepagetitle
+    bg(alpha(bg3, 0.8))
+    bf(blur(16px))
+    margin-top 115px
+    padding-top 3px
+    padding-left 10px
+    border-top-left-radius prad
+    border-top-right-radius prad
+    shad()
+  #genres[style="float:unset;font-size:13px;"]
+    bg(alpha(bg3, 0.8))
+    bf(blur(16px))
+    padding-left 10px
+    display block
+    padding-bottom 10px
+    border-bottom-left-radius prad
+    border-bottom-right-radius prad
+    clip-path inset(0 -5px -5px -5px)
+    shad()
+  #countwrapper
+    sharad()
+    bg(alpha(bg3, 0.8))
+    bf(blur(16px))
+    margin-top 10px
+    p(5px 10px 5px 10px)
+  #animepagecountdown
+    c(txt)
+    
+  // search anime and similar on anime info
+  .quickresult
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    border-radius 0 0 prad prad
+    border 0
+  #fullresultbtn
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    b(0)
+  #fullresultbtn a
+    bcc(bg4, txt)
+    border 0
+  #fullresultbtn a:hover
+    c(invert(txt))
+    bgc(acc)
+  .sanimepage #fullresultbtn
+    border 0
+  // recommend reason (? box)
+  .recreason
+    bgc(bg5)
+    b(0)
+  .quickresult li:hover
+    bgc(bg4)
+  // search result
+  .loadmoresearch, .loadmoresearch2, .recomendedtitle
+    bcc(alpha(bg3, 0.8), txt)
+    bf(blur(16px))
+    p(5px)
+    sharad()
+    b(0)
+    height unset
+    
+  // anime infobox
+  #animeleftside
+    c(txt)
+    
+  // anime list page
+  #listplace
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    p(20px)
+  #legendall
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    p(20px)
+    c(txt)
+    margin-top 10px
+    margin-bottom 20px
+  div[style="padding-left:20px;margin-bottom:5px;font-size:14px;"]
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    p(20px i)
+    padding-top 5px i
+    padding-bottom 10px i
+    margin-left 20px
+    margin-bottom 10px i
+  #alphabetical
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    p(5px)
+    margin-left 20px
+    
+  // series page
+  .flexserieslist
+    border-bottom 0
+    bg(bg3)
+    sharad()
+    p(10px)
+  .infouserlist
+    c(txt)
+  .seriestimeinfo
+    c(txt i)
+  #seriespanel
+    bgc(alpha(bg2, 0.8))
+    bf(blur(16px))
+    
+  // user page
+  #userconfirmcheck
+    position relative
+    top 9px
+    right 5px
+    z(1)
+  #notifiaction
+    bgc(bg4)
+  
+  // dialog boxes
+  #notifiaction, #reportform, #confdialog
+    c(txt)
+    b(0 i)
+    br(prad)
+  #confdialog // prompt if internal player error
+    bcc(bg4, txt)
+  .loginbtn, .registerbtn, .changepassbtn, #manualtrackbtn, .changeuserbtn, #followbtn, #trackbtn
+    b(0)
+    
+  // back to top
+  #backtotopbtn
+    bcc(alpha(bg5, 0.8), txt)
+    sharad()
+    
+  // accent colors
+  a
+    c(acc)
+    &:hover
+      c(act)
+  .name
+    c(acc)
+  #openschedulebtn
+    c(acc)
+  #genres a
+    c(acc)
+  #showstreambtn
+    c(acc)
+  #showrecomendbtn
+    c(acc)
+  .loginbtn, .registerbtn, .changepassbtn, #manualtrackbtn, .changeuserbtn, #followbtn, #trackbtn
+    c(acc)
+  #iconmenu
+    c(acc)
+  .linkpersonal, .linkhome
+    c(acc i)
+  #sharebtn, #openreport, #syncbtn, #screenshotbtn, #widescreenbtn
+    c(acc)
+  #reloadbtn, #sandboxbtn
+    c(acc)
+  .epsavailable a
+    c(acc)
+  #menumobilebtn, #menumobilebtn2, #showsearchbtn, #recomendedclosebtn
+    c(acc)
+  input:checked + .slider
+    bgc(acc)
+  // loading bar on top
+  .loadindicator
+    bgc(acc)
+  .name a
+    c(acc)
+  // loading spinner
+  .path
+    stroke acc
+  
+  // sidebar
+  .rightcard
+    shad()
+  .rightcard:nth-of-type(1)
+    border-top-left-radius prad
+    border-top-right-radius prad
+  #gsignsection
+    border-bottom-left-radius prad
+    border-bottom-right-radius prad
+  .rightcard, .rightcardCenter
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+  .rightcard:nth-of-type(4)
+    border-top-left-radius prad
+    border-top-right-radius prad
+  .rightcard:last-child
+    br(0 0 prad prad)
+  .topanimestats
+    c(txt)
+  #expandbtn, #expandbtn2
+    c(txt)
+    
+  // selector
+  select
+    bcc(bg3, txt)
+    b(0)
+    border-radius 0
+  
+  // user panel
+  .flexuserlist
+    sharad()
+    border-bottom 0
+    p(10px)
+    bgc(bg3)
+  
+  // schedule
+  #playerleftsidebar
+    bcc(bg3, txt)
+  #schedulenotice
+    bgc(bg4)
+    b(0)
+  #coverlight
+    bgc(alpha(c1, 0.8))
+    bf(blur(16px))
+    
+  // last watched widget
+  #lastwatch
+    bcc(bg4, txt)
+    b(0)
+  #lastwatchclosebtn
+    bcc(bg5, txt)
+    
+  // user panel widget
+  #opensidebarbtn
+    bcc(bg5, txt)
+  #infocard
+    c(txt)
+    
+  // footer
+  .leftbottom
+    bgc(bg2)
+  .customicon
+    if cs == "cslit"
+      ft(invert(1))
+  .footer
+    bcc(alpha(bg2, 0.8), txt)
+    bf(blur(16px))
+    padding-top 25px
+    padding-bottom 25px
+  .bottomtext, .leftbottom
+    c(txt)
+  
+  // hide non-essentials
+  .leftbottom .floatright .togglelabel, .leftbottom .floatright .switch
+    dx()
+  #iconmenu .glyphicon-wrench.glyphicon.linkhome
+    dx()
+  
+  // rotating color animation
+  @keyframes rainbow
+    0%
+      c(c3)
+      ts(0 0 10px c3)
+    10%
+      c(c4)
+      ts(0 0 10px c4)
+    20%
+      c(c5)
+      ts(0 0 10px c5)
+    30%
+      c(c6)
+      ts(0 0 10px c6)
+    40%
+      c(c7)
+      ts(0 0 10px c7)
+    50%
+      c(c8)
+      ts(0 0 10px c8)
+    60%
+      c(c9)
+      ts(0 0 10px c9)
+    70%
+      c(c10)
+      ts(0 0 10px c10)
+    80%
+      c(c11)
+      ts(0 0 10px c11)
+    90%
+      c(c12)
+      ts(0 0 10px c12)
+    100%
+      c(c3)
+      ts(0 0 10px c3)
+  
+  // show userstyle attribution
+  if xus
+    .footer::after
+      uss()
+      
+@-moz-document url-prefix("https://animixplay.to/v1/")
+  
+  if xus
+    #flexstreambottom div[style="flex:1"]::after
+      uss()
+      bgc(alpha(bg2, 0.8))
+      text-align center
+      sharad()
+      margin-bottom 20px
+      p(10px)
+      bf(blur(16px))
+  
+// about page
+@-moz-document url-prefix("https://animixplay.to/about.html")
+  
+  p
+    c(txt i)
+  p:nth-of-type(2)
+    margin-bottom 0
+  h3
+    c(txt)
+    margin-top 0
+    margin-bottom 0
+  .leftside
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    p(20px i)
+    margin-top 10px
+    margin-left 0 i
+    
+  if xus
+    .middle::after
+      uss()
+      bgc(alpha(bg2, 0.8))
+      text-align center
+      sharad()
+      margin-bottom 10px
+      p(10px)
+      bf(blur(16px))
+      margin-top 10px
+
+// info page
+@-moz-document url-prefix("https://animixplay.to/info.html")
+  
+  body
+    c(txt)
+  h2
+    margin-top 0
+  h2, h3
+    c(txt)
+  body > div
+    sharad()
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+    p(20px)
+  div > div
+    c(txt i)
+    
+  if xus
+    div[style="margin-left: 5px;max-width: 600px;margin: 0 auto;"]::after
+      uss()
+      text-align center
+
+// bottom message
+@-moz-document url-prefix("https://animixplay.to/?p=updates")
+
+  #bottommsg
+    sharad()
+    margin-right 10px
+    margin-top -10px
+    p(5px)
+    text-align center
+    bgc(alpha(bg3, 0.8))
+    bf(blur(16px))
+  #bottommsg[style="opacity: 0.8;"]
+    margin-top 10px
+    opacity 1 i
+  
