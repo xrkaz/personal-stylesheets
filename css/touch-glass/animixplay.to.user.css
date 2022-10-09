@@ -1,4 +1,4 @@
-us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
+us = "Touch Glass v1.0.0 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         animixplay.to - Touch Glass
@@ -9,7 +9,7 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
 @preprocessor stylus
-@version      0.1.0
+@version      1.0.0
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -43,7 +43,7 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   "Enabled*":"4px"
 }
 @var checkbox sb "Custom scrollbar" 1
-@var checkbox notify "Userstyle notice" 1
+@var checkbox mascot "Mascot" 1
 @var checkbox xus "Userstyle attribution" 1
 ==/UserStyle== */
 
@@ -176,96 +176,143 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   else if bgimg == "custom"
     bgsrc = bgurl
 
+  // mixins
   bg(k)
     background k
   bgc(k)
     background-color k
   c(k)
     color k
+  bcc(k, z)
+    bgc(k)
+    c(z)
+  cp(k)
+    clip-path k
   dx()
     display none
+  db()
+    display block
+  f(k)
+    font k
   ff(k)
     font-family k
+  fs(k)
+    font-size k
+  rt(k)
+    right k
+  bm(k)
+    bottom k
+  lf(k)
+    left k
   b(k)
     border k
+  bt(k)
+    border-top k
   br(k)
+    border-right k
+  bb(k)
+    border-bottom k
+  bl(k)
+    border-left k
+  brad(k)
     border-radius k
   bc(k)
     border-color k
-  bcc(k, z)
-    background-color k
-    color z
   m(k)
     margin k
+  mt(k)
+    margin-top k
+  mr(k)
+    margin-right k
+  mb(k)
+    margin-bottom k
+  ml(k)
+    margin-left k
   p(k)
     padding k
+  pt(k)
+    padding-top k
+  pr(k)
+    padding-right k
+  pb(k)
+    padding-bottom k
+  pl(k)
+    padding-left k
+  ani(k)
+    animation k
   ts(k)
     text-shadow k
+  ta(k)
+    text-align k
   ft(k)
     filter k
   z(k)
     z-index k
   bf(k)
     backdrop-filter k
+  pos(k)
+    position k
   st()
     position sticky
     top 0
+  o(k)
+    opacity k
+  h(k)
+    height k
+  w(k)
+    width k
+  ws(k)
+    white-space k
   shad()
     //box-shadow 0 1px 3px alpha(black, 0.5)
     //box-shadow alpha(c1, 0.16) 0px 3px 6px, alpha(c1, 0.23) 0px 3px 6px
     box-shadow alpha(c1, 0.12) 0px 1px 3px, alpha(c1, 0.24) 0px 1px 2px
   rad()
-    br(prad)
+    brad(prad)
   sharad()
     shad()
     rad()
   uss()
     content us
     ff(monospace)
-    font-size 14px
-    display block
-    animation rainbow 5s infinite
+    fs(14px)
+    db()
+    ani(rainbow 5s infinite)
     
-  // scrollbar (need to fix)
+  // scrollbar
   if sb
     html
       // chromium
       ::-webkit-scrollbar
-        width 15px
+        w(15px)
       ::-webkit-scrollbar-track
         bgc(bg2)
         b(1px solid bg2)
       ::-webkit-scrollbar-thumb
         bgc(bg6)
-        br(0)
+        brad(0)
         &:hover
           bgc(bg5)
       // firefox
       scrollbar-color bg6 bg2
       scrollbar-width auto
   
-  if notify
-    html::before
-      content "USERSTYLE NOTICE:\a Be aware that this userstyle is a work-in-progress. Tweaks are incomplete and stuff may change in the following days.\a Always check for updates via 'Manage' in Stylus. ^-^\aReport issues here: (https://github.com/xrkaz/personal-stylesheets/issues) \aTo hide this message, toggle 'Userstyle notice' via config."
-      shad()
-      ff(monospace)
-      font-size 14px
-      p(10px)
-      border-bottom 2px solid c0
-      bg(c1)
-      c(c0)
-      white-space pre-wrap
-      display block
-      z(1001)
-      st()
+  // if notify
+  //   html::before
+  //     content "USERSTYLE NOTICE:\a Be aware that this userstyle is a work-in-progress. Tweaks are incomplete and stuff may change in the following days.\a Always check for updates via 'Manage' in Stylus.\a To hide this message, toggle 'Userstyle notice' via config."
+  //     shad()
+  //     f(16px monospace)
+  //     p(10px)
+  //     bb(2px solid c0)
+  //     bcc(c1, c0)
+  //     ws(pre-wrap)
+  //     db()
+  //     z(1001)
+  //     st()
       
   body
-    bgc(bg1 i)
-    background-image url(bgsrc)
-    background-size cover
-    background-repeat no-repeat
-    background-attachment fixed
-    background-position center
+    bg(bg1 url(bgsrc) no-repeat fixed center i)
+    background-size cover i
     
   // navbar
   .floattopsearch
@@ -274,12 +321,15 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     bf(blur(16px))
   .topmenubtn
     c(txt)
+    &:hover
+      c(acc)
   #homeicon, #homeicon2, #backiconhome, #backicon
     c(txt)
   // logo
   .webtitle
     if cs == "cslit"
-      ft(invert(1) hue-rotate(200deg) brightness(2))
+      //ft(invert(1) hue-rotate(200deg) brightness(2))
+      ft(invert(1) hue-rotate(300deg) brightness(1))
   // username
   #usernametop
     c(txt)
@@ -303,16 +353,15 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   #announcement
     bcc(alpha(bg3, 0.8), txt)
     bf(blur(16px))
-    border-top-left-radius prad
-    border-top-right-radius prad
+    brad(prad prad 0 0)
     shad()
   #readmorebtn
     bcc(alpha(bg3, 0.8), txt)
     bf(blur(16px))
-    br(0 0 prad prad)
-    clip-path inset(0 -5px -5px -5px)
+    brad(0 0 prad prad)
+    cp(inset(0 -5px -5px -5px))
     shad()
-    opacity 1
+    o(1)
     
   // anime categories
   #navtab
@@ -321,29 +370,34 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     bf(blur(16px))
     p(5px)
   .nav-tabs
-    border-bottom none
+    bb(0)
   .nav-tabs li a
-    bcc(bg4, txt)
+    bcc(bg4, acc)
+    shad()
   .nav-tabs li a:hover
-    bgc(bg6)
+    bcc(bg6, c2)
   .nav-tabs > li > a
-    border-bottom none
+    bb(0)
   #dubbtn a
-    border-bottom 0 i
+    bb(0 i)
   .nav-tabs .active a
-    margin-top 0
-    border none
+    mt(0)
+    b(0)
     bgc(acc i)
     
   // schedule button
   #openschedulebtn
     bgc(bg4)
-    border 0
-    border-radius 0 i
-    position relative
+    b(0)
+    brad(0 i)
+    pos(relative)
     top 12px
-    right 5px
+    rt(6px)
     z(1)
+    shad()
+    p(5px 14px)
+  #openschedulebtn:hover
+    bcc(bg6, c2)
     
   // anime population
   .searchresult li, .items li
@@ -369,14 +423,18 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     bg(alpha(bg3, 0.8))
     sharad()
     bf(blur(16px))
-    margin 0 10px 15px 20px
+    m(0 10px 15px 20px)
   #genresortbtn
-    margin-right 10px
-    margin-bottom 5px
-    padding-top 5px
+    mr(10px)
+    mb(5px)
+    pt(5px)
     bcc(alpha(bg3, 0.8), txt)
     sharad()
     bf(blur(16px))
+  .genresgrid .form-check-label:hover
+    bcc(bg5, c2)
+  .form-check-input:checked + .form-check-label
+    bcc(acc, c2)
     
   // player page
   .toppart
@@ -397,38 +455,47 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   #playercountdown
     c(txt i)
   #flexbottom
-    border-top 1px solid txt
+    bt(1px solid txt)
   #animebtn2
-    bgc(bg3)
+    shad()
+    bgc(bg4)
     b(0)
   .glyphicon-transfer.glyphicon.proxybtn
     c(txt i)
   // episode buttons
   .btn-primary
-    bgc(acc)
-    c(txt)
-    bc(acc)
+    bcc(bg4, acc)
+    shad()
   .btn-primary:hover, .btn-primary:focus, .btn-primary.active, .btn-primary:active
-    bgc(bg3)
+    bcc(bg6, c2)
   .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active:focus, .btn-primary:active:hover
-    bgc(bg3)
+    bcc(bg6, c2)
+  .playbutton:disabled, .playbutton[disabled], .playbuttonextra:disabled, .playbuttonextra[disabled]
+    bcc(acc i, c2)
+    shad()
   .btn
     b(0)
     
   // anime info page
   #topcover
     shad()
+  #topcoverimage
+    o(.5)
+    //ft(none)
   #songContent
-    height unset
+    h(unset)
     bgc(alpha(bg2, 0.8))
-    bf(16px)
+    bf(blur(16px))
     background-image none
   #panelplace
     sharad()
     bcc(alpha(bg3, 0.8), txt)
     bf(blur(16px))
     p(10px)
-    margin-top 10px
+    mt(10px)
+  #panelplace span[style="background-color:#444;padding:1px 5px;"]
+    bgc(transparent i)
+    p(0 i)
   #animepagetitle
     c(txt)
   #showstreambtn
@@ -437,49 +504,72 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   #animepagetitle
     bg(alpha(bg3, 0.8))
     bf(blur(16px))
-    margin-top 115px
-    padding-top 3px
-    padding-left 10px
-    border-top-left-radius prad
-    border-top-right-radius prad
+    mt(115px)
+    pt(3px)
+    pl(10px)
+    brad(prad prad 0 0)
     shad()
   #genres[style="float:unset;font-size:13px;"]
     bg(alpha(bg3, 0.8))
     bf(blur(16px))
-    padding-left 10px
-    display block
-    padding-bottom 10px
-    border-bottom-left-radius prad
-    border-bottom-right-radius prad
-    clip-path inset(0 -5px -5px -5px)
+    pl(10px)
+    db()
+    pb(10px)
+    brad(0 0 prad prad)
+    cp(inset(0 -5px -5px -5px))
     shad()
   #countwrapper
     sharad()
     bg(alpha(bg3, 0.8))
     bf(blur(16px))
-    margin-top 10px
+    mt(10px)
     p(5px 10px 5px 10px)
   #animepagecountdown
     c(txt)
+  // sidebar after pressing watch
+  .reclisttitle a
+    c(acc)
+    &:hover
+      c(act)
+  .watchprogress
+    c(txt i)
+  .listviewcount
+    c(txt)
+  .eprecgrid a
+    bgc(bg4)
+    shad()
+    &:hover
+      bcc(bg6, c2)
+  #showExternalBtn
+    bcc(bg4, txt)
+    sharad()
+    &:hover
+      bcc(bg6, c2)
+  #moreinfobtn
+    bcc(bg4, acc)
+    shad()
+    &:hover
+      bcc(bg6, c2 i)
+  
     
   // search anime and similar on anime info
   .quickresult
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
-    border-radius 0 0 prad prad
-    border 0
+    brad(0 0 prad prad)
+    b(0)
   #fullresultbtn
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
     b(0)
   #fullresultbtn a
     bcc(bg4, txt)
-    border 0
+    b(0)
   #fullresultbtn a:hover
     c(invert(txt))
     bgc(acc)
   .sanimepage #fullresultbtn
-    border 0
+    b(0)
   // recommend reason (? box)
   .recreason
     bgc(bg5)
@@ -488,12 +578,12 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     bgc(bg4)
   // search result
   .loadmoresearch, .loadmoresearch2, .recomendedtitle
-    bcc(alpha(bg3, 0.8), txt)
+    bcc(alpha(bg4, 0.8), txt)
     bf(blur(16px))
     p(5px)
     sharad()
     b(0)
-    height unset
+    h(unset)
     
   // anime infobox
   #animeleftside
@@ -505,33 +595,44 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
     p(20px)
+  .allitem, .compactitem
+    c(txt)
+  .dubtag
+    c(c10)
   #legendall
     sharad()
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
     p(20px)
     c(txt)
-    margin-top 10px
-    margin-bottom 20px
+    mt(10px)
+    mb(20px)
   div[style="padding-left:20px;margin-bottom:5px;font-size:14px;"]
     sharad()
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
     p(20px i)
-    padding-top 5px i
-    padding-bottom 10px i
-    margin-left 20px
-    margin-bottom 10px i
+    pt(5px i)
+    pb(10px i)
+    ml(20px)
+    mb(10px i)
   #alphabetical
     sharad()
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
     p(5px)
-    margin-left 20px
+    ml(20px)
+  #alphabetical button
+    bcc(bg4, acc)
+    shad()
+    &:hover
+      bcc(bg6, c2)
+  #alphabetical button[disabled]
+    bcc(acc, c2)
     
   // series page
   .flexserieslist
-    border-bottom 0
+    bb(0)
     bg(bg3)
     sharad()
     p(10px)
@@ -545,9 +646,9 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     
   // user page
   #userconfirmcheck
-    position relative
+    pos(relative)
     top 9px
-    right 5px
+    rt(5px)
     z(1)
   #notifiaction
     bgc(bg4)
@@ -556,11 +657,24 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   #notifiaction, #reportform, #confdialog
     c(txt)
     b(0 i)
-    br(prad)
+    brad(prad)
   #confdialog // prompt if internal player error
     bcc(bg4, txt)
   .loginbtn, .registerbtn, .changepassbtn, #manualtrackbtn, .changeuserbtn, #followbtn, #trackbtn
-    b(0)
+    b(0) // buttons
+    brad(0)
+    bgc(bg4)
+    shad()
+  .loginbtn:hover
+    bcc(bg6, c2)
+  #seasonalgobtn
+    bcc(bg4, acc)
+    b(1px solid bg4)
+    brad(0)
+    shad()
+    &:hover
+      bcc(bg6, c2)
+      b(1px solid bg6)
     
   // back to top
   #backtotopbtn
@@ -580,6 +694,8 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     c(acc)
   #showstreambtn
     c(acc)
+    &:hover
+      bcc(bg6, c2)
   #showrecomendbtn
     c(acc)
   .loginbtn, .registerbtn, .changepassbtn, #manualtrackbtn, .changeuserbtn, #followbtn, #trackbtn
@@ -606,39 +722,62 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   // loading spinner
   .path
     stroke acc
+    
+  // load more
+  #loadmorelist
+    bcc(bg4, acc)
+    brad(0)
+    b(0)
+    shad()
+    &:hover
+      bcc(bg6, c2)
   
   // sidebar
   .rightcard
     shad()
   .rightcard:nth-of-type(1)
-    border-top-left-radius prad
-    border-top-right-radius prad
+    brad(prad prad 0 0)
   #gsignsection
-    border-bottom-left-radius prad
-    border-bottom-right-radius prad
+    brad(0 0 prad prad)
   .rightcard, .rightcardCenter
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
   .rightcard:nth-of-type(4)
-    border-top-left-radius prad
-    border-top-right-radius prad
+    brad(prad prad 0 0)
   .rightcard:last-child
-    br(0 0 prad prad)
+    brad(0 0 prad prad)
   .topanimestats
     c(txt)
   #expandbtn, #expandbtn2
     c(txt)
+  // login
+  .logininput
+    brad(0)
+  .logininput:focus
+    b(1px solid acc)
+    brad(0)
+  .halfright
+    mr(3px)
     
   // selector
   select
-    bcc(bg3, txt)
+    bcc(bg4, txt)
     b(0)
-    border-radius 0
+    shad()
+    brad(0)
+  #filterplace, #seasonfilter
+    o(1)
+  #seasonleft, #yearright
+    mb(5px)
+  #seasonleft
+    ml(3px)
+  #seasonfilter div[style="flex:1"]
+    mr(3px i)
   
   // user panel
   .flexuserlist
     sharad()
-    border-bottom 0
+    bb(0)
     p(10px)
     bgc(bg3)
   
@@ -648,9 +787,24 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   #schedulenotice
     bgc(bg4)
     b(0)
+    sharad()
   #coverlight
     bgc(alpha(c1, 0.8))
     bf(blur(16px))
+  .scheduletitle
+    bgc(bg4)
+    bb(0)
+    p(5px)
+    sharad()
+    m(5px 10px 7px 10px)
+  .scheduletitle span[style="color:#ffed8b"]
+    c(txt i)
+  #scheduletimezone
+    pr(25px)
+    mt(20px)
+    mb(-32px)
+  #recomendedlist div[style="color:#aa9f68;text-align:right;margin-left:10px;margin-top:1px;"]
+    c(txt i) // time now
     
   // last watched widget
   #lastwatch
@@ -674,8 +828,8 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   .footer
     bcc(alpha(bg2, 0.8), txt)
     bf(blur(16px))
-    padding-top 25px
-    padding-bottom 25px
+    pt(25px)
+    pb(25px)
   .bottomtext, .leftbottom
     c(txt)
   
@@ -684,6 +838,12 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     dx()
   #iconmenu .glyphicon-wrench.glyphicon.linkhome
     dx()
+    
+  // toggle mascot
+  #mascot
+    dx()
+    if mascot
+      db()
   
   // rotating color animation
   @keyframes rainbow
@@ -732,9 +892,9 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
     #flexstreambottom div[style="flex:1"]::after
       uss()
       bgc(alpha(bg2, 0.8))
-      text-align center
+      ta(center)
       sharad()
-      margin-bottom 20px
+      mb(20px)
       p(10px)
       bf(blur(16px))
   
@@ -744,29 +904,29 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   p
     c(txt i)
   p:nth-of-type(2)
-    margin-bottom 0
+    mb(0)
   h3
     c(txt)
-    margin-top 0
-    margin-bottom 0
+    mt(0)
+    mb(0)
   .leftside
     sharad()
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
     p(20px i)
-    margin-top 10px
-    margin-left 0 i
+    mt(10px)
+    ml(0 i)
     
   if xus
     .middle::after
       uss()
       bgc(alpha(bg2, 0.8))
-      text-align center
+      ta(center)
       sharad()
-      margin-bottom 10px
+      mb(10px)
       p(10px)
       bf(blur(16px))
-      margin-top 10px
+      mt(10px)
 
 // info page
 @-moz-document url-prefix("https://animixplay.to/info.html")
@@ -774,7 +934,7 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   body
     c(txt)
   h2
-    margin-top 0
+    mt(0)
   h2, h3
     c(txt)
   body > div
@@ -788,20 +948,19 @@ us = "Touch Glass v0.1.0 (WIP) 🌸 kaz.cx"
   if xus
     div[style="margin-left: 5px;max-width: 600px;margin: 0 auto;"]::after
       uss()
-      text-align center
+      ta(center)
 
 // bottom message
 @-moz-document url-prefix("https://animixplay.to/?p=updates")
 
   #bottommsg
     sharad()
-    margin-right 10px
-    margin-top -10px
+    mr(10px)
+    mt(-10px)
     p(5px)
-    text-align center
+    ta(center)
     bgc(alpha(bg3, 0.8))
     bf(blur(16px))
   #bottommsg[style="opacity: 0.8;"]
-    margin-top 10px
-    opacity 1 i
-  
+    mt(10px)
+    o(1 i)
