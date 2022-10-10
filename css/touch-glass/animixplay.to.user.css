@@ -1,4 +1,4 @@
-us = "Touch Glass v1.0.0 🌸 kaz.cx"
+us = "Touch Glass v1.0.1 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         animixplay.to - Touch Glass
@@ -9,7 +9,7 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
 @preprocessor stylus
-@version      1.0.0
+@version      1.0.1
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -37,14 +37,22 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   "Background 9":"bgx9",
   "Background 10":"bgx10"
 }
-@var text bgurl "Custom image URL (with quotes)" ""https://files.catbox.moe/55r8py.png""
+@var text bgurl "Custom image URL (with quotes)" ""https://i.ibb.co/0Ds6QX2/m6a.jpg""
+https://files.catbox.moe/55r8py.png
 @var select prad "Rounded corners" {
   "Disabled":"0",
   "Enabled*":"4px"
 }
+@var select blurx "Blur intensity" ["0", "1px", "2px", "3px", "4px", "5px", "6px", "7px", "8px", "9px", "10px", "11px", "12px", "13px", "14px", "15px", "16px*"]
+@var select alphax "Alpha opacity" ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8*", "0.9", "1"]
 @var checkbox sb "Custom scrollbar" 1
+@var checkbox avarnd "Circle avatars" 1
 @var checkbox mascot "Mascot" 1
-@var checkbox xus "Userstyle attribution" 1
+@var checkbox xfont "Override font" 0
+@var text base "Base font" "Default"
+@var checkbox inputs "Monospaced input" 0
+@var text mono "Monospace font" "Default"
+@var checkbox usx "Userstyle attribution" 1
 ==/UserStyle== */
 
 @-moz-document domain("animixplay.to")
@@ -297,9 +305,9 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
       scrollbar-color bg6 bg2
       scrollbar-width auto
   
-  // if notify
+  // if unx
   //   html::before
-  //     content "USERSTYLE NOTICE:\a Be aware that this userstyle is a work-in-progress. Tweaks are incomplete and stuff may change in the following days.\a Always check for updates via 'Manage' in Stylus.\a To hide this message, toggle 'Userstyle notice' via config."
+  //     content "USERSTYLE NOTES:\a You can check for updates via 'Manage' in Stylus.\a To hide this, toggle 'Userstyle notes'."
   //     shad()
   //     f(16px monospace)
   //     p(10px)
@@ -309,6 +317,45 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   //     db()
   //     z(1001)
   //     st()
+  
+  // custom font code integrated from https://userstyles.world/style/85
+  // credits: vednoc (MIT License)
+  if xfont
+    n ?= ':not(code):not(pre):not(pre > span):not(code > span)'
+    n += ':not(.i):not(.icon)'
+    n += ':not(.fa):not(.fab):not(.fad):not(.fal):not(.far):not(.fas)'
+    n += ':not([class*="octicon-"])'
+    n += ':not(.glyphicon)'
+    n += ':not([aria-hidden=true])'
+    n += ':not([class*=material-icons])'
+    n += ':not([class*=icofont])'
+    n += ':not([class*=selector__glyph][data-bind])'
+    n += ':not(input[id^="search"][type=submit][value=S])'
+    n += ':not([class*="js-side-menu-"])'
+    n += ':not(.ddgsi):not(.btn--icon)'
+    n += ':not([class^="blob-"]):not([class^="blob-"] > span)'
+    n += ':not(.diff-line-num):not(pre > code > span span)'
+    n += ':not(.diff-viewer *)'
+    n += ':not(.ace_editor):not(.ace_editor *)'
+    n += ':not(.CodeMirror):not(.CodeMirror *)'
+    n += ':not(.monaco-editor *)'
+    n += ':not(#squire *)'
+    if inputs
+      n += ':not([data-slate-editor=true] *)'
+    n += ':not(div[jsaction][jslog] *)'
+    n += ':not([id][style*="font-family"]):not([id][style*="font-family"] *)'
+    n += ':not(.monospace):not(.text-mono)'
+    if inputs
+      n += ':not(input):not(textarea)'
+      $d ?= ':not([g_editable])'
+      $i ?= ':not([name="subjectbox"])'
+      :not(#z)
+        [contenteditable="true"]{ $d } *,
+        input{ $i },
+        textarea
+          font-family: mono, monospace i
+    { n }
+      font-family: base, sans-serif i
       
   body
     bg(bg1 url(bgsrc) no-repeat fixed center i)
@@ -317,8 +364,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   // navbar
   .floattopsearch
     shad()
-    bgc(alpha(bg2, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg2, alphax))
+    bf(blur(blurx))
   .topmenubtn
     c(txt)
     &:hover
@@ -351,13 +398,13 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     
   // announcement
   #announcement
-    bcc(alpha(bg3, 0.8), txt)
-    bf(blur(16px))
+    bcc(alpha(bg3, alphax), txt)
+    bf(blur(blurx))
     brad(prad prad 0 0)
     shad()
   #readmorebtn
-    bcc(alpha(bg3, 0.8), txt)
-    bf(blur(16px))
+    bcc(alpha(bg3, alphax), txt)
+    bf(blur(blurx))
     brad(0 0 prad prad)
     cp(inset(0 -5px -5px -5px))
     shad()
@@ -366,8 +413,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   // anime categories
   #navtab
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     p(5px)
   .nav-tabs
     bb(0)
@@ -402,35 +449,35 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   // anime population
   .searchresult li, .items li
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     b(3px solid transparent)
   .searchresult li:hover, .items li:hover
-    bgc(alpha(bg4, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg4, alphax))
+    bf(blur(blurx))
   .infotext
     c(txt)
     
   // popular sort
   #resultplace div[style="margin:-10px 10px 15px 20px;padding:2px;background-color:#202020;text-align:center;"]
-    bgc(alpha(bg3, 0.8)i)
+    bgc(alpha(bg3, alphax)i)
     sharad()
-    bf(blur(16px))
+    bf(blur(blurx))
     p(5px i)
     
   // genre sort
   .genretitle
-    bg(alpha(bg3, 0.8))
+    bg(alpha(bg3, alphax))
     sharad()
-    bf(blur(16px))
+    bf(blur(blurx))
     m(0 10px 15px 20px)
   #genresortbtn
     mr(10px)
     mb(5px)
     pt(5px)
-    bcc(alpha(bg3, 0.8), txt)
+    bcc(alpha(bg3, alphax), txt)
     sharad()
-    bf(blur(16px))
+    bf(blur(blurx))
   .genresgrid .form-check-label:hover
     bcc(bg5, c2)
   .form-check-input:checked + .form-check-label
@@ -441,13 +488,13 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     st()
     z(10)
   #playertopmenu
-    bg(alpha(bg2, 0.8))
+    bg(alpha(bg2, alphax))
   .subpart
     c(txt)
   .playerpage
     sharad()
-    bcc(alpha(bg3, 0.8) i, txt)
-    bf(blur(16px))
+    bcc(alpha(bg3, alphax) i, txt)
+    bf(blur(blurx))
   #status, #genres
     c(txt)
   .epsavailable
@@ -460,9 +507,16 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     shad()
     bgc(bg4)
     b(0)
+    &:hover
+      bcc(bg6, c2)
   .glyphicon-transfer.glyphicon.proxybtn
     c(txt i)
   // episode buttons
+  #epslistplace
+    o(1)
+    gap 1px
+  .playbutton, .playbuttonextra
+    m(3px)
   .btn-primary
     bcc(bg4, acc)
     shad()
@@ -475,6 +529,19 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     shad()
   .btn
     b(0)
+  .btn[disabled]
+    o(1)
+  #sharebtn:hover, #openreport:hover, #syncbtn:hover, #sandboxbtn:hover, #reloadbtn:hover, #showrecomendbtn:hover, #screenshotbtn:hover, #widescreenbtn:hover, #castbtn:hover
+    c(act)
+  #sandboxbtn[style="display: block; color: gray;"]
+    c(acc i)
+    &:hover
+      c(act i)
+  #streamtype
+    o(1)
+  .altsourcenotif
+    o(1)
+    bl(2px solid txt)
     
   // anime info page
   #topcover
@@ -484,13 +551,13 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     //ft(none)
   #songContent
     h(unset)
-    bgc(alpha(bg2, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg2, alphax))
+    bf(blur(blurx))
     background-image none
   #panelplace
     sharad()
-    bcc(alpha(bg3, 0.8), txt)
-    bf(blur(16px))
+    bcc(alpha(bg3, alphax), txt)
+    bf(blur(blurx))
     p(10px)
     mt(10px)
   #panelplace span[style="background-color:#444;padding:1px 5px;"]
@@ -502,16 +569,16 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     bgc(bg3)
     b(0)
   #animepagetitle
-    bg(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bg(alpha(bg3, alphax))
+    bf(blur(blurx))
     mt(115px)
     pt(3px)
     pl(10px)
     brad(prad prad 0 0)
     shad()
   #genres[style="float:unset;font-size:13px;"]
-    bg(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bg(alpha(bg3, alphax))
+    bf(blur(blurx))
     pl(10px)
     db()
     pb(10px)
@@ -520,9 +587,10 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     shad()
   #countwrapper
     sharad()
-    bg(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bg(alpha(bg3, alphax))
+    bf(blur(blurx))
     mt(10px)
+    c(txt)
     p(5px 10px 5px 10px)
   #animepagecountdown
     c(txt)
@@ -550,17 +618,26 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     shad()
     &:hover
       bcc(bg6, c2 i)
+  #anicommentplace
+    mt(0)
+  #anibottomplace div[style="text-align:center;margin-top:5px;opacity:0.9;flex:1;"]
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
+    sharad()
+    mt(20px i)
+    o(1 i)
+    p(0 10px 0 10px)
   
     
   // search anime and similar on anime info
   .quickresult
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     brad(0 0 prad prad)
     b(0)
   #fullresultbtn
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     b(0)
   #fullresultbtn a
     bcc(bg4, txt)
@@ -578,8 +655,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     bgc(bg4)
   // search result
   .loadmoresearch, .loadmoresearch2, .recomendedtitle
-    bcc(alpha(bg4, 0.8), txt)
-    bf(blur(16px))
+    bcc(alpha(bg4, alphax), txt)
+    bf(blur(blurx))
     p(5px)
     sharad()
     b(0)
@@ -592,8 +669,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   // anime list page
   #listplace
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     p(20px)
   .allitem, .compactitem
     c(txt)
@@ -601,16 +678,16 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     c(c10)
   #legendall
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     p(20px)
     c(txt)
     mt(10px)
     mb(20px)
   div[style="padding-left:20px;margin-bottom:5px;font-size:14px;"]
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     p(20px i)
     pt(5px i)
     pb(10px i)
@@ -618,8 +695,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     mb(10px i)
   #alphabetical
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     p(5px)
     ml(20px)
   #alphabetical button
@@ -641,8 +718,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   .seriestimeinfo
     c(txt i)
   #seriespanel
-    bgc(alpha(bg2, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg2, alphax))
+    bf(blur(blurx))
     
   // user page
   #userconfirmcheck
@@ -659,14 +736,22 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     b(0 i)
     brad(prad)
   #confdialog // prompt if internal player error
-    bcc(bg4, txt)
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
+    sharad()
   .loginbtn, .registerbtn, .changepassbtn, #manualtrackbtn, .changeuserbtn, #followbtn, #trackbtn
     b(0) // buttons
     brad(0)
     bgc(bg4)
     shad()
+  #followbtn:hover
+    bcc(bg6, c2)
   .loginbtn:hover
     bcc(bg6, c2)
+  .changepassbtn:hover
+    bcc(bg6, c2)
+  #dialogno
+    ft(none)
   #seasonalgobtn
     bcc(bg4, acc)
     b(1px solid bg4)
@@ -678,7 +763,7 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     
   // back to top
   #backtotopbtn
-    bcc(alpha(bg5, 0.8), txt)
+    bcc(alpha(bg5, alphax), txt)
     sharad()
     
   // accent colors
@@ -732,6 +817,15 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     &:hover
       bcc(bg6, c2)
   
+  // show comment button
+  #showcommentbtn
+    bcc(bg4, acc)
+    brad(0)
+    b(0)
+    shad()
+    &:hover
+      bcc(bg6, c2)
+  
   // sidebar
   .rightcard
     shad()
@@ -740,8 +834,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   #gsignsection
     brad(0 0 prad prad)
   .rightcard, .rightcardCenter
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
   .rightcard:nth-of-type(4)
     brad(prad prad 0 0)
   .rightcard:last-child
@@ -788,9 +882,9 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     bgc(bg4)
     b(0)
     sharad()
-  #coverlight
-    bgc(alpha(c1, 0.8))
-    bf(blur(16px))
+  // #coverlight
+  //   bgc(alpha(c1, alphax))
+  //   bf(blur(blurx))
   .scheduletitle
     bgc(bg4)
     bb(0)
@@ -810,6 +904,9 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
   #lastwatch
     bcc(bg4, txt)
     b(0)
+    shad()
+  #lastwatchurl
+    c(txt)
   #lastwatchclosebtn
     bcc(bg5, txt)
     
@@ -826,8 +923,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     if cs == "cslit"
       ft(invert(1))
   .footer
-    bcc(alpha(bg2, 0.8), txt)
-    bf(blur(16px))
+    bcc(alpha(bg2, alphax), txt)
+    bf(blur(blurx))
     pt(25px)
     pb(25px)
   .bottomtext, .leftbottom
@@ -882,21 +979,109 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
       ts(0 0 10px c3)
   
   // show userstyle attribution
-  if xus
+  if usx
     .footer::after
       uss()
+
+  // disqus specific elements
+  #disquscomment, #disquscommentnew
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
+    sharad()
+    o(1)
+  #commentrule
+    bcc(bg4, acc)
+    brad(0)
+    &:hover
+      bcc(bg6, c2)
+    shad()
+    
+// disqus comments
+@-moz-document url-prefix("https://disqus.com/embed/comments/?base=default&f=animixplay")
+  
+  body
+    c(txt i)
+  .dark .nav-tab > a
+    c(txt i)
+  .dark .nav-tab > a:hover
+    c(txt i)
+  .dark .tab-conversation.active > a
+    c(txt i)
+  .dark .post-body .comment__header .edit-time-left, .dark .post-body .comment__header .has-edit, .dark .post-body .comment__header .parent-link, .dark .post-body .comment__header .state-byline, .dark .post-body .comment__header .time-ago, .dark .post-body .post-body-inner .edit-time-left, .dark .post-body .post-body-inner .has-edit, .dark .post-body .post-body-inner .parent-link, .dark .post-body .post-body-inner .state-byline, .dark .post-body .post-body-inner .time-ago
+    c(txt i)
+  .dark h6
+    c(txt i)
+  .dark .comment__footer .vote-down, .dark .comment__footer a
+    c(txt i)
+  .dark .comment__header .vote-down, .dark .comment__header a
+    c(acc i)
+  .dark .share-bar .thread-share-bar-buttons .dropdown-toggle
+    c(txt i)
+  .dark .link .share__button.link_url
+    c(txt i)
+  .dark .btn .caret, .dark .caret
+    border-top-color txt i
+  .dark .help-icon
+    border-color txt i
+  .dark .help-icon::before
+    c(txt i)
+  .dropdown-menu
+    b(1px solid bg3)
+    bg(bg3)
+    sharad()
+  .alert.alert--realtime, .alert.info, .alert.success, .dark .alert.alert--realtime, .dark .alert.info, .dark .alert.success
+    bcc(bg4, acc)
+    shad()
+    brad(0)
+    &:hover
+      bcc(bg6, c2)
+  .dark .postbox section label
+    c(txt)
+  .post-votes .vote-down .count, .post-votes .vote-up .count
+    c(txt)
+  .dark .post-content .post-menu .collapse a, .dark .post-content .post-menu .expand a
+    c(txt i)
+  .dark .post-content .post-menu .dropdown-toggle
+    c(txt i)
+  .post-content .post-menu .dropdown-toggle
+    border-color txt
+  .avatar .user, .avatar img
+    shad()
+    if avarnd
+      brad(100%)
+  .post-list .post.collapsed > .post-content .avatar img, .post-list .post.minimized > .post-content .avatar img
+    shad()
+    if avarnd
+      brad(100%)
+  #conversation
+    ml(3px)
+  .dark .load-more__button
+    bcc(bg4, acc)
+    brad(0)
+    shad()
+  .dark .load-more__button:hover
+    bcc(bg6, c2)
+  .btn:not(:disabled).active, .btn:not(:disabled):active
+    bcc(bg6, c2)
+  .btn:focus
+    outline 0
+  .realtime-button .indicator
+    bg(acc)
+  // hide disqus footer
+  #footer
+    dx()
       
 @-moz-document url-prefix("https://animixplay.to/v1/")
   
-  if xus
+  if usx
     #flexstreambottom div[style="flex:1"]::after
       uss()
-      bgc(alpha(bg2, 0.8))
+      bgc(alpha(bg2, alphax))
       ta(center)
       sharad()
       mb(20px)
       p(10px)
-      bf(blur(16px))
+      bf(blur(blurx))
   
 // about page
 @-moz-document url-prefix("https://animixplay.to/about.html")
@@ -911,21 +1096,21 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     mb(0)
   .leftside
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     p(20px i)
     mt(10px)
     ml(0 i)
     
-  if xus
+  if usx
     .middle::after
       uss()
-      bgc(alpha(bg2, 0.8))
+      bgc(alpha(bg2, alphax))
       ta(center)
       sharad()
       mb(10px)
       p(10px)
-      bf(blur(16px))
+      bf(blur(blurx))
       mt(10px)
 
 // info page
@@ -939,13 +1124,13 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     c(txt)
   body > div
     sharad()
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
     p(20px)
   div > div
     c(txt i)
     
-  if xus
+  if usx
     div[style="margin-left: 5px;max-width: 600px;margin: 0 auto;"]::after
       uss()
       ta(center)
@@ -959,8 +1144,8 @@ us = "Touch Glass v1.0.0 🌸 kaz.cx"
     mt(-10px)
     p(5px)
     ta(center)
-    bgc(alpha(bg3, 0.8))
-    bf(blur(16px))
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
   #bottommsg[style="opacity: 0.8;"]
     mt(10px)
     o(1 i)
