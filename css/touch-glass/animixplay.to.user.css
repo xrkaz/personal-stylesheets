@@ -1,4 +1,4 @@
-us = "Touch Glass v1.0.1 🌸 kaz.cx"
+us = "Touch Glass v1.0.2 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         animixplay.to - Touch Glass
@@ -9,23 +9,35 @@ us = "Touch Glass v1.0.1 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
 @preprocessor stylus
-@version      1.0.1
+@version      1.0.2
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
-  "Piko*":"csdrk",
-  "Miku":"cscyn",
-  "Luka":"cspnk",
-  "Rin":"csylo",
-  "Teto":"csred",
-  "Gumi":"csgrn",
-  "Kaito":"csblu",
-  "Ia":"cslit"
+  "Ia":"csia",
+  "Teto*":"csteto",
+  "Miku":"csmiku",
+  "Luka":"csluka",
+  "Ren":"csren",
+  "Meiko":"csmeiko",
+  "Gumi":"csgumi",
+  "Kaito":"cskaito"
+}
+@var select ac "Accent color" {
+  "Default*":"acdef",
+  "Blue":"acblu",
+  "Cyan":"accyn",
+  "Pink":"acpnk",
+  "Yellow":"acyel",
+  "Red":"acred",
+  "Green":"acgrn"
 }
 @var select bgimg "Background image" {
+  "None":"bgx",
   "Default*":"bgx0",
   "Custom":"custom",
-  "Hatsune Miku":"miku",
+  "Hatsune Miku":"miku1",
+  "Megurine Luka":"miku2",
+  "Kasane Teto":"miku3",
   "Background 1":"bgx1",
   "Background 2":"bgx2",
   "Background 3":"bgx3",
@@ -52,6 +64,7 @@ https://files.catbox.moe/55r8py.png
 @var text base "Base font" "Default"
 @var checkbox inputs "Monospaced input" 0
 @var text mono "Monospace font" "Default"
+@var checkbox unx "Userstyle notice" 1
 @var checkbox usx "Userstyle attribution" 1
 ==/UserStyle== */
 
@@ -79,27 +92,25 @@ https://files.catbox.moe/55r8py.png
   
   // color schemes
   txt = c2
-  if cs == "csdrk"
+  if cs == "csteto"
     bg1 = hsl(0, 0%, 10%)
     bg2 = hsl(0, 0%, 5%)
     bg3 = hsl(0, 0%, 15%)
     bg4 = hsl(0, 0%, 20%)
     bg5 = hsl(0, 0%, 25%)
     bg6 = hsl(0, 0%, 45%)
-    //acc = hsl(180, 100%, 50%)
-    //act = hsl(180, 100%, 80%)
-    acc = hsl(225, 100%, 70%)
-    act = hsl(225, 100%, 80%)
-  else if cs == "cspnk"
+    acc = hsl(0, 100%, 70%)
+    act = hsl(0, 100%, 90%)
+  else if cs == "csluka"
     bg1 = hsl(315, 100%, 10%)
     bg2 = hsl(315, 100%, 5%)
     bg3 = hsl(325, 50%, 20%)
     bg4 = hsl(330, 50%, 25%)
     bg5 = hsl(330, 15%, 30%)
     bg6 = hsl(330, 15%, 50%)
-    acc = hsl(335, 45%, 60%)
-    act = hsl(335, 45%, 80%)
-  else if cs == "cscyn"
+    acc = hsl(330, 45%, 60%)
+    act = hsl(330, 45%, 80%)
+  else if cs == "csmiku"
     bg1 = hsl(185, 20%, 10%)
     bg2 = hsl(185, 20%, 5%)
     bg3 = hsl(185, 100%, 10%)
@@ -108,7 +119,7 @@ https://files.catbox.moe/55r8py.png
     bg6 = hsl(185, 30%, 45%)
     acc = hsl(190, 45%, 60%)
     act = hsl(190, 45%, 80%)
-  else if cs == "csylo"
+  else if cs == "csren"
     bg1 = hsl(50, 20%, 10%)
     bg2 = hsl(50, 20%, 5%)
     bg3 = hsl(50, 100%, 10%)
@@ -117,16 +128,16 @@ https://files.catbox.moe/55r8py.png
     bg6 = hsl(50, 30%, 45%)
     acc = hsl(50, 45%, 60%)
     act = hsl(50, 45%, 80%)
-  else if cs == "csred"
+  else if cs == "csmeiko"
     bg1 = hsl(0, 20%, 10%)
     bg2 = hsl(0, 20%, 5%)
     bg3 = hsl(0, 100%, 10%)
     bg4 = hsl(0, 30%, 20%)
     bg5 = hsl(0, 15%, 40%)
     bg6 = hsl(0, 30%, 45%)
-    acc = hsl(0, 45%, 60%)
-    act = hsl(0, 45%, 80%)
-  else if cs == "csgrn"
+    acc = hsl(0, 100%, 70%)
+    act = hsl(0, 100%, 90%)
+  else if cs == "csgumi"
     bg1 = hsl(140, 20%, 10%)
     bg2 = hsl(140, 20%, 5%)
     bg3 = hsl(140, 100%, 10%)
@@ -135,16 +146,16 @@ https://files.catbox.moe/55r8py.png
     bg6 = hsl(140, 30%, 45%)
     acc = hsl(140, 45%, 60%)
     act = hsl(140, 45%, 80%)
-  else if cs == "csblu"
+  else if cs == "cskaito"
     bg1 = hsl(200, 20%, 10%)
     bg2 = hsl(200, 20%, 5%)
     bg3 = hsl(200, 100%, 10%)
     bg4 = hsl(200, 30%, 20%)
     bg5 = hsl(200, 15%, 40%)
     bg6 = hsl(200, 30%, 45%)
-    acc = hsl(200, 45%, 60%)
-    act = hsl(200, 45%, 80%)
-  else if cs == "cslit"
+    acc = hsl(225, 100%, 70%)
+    act = hsl(225, 100%, 80%)
+  else if cs == "csia"
     bg1 = hsl(30, 20%, 90%)
     bg2 = hsl(30, 20%, 95%)
     bg3 = hsl(30, 100%, 90%)
@@ -153,11 +164,51 @@ https://files.catbox.moe/55r8py.png
     bg6 = hsl(30, 30%, 55%)
     acc = hsl(330, 100%, 40%)
     act = hsl(330, 100%, 20%)
-    txt = hsl(0, 0%, 0%)
+    txt = c1
+    
+  // accent colors
+  if ac == "acdef"
+    kaz
+  else if ac == "acblu"
+    acc = hsl(225, 100%, 70%)
+    act = hsl(225, 100%, 80%)
+    if cs == "csia"
+      acc = hsl(205, 100%, 40%)
+      act = hsl(205, 100%, 20%)
+  else if ac == "acpnk"
+    acc = hsl(330, 45%, 60%)
+    act = hsl(330, 45%, 80%)
+    if cs == "csia"
+      acc = hsl(330, 100%, 40%)
+      act = hsl(330, 100%, 20%)
+  else if ac == "accyn"
+    acc = hsl(190, 45%, 60%)
+    act = hsl(190, 45%, 80%)
+    if cs == "csia"
+      acc = hsl(190, 100%, 30%)
+      act = hsl(190, 100%, 10%)
+  else if ac == "acyel"
+    acc = hsl(50, 45%, 60%)
+    act = hsl(50, 45%, 80%)
+    if cs == "csia"
+      acc = hsl(50, 100%, 30%)
+      act = hsl(50, 100%, 10%)
+  else if ac == "acred"
+    acc = hsl(0, 100%, 70%)
+    act = hsl(0, 100%, 90%)
+    if cs == "csia"
+      acc = hsl(0, 80%, 40%)
+      act = hsl(0, 80%, 20%)
+  else if ac == "acgrn"
+    acc = hsl(140, 45%, 60%)
+    act = hsl(140, 45%, 80%)
+    if cs == "csia"
+      acc = hsl(140, 100%, 30%)
+      act = hsl(140, 100%, 10%)
     
   // background options
   if bgimg == "bgx0"
-    bgsrc = "https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+    bgsrc = "https://images.unsplash.com/photo-1572470639737-b7ba86062735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
   else if bgimg == "bgx1"
     bgsrc = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
   else if bgimg == "bgx2"
@@ -173,16 +224,24 @@ https://files.catbox.moe/55r8py.png
   else if bgimg == "bgx7"
     bgsrc = "https://images.unsplash.com/photo-1605478264999-8d1cd66e9c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
   else if bgimg == "bgx8"
-    bgsrc = "https://images.unsplash.com/photo-1524169113253-c6ba17f68498?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
+    bgsrc = "https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
   else if bgimg == "bgx9"
     bgsrc = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
   else if bgimg == "bgx10"
     bgsrc = "https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "miku"
-    bgsrc = "https://files.catbox.moe/yxagrh.jpg"
-    //bgsrc = "https://files.catbox.moe/k7wjcw.jpg"
+  else if bgimg == "miku1"
+    bgsrc = "https://i.ibb.co/CMJDBTf/miku4a2x.jpg"
+    //bgsrc = "https://files.catbox.moe/yxagrh.jpg"
+  else if bgimg == "miku2"
+    bgsrc = "https://i.ibb.co/f9cv0nk/luka2x.jpg"
+  else if bgimg == "miku3"
+    bgsrc = "https://i.ibb.co/GFCwX0X/teto2x.jpg"
   else if bgimg == "custom"
     bgsrc = bgurl
+  else if bgimg == "bgx"
+    bgsrc = ""
+    blurx = 0
+    alphax = 1
 
   // mixins
   bg(k)
@@ -272,8 +331,6 @@ https://files.catbox.moe/55r8py.png
   ws(k)
     white-space k
   shad()
-    //box-shadow 0 1px 3px alpha(black, 0.5)
-    //box-shadow alpha(c1, 0.16) 0px 3px 6px, alpha(c1, 0.23) 0px 3px 6px
     box-shadow alpha(c1, 0.12) 0px 1px 3px, alpha(c1, 0.24) 0px 1px 2px
   rad()
     brad(prad)
@@ -305,18 +362,18 @@ https://files.catbox.moe/55r8py.png
       scrollbar-color bg6 bg2
       scrollbar-width auto
   
-  // if unx
-  //   html::before
-  //     content "USERSTYLE NOTES:\a You can check for updates via 'Manage' in Stylus.\a To hide this, toggle 'Userstyle notes'."
-  //     shad()
-  //     f(16px monospace)
-  //     p(10px)
-  //     bb(2px solid c0)
-  //     bcc(c1, c0)
-  //     ws(pre-wrap)
-  //     db()
-  //     z(1001)
-  //     st()
+  if unx
+    html::before
+      content "Hi! This is Kaz, the author of this userstyle :> Just wanted to inform you. \a\a • If you're experiencing visual glitches, sluggish performance, set 'Blur intensity' to '0'.\a • Stuff may or may not break if you're using this on mobile. \a • This was made with the intention of supporting a 1920x1080 screen. \a\a Finally, to hide this message, toggle 'Userstyle notice'.\aHope you're having a great day! \a\a" url("https://i.ibb.co/9VBsHjf/amogus.gif")
+      shad()
+      f(16px monospace)
+      p(10px)
+      bb(2px solid c0)
+      bcc(c1, c0)
+      ws(pre-wrap)
+      db()
+      z(1001)
+      st()
   
   // custom font code integrated from https://userstyles.world/style/85
   // credits: vednoc (MIT License)
@@ -374,9 +431,45 @@ https://files.catbox.moe/55r8py.png
     c(txt)
   // logo
   .webtitle
-    if cs == "cslit"
-      //ft(invert(1) hue-rotate(200deg) brightness(2))
-      ft(invert(1) hue-rotate(300deg) brightness(1))
+    if cs == "csteto"
+      ft(hue-rotate(180deg))
+    else if cs == "csia"
+      ft(invert(1) hue-rotate(300deg))
+    else if cs == "csluka"
+      ft(hue-rotate(160deg))
+    else if cs == "csren"
+      ft(hue-rotate(240deg))
+    else if cs == "csmeiko"
+      ft(hue-rotate(180deg))
+    else if cs == "csgumi"
+      ft(hue-rotate(300deg))
+    else if cs == "cskaito"
+      ft(hue-rotate(50deg))
+    // accent
+    if ac == "accyn"
+      ft(hue-rotate(0deg))
+      if cs == "csia"
+        ft(invert(1) hue-rotate(200deg) brightness(2))
+    else if ac == "acpnk"
+      ft(hue-rotate(160deg))
+      if cs == "csia"
+        ft(invert(1) hue-rotate(300deg))
+    else if ac == "acyel"
+      ft(hue-rotate(240deg))
+      if cs == "csia"
+        ft(invert(1) hue-rotate(60deg) brightness(2))
+    else if ac == "acblu"
+      ft(hue-rotate(50deg))
+      if cs == "csia"
+        ft(invert(1) hue-rotate(200deg) brightness(2))
+    else if ac == "acred"
+      ft(hue-rotate(180deg))
+      if cs == "csia"
+        ft(invert(1) hue-rotate(0deg))
+    else if ac == "acgrn"
+      ft(hue-rotate(300deg) saturate(.5))
+      if cs == "csia"
+        ft(invert(1) hue-rotate(100deg) brightness(2))
   // username
   #usernametop
     c(txt)
@@ -649,6 +742,7 @@ https://files.catbox.moe/55r8py.png
     b(0)
   // recommend reason (? box)
   .recreason
+    shad()
     bgc(bg5)
     b(0)
   .quickresult li:hover
@@ -665,6 +759,8 @@ https://files.catbox.moe/55r8py.png
   // anime infobox
   #animeleftside
     c(txt)
+  #addInfo .glyphicon.glyphicon-star
+    c(c8 i)
     
   // anime list page
   #listplace
@@ -729,6 +825,8 @@ https://files.catbox.moe/55r8py.png
     z(1)
   #notifiaction
     bgc(bg4)
+  .neweptxt
+    c(txt)
   
   // dialog boxes
   #notifiaction, #reportform, #confdialog
@@ -807,6 +905,8 @@ https://files.catbox.moe/55r8py.png
   // loading spinner
   .path
     stroke acc
+  .form-control:focus, .manualEditInput:focus
+    b(1px solid acc i)
     
   // load more
   #loadmorelist
@@ -852,6 +952,10 @@ https://files.catbox.moe/55r8py.png
     brad(0)
   .halfright
     mr(3px)
+  .topanimerating i
+    c(c8)
+  #rememberme, #nodub, #nodub2, #skipwatched, #skipwatched2
+    o(1)
     
   // selector
   select
@@ -920,7 +1024,7 @@ https://files.catbox.moe/55r8py.png
   .leftbottom
     bgc(bg2)
   .customicon
-    if cs == "cslit"
+    if cs == "csia"
       ft(invert(1))
   .footer
     bcc(alpha(bg2, alphax), txt)
@@ -1149,3 +1253,13 @@ https://files.catbox.moe/55r8py.png
   #bottommsg[style="opacity: 0.8;"]
     mt(10px)
     o(1 i)
+
+// internal player
+@-moz-document url-prefix("https://plyr.link")
+  
+  .plyr--full-ui input[type="range"]::-moz-range-progress
+    bg(acc)
+  .plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded="true"]
+    bg(acc)
+  .plyr__menu__container .plyr__control[role="menuitemradio"][aria-checked="true"]::before
+    bg(acc)
