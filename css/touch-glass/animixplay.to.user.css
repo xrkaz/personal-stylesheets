@@ -1,4 +1,4 @@
-us = "Touch Glass v1.0.2 🌸 kaz.cx"
+us = "Touch Glass v1.0.3 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         animixplay.to - Touch Glass
@@ -9,7 +9,7 @@ us = "Touch Glass v1.0.2 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
 @preprocessor stylus
-@version      1.0.2
+@version      1.0.3
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -1259,6 +1259,8 @@ https://files.catbox.moe/55r8py.png
   
   .plyr--full-ui input[type="range"]::-moz-range-progress
     bg(acc)
+  .plyr--full-ui input[type=range]
+    c(acc)
   .plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded="true"]
     bg(acc)
   .plyr__menu__container .plyr__control[role="menuitemradio"][aria-checked="true"]::before
