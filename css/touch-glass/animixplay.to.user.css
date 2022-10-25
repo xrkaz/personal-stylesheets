@@ -1,4 +1,4 @@
-us = "Touch Glass v1.0.3 🌸 kaz.cx"
+us = "Touch Glass v1.0.4 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         animixplay.to - Touch Glass
@@ -9,7 +9,7 @@ us = "Touch Glass v1.0.3 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
 @preprocessor stylus
-@version      1.0.3
+@version      1.0.4
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -32,28 +32,27 @@ us = "Touch Glass v1.0.3 🌸 kaz.cx"
   "Green":"acgrn"
 }
 @var select bgimg "Background image" {
-  "None":"bgx",
-  "Default*":"bgx0",
-  "Custom":"custom",
-  "Hatsune Miku":"miku1",
-  "Megurine Luka":"miku2",
-  "Kasane Teto":"miku3",
-  "Background 1":"bgx1",
-  "Background 2":"bgx2",
-  "Background 3":"bgx3",
-  "Background 4":"bgx4",
-  "Background 5":"bgx5",
-  "Background 6":"bgx6",
-  "Background 7":"bgx7",
-  "Background 8":"bgx8",
-  "Background 9":"bgx9",
-  "Background 10":"bgx10"
+  "None":"''",
+  "Default*":"'https://images.unsplash.com/photo-1572470639737-b7ba86062735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Custom":"bgcustom",
+  "Hatsune Miku":"'https://i.ibb.co/CMJDBTf/miku4a2x.jpg'",
+  "Megurine Luka":"'https://i.ibb.co/f9cv0nk/luka2x.jpg'",
+  "Kasane Teto":"'https://i.ibb.co/GFCwX0X/teto2x.jpg'",
+  "Background 1":"'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 2":"'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 3":"'https://images.unsplash.com/photo-1594671581654-cc7ed83167bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 4":"'https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 5":"'https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 6":"'https://images.unsplash.com/photo-1607499699372-7bb722dff7e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 7":"'https://images.unsplash.com/photo-1605478264999-8d1cd66e9c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 8":"'https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 9":"'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 10":"'https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'"
 }
-@var text bgurl "Custom image URL (with quotes)" ""https://i.ibb.co/0Ds6QX2/m6a.jpg""
-https://files.catbox.moe/55r8py.png
+@var text bgcustom "Custom image URL (with quotes)" ""https://i.ibb.co/0Ds6QX2/m6a.jpg""
 @var select prad "Rounded corners" {
-  "Disabled":"0",
-  "Enabled*":"4px"
+  "Disabled*":"0",
+  "Enabled":"4px"
 }
 @var select blurx "Blur intensity" ["0", "1px", "2px", "3px", "4px", "5px", "6px", "7px", "8px", "9px", "10px", "11px", "12px", "13px", "14px", "15px", "16px*"]
 @var select alphax "Alpha opacity" ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8*", "0.9", "1"]
@@ -72,7 +71,7 @@ https://files.catbox.moe/55r8py.png
   
   i = !important
   
-  // static colors (for contrast)
+  // static colors
   c0 = hsl(350, 100%, 88%) // pink
   c1 = hsl(0, 0%, 0%) // black
   c2 = hsl(0, 0%, 100%) // white
@@ -206,40 +205,8 @@ https://files.catbox.moe/55r8py.png
       acc = hsl(140, 100%, 30%)
       act = hsl(140, 100%, 10%)
     
-  // background options
-  if bgimg == "bgx0"
-    bgsrc = "https://images.unsplash.com/photo-1572470639737-b7ba86062735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx1"
-    bgsrc = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx2"
-    bgsrc = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx3"
-    bgsrc = "https://images.unsplash.com/photo-1594671581654-cc7ed83167bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx4"
-    bgsrc = "https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx5"
-    bgsrc = "https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx6"
-    bgsrc = "https://images.unsplash.com/photo-1607499699372-7bb722dff7e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx7"
-    bgsrc = "https://images.unsplash.com/photo-1605478264999-8d1cd66e9c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx8"
-    bgsrc = "https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx9"
-    bgsrc = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "bgx10"
-    bgsrc = "https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100"
-  else if bgimg == "miku1"
-    bgsrc = "https://i.ibb.co/CMJDBTf/miku4a2x.jpg"
-    //bgsrc = "https://files.catbox.moe/yxagrh.jpg"
-  else if bgimg == "miku2"
-    bgsrc = "https://i.ibb.co/f9cv0nk/luka2x.jpg"
-  else if bgimg == "miku3"
-    bgsrc = "https://i.ibb.co/GFCwX0X/teto2x.jpg"
-  else if bgimg == "custom"
-    bgsrc = bgurl
-  else if bgimg == "bgx"
-    bgsrc = ""
+  // disable fx if no bg
+  if bgimg == ""
     blurx = 0
     alphax = 1
 
@@ -364,12 +331,12 @@ https://files.catbox.moe/55r8py.png
   
   if unx
     html::before
-      content "Hi! This is Kaz, the author of this userstyle :> Just wanted to inform you. \a\a • If you're experiencing visual glitches, sluggish performance, set 'Blur intensity' to '0'.\a • Stuff may or may not break if you're using this on mobile. \a • This was made with the intention of supporting a 1920x1080 screen. \a\a Finally, to hide this message, toggle 'Userstyle notice'.\aHope you're having a great day! \a\a" url("https://i.ibb.co/9VBsHjf/amogus.gif")
+      content "Hi! This is Kaz, userstyle author :> \a\a If you're experiencing visual glitches, sluggish performance, do the following... \a • Set 'Blur intensity' to '0'. \a • (Optional) Set 'Alpha opacity' to '0.9'. \a\a Finally, to hide this message, toggle 'Userstyle notice'.\aHope you're having a great day! \a\a" url("https://i.ibb.co/9VBsHjf/amogus.gif")
       shad()
       f(16px monospace)
       p(10px)
-      bb(2px solid c0)
-      bcc(c1, c0)
+      bb(3px solid c6)
+      bcc(c1, c6)
       ws(pre-wrap)
       db()
       z(1001)
@@ -415,7 +382,7 @@ https://files.catbox.moe/55r8py.png
       font-family: base, sans-serif i
       
   body
-    bg(bg1 url(bgsrc) no-repeat fixed center i)
+    bg(bg1 url(bgimg) no-repeat fixed center i)
     background-size cover i
     
   // navbar
@@ -429,8 +396,13 @@ https://files.catbox.moe/55r8py.png
       c(acc)
   #homeicon, #homeicon2, #backiconhome, #backicon
     c(txt)
+    &:hover
+      c(acc)
   // logo
   .webtitle
+    o(1)
+    &:hover
+      o(.7)
     if cs == "csteto"
       ft(hue-rotate(180deg))
     else if cs == "csia"
@@ -473,6 +445,14 @@ https://files.catbox.moe/55r8py.png
   // username
   #usernametop
     c(txt)
+  // searchbar
+  #q, #azsearch
+    sharad()
+    &:focus
+      brad(prad)
+    c(txt i)
+  .form-control::placeholder
+    c(alpha(txt, .5))
       
   // middle
   .middle
@@ -495,6 +475,10 @@ https://files.catbox.moe/55r8py.png
     bf(blur(blurx))
     brad(prad prad 0 0)
     shad()
+  #announcement [style="color:white"]
+    c(txt i)
+  #announcement [style="color:white"] [style="color:#fff1a3;"]
+    c(acc i)
   #readmorebtn
     bcc(alpha(bg3, alphax), txt)
     bf(blur(blurx))
@@ -659,6 +643,7 @@ https://files.catbox.moe/55r8py.png
   #animepagetitle
     c(txt)
   #showstreambtn
+    sharad()
     bgc(bg3)
     b(0)
   #animepagetitle
@@ -692,6 +677,9 @@ https://files.catbox.moe/55r8py.png
     c(acc)
     &:hover
       c(act)
+  // selected anime border left
+  .reclistcontainer [id^="rec"][style]
+    bl(3px solid acc i)
   .watchprogress
     c(txt i)
   .listviewcount
@@ -726,18 +714,21 @@ https://files.catbox.moe/55r8py.png
   .quickresult
     bgc(alpha(bg3, alphax))
     bf(blur(blurx))
-    brad(0 0 prad prad)
+    //brad(0 0 prad prad)
     b(0)
+  .resultcontainer
+    brad(prad)
   #fullresultbtn
     bgc(alpha(bg3, alphax))
     bf(blur(blurx))
+    brad(prad prad 0 0)
     b(0)
   #fullresultbtn a
-    bcc(bg4, txt)
+    shad()
+    bcc(bg4, acc)
     b(0)
   #fullresultbtn a:hover
-    c(invert(txt))
-    bgc(acc)
+    bcc(bg6, c2)
   .sanimepage #fullresultbtn
     b(0)
   // recommend reason (? box)
@@ -861,7 +852,9 @@ https://files.catbox.moe/55r8py.png
     
   // back to top
   #backtotopbtn
-    bcc(alpha(bg5, alphax), txt)
+    bcc(bg4, acc)
+    &:hover
+      bcc(bg6, c2)
     sharad()
     
   // accent colors
@@ -875,6 +868,9 @@ https://files.catbox.moe/55r8py.png
     c(acc)
   #genres a
     c(acc)
+    &:hover
+      c(act)
+      text-decoration none
   #showstreambtn
     c(acc)
     &:hover
@@ -895,6 +891,17 @@ https://files.catbox.moe/55r8py.png
     c(acc)
   #menumobilebtn, #menumobilebtn2, #showsearchbtn, #recomendedclosebtn
     c(acc)
+  #menumobilebtn2
+    c(txt)
+    &:hover
+      c(acc)
+  #menuclose
+    z(1)
+  #menuclose, #reportclose
+    bgc(bg4)
+    &:hover
+      bgc(bg6)
+    shad()
   input:checked + .slider
     bgc(acc)
   // loading bar on top
@@ -1180,7 +1187,7 @@ https://files.catbox.moe/55r8py.png
   if usx
     #flexstreambottom div[style="flex:1"]::after
       uss()
-      bgc(alpha(bg2, alphax))
+      bgc(alpha(bg3, alphax))
       ta(center)
       sharad()
       mb(20px)
@@ -1233,6 +1240,13 @@ https://files.catbox.moe/55r8py.png
     p(20px)
   div > div
     c(txt i)
+  [href="/"]
+    shad()
+    bcc(bg4 i, acc i)
+    b(1px solid bg4 i)
+    &:hover
+      bcc(bg6 i, c2 i)
+      b(1px solid bg6 i)
     
   if usx
     div[style="margin-left: 5px;max-width: 600px;margin: 0 auto;"]::after
