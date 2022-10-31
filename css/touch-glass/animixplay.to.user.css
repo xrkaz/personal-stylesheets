@@ -1,4 +1,4 @@
-us = "Touch Glass v1.0.4 🌸 kaz.cx"
+us = "Touch Glass v1.0.5 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         animixplay.to - Touch Glass
@@ -9,7 +9,7 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
 @preprocessor stylus
-@version      1.0.4
+@version      1.0.5
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -50,6 +50,12 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   "Background 10":"'https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'"
 }
 @var text bgcustom "Custom image URL (with quotes)" ""https://i.ibb.co/0Ds6QX2/m6a.jpg""
+@var select ava "Avatar shape" {
+  "Circle*":"100%",
+  "Square":"0",
+  "Rounded square":"25%",
+  "Rounded corners":"prad"
+}
 @var select prad "Rounded corners" {
   "Disabled*":"0",
   "Enabled":"4px"
@@ -57,7 +63,6 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
 @var select blurx "Blur intensity" ["0", "1px", "2px", "3px", "4px", "5px", "6px", "7px", "8px", "9px", "10px", "11px", "12px", "13px", "14px", "15px", "16px*"]
 @var select alphax "Alpha opacity" ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8*", "0.9", "1"]
 @var checkbox sb "Custom scrollbar" 1
-@var checkbox avarnd "Circle avatars" 1
 @var checkbox mascot "Mascot" 1
 @var checkbox xfont "Override font" 0
 @var text base "Base font" "Default"
@@ -88,6 +93,8 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   c13 = hsl(240, 100%, 25%) // navy
   c14 = hsl(240, 100%, 50%) // blue
   c15 = hsl(40, 100%, 50%) // orange
+  sgreen = hsl(150, 50%, 50%)
+  sred = hsl(0, 50%, 50%)
   
   // color schemes
   txt = c2
@@ -331,9 +338,9 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   
   if unx
     html::before
-      content "Hi! This is Kaz, userstyle author :> \a\a If you're experiencing visual glitches, sluggish performance, do the following... \a • Set 'Blur intensity' to '0'. \a • (Optional) Set 'Alpha opacity' to '0.9'. \a\a Finally, to hide this message, toggle 'Userstyle notice'.\aHope you're having a great day! \a\a" url("https://i.ibb.co/9VBsHjf/amogus.gif")
+      content "If you're experiencing visual glitches, sluggish performance, do the following... \a • Set 'Blur intensity' to '0'. \a • (Optional) Set 'Alpha opacity' to '0.9'. \a Finally, to hide this message, toggle 'Userstyle notice'.\a\a" url("https://i.ibb.co/9VBsHjf/amogus.gif")
       shad()
-      f(16px monospace)
+      f(14px monospace)
       p(10px)
       bb(3px solid c6)
       bcc(c1, c6)
@@ -462,6 +469,7 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   #featuredcard
     shad()
     bcc(bg3, txt)
+    mb(15px)
   #featuredtext
     c(txt)
   #featuredNext, #featuredBack
@@ -475,10 +483,8 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
     bf(blur(blurx))
     brad(prad prad 0 0)
     shad()
-  #announcement [style="color:white"]
-    c(txt i)
-  #announcement [style="color:white"] [style="color:#fff1a3;"]
-    c(acc i)
+  #announcement [style="color:#c1ba93;"]
+    c(sgreen i)
   #readmorebtn
     bcc(alpha(bg3, alphax), txt)
     bf(blur(blurx))
@@ -579,7 +585,7 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   #playercountdown
     c(txt i)
   #flexbottom
-    bt(1px solid txt)
+    bt(1px solid bg4)
   #animebtn2
     shad()
     bgc(bg4)
@@ -591,21 +597,32 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   // episode buttons
   #epslistplace
     o(1)
-    gap 1px
-  .playbutton, .playbuttonextra
-    m(3px)
+    gap 4px
+    pb(3px)
+  .playbutton.btn.btn-primary[style]:not([style="opacity: 0.4;"])
+    bgc(bg1 i)
+    bc(bg4)
+    &:hover, &:active, &:focus
+      bgc(bg6 i)
+      bc(bg6)
+    &:disabled
+      bgc(acc i)
+      bc(acc i)
   .btn-primary
     bcc(bg4, acc)
     shad()
   .btn-primary:hover, .btn-primary:focus, .btn-primary.active, .btn-primary:active
     bcc(bg6, c2)
+    bc(bg6)
   .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active:focus, .btn-primary:active:hover
     bcc(bg6, c2)
+    bc(bg6)
   .playbutton:disabled, .playbutton[disabled], .playbuttonextra:disabled, .playbuttonextra[disabled]
     bcc(acc i, c2)
     shad()
+    bc(acc)
   .btn
-    b(0)
+    b(1px solid transparent)
   .btn[disabled]
     o(1)
   #sharebtn:hover, #openreport:hover, #syncbtn:hover, #sandboxbtn:hover, #reloadbtn:hover, #showrecomendbtn:hover, #screenshotbtn:hover, #widescreenbtn:hover, #castbtn:hover
@@ -762,7 +779,7 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   .allitem, .compactitem
     c(txt)
   .dubtag
-    c(c10)
+    c(txt)
   #legendall
     sharad()
     bgc(alpha(bg3, alphax))
@@ -771,6 +788,8 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
     c(txt)
     mt(10px)
     mb(20px)
+  #legendtitle
+    bb(1px solid bg4)
   div[style="padding-left:20px;margin-bottom:5px;font-size:14px;"]
     sharad()
     bgc(alpha(bg3, alphax))
@@ -807,6 +826,15 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
   #seriespanel
     bgc(alpha(bg2, alphax))
     bf(blur(blurx))
+  .middle div[style="text-align:center;min-height:70px;padding:5px;opacity:0.9;"]
+    bgc(alpha(bg3, alphax))
+    bf(blur(blurx))
+    sharad()
+    mt(-10px i)
+    o(1 i)
+    p(0 10px 0 10px i)
+    min-height 50px i
+    mb(5px)
     
   // user page
   #userconfirmcheck
@@ -949,6 +977,15 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
     brad(0 0 prad prad)
   .topanimestats
     c(txt)
+  .topanimestats [style="color: #42d042;"]
+    c(sgreen i)
+  .topanimestats [style="color: #d05353;"]
+    c(sred i)
+  .topanimenumber
+    c(txt)
+  .subtitleright
+    bt(1px solid bg4)
+    bb(1px solid bg4)
   #expandbtn, #expandbtn2
     c(txt)
   // login
@@ -1126,6 +1163,8 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
     c(txt i)
   .dark .comment__header .vote-down, .dark .comment__header a
     c(acc i)
+    &:hover
+      c(act i)
   .dark .share-bar .thread-share-bar-buttons .dropdown-toggle
     c(txt i)
   .dark .link .share__button.link_url
@@ -1158,12 +1197,10 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
     border-color txt
   .avatar .user, .avatar img
     shad()
-    if avarnd
-      brad(100%)
+    brad(ava)
   .post-list .post.collapsed > .post-content .avatar img, .post-list .post.minimized > .post-content .avatar img
     shad()
-    if avarnd
-      brad(100%)
+    brad(ava)
   #conversation
     ml(3px)
   .dark .load-more__button
@@ -1178,6 +1215,10 @@ us = "Touch Glass v1.0.4 🌸 kaz.cx"
     outline 0
   .realtime-button .indicator
     bg(acc)
+  .highlighted>.post-content
+    rad()
+  .dark .textarea, .textarea-outer-wrapper .textarea-wrapper, .input--text
+    rad()
   // hide disqus footer
   #footer
     dx()
