@@ -1,4 +1,4 @@
-us = "Touch Glass v1.0.5 🌸 kaz.cx"
+us = "Touch Glass v1.0.6 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         animixplay.to - Touch Glass
@@ -9,11 +9,12 @@ us = "Touch Glass v1.0.5 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/touch-glass/animixplay.to.user.css
 @preprocessor stylus
-@version      1.0.5
+@version      1.0.6
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
   "Ia":"csia",
+  "Mayu":"csmayu",
   "Teto*":"csteto",
   "Miku":"csmiku",
   "Luka":"csluka",
@@ -171,6 +172,15 @@ us = "Touch Glass v1.0.5 🌸 kaz.cx"
     acc = hsl(330, 100%, 40%)
     act = hsl(330, 100%, 20%)
     txt = c1
+  else if cs == "csmayu"
+    bg1 = hsl(0, 0%, 0%)
+    bg2 = hsl(0, 0%, 0%)
+    bg3 = hsl(0, 0%, 0%)
+    bg4 = hsl(0, 0%, 15%)
+    bg5 = hsl(0, 0%, 20%)
+    bg6 = hsl(0, 0%, 25%)
+    acc = hsl(0, 100%, 70%)
+    act = hsl(0, 100%, 90%)
     
   // accent colors
   if ac == "acdef"
@@ -412,6 +422,8 @@ us = "Touch Glass v1.0.5 🌸 kaz.cx"
       o(.7)
     if cs == "csteto"
       ft(hue-rotate(180deg))
+    else if cs == "csmayu"
+      ft(hue-rotate(180deg))
     else if cs == "csia"
       ft(invert(1) hue-rotate(300deg))
     else if cs == "csluka"
@@ -588,6 +600,7 @@ us = "Touch Glass v1.0.5 🌸 kaz.cx"
     bt(1px solid bg4)
   #animebtn2
     shad()
+    brad(0)
     bgc(bg4)
     b(0)
     &:hover
@@ -661,7 +674,7 @@ us = "Touch Glass v1.0.5 🌸 kaz.cx"
     c(txt)
   #showstreambtn
     sharad()
-    bgc(bg3)
+    bgc(bg4)
     b(0)
   #animepagetitle
     bg(alpha(bg3, alphax))
@@ -983,6 +996,16 @@ us = "Touch Glass v1.0.5 🌸 kaz.cx"
     c(sred i)
   .topanimenumber
     c(txt)
+  .topanimeimg
+    rad()
+  .resultimg
+    rad()
+  .searchresult .searchimg::after
+    rad()
+  .rating
+    brad(prad 0 prad 0)
+  .timetext
+    brad(prad 0 prad 0)
   .subtitleright
     bt(1px solid bg4)
     bb(1px solid bg4)
