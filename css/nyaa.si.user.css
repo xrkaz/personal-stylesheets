@@ -1,4 +1,4 @@
-us = "Lunar Duck v2.2.6 🌸 kaz.cx"
+us = "Lunar Duck v2.2.7 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         nyaa.si - Lunar Duck
@@ -9,20 +9,31 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      2.2.6
+@version      2.2.7
 @license      WTFPL
-===================
+==================================================================
+NOTE:
+If you see this, you're not blind. Good for you :D
+
+I will be refactoring this theme in the following days, so that
+I (or you) can add more features with ease.
+
+Expect major changes to the code, but the look and function will
+remain the same.
+
+Make a backup if you want to keep this version ;)
+==================================================================
 @var select cs "Color scheme" {
-    "Default*":"cs-dark",
-    "Miku":"cs-cyan",
-    "Luka":"cs-pink",
-    "Rin":"cs-yellow",
-    "Teto":"cs-red",
-    "Gumi":"cs-green",
-    "Kaito":"cs-blue"
+  "Default*":"cs-dark",
+  "Miku":"cs-cyan",
+  "Luka":"cs-pink",
+  "Ren":"cs-yellow",
+  "Meiko":"cs-red",
+  "Gumi":"cs-green",
+  "Kaito":"cs-blue"
 }
 @var select imgsat "Image saturation" {
-  "Greyscale":"0%",
+  "Grayscale":"0%",
   "10%":"10%",
   "20%":"20%",
   "30%":"30%",
@@ -48,7 +59,7 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
   "Default*":"100%"
 }
 @var select avasat "Avatar saturation" {
-  "Greyscale":"0%",
+  "Grayscale":"0%",
   "10%":"10%",
   "20%":"20%",
   "30%":"30%",
@@ -73,32 +84,35 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
   "90%":"90%",
   "Default*":"100%"
 }
+@var select ava "Avatar shape" {
+  "Circle*":"100%",
+  "Square":"0",
+  "Rounded square":"25%",
+  "Rounded corners":"prad"
+}
 @var select density "Table density" {
-    "Default*":"none",
-    "Comfortable":"10px",
-    "Compact":"dens-compact"
+  "Default*":"none",
+  "Comfortable":"10px",
+  "Compact":"dens-compact"
 }
 @var select prad "Rounded corners" {
-  "None":"0",
-  "Default*":"4px",
-  "8px":"8px",
-  "12px":"12px"
+  "Disabled":"0",
+  "Enabled*":"4px"
 }
 @var checkbox alert "Userstyle conflict alert" 1
 @var checkbox sb "Custom scrollbar" 1
 @var checkbox navstick "Sticky navbar" 1
-@var checkbox avarnd "Circle avatars" 1
 @var checkbox imgshad "Image shadows" 1
 @var checkbox avashad "Avatar shadows" 1
+@var checkbox splitrows "Split same-colored rows" 0
 @var checkbox xaccent "Override link color" 0
 @var select accent "Link color" {
-    "Default":"lnk-dark",
-    "Miku":"lnk-cyan",
-    "Luka":"lnk-pink",
-    "Rin":"lnk-yellow",
-    "Teto":"lnk-red",
-    "Gumi":"lnk-green",
-    "Kaito":"lnk-blue"
+  "Blue":"lnk-dark",
+  "Cyan":"lnk-cyan",
+  "Pink":"lnk-pink",
+  "Yellow":"lnk-yellow",
+  "Red":"lnk-red",
+  "Green":"lnk-green"
 }
 @var checkbox xcw "Override layout width" 0
 @var range cw "Layout width" [1400, 1150, 1900, 10,"px"]
@@ -188,8 +202,8 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
       --bg-4 hsl(200, 30%, 20%)
       --bg-5 hsl(200, 15%, 40%)
       --bg-6 hsl(200, 30%, 45%)
-      --txt-lnk hsl(200, 45%, 60%)
-      --txt-lnk-act hsl(200, 45%, 80%)
+      --txt-lnk hsl(225, 100%, 70%)
+      --txt-lnk-act hsl(225, 100%, 80%)
   
   // override link color
   if xaccent
@@ -212,9 +226,6 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
       else if accent == "lnk-green"
         --txt-lnk hsl(140, 45%, 60%)
         --txt-lnk-act hsl(140, 45%, 80%)
-      else if accent == "lnk-blue"
-        --txt-lnk hsl(200, 45%, 60%)
-        --txt-lnk-act hsl(200, 45%, 80%)
 
   pan1()
     background-color var(--bg-1)
@@ -535,6 +546,10 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
       border 5px solid var(--bg-3)    
   .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td
     border 0
+  // split same-colored rows
+  if splitrows
+    tr.success, tr.danger
+      border 1px solid var(--bg-3)
   // torrent list suppress visited link state
   table.torrent-list tbody tr td a:visited
     color var(--txt-lnk)
@@ -581,8 +596,11 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
     border-color var(--bg-dang)
   // panel headings
   .panel-heading
-    border-top-right-radius prad
-    border-top-left-radius prad
+    border-top-right-radius prad - 1px
+    border-top-left-radius prad - 1px
+    if prad == 0
+      border-top-right-radius 0
+      border-top-left-radius 0
   .panel-default .panel-heading
     shad()
     background-color var(--bg-4)
@@ -602,8 +620,11 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
   .panel-footer
     background-color var(--bg-4)
     border-top 1px solid var(--bg-3)
-    border-bottom-right-radius prad
-    border-bottom-left-radius prad
+    border-bottom-right-radius prad - 1px
+    border-bottom-left-radius prad - 1px
+    if prad == 0
+      border-bottom-right-radius 0
+      border-bottom-left-radius 0
     
   // notification panels
   .alert-info
@@ -698,10 +719,8 @@ us = "Lunar Duck v2.2.6 🌸 kaz.cx"
   .comment-content img
     rad()
     box-shadow none
-  // circle avatars
-  if avarnd
-    .avatar
-      border-radius 100%
+  .avatar
+    border-radius ava
   // adjust image saturation
   #torrent-description img, .comment-content img, .well img
     filter saturate(imgsat) brightness(imglumen)
