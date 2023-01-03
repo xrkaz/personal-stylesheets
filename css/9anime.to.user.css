@@ -1,0 +1,406 @@
+/* ==UserStyle==
+Just a quick attempt. Proper implementation in a few days.
+================
+@name         9anime.to - AniMixed (WIP)
+@namespace    kaz.cx
+@description  AniMixPlay inspired theme for 9anime.to
+@author       kaz <x@kaz.cx> (https://kaz.cx)
+@homepageURL  https://github.com/xrkaz/personal-stylesheets
+@supportURL   https://github.com/xrkaz/personal-stylesheets/issues
+@updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
+@preprocessor stylus
+@version      0.1.0
+@license      WTFPL
+==/UserStyle== */
+
+@-moz-document domain("9anime.to"), domain("9anime.gs"), domain("9anime.pl"), domain("9anime.me")
+  
+  i = !important
+  
+  // global
+  body
+    background-color hsl(0, 0%, 10%)
+    font-family Nunito,Archivo,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+  a
+    color #a7ccea
+    transition none
+    &:hover
+      color #d9eeff
+  .btn-primary
+    border-color #a7ccea
+    background-color hsl(213, 16%, 22%)
+    &:hover, &:focus, &:active
+      border-color #a7ccea
+      background-color #375882
+  .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle
+    border-color #a7ccea
+    background-color #375882
+    
+  // landing page
+  #i-wrapper .i-gohome a
+    background hsl(213, 16%, 22%)
+    color white
+    border-radius 10px
+    border 1px solid #a7ccea
+    &:hover
+      background #375882
+  #i-wrapper ul#i-menu li a:hover
+    color #a7ccea
+  
+  // adjust layout width
+  // 1280px
+  .container
+    max-width 1280px
+    
+  // navbar
+  // logo
+  .logo
+    filter hue-rotate(300deg) brightness(2)
+  // make navbar sticky
+  body.header-nofixed #wrapper header
+    position sticky
+    top 0
+  header #user .sign-in
+    background-color hsl(213, 16%, 22%)
+  header #user .sign-in:hover
+    background-color #375882
+  // hide socials
+  header #socials
+    display none
+  header .main-menu:hover
+    color #d9eeff
+  header .main-menu:hover .icon, header .main-menu:hover i
+    color #d9eeff
+  // search result
+  #search .search-popup .body .items .item.active, #search .search-popup .body .items .item:focus, #search .search-popup .body .items .item:focus-within, #search .search-popup .body .items .item:hover
+    background hsl(213, 16%, 22%)
+  // en/jp switcher
+  .switch > span:hover
+    background #375882
+    color white
+  
+  // home
+  // featured anime slider paginator
+  .swiper-slide.item
+    padding-bottom 30px
+  .swiper-pagination-bullet-active
+    background-color #a7ccea
+  // anime item categories
+  #recent-update > .head.with-more.with-tabs > .title.mr-3
+    order 2
+    display none
+  #recent-update > .head.with-more.with-tabs > .end
+    order 1
+  #recent-update > .head.with-more.with-tabs
+    border-bottom 1px solid rgba(255,255,255,.15)
+    padding-bottom 4px
+  .text-tabs .tab
+    background #282828
+    color #a7ccea
+    transition none
+    font-size 17px
+  .text-tabs .tab.active, .text-tabs .tab:hover
+    color white
+    background #3e3e3e
+  .text-tabs .tab + .tab
+    margin-left -2px
+  section .head .text-tabs .tab
+    padding 5px 14px
+  // anime items
+  section.top-table .body .items .item
+    background hsl(0, 0%, 15%)
+    border-radius 0
+  section.top-table .body .items .item:hover
+    background hsl(0, 0%, 20%)
+  .ani.poster
+    border-radius 0
+  // sidebar top anime
+  #top-anime > .with-tabs.with-more.head > .title
+    font-size 20px
+  #top-anime
+    background hsl(0, 0%, 15%)
+    padding 10px
+  .tabs .tab.active
+    background hsl(202, 20%, 25%)
+  .side.items .item .inner
+    background transparent
+    transition none
+  .side.items .item:hover .inner
+    background hsl(0, 0%, 20%)
+  section#top-anime .side.items .item.rank3 .inner .rank
+    filter saturate(0) brightness(0.45)
+  section#top-anime .side.items .item.rank3 .inner
+    border-right 0
+  section#top-anime .side.items .item.rank2 .inner .rank
+    filter saturate(0) brightness(0.7)
+  section#top-anime .side.items .item.rank2 .inner
+    border-right 0
+  section#top-anime .side.items .item.rank1 .inner .rank
+    filter saturate(0) brightness(1.3)
+  section#top-anime .side.items .item.rank1 .inner
+    border-right 0
+  .ep-status.sub::before
+    background #375882
+  .ep-status.sub
+    background #375882
+  // sidebar tabs (day/week/month)
+  .with-tabs.with-more.head > .tabs
+    background transparent
+  .tabs .tab
+    border-radius 0
+    transition none
+  .tabs .tab:hover
+    background #33434d
+    color white
+  // anime tooltipped info panel
+  .tooltipster-sidetip .tooltipster-content .title
+    color #a7ccea
+  .tooltipster-content a:hover
+    color #a7ccea
+    text-decoration underline
+  .tooltipster-sidetip .tooltipster-content .actions .watch:hover
+    text-decoration none
+    background #375882
+  .tooltipster-sidetip .tooltipster-content .actions .watch
+    background hsl(213, 16%, 22%)
+    color white
+    border 1px solid #a7ccea
+    
+  // anime titles
+  .ani.items .item .info .name
+    color #a7ccea
+  .ani.items .item .info .name:hover
+    color #d9eeff
+  .scaff.items .item .info .name
+    color #a7ccea
+  .scaff.items .item:hover .info .name
+    color #d9eeff
+  section#top-anime .side.items .item .info .name
+    color #a7ccea
+  section.top-table .body .items .item:hover .info .name
+    color #d9eeff
+  section#top-anime .side.items .item:hover .info .name
+    color #d9eeff
+    
+    
+  // video player page
+  // play button
+  #w-media #w-player #player-wrapper #player .play
+    background #375882
+    color white
+    border 5px solid white
+  // watch2gether button beside add to list below player
+  .text-primary
+    color #a7ccea i
+  // hide trending sidebar
+  #watch-main aside.sidebar
+    display none
+  // hide recommended sidebar
+  .watch-container aside.sidebar
+    display none
+  // next ep alert
+  #w-player .alert.next-episode
+    background hsl(0, 0%, 15%)
+  // link color
+  #w-info .binfo .info .meta>div>span a
+    color #a7ccea
+  // info panel
+  #w-info
+    margin-top 10px
+    background hsl(0, 0%, 15%)
+    padding 15px
+    border-radius 5px
+  #w-info .binfo .info .meta > div > span a:hover
+    color #a7ccea
+    text-decoration underline
+  #w-info .brating .rating .score .value
+    color #a7ccea
+  #w-info .brating .rating
+    background-color hsl(0, 0%, 20%)
+    border-radius 0
+  #w-info .brating .rating
+    color white
+    filter hue-rotate(300deg)
+  // star rating color
+  #w-info .brating .rating .stars span.full i::before
+    filter hue-rotate(60deg)
+  #w-info .brating .rating .stars span.half i::before
+    filter hue-rotate(60deg)
+  // server panel
+  #w-player #w-servers .servers
+    background hsl(0, 0%, 15%)
+  #w-player #w-servers .tip
+    background hsl(0, 0%, 15%)
+    color white
+    display none
+  #w-player #w-servers .servers .type ul li
+    padding 1px 7px
+    background hsl(213, 16%, 22%)
+    border 1px solid #a7ccea
+    color #a7ccea
+  #w-player #w-servers .servers .type ul li.active
+    background #375882
+    color white
+  #w-player #w-servers .servers .type ul li:hover
+    background #375882
+    color white
+  // season selector
+  #w-seasons .seasons .season a:hover::after, #w-seasons .seasons .season.active a::after
+    border-color #a7ccea
+    
+  // move ep sidebar below
+  #w-media
+    flex-direction column
+  #w-media #w-player
+    margin-left 0
+  #w-media #w-episodes
+    order 3
+    max-width unset
+    margin-top 10px
+    background hsl(0, 0%, 15%)
+  #w-media #w-episodes .body .episodes
+    position static
+    max-height 300px
+    overflow-y auto
+    
+  // // TODO: ep buttons
+  // #w-episodes .body .episodes.name ul li a
+  //   background #3d698c
+  //   color white
+  //   border 1px solid #28455e
+  // #w-episodes .body .episodes.name ul li:nth-child(2n) a
+  //   background #3d698c
+  // #w-episodes .body .episodes.name ul li a.active, #w-episodes .body .episodes.name ul li a.active:visited
+  //   background hsl(110, 20%, 25%)
+  //   color white
+  // // hide ep button titles
+  // #w-episodes .body .episodes.name ul li a span
+  //   display none
+  // .ep-range
+  //   display flex
+  // ep button categories
+  .dropdown-item.active, .dropdown-item:active
+    color #a7ccea
+  // ep buttons untitled
+  #w-episodes .body .episodes.number ul li
+    min-width 5%
+  #w-episodes .body .episodes.number ul li a
+    background #3d698c
+    color white
+    border-radius 0
+    transition none
+  #w-episodes .body .episodes.number ul li a:hover
+    background #26435b
+    color white
+  #w-episodes .body .episodes.number ul li a.filler
+    background rgb(94, 94, 94)
+    color white
+  #w-episodes .body .episodes.number ul li a.active, #w-episodes .body .episodes.number ul li a.active:visited
+    background #4d7944
+    color white
+  // ep buttons titled
+  #w-episodes .body .episodes.name ul
+    display flex
+    gap 4px
+  #w-episodes .body .episodes.name ul li a
+    background #3d698c
+    color white i
+    transition none
+    &:hover
+      background #26435b
+  #w-episodes .body .episodes.name ul li:nth-child(2n) a
+    background #3d698c
+    color white
+    &:hover
+      background #26435b
+  #w-episodes .body .episodes.name ul li a.active, #w-episodes .body .episodes.name ul li a.active:visited
+    background #4d7944
+    color white
+    
+  // footer
+  footer
+    background hsl(0, 0%, 15%)
+  footer .container
+    background none
+    background-color transparent
+    padding 20px 10px 20px 10px
+  footer .azlist
+    margin-bottom 15px
+  footer .azlist ul li a
+    background hsl(0, 0%, 20%)
+    color white
+    border-radius 0
+    &:hover
+      background #4d7944
+  footer .inline-links ul li a
+    color #a7ccea
+    &:hover
+      color #d9eeff
+  
+  // az-list page
+  ul.az-filters li a
+    border-radius 0
+    background hsl(0, 0%, 20%)
+    color white
+  ul.az-filters li a:hover
+    background #4d7944
+    color white
+  ul.az-filters li a.active
+    background #4d7944
+  // pagination
+  .page-item.active .page-link
+    background-color #4d7944
+    border-color #4d7944
+  .page-link:hover
+    color white
+    background-color #4d7944
+    border-color #4d7944
+  .dropdown-menu > li > label:hover
+    color #a7ccea
+    
+  // watch2gether page
+  .w2g-item > .inner
+    background hsl(213, 16%, 22%)
+    border 1px solid #a7ccea
+  .w2g-item:hover > .inner
+    background #375882
+  .w2g-item .room .info .created strong
+    color white
+  .w2g-item .room .info .created time::before
+    background white
+  .w2g-item .room .info .created time
+    color white
+  .w2g-watch .room-info
+    background hsl(0, 0%, 15%)
+  .w2g-watch .anime-info
+    background hsl(0, 0%, 15%)
+  // chat box
+  .room-chat .body .compose
+    background hsl(0, 0%, 20%)
+  .room-chat .head
+    background hsl(0, 0%, 20%)
+    color white
+  .room-chat
+    background hsl(0, 0%, 15%)
+  .meta.icons .ep
+    color #a7ccea
+  .room-chat .body .messages .message .msg-body .user
+    color #a7ccea
+    
+  // uncategorized clutter
+  .bsharing
+    display none
+  [src="https://s2.bunnycdn.ru/assets/_9anime/banners/AwardsSiteBanner-CSdll.png"]
+    display none
+    
+@-moz-document url-prefix("https://9anime.to/watch"), url-prefix("https://9anime.gs/watch"), url-prefix("https://9anime.pl/watch")
+  
+  .container
+    max-width 1110px
+  footer
+    display none
+    
+@-moz-document url-prefix("https://9anime.to/home"), url-prefix("https://9anime.gs/watch"), url-prefix("https://9anime.pl/watch")
+  
+  .aside-wrapper
+    margin-top -50px
