@@ -1,7 +1,7 @@
+kaz = "AniMixed v1.0.0 🌸 kaz.cx"
+
 /* ==UserStyle==
-Just a quick attempt. Proper implementation in a few days.
-================
-@name         9anime.to - AniMixed (WIP)
+@name         9anime.to - AniMixed
 @namespace    kaz.cx
 @description  AniMixPlay inspired theme for 9anime.to
 @author       kaz <x@kaz.cx> (https://kaz.cx)
@@ -9,82 +9,249 @@ Just a quick attempt. Proper implementation in a few days.
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      0.1.0
+@version      1.0.0
 @license      WTFPL
+===================
+@var select ac "Accent color" {
+  "Blue*":"acBlue",
+  "Purple":"acPurple"
+}
+@var select aninfoPanel "Anime info panel" {
+  "Full":"aninfoDef",
+  "Minimal*":"aninfoMin",
+  "Hidden":"aninfoHid"
+}
+@var checkbox fontGoogle "AniMixPlay fonts from Google" 0
+@var checkbox setLayout "Override layout width" 0
+@var range layoutWidth "— Layout width" [1280, 1110, 1900, 10,"px"]
+@var checkbox xrkaz "Userstyle attribution" 1
 ==/UserStyle== */
 
 @-moz-document domain("9anime.to"), domain("9anime.gs"), domain("9anime.pl"), domain("9anime.me")
   
+  // aliases
   i = !important
+  l = lightness
+  s = saturation
+  a = alpha
+  Default = null
+    
+  // static base colors
+  sBlack  = hsl(0, 0%, 0%)
+  sWhite  = hsl(0, 0%, 100%)
+  sBlue   = hsl(205, 60%, 80%) // animixplay
+  sGreen  = hsl(110, 30%, 40%)
+  sRed    = hsl(0, 50%, 50%)
+  sOrange = hsl(35, 50%, 50%)
+  sPink   = hsl(330, 50%, 50%)
+  sCyan   = hsl(180, 50%, 50%)
+  sYellow = hsl(60, 50%, 50%)
+  sPurple = hsl(265, 50%, 60%) // 9anime
+  
+  // custom colors
+  sBlueLit = l(s(sBlue, 100%), 90%)
+  sBlueDim = l(s(sBlue, 15%), 20%)
+  sBlueAlt = l(s(sBlue, 40%), 30%)
+  sBlueEps = l(s(sBlue, 40%), 40%)
+  sPurpleLit = l(s(sPurple, 100%), 90%)
+  sPurpleDim = l(s(sPurple, 15%), 20%)
+  sPurpleAlt = l(s(sPurple, 40%), 30%)
+  sPurpleEps = l(s(sPurple, 40%), 40%)
+  
+  // color schemes
+  bg1 = l(sBlack, 10%)
+  bg2 = l(sBlack, 5%)
+  bg3 = l(sBlack, 15%)
+  bg4 = l(sBlack, 20%)
+  bg5 = l(sBlack, 25%)
+  bg6 = l(sBlack, 45%)
+  ac1 = sBlue
+  ac2 = sBlueLit
+  ac3 = sBlueDim
+  ac4 = sBlueAlt
+  ac5 = sBlueEps
+  ac6 = sGreen
+  
+  // text colors
+  fg1 = a(sWhite, 0.8) // default
+  fg2 = sWhite         // emphasis
+  fg3 = a(sWhite, 0.5) // subtext
+  fg4 = a(sWhite, 0.3) // placeholder
+  
+  // accent colors
+  if ac == "acBlue"
+    null
+  else if ac == "acPurple"
+    ac1 = sPurple
+    ac2 = sPurpleLit
+    ac3 = sPurpleDim
+    ac4 = sPurpleAlt
+    ac5 = sPurpleEps
+    
+  // font stuff
+  if fontGoogle
+    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
+    b, strong
+      font-weight 700
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
+      font-weight 400
+    .fw-bold
+      font-weight 400
+    header .main-menu
+      font-weight 400
+    .switch > span
+      font-weight 400
+    #hotest .item .info .title
+      font-weight 400
+    #hotest .item .info .actions .btn.play
+      font-weight 400
+    section .head .text-tabs
+      font-weight 400
+    section .head .title
+      font-weight 400
+    section#schedule .body .items a.item .title
+      font-size 13px
+    .ani.items .item .info .name
+      font-weight 400
+      font-size 13px
+    .scaff.items .item .info .name
+      font-weight 400
+      font-size 13px
+    #w-seasons .seasons .season a .name
+      font-weight 400
+    #w-player #w-servers .servers .type ul li::before
+      font-weight 400
+    #comment-rules .head
+      font-weight 400
+    footer .azlist .head .title
+      font-weight 400
+    footer .azlist ul li a
+      font-weight 400
+    footer .inline-links label
+      font-weight 400
+    .user-menu a
+      font-weight 400
   
   // global
   body
-    background-color hsl(0, 0%, 10%)
-    font-family Nunito,Archivo,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+    background-color bg1
+    font-family "Lexend Deca",Nunito,Archivo,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+    color fg1
   a
-    color #a7ccea
+    color ac1
     transition none
     &:hover
-      color #d9eeff
+      color ac2
+  .btn
+    transition none
+    color fg1
+  .btn:hover
+    color fg1
   .btn-primary
-    border-color #a7ccea
-    background-color hsl(213, 16%, 22%)
+    border-color ac1
+    background-color ac3
     &:hover, &:focus, &:active
-      border-color #a7ccea
-      background-color #375882
+      border-color ac1
+      background-color ac4
+  .btn-light
+    color fg1
+    background-color ac3
+    border-color ac1
+    &:hover
+      background-color ac4
+      color fg1
+      border-color ac1
+  .btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show > .btn-light.dropdown-toggle
+    background-color ac4
+    color fg1
+    border-color ac1
+  .btn-light.focus, .btn-light:focus
+    background-color ac4
+    color fg1
+    border-color ac1
   .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle
-    border-color #a7ccea
-    background-color #375882
+    border-color ac1
+    background-color ac4
+  .btn.clear
+    transition none
+  .btn.clear:hover
+    opacity 1
     
   // landing page
   #i-wrapper .i-gohome a
-    background hsl(213, 16%, 22%)
-    color white
+    background ac3
+    color fg1
     border-radius 10px
-    border 1px solid #a7ccea
+    border 1px solid ac1
     &:hover
-      background #375882
+      background ac4
   #i-wrapper ul#i-menu li a:hover
-    color #a7ccea
+    color ac1
   
   // adjust layout width
   // 1280px
   .container
     max-width 1280px
+    if setLayout
+      max-width layoutWidth
     
   // navbar
+  header .main-menu
+    transition none
+    color fg3
   // logo
   .logo
     filter hue-rotate(300deg) brightness(2)
+    if ac == "acPurple"
+      filter hue-rotate(0deg) brightness(1)
   // make navbar sticky
   body.header-nofixed #wrapper header
     position sticky
     top 0
   header #user .sign-in
-    background-color hsl(213, 16%, 22%)
+    background-color ac3
+    color fg1
+    transition none
   header #user .sign-in:hover
-    background-color #375882
+    background-color ac4
   // hide socials
   header #socials
     display none
   header .main-menu:hover
-    color #d9eeff
+    color fg1
   header .main-menu:hover .icon, header .main-menu:hover i
-    color #d9eeff
+    color fg1
   // search result
   #search .search-popup .body .items .item.active, #search .search-popup .body .items .item:focus, #search .search-popup .body .items .item:focus-within, #search .search-popup .body .items .item:hover
-    background hsl(213, 16%, 22%)
+    background ac3
+  #search .search-popup .body .items .item.active .info .name, #search .search-popup .body .items .item:focus .info .name, #search .search-popup .body .items .item:focus-within .info .name, #search .search-popup .body .items .item:hover .info .name
+    color ac2
   // en/jp switcher
+  .switch > span
+    transition none
   .switch > span:hover
-    background #375882
-    color white
+    background ac4
+    color fg1
+  // notification bell
+  .top-profile .notify .toggler:hover
+    color ac1
   
   // home
+  // featured anime slider
+  #hotest .item .info .title
+    color fg2
+  #hotest .item .info .synopsis
+    color fg1
+  #hotest .item .image div
+    border-radius 0
   // featured anime slider paginator
   .swiper-slide.item
     padding-bottom 30px
   .swiper-pagination-bullet-active
-    background-color #a7ccea
+    background-color ac1
+  @media (max-width: 767.98px)
+    #hotest .swiper-pagination .swiper-pagination-bullet-active
+      background ac4
   // anime item categories
   #recent-update > .head.with-more.with-tabs > .title.mr-3
     order 2
@@ -92,41 +259,95 @@ Just a quick attempt. Proper implementation in a few days.
   #recent-update > .head.with-more.with-tabs > .end
     order 1
   #recent-update > .head.with-more.with-tabs
-    border-bottom 1px solid rgba(255,255,255,.15)
+    border-bottom 1px solid bg4
     padding-bottom 4px
   .text-tabs .tab
-    background #282828
-    color #a7ccea
+    background bg3
+    color ac1
     transition none
     font-size 17px
   .text-tabs .tab.active, .text-tabs .tab:hover
-    color white
-    background #3e3e3e
+    color fg1
+    background bg4
   .text-tabs .tab + .tab
     margin-left -2px
   section .head .text-tabs .tab
     padding 5px 14px
   // anime items
   section.top-table .body .items .item
-    background hsl(0, 0%, 15%)
+    background bg3
     border-radius 0
   section.top-table .body .items .item:hover
-    background hsl(0, 0%, 20%)
+    background bg4
   .ani.poster
     border-radius 0
+  .ani.poster > a::after
+    transition none
+  .ani.poster > a::before
+    transition none
+  .ani.items .item .poster .meta
+    background bg3
+  // anime episode progress bar
+  .ani.items .item .poster .meta.playing .progress > span
+    background ac4
+  // top tables (2nd section)
+  section.top-table .head a.title:hover
+    color ac1
+  section.top-table .body .items .item .info .meta span
+    color fg3
+  section.top-table .body .items .item .info .meta .dot + .dot::before
+    background fg3
+  // continue watching section (login only)
+  section .head .title
+    color fg2
+  section .head .more
+    color fg3
+  section .head .more:hover
+    color fg1
+  // schedule panel
+  section#schedule
+    margin-bottom 0
+  section#schedule .head
+    background bg3
+  section#schedule .body .items a.item .ep
+    background ac3
+    border 1px solid ac1
+    border-radius 5px
+    transition none
+  section#schedule .head .now
+    color fg3
+  section#schedule .body .items a.item
+    color fg1
+  section#schedule .body .items a.item.old .ep
+    background ac3
+  section#schedule .body .items a.item.old
+    color fg1
+  section#schedule .body .items a.item:hover .ep
+    background ac4
+  section#schedule .body .items a.item:hover .title
+    color ac1
+  section#schedule .head .days .items .day .inner
+    color bg5
+  section#schedule .head .days .items .day .inner:hover, section#schedule .head .days .items .day.active .inner
+    color fg1
+  section#schedule .head .days .items .day .inner
+    transition none
+  section#schedule .head .days .items .day .inner::after
+    transition none
+  section#schedule .body .items a.item .title
+    transition none
   // sidebar top anime
   #top-anime > .with-tabs.with-more.head > .title
     font-size 20px
   #top-anime
-    background hsl(0, 0%, 15%)
+    background bg3
     padding 10px
-  .tabs .tab.active
-    background hsl(202, 20%, 25%)
   .side.items .item .inner
     background transparent
     transition none
+    border-radius 0
   .side.items .item:hover .inner
-    background hsl(0, 0%, 20%)
+    background bg4
   section#top-anime .side.items .item.rank3 .inner .rank
     filter saturate(0) brightness(0.45)
   section#top-anime .side.items .item.rank3 .inner
@@ -140,58 +361,74 @@ Just a quick attempt. Proper implementation in a few days.
   section#top-anime .side.items .item.rank1 .inner
     border-right 0
   .ep-status.sub::before
-    background #375882
+    background ac4
   .ep-status.sub
-    background #375882
+    background ac4
+  .scaff.items .item .info .meta
+    color fg3
+  .scaff.items .item .info .meta .dot + .dot::before
+    background fg3
+    display none
   // sidebar tabs (day/week/month)
   .with-tabs.with-more.head > .tabs
     background transparent
   .tabs .tab
     border-radius 0
     transition none
+    color fg3
   .tabs .tab:hover
-    background #33434d
-    color white
+    background ac3
+    color fg1
+  .tabs .tab.active
+    background ac3
   // anime tooltipped info panel
+  [id^="tooltipster"]
+    transition none
   .tooltipster-sidetip .tooltipster-content .title
-    color #a7ccea
+    color ac1
   .tooltipster-content a:hover
-    color #a7ccea
+    color ac1
     text-decoration underline
   .tooltipster-sidetip .tooltipster-content .actions .watch:hover
     text-decoration none
-    background #375882
+    background ac4
   .tooltipster-sidetip .tooltipster-content .actions .watch
-    background hsl(213, 16%, 22%)
-    color white
-    border 1px solid #a7ccea
+    background ac3
+    color fg1
+    border 1px solid ac1
+    transition none
+    font-weight 400
+  .tooltipster-sidetip .tooltipster-content .actions .favourite span
+    transition none
+  .tooltipster-sidetip .tooltipster-content .actions .w2g
+    transition none
     
   // anime titles
   .ani.items .item .info .name
-    color #a7ccea
+    color ac1
+    text-align center
   .ani.items .item .info .name:hover
-    color #d9eeff
+    color ac2
   .scaff.items .item .info .name
-    color #a7ccea
+    color ac1
   .scaff.items .item:hover .info .name
-    color #d9eeff
+    color ac2
   section#top-anime .side.items .item .info .name
-    color #a7ccea
+    color ac1
   section.top-table .body .items .item:hover .info .name
-    color #d9eeff
+    color ac2
   section#top-anime .side.items .item:hover .info .name
-    color #d9eeff
-    
+    color ac2
     
   // video player page
   // play button
   #w-media #w-player #player-wrapper #player .play
-    background #375882
-    color white
-    border 5px solid white
+    background ac4
+    color fg2
+    border 5px solid fg2
   // watch2gether button beside add to list below player
   .text-primary
-    color #a7ccea i
+    color ac1 i
   // hide trending sidebar
   #watch-main aside.sidebar
     display none
@@ -200,27 +437,64 @@ Just a quick attempt. Proper implementation in a few days.
     display none
   // next ep alert
   #w-player .alert.next-episode
-    background hsl(0, 0%, 15%)
+    background bg3
   // link color
   #w-info .binfo .info .meta>div>span a
-    color #a7ccea
-  // info panel
+    color ac1
+  // anime info panel
   #w-info
     margin-top 10px
-    background hsl(0, 0%, 15%)
+    background bg3
     padding 15px
     border-radius 5px
+    if aninfoPanel == "aninfoHid"
+      display none
+  #w-info .binfo .info .title
+    color fg2
+  #w-info .binfo .info .names
+    color fg3
+  .shorting .toggle
+    color ac1
+  .shorting .toggle:hover
+    color ac1
+    text-decoration underline
+  #w-info .binfo .info .synopsis
+    color fg3
+  #w-info .binfo .info .meta > div
+    color fg3
+  #w-info .binfo .info .meta > div > span
+    color fg3
+  #w-info .binfo .info .meta
+    min-width 50%
+  #w-info .binfo .poster span
+    border-radius 0
   #w-info .binfo .info .meta > div > span a:hover
-    color #a7ccea
+    color ac1
     text-decoration underline
   #w-info .brating .rating .score .value
-    color #a7ccea
+    color ac1
   #w-info .brating .rating
-    background-color hsl(0, 0%, 20%)
+    background-color bg4
     border-radius 0
   #w-info .brating .rating
-    color white
+    color fg1
     filter hue-rotate(300deg)
+  // set anime info panel to minimal
+  if aninfoPanel == "aninfoMin"
+    #w-info
+      padding 10px 5px
+    #w-info .binfo .poster
+      display none
+    #w-info .brating
+      display none
+    #w-info .binfo .info .synopsis
+      display none
+    .mb-3.icons.meta
+      display none
+    #w-info .binfo .info .bmeta
+      display none
+    #w-info .binfo .info .names
+      margin-bottom 0 i
   // star rating color
   #w-info .brating .rating .stars span.full i::before
     filter hue-rotate(60deg)
@@ -228,25 +502,26 @@ Just a quick attempt. Proper implementation in a few days.
     filter hue-rotate(60deg)
   // server panel
   #w-player #w-servers .servers
-    background hsl(0, 0%, 15%)
+    background bg3
   #w-player #w-servers .tip
-    background hsl(0, 0%, 15%)
-    color white
+    background bg3
+    color fg1
     display none
   #w-player #w-servers .servers .type ul li
     padding 1px 7px
-    background hsl(213, 16%, 22%)
-    border 1px solid #a7ccea
-    color #a7ccea
+    background ac3
+    border 1px solid ac1
+    color ac1
+    transition none
   #w-player #w-servers .servers .type ul li.active
-    background #375882
-    color white
+    background ac4
+    color fg1
   #w-player #w-servers .servers .type ul li:hover
-    background #375882
-    color white
+    background ac4
+    color fg1
   // season selector
   #w-seasons .seasons .season a:hover::after, #w-seasons .seasons .season.active a::after
-    border-color #a7ccea
+    border-color ac1
     
   // move ep sidebar below
   #w-media
@@ -257,69 +532,93 @@ Just a quick attempt. Proper implementation in a few days.
     order 3
     max-width unset
     margin-top 10px
-    background hsl(0, 0%, 15%)
+    background bg3
   #w-media #w-episodes .body .episodes
     position static
     max-height 300px
     overflow-y auto
     
-  // // TODO: ep buttons
-  // #w-episodes .body .episodes.name ul li a
-  //   background #3d698c
-  //   color white
-  //   border 1px solid #28455e
-  // #w-episodes .body .episodes.name ul li:nth-child(2n) a
-  //   background #3d698c
-  // #w-episodes .body .episodes.name ul li a.active, #w-episodes .body .episodes.name ul li a.active:visited
-  //   background hsl(110, 20%, 25%)
-  //   color white
-  // // hide ep button titles
-  // #w-episodes .body .episodes.name ul li a span
-  //   display none
-  // .ep-range
-  //   display flex
   // ep button categories
   .dropdown-item.active, .dropdown-item:active
-    color #a7ccea
+    color ac1
   // ep buttons untitled
   #w-episodes .body .episodes.number ul li
     min-width 5%
   #w-episodes .body .episodes.number ul li a
-    background #3d698c
-    color white
+    background ac5
+    color fg1
     border-radius 0
     transition none
   #w-episodes .body .episodes.number ul li a:hover
-    background #26435b
-    color white
+    background ac3
+    color fg1
   #w-episodes .body .episodes.number ul li a.filler
-    background rgb(94, 94, 94)
-    color white
+    background bg5
+    color fg1
   #w-episodes .body .episodes.number ul li a.active, #w-episodes .body .episodes.number ul li a.active:visited
-    background #4d7944
-    color white
+    background ac6
+    color fg1
   // ep buttons titled
-  #w-episodes .body .episodes.name ul
-    display flex
-    gap 4px
+  // hide play button
+  .ep-range [href] > i
+    display none i
+  // hide titles
+  .ep-range [href] > .d-title
+    display none i
+  // make it responsive
+  #w-episodes .body .episodes.name ul li
+    min-width 5%
+    float left
+  @media (max-width: 1199.98px)
+    #w-episodes .body .episodes.name ul li
+      min-width 10%
+  @media (max-width: 767.98px)
+    #w-episodes .body .episodes.name ul li
+      width 10%
+  @media (max-width: 575.98px)
+    #w-episodes .body .episodes.name ul li
+      width 20%
+  // blinker outline that shows if you input ep number
+  #w-episodes .body .episodes.name ul li a.highlight
+    outline 1px solid ac1
+    
+  // redesign titled ep buttons
   #w-episodes .body .episodes.name ul li a
-    background #3d698c
-    color white i
+    display block
+    margin 3px
+    background ac5
+    color fg1 i
     transition none
+    line-height 2.15rem
+    height 2.15rem
+    text-align center
+    font-weight 600
+    position relative
+    overflow hidden
+    padding 0 5px
     &:hover
-      background #26435b
+      background ac3
+  #w-episodes .body .episodes.name ul li a b
+    min-width auto
   #w-episodes .body .episodes.name ul li:nth-child(2n) a
-    background #3d698c
-    color white
+    background ac5
+    color fg1
     &:hover
-      background #26435b
+      background ac3
   #w-episodes .body .episodes.name ul li a.active, #w-episodes .body .episodes.name ul li a.active:visited
-    background #4d7944
-    color white
+    background ac6 i
+    color fg1
+  
+  // comments section
+  #comment-rules
+    background bg3
+    padding 15px
+  #comment-rules .head
+    color ac1
     
   // footer
   footer
-    background hsl(0, 0%, 15%)
+    background bg3
   footer .container
     background none
     background-color transparent
@@ -327,65 +626,105 @@ Just a quick attempt. Proper implementation in a few days.
   footer .azlist
     margin-bottom 15px
   footer .azlist ul li a
-    background hsl(0, 0%, 20%)
-    color white
+    background bg4
+    color fg1
     border-radius 0
     &:hover
-      background #4d7944
+      background ac6
+  footer .azlist .head .desc
+    color fg3
   footer .inline-links ul li a
-    color #a7ccea
+    color ac1
     &:hover
-      color #d9eeff
+      color ac2
+  footer .inline-links label
+    color fg1
+  footer .copyright
+    color fg1
+  footer .disclaimer
+    color fg3
   
   // az-list page
   ul.az-filters li a
     border-radius 0
-    background hsl(0, 0%, 20%)
-    color white
+    background bg4
+    color fg1
   ul.az-filters li a:hover
-    background #4d7944
-    color white
+    background ac6
+    color fg1
   ul.az-filters li a.active
-    background #4d7944
+    background ac6
+  .dropdown-menu > .active > label, .dropdown-menu > .active > label:focus, .dropdown-menu > .active > label:hover, .dropdown-menu > li > input:checked ~ label, .dropdown-menu > li > input:checked ~ label:focus, .dropdown-menu > li > input:checked ~ label:hover
+    color ac1
   // pagination
   .page-item.active .page-link
-    background-color #4d7944
-    border-color #4d7944
+    background-color ac6
+    border-color ac6
   .page-link:hover
-    color white
-    background-color #4d7944
-    border-color #4d7944
+    color fg1
+    background-color ac6
+    border-color ac6
   .dropdown-menu > li > label:hover
-    color #a7ccea
+    color ac1
     
   // watch2gether page
   .w2g-item > .inner
-    background hsl(213, 16%, 22%)
-    border 1px solid #a7ccea
+    background ac3
+    border 1px solid ac1
   .w2g-item:hover > .inner
-    background #375882
+    background ac4
   .w2g-item .room .info .created strong
-    color white
+    color fg1
   .w2g-item .room .info .created time::before
-    background white
+    background fg1
   .w2g-item .room .info .created time
-    color white
+    color fg1
   .w2g-watch .room-info
-    background hsl(0, 0%, 15%)
+    background bg3
   .w2g-watch .anime-info
-    background hsl(0, 0%, 15%)
+    background bg3
   // chat box
   .room-chat .body .compose
-    background hsl(0, 0%, 20%)
+    background bg4
   .room-chat .head
-    background hsl(0, 0%, 20%)
-    color white
+    background bg4
+    color fg1
   .room-chat
-    background hsl(0, 0%, 15%)
+    background bg3
   .meta.icons .ep
-    color #a7ccea
+    color ac1
   .room-chat .body .messages .message .msg-body .user
-    color #a7ccea
+    color ac1
+    
+  // user dashboard
+  .user-edit-avatar span
+    outline 5px solid ac1
+  .custom-control-input:checked ~ .custom-control-label::before
+    border-color ac1
+    background-color ac1
+    color fg1
+  .custom-switch .custom-control-input:checked ~ .custom-control-label::after
+    background-color ac3
+  .bg-secondary
+    background-color bg3 i
+  .user-menu
+    background bg4
+  .user-menu a
+    color fg3
+  .user-menu a.active, .user-menu a:hover
+    color fg1
+  .user-sidebar
+    background bg3
+  .user-actions
+    background bg4
+  .user-actions a:hover
+    color ac1
+  .profile-container .form-group label
+    color fg1
+  .text-muted
+    color fg3 i
+  .user-info ul.meta
+    color fg3
     
   // uncategorized clutter
   .bsharing
@@ -393,12 +732,50 @@ Just a quick attempt. Proper implementation in a few days.
   [src="https://s2.bunnycdn.ru/assets/_9anime/banners/AwardsSiteBanner-CSdll.png"]
     display none
     
+  // rotating color animation
+  @keyframes rainbow
+    0%   {color:sPink;text-shadow:0 0 10px sPink}
+    10%  {color:sBlue;text-shadow:0 0 10px sBlue}
+    20%  {color:sCyan;text-shadow:0 0 10px sCyan}
+    30%  {color:sYellow;text-shadow:0 0 10px sYellow}
+    40%  {color:sRed;text-shadow:0 0 10px sRed}
+    50%  {color:sGreen;text-shadow:0 0 10px sGreen}
+    60%  {color:sOrange;text-shadow:0 0 10px sOrange}
+    70%  {color:sPurple;text-shadow:0 0 10px sPurple}
+    80%  {color:sBlue;text-shadow:0 0 10px sBlue}
+    90%  {color:sYellow;text-shadow:0 0 10px sYellow}
+    100% {color:sPink;text-shadow:0 0 10px sPink}
+      
+  // userstyle attribution
+  if xrkaz
+    footer .disclaimer::after
+      content kaz
+      font-family monospace
+      font-size 14px
+      white-space pre-wrap
+      display block
+      animation rainbow 5s infinite
+      margin-top 10px
+    
 @-moz-document url-prefix("https://9anime.to/watch"), url-prefix("https://9anime.gs/watch"), url-prefix("https://9anime.pl/watch")
   
   .container
     max-width 1110px
   footer
     display none
+  
+  // userstyle attribution
+  if xrkaz
+    #watch-second::after
+      content kaz
+      font-family monospace
+      font-size 14px
+      white-space pre-wrap
+      text-align center
+      display block
+      animation rainbow 5s infinite
+    #wrapper #body
+      margin-bottom 30px
     
 @-moz-document url-prefix("https://9anime.to/home"), url-prefix("https://9anime.gs/watch"), url-prefix("https://9anime.pl/watch")
   
