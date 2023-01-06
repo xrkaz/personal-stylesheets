@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.0.0 🌸 kaz.cx"
+kaz = "AniMixed v1.0.1 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,7 +9,7 @@ kaz = "AniMixed v1.0.0 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.0.0
+@version      1.0.1
 @license      WTFPL
 ===================
 @var select ac "Accent color" {
@@ -21,6 +21,7 @@ kaz = "AniMixed v1.0.0 🌸 kaz.cx"
   "Minimal*":"aninfoMin",
   "Hidden":"aninfoHid"
 }
+@var checkbox awards "Anime awards banner" 0
 @var checkbox fontGoogle "AniMixPlay fonts from Google" 0
 @var checkbox setLayout "Override layout width" 0
 @var range layoutWidth "— Layout width" [1280, 1110, 1900, 10,"px"]
@@ -260,7 +261,10 @@ kaz = "AniMixed v1.0.0 🌸 kaz.cx"
     order 1
   #recent-update > .head.with-more.with-tabs
     border-bottom 1px solid bg4
-    padding-bottom 4px
+    padding-bottom 2px
+  @media (max-width: 1449px)
+    #recent-update > .head.with-more.with-tabs
+      padding-bottom 4px
   .text-tabs .tab
     background bg3
     color ac1
@@ -729,8 +733,12 @@ kaz = "AniMixed v1.0.0 🌸 kaz.cx"
   // uncategorized clutter
   .bsharing
     display none
-  [src="https://s2.bunnycdn.ru/assets/_9anime/banners/AwardsSiteBanner-CSdll.png"]
-    display none
+  [src="https://s2.bunnycdn.ru/assets/_9anime/banners/AwardsVote.png"]
+    if awards
+      display block
+    else
+      display none
+      
     
   // rotating color animation
   @keyframes rainbow
