@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.0.3 🌸 kaz.cx"
+kaz = "AniMixed v1.0.4 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,7 +9,7 @@ kaz = "AniMixed v1.0.3 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.0.3
+@version      1.0.4
 @license      WTFPL
 ===================
 @var select ac "Accent color" {
@@ -903,6 +903,10 @@ kaz = "AniMixed v1.0.3 🌸 kaz.cx"
     display none
   footer
     display none
+    
+  // temporary fixes
+  aside.main
+    margin-right 0
   
   // userstyle attribution
   if xrkaz
@@ -923,6 +927,10 @@ kaz = "AniMixed v1.0.3 🌸 kaz.cx"
     max-width 1280px
   .w2g-list-container
     max-width 1280px
+    
+  // temporary fixes
+  aside.main
+    margin-right 10px
     
 @-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/home.*")
   
