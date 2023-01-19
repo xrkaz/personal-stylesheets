@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.0.2 🌸 kaz.cx"
+kaz = "AniMixed v1.0.3 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,7 +9,7 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.0.2
+@version      1.0.3
 @license      WTFPL
 ===================
 @var select ac "Accent color" {
@@ -24,8 +24,8 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
   "AniMixPlay":"logo5"
 }
 @var select aninfoPanel "Anime info panel" {
-  "Full":"aninfoDef",
-  "Minimal*":"aninfoMin",
+  "Full*":"aninfoDef",
+  "Minimal":"aninfoMin",
   "Hidden":"aninfoHid"
 }
 @var checkbox awards "Anime awards banner" 0
@@ -35,7 +35,7 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
 @var checkbox xrkaz "Userstyle attribution" 1
 ==/UserStyle== */
 
-@-moz-document domain("9anime.to"), domain("9anime.gs"), domain("9anime.pl"), domain("9anime.me")
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl|me)\/.*")
   
   // aliases
   i = !important
@@ -145,6 +145,8 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
       background url("data:image/png;base64,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") no-repeat center
       background-size contain
       margin-top 5px
+      if ac == "acPurple"
+        filter hue-rotate(100deg)
 
   // global
   body
@@ -564,10 +566,10 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
     text-decoration underline
   #w-info .binfo .info .synopsis
     color fg3
-  #w-info .binfo .info .meta > div
-    color fg3
-  #w-info .binfo .info .meta > div > span
-    color fg3
+  // #w-info .binfo .info .meta > div
+  //   color fg3
+  // #w-info .binfo .info .meta > div > span
+  //   color fg3
   #w-info .binfo .info .meta
     min-width 50%
   #w-info .binfo .poster span
@@ -859,7 +861,15 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
       display block
     else
       display none
-
+      
+  // temporary fixes
+  aside.main
+    margin-right 10px
+  header #menu-toggler
+    display inline-grid
+    height 23px
+      
+    
   // rotating color animation
   @keyframes rainbow
     0%   {color:sPink;text-shadow:0 0 10px sPink}
@@ -885,7 +895,7 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
       animation rainbow 5s infinite
       margin-top 10px
     
-@-moz-document url-prefix("https://9anime.to/watch"), url-prefix("https://9anime.gs/watch"), url-prefix("https://9anime.pl/watch")
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/watch.*")
   
   .container
     max-width 1110px
@@ -907,26 +917,23 @@ kaz = "AniMixed v1.0.2 🌸 kaz.cx"
     #wrapper #body
       margin-bottom 30px
       
-@-moz-document url-prefix("https://9anime.to/watch2gether"), url-prefix("https://9anime.gs/watch2gether"), url-prefix("https://9anime.pl/watch2gether")
-  
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/watch2gether.*")
+
   .container
     max-width 1280px
   .w2g-list-container
     max-width 1280px
     
-@-moz-document url-prefix("https://9anime.to/home"), url-prefix("https://9anime.gs/home"), url-prefix("https://9anime.pl/home")
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/home.*")
   
   #hotest
     margin-bottom 0
     
-@-moz-document url-prefix("https://9anime.to/az-list"), url-prefix("https://9anime.gs/az-list"), url-prefix("https://9anime.pl/az-list"), url-prefix("https://9anime.to/filter"), url-prefix("https://9anime.gs/filter"), url-prefix("https://9anime.pl/filter")
-  
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/(az-list|filter|newest|added|completed).*")
+
   aside.sidebar
     display none
   .mt-5, .my-5
     margin-top 0 i
-  // #wrapper #body
-  //   margin-top 10px
-  //   padding-top 5rem
   section .head
     display none
