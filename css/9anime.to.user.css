@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.0.5 🌸 kaz.cx"
+kaz = "AniMixed v1.0.6 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,12 +9,21 @@ kaz = "AniMixed v1.0.5 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.0.5
+@version      1.0.6
 @license      WTFPL
 ===================
 @var select ac "Accent color" {
   "Blue*":"acBlue",
   "Purple":"acPurple"
+}
+@var range imgSat "Image saturation" [100, 0, 100, 1, '%']
+@var range imgLit "Image brightness" [100, 0, 100, 1, '%']
+@var range avaSat "Avatar saturation" [100, 0, 100, 1, '%']
+@var range avaLit "Avatar brightness" [100, 0, 100, 1, '%']
+@var select avaShape "Avatar shape" {
+  "Circle*":"100%",
+  "Square":"0",
+  "Squircle":"25%",
 }
 @var select setLogo "Logo" {
   "9anime 2016":"logo1",
@@ -113,6 +122,8 @@ kaz = "AniMixed v1.0.5 🌸 kaz.cx"
     section#schedule .body .items a.item .title, .ani.items .item .info .name,
     .scaff.items .item .info .name, header .main-menu
       font-size 13px
+    #w-info .brating .rating .message
+      font-size .9rem
   
   // logo selector
   .logo
@@ -209,6 +220,9 @@ kaz = "AniMixed v1.0.5 🌸 kaz.cx"
     transition none
   .btn.clear:hover
     opacity 1
+  // adjust image filters
+  img, .image
+    filter brightness(imgLit) saturate(imgSat)
     
   // landing page
   #i-wrapper .i-gohome a
@@ -655,16 +669,30 @@ kaz = "AniMixed v1.0.5 🌸 kaz.cx"
     color fg1
     border-radius 0
     transition none
-  #w-episodes .body .episodes.number ul li a:hover
+  #w-episodes .body .episodes.number ul li a:visited
     background ac3
     color fg1
+    //opacity 0.4
+  #w-episodes .body .episodes.number ul li a:hover
+    background ac3
+    color fg4
   #w-episodes .body .episodes.number ul li a.filler
     background bg5
     color fg1
+    &:hover
+      color fg4
   #w-episodes .body .episodes.number ul li a.active, #w-episodes .body .episodes.number ul li a.active:visited
     background ac6
     color fg1
+    &:hover
+      color fg4
   // ep buttons titled
+  #w-episodes .body .episodes.name ul li a:visited
+    background ac3
+    color fg1
+  #w-episodes .body .episodes.name ul li:nth-child(2n) a:visited
+    background ac3
+    color fg1
   // hide play button
   .ep-range [href] > i
     display none i
@@ -704,6 +732,7 @@ kaz = "AniMixed v1.0.5 🌸 kaz.cx"
     padding 0 5px
     &:hover
       background ac3
+      color fg4 i
   #w-episodes .body .episodes.name ul li a b
     min-width auto
   #w-episodes .body .episodes.name ul li:nth-child(2n) a
@@ -711,6 +740,7 @@ kaz = "AniMixed v1.0.5 🌸 kaz.cx"
     color fg1
     &:hover
       background ac3
+      color fg4 i
   #w-episodes .body .episodes.name ul li a.active, #w-episodes .body .episodes.name ul li a.active:visited
     background ac6 i
     color fg1
@@ -929,3 +959,121 @@ kaz = "AniMixed v1.0.5 🌸 kaz.cx"
     margin-top 0 i
   section .head
     display none
+    
+// disqus stuff
+@-moz-document url-prefix("https://disqus.com/embed/comments/?base=default&f=9anime-to")
+  
+  // code adapted from https://userstyles.world/style/7724 (ukr, MIT License)
+  .avatar .user--refresh
+    width 48px i
+    height 48px i
+    background-color ac5 i
+    border-radius avaShape i
+    filter brightness(avaLit) saturate(avaSat) i
+  .avatar .user--refresh > div
+    font-size 20px i
+    
+  .form-refresh .textarea.textarea
+    border-radius 20px 20px 0 0 i
+  .form-refresh .post-action__button.post-action__button
+    border-radius 25px i
+    padding 9.2px 20px i
+    margin-top 0.5px i
+    margin-right 1px i
+  .embed-refresh .comment__header
+    display flex i
+  .post-meta
+    margin-left 10px i
+    margin-top 0 i
+    top 0 i 
+    display flex i
+    align-items center i
+  .embed-refresh .comment__header
+    font-size 15px i
+    margin-bottom 10px i
+  .follow-user, .has-edit
+    margin-left 10px i
+  .post-byline
+    display flex i
+  .time-ago.icon-clock::before
+    vertical-align bottom i
+  .post-byline span + span
+    display flex i
+    align-items center i
+  .follow-user
+    vertical-align bottom i
+  .parent-link
+    margin-left 10px i
+  .avatar.hovercard
+    margin-top 4px i
+  .voters-outer::after, .voters-outer::before
+    height 0 i
+  .alert, .children .show-children-wrapper, .post-content
+    margin-bottom 15px i
+  .post-byline span:first-of-type
+    display flex i
+    align-items center i
+  .textarea-outer-wrapper--top-level .postbox
+    margin 0 0 10px i
+  .nav-secondary-refresh
+    margin-bottom 0px i
+  .tooltip .avatar--refresh img
+    min-width 50px i
+    min-height 50px i
+  .tooltip .avatar--refresh .initials.user--refresh
+    filter blur(1px) i
+  .tooltip__content h3.profile-link-container
+    font-size 15px i
+  .profile-card--refresh .tooltip
+    height 50px i
+    border-radius 30px i
+  .profile-link-container, .stats.stats--refresh
+    margin-right 10px i
+  .tooltip .avatar--refresh .view-profile-message-container
+    top -40px i
+  .tooltip .avatar--refresh img.user--refresh
+    filter blur(1px) i
+  .tooltip .avatar--refresh .view-profile-message-container
+    font-size 13px i
+  .post-content .post-menu .dropdown-menu .dropdown-item .dropdown-link
+    font-size 13px i
+  .post-menu .dropdown-menu--refresh, .user-menu .dropdown-menu--refresh
+    font-size 13px i
+  .post-menu .dropdown-toggle-wrapper .username--refresh, .user-menu .dropdown-toggle-wrapper .username--refresh
+    font-size 16px i
+  .post-menu .caret, .user-menu .caret
+    top 15px i
+  .notification-icon--refresh
+    font-size 19px i
+  .nav-tab--primary > a
+    padding 10.5px 0 i
+  .nav-primary
+    margin 0 0 5px i
+  #reactions .reaction-items .reaction-item .reaction-item__button .reaction-item__image-wrapper .reaction-item__image, #reactions-promotion .reaction-items .reaction-item .reaction-item__button .reaction-item__image-wrapper .reaction-item__image
+    width 25px i
+    height 25px i
+  .post-content .post-menu .dropdown-menu .dropdown-item .dropdown-link
+    padding 6px 15px i
+  .dropdown-menu--refresh a
+    padding 6px 15px i
+  .voters-outer .voters .user .username--refresh
+    font-size 15px i
+    letter-spacing normal i
+  .tooltip--post-refresh.tooltip--post-refresh
+    padding 10px i
+  .time-ago.icon.icon-clock
+    margin-top 1.5px i
+  .comment__header
+    align-items center i
+  .tooltip__content--refresh
+    padding-left 0px i
+  .form-refresh .post-action__cancel.post-action__cancel
+    font-size 15px i
+    padding 9px 20px i
+  .form-refresh .textarea.textarea
+    padding 15px i
+  .notification-count--refresh
+    left -2.5px i
+    top 3.5px i
+  .time-ago.icon-clock::before
+    display none i
