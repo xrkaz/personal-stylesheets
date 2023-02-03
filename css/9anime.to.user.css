@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.0.8 🌸 kaz.cx"
+kaz = "AniMixed v1.0.9 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,20 +9,36 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.0.8
+@version      1.0.9
 @license      WTFPL
 ===================
-@var select ac "Accent color" {
-  "Blue*":"acBlue",
-  "Purple":"acPurple",
-  "Red":"acRed"
+@var select cs "Color scheme" {
+  "Lily":"csLily",
+  "Ring*":"csRing",
+  "Miku":"csMiku",
+  "Luka":"csLuka",
+  "Meiko":"csMeiko",
+  "Gumi":"csGumi"
 }
+@var select ac "Accent color" {
+  "Default*":"acDefault",
+  "Custom":"acCustom",
+  "Blue":"acBlue",
+  "Red":"acRed",
+  "Green":"acGreen",
+  "Purple":"acPurple",
+  "Pink":"acPink",
+  "Cyan":"acCyan",
+  "Yellow":"acYellow",
+  "Orange":"acOrange"
+}
+@var color acColor "— Custom accent" hsl(205, 60%, 80%)
 @var select bgImg "Background image" {
   "None*":"null",
   "Custom":"bgCustom",
-  "Hatsune Miku":"'https://i.ibb.co/CMJDBTf/miku4a2x.jpg'",
-  "Megurine Luka":"'https://i.ibb.co/f9cv0nk/luka2x.jpg'",
-  "Kasane Teto":"'https://i.ibb.co/GFCwX0X/teto2x.jpg'",
+  "Hatsune Miku":"'https://i.imgur.com/EwRKF6L.jpg'",
+  "Megurine Luka":"'https://i.imgur.com/B3BxRo6.jpg'",
+  "Kasane Teto":"'https://i.imgur.com/hbyADPt.jpg'",
   "Background 1":"'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
   "Background 2":"'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
   "Background 3":"'https://images.unsplash.com/photo-1594671581654-cc7ed83167bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
@@ -34,7 +50,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   "Background 9":"'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
   "Background 10":"'https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'"
 }
-@var text bgCustom "Custom image URL (with quotes)" ""https://i.ibb.co/0Ds6QX2/m6a.jpg""
+@var text bgCustom "— Custom image URL (with quotes)" ""https://i.imgur.com/uGB0VHA.jpg""
 @var range fxBlur "Panel blur" [0, 0, 20, 1, 'px']
 @var range fxAlpha "Panel alpha" [1, 0, 1, 0.1, '']
 @var range imgSat "Image saturation" [100, 0, 100, 1, '%']
@@ -54,28 +70,29 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   "AniMixPlay*":"logo5"
 }
 @var select aninfoPanel "Anime info panel" {
-  "Full*":"aninfoDef",
-  "Minimal":"aninfoMin",
+  "Full + Stars*":"aninfoDef",
+  "Full - Stars":"aninfoDefxRate",
+  "Synop + Stars":"aninfoSum",
+  "Synop - Stars":"aninfoSumxRate",
+  "Meta + Stars":"aninfoMeta",
+  "Meta - Stars":"aninfoMetaxRate",
+  "Title":"aninfoTitle",
   "Hidden":"aninfoHid"
 }
+@var select prad "Corners" {
+  "Rounded":"5px",
+  "Sharp*":"0"
+}
+@var checkbox fontAnimix "AniMixPlay font" 1
 @var checkbox mascot "Mascot" 1
-@var checkbox awards "Anime awards banner" 0
-@var checkbox fontGoogle "AniMixPlay fonts from Google" 0
+@var checkbox shadow "Shadows" 1
+@var checkbox setAvatar "Custom profile avatar" 1
+@var text avaCustom "— Custom image URL (with quotes)" ""https://i.imgur.com/MeYUTRl.png""
 @var checkbox setLayout "Override layout width" 0
 @var range layoutWidth "— Layout width" [1280, 1110, 1800, 10,"px"]
+@var checkbox awards "Anime awards banner" 0
 @var checkbox xrkaz "Userstyle attribution" 1
 ==/UserStyle== */
-
-// TODO (not yet implemented)
-// @var select corner "Panel corners" {
-//   "Rounded":"4px",
-//   "Sharp*":"0"
-// }
-// @var select btnCorner "Button corners" {
-//   "Rounded":"4px",
-//   "Sharp*":"0"
-// }
-// @var checkbox shadow "Shadows" 0
 
 @-moz-document regexp("https:\/\/9anime\.(to|gs|pl|me)\/.*")
   
@@ -89,12 +106,12 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   sBlack  = hsl(0, 0%, 0%)
   sWhite  = hsl(0, 0%, 100%)
   sBlue   = hsl(205, 60%, 80%) // animixplay
-  sGreen  = hsl(110, 30%, 40%)
+  sGreen  = hsl(110, 60%, 80%) // hsl(110, 30%, 40%)
   sRed    = hsl(0, 60%, 80%)
-  sOrange = hsl(35, 50%, 50%)
-  sPink   = hsl(330, 50%, 50%)
-  sCyan   = hsl(180, 50%, 50%)
-  sYellow = hsl(60, 50%, 50%)
+  sOrange = hsl(35, 60%, 80%)
+  sPink   = hsl(330, 60%, 80%)
+  sCyan   = hsl(180, 60%, 80%)
+  sYellow = hsl(60, 60%, 80%)
   sPurple = hsl(265, 60%, 80%) // 9anime
   
   // custom colors
@@ -110,20 +127,111 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   sRedDim = l(s(sRed, 15%), 20%)
   sRedAlt = l(s(sRed, 40%), 30%)
   sRedEps = l(s(sRed, 40%), 40%)
+  sPinkLit = l(s(sPink, 100%), 90%)
+  sPinkDim = l(s(sPink, 15%), 20%)
+  sPinkAlt = l(s(sPink, 40%), 30%)
+  sPinkEps = l(s(sPink, 40%), 40%)
+  sGreenLit = l(s(sGreen, 100%), 90%)
+  sGreenDim = l(s(sGreen, 15%), 20%)
+  sGreenAlt = l(s(sGreen, 40%), 30%)
+  sGreenEps = l(s(sGreen, 40%), 40%)
+  sYellowLit = l(s(sYellow, 100%), 90%)
+  sYellowDim = l(s(sYellow, 15%), 20%)
+  sYellowAlt = l(s(sYellow, 40%), 30%)
+  sYellowEps = l(s(sYellow, 40%), 40%)
+  sOrangeLit = l(s(sOrange, 100%), 90%)
+  sOrangeDim = l(s(sOrange, 15%), 20%)
+  sOrangeAlt = l(s(sOrange, 40%), 30%)
+  sOrangeEps = l(s(sOrange, 40%), 40%)
+  sCyanLit = l(s(sCyan, 100%), 90%)
+  sCyanDim = l(s(sCyan, 15%), 20%)
+  sCyanAlt = l(s(sCyan, 40%), 30%)
+  sCyanEps = l(s(sCyan, 40%), 40%)
+  
+  // complementary colors
+  cc1 = sGreenAlt
+  cc2 = sYellowAlt
+  cc3 = sRedAlt
   
   // color schemes
-  bg1 = l(sBlack, 10%)
-  bg2 = l(sBlack, 5%)
-  bg3 = l(sBlack, 15%)
-  bg4 = l(sBlack, 20%)
-  bg5 = l(sBlack, 25%)
-  bg6 = l(sBlack, 45%)
-  ac1 = sBlue
-  ac2 = sBlueLit
-  ac3 = sBlueDim
-  ac4 = sBlueAlt
-  ac5 = sBlueEps
-  ac6 = sGreen
+  if cs == "csRing"
+    bg1 = l(sBlack, 10%)
+    bg2 = l(sBlack, 5%)
+    bg3 = l(sBlack, 15%)
+    bg4 = l(sBlack, 20%)
+    bg5 = l(sBlack, 25%)
+    bg6 = l(sBlack, 45%)
+    ac1 = sBlue
+    ac2 = sBlueLit
+    ac3 = sBlueDim
+    ac4 = sBlueAlt
+    ac5 = sBlueEps
+  else if cs == "csMiku"
+    bg1 = l(s(sCyan, 20%), 10%)
+    bg2 = l(s(sCyan, 20%), 5%)
+    bg3 = l(s(sCyan, 30%), 15%)
+    bg4 = l(s(sCyan, 30%), 20%)
+    bg5 = l(s(sCyan, 40%), 25%)
+    bg6 = l(s(sCyan, 40%), 45%)
+    ac1 = sCyan
+    ac2 = sCyanLit
+    ac3 = sCyanDim
+    ac4 = sCyanAlt
+    ac5 = sCyanEps
+  else if cs == "csLuka"
+    bg1 = l(s(sPink, 20%), 10%)
+    bg2 = l(s(sPink, 20%), 5%)
+    bg3 = l(s(sPink, 30%), 15%)
+    bg4 = l(s(sPink, 30%), 20%)
+    bg5 = l(s(sPink, 40%), 25%)
+    bg6 = l(s(sPink, 40%), 45%)
+    ac1 = sPink
+    ac2 = sPinkLit
+    ac3 = sPinkDim
+    ac4 = sPinkAlt
+    ac5 = sPinkEps
+  else if cs == "csMeiko"
+    bg1 = l(s(sRed, 20%), 10%)
+    bg2 = l(s(sRed, 20%), 5%)
+    bg3 = l(s(sRed, 30%), 15%)
+    bg4 = l(s(sRed, 30%), 20%)
+    bg5 = l(s(sRed, 40%), 25%)
+    bg6 = l(s(sRed, 40%), 45%)
+    ac1 = sRed
+    ac2 = sRedLit
+    ac3 = sRedDim
+    ac4 = sRedAlt
+    ac5 = sRedEps
+  else if cs == "csGumi"
+    bg1 = l(s(sGreen, 20%), 10%)
+    bg2 = l(s(sGreen, 20%), 5%)
+    bg3 = l(s(sGreen, 30%), 15%)
+    bg4 = l(s(sGreen, 30%), 20%)
+    bg5 = l(s(sGreen, 40%), 25%)
+    bg6 = l(s(sGreen, 40%), 45%)
+    ac1 = sGreen
+    ac2 = sGreenLit
+    ac3 = sGreenDim
+    ac4 = sGreenAlt
+    ac5 = sGreenEps
+    cc1 = sBlueAlt
+    if ac != "acDefault"
+      cc1 = sGreenAlt
+  else if cs == "csLily"
+    bg1 = sBlack
+    bg2 = sBlack
+    bg3 = l(sBlack, 5%)
+    bg4 = l(sBlack, 10%)
+    bg5 = l(sBlack, 15%)
+    bg6 = l(sBlack, 20%)
+    ac1 = sYellow
+    ac2 = sYellowLit
+    ac3 = sYellowDim
+    ac4 = sYellowAlt
+    ac5 = sYellowEps
+    cc2 = sBlueAlt
+    if ac != "acDefault"
+      cc2 = sYellowAlt
   
   // text colors
   fg1 = a(sWhite, 0.8) // default
@@ -132,8 +240,20 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   fg4 = a(sWhite, 0.3) // placeholder
   
   // accent colors
-  if ac == "acBlue"
+  if ac == "acDefault"
     null
+  else if ac == "acCustom"
+    ac1 = acColor
+    ac2 = l(s(acColor, 100%), 90%)
+    ac3 = l(s(acColor, 15%), 20%)
+    ac4 = l(s(acColor, 40%), 30%)
+    ac5 = l(s(acColor, 40%), 40%)
+  else if ac == "acBlue"
+    ac1 = sBlue
+    ac2 = sBlueLit
+    ac3 = sBlueDim
+    ac4 = sBlueAlt
+    ac5 = sBlueEps
   else if ac == "acPurple"
     ac1 = sPurple
     ac2 = sPurpleLit
@@ -146,17 +266,66 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     ac3 = sRedDim
     ac4 = sRedAlt
     ac5 = sRedEps
+  else if ac == "acPink"
+    ac1 = sPink
+    ac2 = sPinkLit
+    ac3 = sPinkDim
+    ac4 = sPinkAlt
+    ac5 = sPinkEps
+  else if ac == "acOrange"
+    ac1 = sOrange
+    ac2 = sOrangeLit
+    ac3 = sOrangeDim
+    ac4 = sOrangeAlt
+    ac5 = sOrangeEps
+    cc2 = sBlueAlt
+  else if ac == "acCyan"
+    ac1 = sCyan
+    ac2 = sCyanLit
+    ac3 = sCyanDim
+    ac4 = sCyanAlt
+    ac5 = sCyanEps
+  else if ac == "acYellow"
+    ac1 = sYellow
+    ac2 = sYellowLit
+    ac3 = sYellowDim
+    ac4 = sYellowAlt
+    ac5 = sYellowEps
+    cc2 = sBlueAlt
+  else if ac == "acGreen"
+    ac1 = sGreen
+    ac2 = sGreenLit
+    ac3 = sGreenDim
+    ac4 = sGreenAlt
+    ac5 = sGreenEps
+    cc1 = sBlueAlt
   
   // mixins
-  bg(k)
-    backdrop-filter blur(fxBlur)
-    background a(k, fxAlpha)
-  bgc(k)
-    backdrop-filter blur(fxBlur)
-    background-color a(k, fxAlpha) i
+  ava()
+    if setAvatar
+      content url(avaCustom)
+  shad()
+    if shadow
+      box-shadow a(sBlack, 0.12) 0px 1px 3px, a(sBlack, 0.24) 0px 1px 2px //box-shadow 0 1px 3px hsla(0, 0%, 0%, .5)
+  rad()
+    border-radius prad
+  shard()
+    shad();rad()
+  if bgImg != null
+    bg(k)
+      backdrop-filter blur(fxBlur)
+      background a(k, fxAlpha)
+    bgc(k)
+      backdrop-filter blur(fxBlur)
+      background-color a(k, fxAlpha) i
+  else
+    bg(k)
+      background k
+    bgc(k)
+      background-color k i
     
   // font stuff
-  if fontGoogle
+  if fontAnimix
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
     b, strong
       font-weight 700
@@ -167,11 +336,15 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     .ani.items .item .info .name, .scaff.items .item .info .name,
     #w-seasons .seasons .season a .name, #w-player #w-servers .servers .type ul li::before,
     #comment-rules .head, footer .azlist .head .title, footer .azlist ul li a,
-    footer .inline-links label, .user-menu a
+    footer .inline-links label, .user-menu a, #w-episodes .body .episodes.number ul li a, #w-episodes .body .episodes.name ul li a, #w-episodes .body .episodes.name ul li a b
       font-weight 400
     section#schedule .body .items a.item .title, .ani.items .item .info .name,
     .scaff.items .item .info .name, header .main-menu
       font-size 13px
+    #w-episodes .body .episodes.number ul li a, #w-episodes .body .episodes.name ul li a
+      font-size 15px
+    #w-info .binfo .info .title
+      font-size 22px
     #w-info .brating .rating .message
       font-size .9rem
     // prevent clipping
@@ -189,28 +362,28 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
       if ac == "acPurple"
         filter none
     else if setLogo == "logo1"
-      background url("https://i.ibb.co/9hHYRqp/92016.png") no-repeat center
+      background url("https://i.imgur.com/RgTqX81.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(260deg) brightness(2)
       if ac == "acPurple"
         filter none
     else if setLogo == "logo2"
-      background url("https://i.ibb.co/BjRHzhp/92018.png") no-repeat center
+      background url("https://i.imgur.com/tH7dpBQ.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(280deg) brightness(2)
       if ac == "acPurple"
         filter none
     else if setLogo == "logo3"
-      background url("https://i.ibb.co/x6VdtDF/92020.png") no-repeat center
+      background url("https://i.imgur.com/5l7fCCx.png") no-repeat center
       background-size contain
       margin-top 3px
       filter hue-rotate(300deg) brightness(2)
       if ac == "acPurple"
         filter none
     else if setLogo == "logo5"
-      background url("https://i.ibb.co/dbYcVSt/logo.png") no-repeat center
+      background url("https://i.imgur.com/FFPPYS7.png") no-repeat center
       background-size contain
       margin-top 5px
       if ac == "acPurple"
@@ -220,40 +393,45 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   if bgImg != null
     #recent-update > .head.with-more.with-tabs
       bg(bg3)
+      shard()
       border-bottom none i
       padding 10px i
     section.top-table .head
       bg(bg3)
+      shard()
       padding 10px
-    #comments
-      bg(bg3)
-      padding 10px 15px
-      border-radius 5px
     .filters
       bg(bg3)
+      shard()
       margin 0
       padding-top 10px
       position relative
-      z-index 1000
+      z-index 5
     .list-info
+      margin-top 10px
+      shard()
       bg(bg3)
       padding 10px
     ul.az-filters
       bg(bg3)
+      shard()
       padding 10px
-    #w-media #w-episodes
-      z-index 1000
     section#continue-watching .head.with-more
       bg(bg3)
+      shard()
       padding 10px
     header
-      z-index 1001
+      z-index 6
     .user-nav-folders
+      shard()
       padding 10px
       bg(bg3)
-  else
-    fxBlur = 0
-    fxAlpha = 1
+    #w-media #w-episodes
+      z-index 5
+    .pagination
+      bg(bg3)
+      shard()
+      padding 10px
 
   // global
   body
@@ -268,6 +446,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     &:hover
       color ac2
   .btn
+    shard()
     transition none
     color fg1
   .btn:hover
@@ -316,6 +495,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     color fg1
   .btn.clear
     transition none
+    box-shadow none
   .btn.clear:hover
     opacity 1
   // adjust image filters
@@ -343,6 +523,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   // navbar
   header.fixed
     bg(bg1)
+    shad()
   header .main-menu
     transition none
     color fg3
@@ -355,13 +536,62 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     transition none
   header .logo:hover
     opacity 0.5
+  // account avatar
+  .top-profile .user .avatar
+    shad()
+  .top-profile .user .avatar img
+    ava()
+  .user-edit-avatar span img
+    ava()
   // searchbar
+  .head-box
+    border-bottom 1px solid bg3
+  #search .search-popup .body .items .item
+    bg(bg1)
+  #search .search-popup .body .items .item:nth-child(2n+1)
+    bg(bg3)
+  #search .search-popup .foot
+    bg(bg4)
+    color fg3
+  .text-gray2
+    color fg3 i
+  span.rating
+    border 1px solid fg3
+    color fg3
   header #search form
-    border 1px solid bg3
+    border 1px solid bg4
+    bgc(bg2)
+    shard()
+  .head-box .actions .filter
+    color ac1
+    &:hover
+      color ac2
+  .head-box .tabs-sm .tab.active, .head-box .tabs-sm .tab:hover
+    color ac1
+  .head-box .tabs-sm .tab.active::after, .head-box .tabs-sm .tab:hover::after
+    background ac1
   #search .search-popup
     border 1px solid bg3
+    bg(bg2)
+    shard()
+  header #search form button
+    transition none
+    color fg4
+  header #search form input
+    color fg1
+  #search .search-popup .s-close
+    color ac1
+    transition none
+    border-bottom 1px solid ac1
+    &:hover
+      color ac2
+  #search .search-popup .foot > a
+    color ac1
+    &:hover
+      color ac2
   header #search form input::placeholder
     color fg4
+    opacity 1
   header #search-toggler:hover
     color ac1
   // make navbar sticky
@@ -372,6 +602,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     background-color ac3
     color fg1
     transition none
+    shard()
   header #user .sign-in:hover
     background-color ac4
   // hide socials
@@ -442,6 +673,11 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     color fg1
   #hotest .item .image div
     border-radius 0
+  // featured anime slider button
+  #hotest .item .info .actions .btn.play
+    shard()
+  .btn-group-lg > .btn, .btn-lg
+    shard()
   @media (max-width: 767.98px)
     .hotest.container
       margin-bottom 0
@@ -480,6 +716,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   // anime items
   section.top-table .body .items .item
     bg(bg3)
+    shad()
     border-radius 0
     margin-bottom 6px
   section.top-table .body .items .item:hover
@@ -509,6 +746,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     border-color a(bg4, fxAlpha)
   .ani.items .item .info
     bg(bg3)
+    shad()
     padding 1px 5px 1px 5px
   .ani.poster > a::after
     content ""
@@ -542,6 +780,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   // schedule panel
   section#schedule
     margin-bottom 0
+    shard()
   section#schedule .head
     bg(bg4)
   section#schedule .body
@@ -549,7 +788,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   section#schedule .body .items a.item .ep
     background ac3
     border 1px solid ac1
-    border-radius 5px
+    shard()
     transition none
   section#schedule .head .now
     color fg3
@@ -579,12 +818,12 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   section#schedule .body .items a.item .title
     transition none
   section#schedule .body .more
-    background bg4
+    bg(bg4)
     color fg1
     transition none
     border-top 1px solid transparent
   section#schedule .body .more:hover
-    background bg5
+    bg(bg5)
     color fg1
   // sidebar top anime
   @media (max-width: 1199.98px)
@@ -595,6 +834,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   #top-anime
     bg(bg3)
     padding 10px
+    shard()
   .side.items .item .inner
     background transparent
     transition none
@@ -602,21 +842,30 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   .side.items .item:hover .inner
     bg(bg4)
   section#top-anime .side.items .item.rank3 .inner .rank
-    filter saturate(0) brightness(0.45)
+    filter saturate(0) brightness(0.48)
   section#top-anime .side.items .item.rank3 .inner
     border-right 0
   section#top-anime .side.items .item.rank2 .inner .rank
-    filter saturate(0) brightness(0.7)
+    filter saturate(0) brightness(0.75)
   section#top-anime .side.items .item.rank2 .inner
     border-right 0
   section#top-anime .side.items .item.rank1 .inner .rank
-    filter saturate(0) brightness(1.3)
+    filter saturate(0) brightness(1.4)
   section#top-anime .side.items .item.rank1 .inner
     border-right 0
+  .ep-status::before
+    transform none
   .ep-status.sub::before
     background ac4
+  .ep-status.dub::before
+    background cc2
   .ep-status.sub
     background ac4
+  .ep-status.dub
+    background cc2
+  .adult
+    background-color cc3
+    color fg1
   .scaff.items .item .info .meta
     color fg3
   .scaff.items .item .info .meta .dot + .dot::before
@@ -682,6 +931,10 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     color ac2
     
   // video player page
+  // video player
+  #w-media #w-player #player-wrapper
+    order 2
+    shad()
   // play button
   #w-media #w-player #player-wrapper #player .play
     background ac4
@@ -690,6 +943,13 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   // controls
   #w-player #controls
     bg(bg3)
+    border-radius prad prad 0 0
+    shad()
+    order 1
+  .ctrl.expand
+    display none i
+  .ctrl.check.auto-skip.text-warning
+    color ac1 i
   // watch2gether button beside add to list below player
   .text-primary
     color ac1 i
@@ -702,6 +962,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   // next ep alert
   #w-player .alert.next-episode
     bg(bg3)
+    order 4
   // link color
   #w-info .binfo .info .meta>div>span a
     color ac1
@@ -710,7 +971,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     margin-top 10px
     bg(bg3)
     padding 15px
-    border-radius 5px
+    shard()
     if aninfoPanel == "aninfoHid"
       display none
   #w-info .binfo .info .title
@@ -724,10 +985,6 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     text-decoration underline
   #w-info .binfo .info .synopsis
     color fg3
-  // #w-info .binfo .info .meta > div
-  //   color fg3
-  // #w-info .binfo .info .meta > div > span
-  //   color fg3
   #w-info .binfo .info .meta
     min-width 50%
   #w-info .binfo .poster span
@@ -735,15 +992,23 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   #w-info .binfo .info .meta > div > span a:hover
     color ac1
     text-decoration underline
-  #w-info .brating .rating .score .value
-    color ac1
   #w-info .brating .rating
     bgc(bg4)
-    border-radius 0
+    background none
+    shard()
     color fg1
-    filter hue-rotate(300deg)
-  // set anime info panel to minimal
-  if aninfoPanel == "aninfoMin"
+    padding 20px 30px
+    //filter hue-rotate(300deg)
+  #w-info .brating .rating .score
+    text-align center
+  #w-info .brating .rating .score .value
+    color ac1
+  #w-info .brating .rating .score .by
+    display block
+    margin -5px 0 5px 0
+  #w-info .brating .rating .message
+    margin-top 5px
+  if aninfoPanel == "aninfoTitle"
     #w-info
       padding 10px 5px
     #w-info .binfo .poster
@@ -758,12 +1023,38 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
       display none
     #w-info .binfo .info .names
       margin-bottom 0 i
+  if aninfoPanel == "aninfoSum"
+    #w-info .binfo .info .bmeta
+      display none
+  if aninfoPanel == "aninfoSumxRate"
+    #w-info .binfo .info .bmeta, #w-info .brating
+      display none
+    #w-info .binfo .poster
+      width 11%
+  if aninfoPanel == "aninfoMeta"
+    #w-info .binfo .info .synopsis
+      display none
+  if aninfoPanel == "aninfoMetaxRate"
+    #w-info .binfo .info .synopsis, #w-info .brating
+      display none
+    #w-info .binfo .poster
+      width 11%
+  if aninfoPanel == "aninfoDefxRate"
+    #w-info .brating
+      display none
   // star rating color
-  #w-info .brating .rating .stars span.full i::before
-    filter hue-rotate(60deg)
-  #w-info .brating .rating .stars span.half i::before
-    filter hue-rotate(60deg)
+  // #w-info .brating .rating .stars span.full i::before
+  //   filter hue-rotate(60deg)
+  // #w-info .brating .rating .stars span.half i::before
+  //   filter hue-rotate(60deg)
   // server panel
+  .text-warning
+    color ac1 i
+  #w-player #w-servers
+    order 3
+    margin-top 0
+    shad()
+    border-radius 0 0 prad prad
   #w-player #w-servers .servers
     bg(bg3)
   #w-player #w-servers .tip
@@ -791,11 +1082,14 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     flex-direction column
   #w-media #w-player
     margin-left 0
+    display flex
+    flex-direction column
   #w-media #w-episodes
     order 3
     max-width unset
     margin-top 10px
     bg(bg3)
+    shard()
   #w-media #w-episodes .body .episodes
     position static
     max-height 300px
@@ -825,7 +1119,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     &:hover
       color fg4
   #w-episodes .body .episodes.number ul li a.active, #w-episodes .body .episodes.number ul li a.active:visited
-    background ac6
+    background cc1
     color fg1
     &:hover
       color fg4
@@ -885,10 +1179,14 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
       background ac3
       color fg4 i
   #w-episodes .body .episodes.name ul li a.active, #w-episodes .body .episodes.name ul li a.active:visited
-    background ac6 i
+    background cc1 i
     color fg1
   
   // comments section
+  #comments
+    bg(bg3)
+    padding 10px 15px
+    shard()
   #comment-rules
     background bg3
     padding 15px
@@ -908,8 +1206,9 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     background bg4
     color fg1
     border-radius 0
+    shad()
     &:hover
-      background ac6
+      background cc1
   footer .azlist .head .desc
     color fg3
   footer .inline-links ul li a
@@ -928,11 +1227,19 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     border-radius 0
     background bg4
     color fg1
+    shad()
   ul.az-filters li a:hover
-    background ac6
+    background cc1
     color fg1
   ul.az-filters li a.active
-    background ac6
+    background cc1
+  .dropdown-menu
+    color fg1
+    bgc(bg3)
+    shard()
+    border 1px solid bg4
+  .dropdown-menu > li > label
+    color fg3
   .dropdown-menu > .active > label, .dropdown-menu > .active > label:focus, .dropdown-menu > .active > label:hover, .dropdown-menu > li > input:checked ~ label, .dropdown-menu > li > input:checked ~ label:focus, .dropdown-menu > li > input:checked ~ label:hover
     color ac1
   .list-info
@@ -954,18 +1261,28 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     color fg4
   // pagination
   .page-item.active .page-link
-    background-color ac6
-    border-color ac6
+    background-color cc1
+    border-color cc1
   .page-link:hover
     color fg1
-    background-color ac6
-    border-color ac6
+    background-color cc1
+    border-color cc1
   .dropdown-menu > li > label:hover
     color ac1
   .filters .dropdown-menu li label
     transition none
   .dropdown .dropdown-toggle::after
     transition none
+  .form-control
+    shard()
+    background-color bg2
+    border 1px solid bg4
+    color fg1
+    transition none
+  .form-control:focus
+    background-color bg2
+    border-color bg4
+    shard()
   .form-control::placeholder
     color fg4
   .filters .filter input[type="text"]
@@ -1005,6 +1322,18 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     color ac1
     
   // user dashboard
+  .user-notification
+    shad()
+  .user-notification .body-box .items .no-result
+    color fg1
+  .round-t
+    border-top-left-radius prad
+    border-top-right-radius prad
+  .round-b
+    border-bottom-left-radius prad
+    border-bottom-right-radius prad
+  .custom-file-label
+    shard()
   .user-edit-avatar span
     outline 5px solid ac1
   .custom-control-input:checked ~ .custom-control-label::before
@@ -1015,14 +1344,19 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     background-color ac3
   .bg-secondary
     bgc(bg3)
+  .user-body.bg-secondary
+    bgc(bg3)
+    shard()
   .user-menu
     bg(bg4)
+    shard()
   .user-menu a
     color fg3
   .user-menu a.active, .user-menu a:hover
     color fg1
   .user-sidebar
     bg(bg3)
+    shard()
   .user-actions
     bg(bg4)
   .user-actions a:hover
@@ -1070,10 +1404,11 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
       animation rainbow 5s infinite
       margin-top 10px
     
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/watch.*")
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/(?!watch2gether)watch.*")
   
   header
     bg(bg1)
+    shad()
   .container
     max-width 1110px
   header #search form .tip span
@@ -1083,7 +1418,7 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   
   // userstyle attribution
   if xrkaz
-    #watch-second::after
+    #watch-second aside.main::after
       content kaz
       font-family monospace
       font-size 14px
@@ -1091,6 +1426,10 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
       text-align center
       display block
       animation rainbow 5s infinite
+      padding 10px
+      shard()
+      margin-top -10px
+      bg(bg3)
     #wrapper #body
       margin-bottom 30px
       
@@ -1100,6 +1439,68 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
     max-width 1280px
   .w2g-list-container
     max-width 1280px
+  .w2g-watch .anime-info
+    shard()
+    bg(bg3)
+  .w2g-watch .room-info
+    bg(bg3)
+    shad()
+    border-radius 0 0 prad prad
+  .room-chat
+    bg(bg3)
+    shard()
+  .room-chat .head
+    bg(bg4)
+    border-bottom 1px solid bg4
+  .shorting .content
+    transition none
+  .w2g-watch .anime-info .info .name
+    color fg1
+  .w2g-watch .anime-info .synopsis
+    color fg3
+  .w2g-watch .room-info .start .room .created span::before
+    background fg3
+  .w2g-watch .room-info .start .room .created span
+    color fg3
+  .w2g-watch .room-info .start .room .created strong
+    color ac1
+  .w2g-watch .room-info .start .room .name
+    color fg1
+  .room-chat .body .compose
+    bg(bg4)
+    border-top 1px solid bg4
+  #chat-input
+    margin-right 10px
+
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/watch2gether\/room\/.*")
+  
+  footer
+    display none
+  aside.sidebar
+    padding-right 0
+  .room-chat
+    max-height 840px i
+  .room-chat .body .messages .message.self .msg-body .text
+    background ac4
+    color fg1
+  .room-chat .body .messages .message.self .msg-body .text::after
+    border-left-color ac4
+  
+  if xrkaz
+    .wg2-watch-block::after
+      content kaz
+      font-family monospace
+      font-size 14px
+      white-space pre-wrap
+      text-align center
+      display block
+      animation rainbow 5s infinite
+      padding 10px
+      shard()
+      margin-top 30px
+      bg(bg3)
+    #wrapper #body
+      margin-bottom 30px
     
 @-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/home.*")
     
@@ -1122,17 +1523,17 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
   
   if mascot
     footer::before
-      content url("https://i.ibb.co/2sTHDQ3/mascot1.png")
+      content url("https://i.imgur.com/5uSe6uG.png")
       float right
       margin-top -361px
       margin-right calc(50% - 600px)
       if ac == "acPurple"
-        content url("https://i.ibb.co/F8mGBwL/mascot2.png")
+        content url("https://i.imgur.com/BvgZ9up.png")
     @media (max-width: 1199.98px)
       footer::before
         display none
     
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/(az-list|filter|newest|added|completed|genre).*")
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/(az-list|filter|newest|added|completed|genre|studio|country|tv|movie|ona|ova|special|music|trending).*")
 
   aside.sidebar
     display none
@@ -1145,6 +1546,10 @@ kaz = "AniMixed v1.0.8 🌸 kaz.cx"
 @-moz-document url-prefix("https://disqus.com/embed/comments/?base=default&f=9anime-to")
   
   // code adapted from https://userstyles.world/style/7724 (ukr, MIT License)
+  .compose-wrapper .avatar .user--refresh
+    ava()
+  .authored-by-session-user .avatar .user--refresh
+    ava()
   .avatar .user--refresh
     width 48px i
     height 48px i
