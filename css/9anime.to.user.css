@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.0.9 🌸 kaz.cx"
+kaz = "AniMixed v1.1.0 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,7 +9,7 @@ kaz = "AniMixed v1.0.9 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.0.9
+@version      1.1.0
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -432,13 +432,13 @@ kaz = "AniMixed v1.0.9 🌸 kaz.cx"
       bg(bg3)
       shard()
       padding 10px
-
+      
   // global
   body
     background url(bgImg) no-repeat fixed center
     background-size cover
-    background-color bg1
     font-family "Lexend Deca",Nunito,Archivo,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+    background-color bg1
     color fg1
   a
     color ac1
@@ -962,6 +962,7 @@ kaz = "AniMixed v1.0.9 🌸 kaz.cx"
   // next ep alert
   #w-player .alert.next-episode
     bg(bg3)
+    shard()
     order 4
   // link color
   #w-info .binfo .info .meta>div>span a
@@ -1368,6 +1369,13 @@ kaz = "AniMixed v1.0.9 🌸 kaz.cx"
   .user-info ul.meta
     color fg3
     
+  // login
+  .modal-content
+    color fg1
+    bgc(bg1)
+    shard()
+    border 1px solid transparent
+    
   // uncategorized clutter
   #hotest .swiper-pagination
     display none
@@ -1533,7 +1541,7 @@ kaz = "AniMixed v1.0.9 🌸 kaz.cx"
       footer::before
         display none
     
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/(az-list|filter|newest|added|completed|genre|studio|country|tv|movie|ona|ova|special|music|trending).*")
+@-moz-document regexp("https:\/\/9anime\.(to|gs|pl)\/(az-list|filter|newest|added|ongoing|updated|completed|genre|studio|country|tv|movie|ona|ova|special|music|trending).*")
 
   aside.sidebar
     display none
@@ -1545,27 +1553,129 @@ kaz = "AniMixed v1.0.9 🌸 kaz.cx"
 // disqus stuff
 @-moz-document url-prefix("https://disqus.com/embed/comments/?base=default&f=9anime-to")
   
-  // code adapted from https://userstyles.world/style/7724 (ukr, MIT License)
+  if fontAnimix
+    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
+    
+      
+  body.roboto, body.roboto input, body.roboto select, body.roboto textarea
+    font-family "Lexend Deca", Roboto, sans-serif
+  a
+    color ac1
+    transition none
+    &:hover
+      color ac2
   .compose-wrapper .avatar .user--refresh
     ava()
   .authored-by-session-user .avatar .user--refresh
     ava()
   .avatar .user--refresh
-    width 48px i
-    height 48px i
+    width 48px
+    height 48px
     background-color ac5 i
-    border-radius avaShape i
-    filter brightness(avaLit) saturate(avaSat) i
+    border-radius avaShape
+    filter brightness(avaLit) saturate(avaSat)
+    shad()
+  .post-list .post.collapsed > .post-content .avatar img, .post-list .post.minimized > .post-content .avatar img
+    border-radius avaShape
   .avatar .user--refresh > div
-    font-size 20px i
-    
+    font-size 20px
+  .comment-policy-refresh
+    shard()
+  .form-refresh .textarea-wrapper
+    shard()
+  .textarea-outer-wrapper .textarea-wrapper
+    background bg2
+    border 1px solid bg4
+  .textarea
+    color fg1
+  .input--text
+    rad()
+    border 1px solid bg4
+    transition none
+    color fg1
+  .input--text:focus
+    border 1px solid bg4
+  .dark .input--text
+    shad()
+    background bg2
+    border-color bg4
+  .input--text:placeholder-shown
+    color fg3
+  .placeholder
+    color fg4
+  .post-actions
+    border-top 1px solid bg4
+  .dark .comment-policy-refresh__button
+    color fg1
+  .comment-policy-refresh__button
+    shard()
+    border 1px solid ac1
+  .comment-policy-refresh__button.btn:hover
+    background ac4
+    color fg1
+  .publisher-background-color
+    background-color ac3
+  .publisher-background-color-refresh
+    background-color ac3 i
+  .dark .load-more-refresh__button
+    color fg1
+  .dark .load-more-refresh__button:hover
+    color fg1
+    background ac4 i
+  .load-more-refresh
+    shad()
+  .load-more-refresh__button
+    rad()
+    border 1px solid ac1
+  .btn
+    transition none
+    rad()
+    box-shadow none
+  .btn:hover
+    transition none
+  .btn:not(:disabled).active, .btn:not(:disabled):active
+    background ac4
+  .btn:focus
+    outline none
+  .form-refresh .post-action__button.post-action__button
+    background-color transparent
+    color ac1
+    box-shadow none
+    &:hover
+      color ac2
+  .wysiwyg__item
+    transition none
+  .dark .proceed__button
+    border 1px solid ac1
+    shad()
+    background ac3
+    color fg1
+  .dark .proceed__button:hover
+    background ac4
+    color fg1
+  #footer
+    display none
+  .connect
+    display none
+  .embed-refresh .auth-section
+    margin 0 0 0 60px
+  .dark .postbox section label
+    color fg1
+  .alert.alert--realtime--refresh, .dark .alert.alert--realtime--refresh
+    background ac3
+    border 1px solid ac1
+    shard()
+  .dark .alert.alert--realtime--refresh, .dark .dark .alert.alert--realtime--refresh
+    color fg1
+  .dark .alert.alert--realtime--refresh:hover, .dark .dark .alert.alert--realtime--refresh:hover
+    color fg1
+    background ac4
+  .publisher-anchor-color a:hover
+    color ac2 i
+  
+  // code adapted from https://userstyles.world/style/7724 (ukr, MIT License)
   .form-refresh .textarea.textarea
     border-radius 20px 20px 0 0 i
-  .form-refresh .post-action__button.post-action__button
-    border-radius 25px i
-    padding 9.2px 20px i
-    margin-top 0.5px i
-    margin-right 1px i
   .embed-refresh .comment__header
     display flex i
   .post-meta
@@ -1663,3 +1773,27 @@ kaz = "AniMixed v1.0.9 🌸 kaz.cx"
     top 3.5px i
   .time-ago.icon-clock::before
     display none i
+    
+// recaptcha stuff
+@-moz-document regexp("https:\/\/.*google.*recaptcha.*aHR0cHM6Ly85YW5pbWUu(dG8|cGw|Z3M).*")
+  
+  .rc-anchor
+    shard()
+  .rc-anchor-light
+    background bg3
+    color fg1
+  .rc-anchor-light.rc-anchor-normal, .rc-anchor-light.rc-anchor-compact
+    border 1px solid transparent
+  .rc-anchor-light .rc-anchor-logo-text, .rc-anchor-light div a:link, .rc-anchor-light div a:visited
+    color fg3
+  .recaptcha-checkbox-border
+    shard()
+    background-color bg2
+    border 2px solid ac1
+  .recaptcha-checkbox-focused .recaptcha-checkbox-border, .recaptcha-checkbox-focused .recaptcha-checkbox-spinner-gif
+    border 2px solid ac1
+  .recaptcha-checkbox-hover .recaptcha-checkbox-border, .recaptcha-checkbox-hover .recaptcha-checkbox-spinner-gif
+    shad()
+    border 2px solid ac2
+  .recaptcha-checkbox-spinner
+    border 6px solid ac1
