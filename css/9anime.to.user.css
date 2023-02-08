@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.1.0 🌸 kaz.cx"
+kaz = "AniMixed v1.1.1 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,7 +9,7 @@ kaz = "AniMixed v1.1.0 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.1.0
+@version      1.1.1
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -83,6 +83,7 @@ kaz = "AniMixed v1.1.0 🌸 kaz.cx"
   "Rounded":"5px",
   "Sharp*":"0"
 }
+@var checkbox stickyNav "Sticky navbar" 1
 @var checkbox fontAnimix "AniMixPlay font" 1
 @var checkbox mascot "Mascot" 1
 @var checkbox shadow "Shadows" 1
@@ -524,6 +525,10 @@ kaz = "AniMixed v1.1.0 🌸 kaz.cx"
   header.fixed
     bg(bg1)
     shad()
+    if stickyNav
+      position fixed
+    else
+      position absolute
   header .main-menu
     transition none
     color fg3
@@ -595,9 +600,10 @@ kaz = "AniMixed v1.1.0 🌸 kaz.cx"
   header #search-toggler:hover
     color ac1
   // make navbar sticky
-  body.header-nofixed #wrapper header
-    position sticky
-    top 0
+  if stickyNav
+    body.header-nofixed #wrapper header
+      position sticky
+      top 0
   header #user .sign-in
     background-color ac3
     color fg1
