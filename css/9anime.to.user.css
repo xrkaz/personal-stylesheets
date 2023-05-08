@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.1.4 🌸 kaz.cx"
+kaz = "AniMixed v1.1.5 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,11 +9,10 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.1.4
+@version      1.1.5
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
-  "Mirai":"csMirai",
   "Lily":"csLily",
   "Ring*":"csRing",
   "Miku":"csMiku",
@@ -38,7 +37,6 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
   "None*":"null",
   "Custom":"bgCustom",
   "Hatsune Miku":"'https://i.imgur.com/EwRKF6L.jpg'",
-  "Megurine Luka":"'https://i.imgur.com/B3BxRo6.jpg'",
   "Kasane Teto":"'https://i.imgur.com/hbyADPt.jpg'",
   "Background 1":"'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
   "Background 2":"'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
@@ -49,11 +47,12 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
   "Background 7":"'https://images.unsplash.com/photo-1605478264999-8d1cd66e9c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
   "Background 8":"'https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
   "Background 9":"'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
-  "Background 10":"'https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'"
+  "Background 10":"'https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Random Lain":"'https://signavatar.com/75471_s.png'"
 }
 @var text bgCustom "— Custom image URL (with quotes)" ""https://i.imgur.com/uGB0VHA.jpg""
 @var range fxBlur "Panel blur" [0, 0, 20, 1, 'px']
-@var range fxAlpha "Panel alpha" [1, 0, 1, 0.1, '']
+@var range fxAlpha "Panel opacity" [1, 0, 1, 0.1, '']
 @var range imgSat "Image saturation" [100, 0, 100, 1, '%']
 @var range imgLit "Image brightness" [100, 0, 100, 1, '%']
 @var range avaSat "Avatar saturation" [100, 0, 100, 1, '%']
@@ -92,11 +91,17 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
 @var text avaCustom "— Custom image URL (with quotes)" ""https://i.imgur.com/MeYUTRl.png""
 @var checkbox setLayout "Override layout width" 0
 @var range layoutWidth "— Layout width" [1280, 1110, 1800, 10,"px"]
-@var checkbox alert "Notices" 1
+@var checkbox alert "Website notice" 1
+@var checkbox nextEp "Next episode notice" 1
 @var checkbox xrkaz "Userstyle attribution" 1
+==============
+Attribution:
+- Some Disqus CSS, ukr (https://userstyles.world/style/7724)
+- Lexend Deca font, Google (https://fonts.google.com/specimen/Lexend+Deca)
+- Lain images, fauxx (https://fauux.neocities.org)
 ==/UserStyle== */
 
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl|me|id)\/.*")
+@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|me|id)\/.*")
   
   // aliases
   i = !important
@@ -361,34 +366,34 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
   .logo
     if setLogo == "logo4"
       filter hue-rotate(300deg) brightness(2)
-      if ac == "acPurple"
+      if ac == "acPurple" || "acPink"
         filter none
     else if setLogo == "logo1"
       background url("https://i.imgur.com/RgTqX81.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(260deg) brightness(2)
-      if ac == "acPurple"
+      if ac == "acPurple" || "acPink"
         filter none
     else if setLogo == "logo2"
       background url("https://i.imgur.com/tH7dpBQ.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(280deg) brightness(2)
-      if ac == "acPurple"
+      if ac == "acPurple" || "acPink"
         filter none
     else if setLogo == "logo3"
       background url("https://i.imgur.com/5l7fCCx.png") no-repeat center
       background-size contain
       margin-top 3px
       filter hue-rotate(300deg) brightness(2)
-      if ac == "acPurple"
+      if ac == "acPurple" || "acPink"
         filter none
     else if setLogo == "logo5"
       background url("https://i.imgur.com/FFPPYS7.png") no-repeat center
       background-size contain
       margin-top 5px
-      if ac == "acPurple"
+      if ac == "acPurple" || "acPink"
         filter hue-rotate(100deg)
         
   // background stuff
@@ -971,9 +976,12 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
     display none
   // next ep alert
   #w-player .alert.next-episode
-    bg(bg3)
-    shard()
-    order 4
+    if nextEp
+      bg(bg3)
+      shard()
+      order 4
+    else
+      display none
   // link color
   #w-info .binfo .info .meta>div>span a
     color ac1
@@ -1130,10 +1138,11 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
     &:hover
       color fg4
   #w-episodes .body .episodes.number ul li a.active, #w-episodes .body .episodes.number ul li a.active:visited
-    background cc1
-    color fg1
+    border-color transparent i
+    background cc1 i
+    color fg1 i
     &:hover
-      color fg4
+      color fg4 i
   // ep buttons titled
   #w-episodes .body .episodes.name ul li a:visited
     background ac3
@@ -1189,9 +1198,10 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
     &:hover
       background ac3
       color fg4 i
-  #w-episodes .body .episodes.name ul li a.active, #w-episodes .body .episodes.name ul li a.active:visited
+  #w-episodes .body .episodes.name ul li a.active, #w2g-episodes .modal-content .body .episodes ul li a.active
+    border-color transparent i
     background cc1 i
-    color fg1
+    color fg1 i
   
   // comments section
   #comments
@@ -1431,7 +1441,7 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
       animation rainbow 5s infinite
       margin-top 10px
     
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl|id)\/(?!watch2gether)watch.*")
+@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/(?!watch2gether)watch.*")
   
   header
     bg(bg1)
@@ -1462,7 +1472,7 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
     #wrapper #body
       margin-bottom 30px
       
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl|id)\/watch2gether.*")
+@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/watch2gether.*")
 
   .container
     max-width 1280px
@@ -1501,7 +1511,7 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
   #chat-input
     margin-right 10px
 
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl|id)\/watch2gether\/room\/.*")
+@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/watch2gether\/room\/.*")
   
   footer
     display none
@@ -1531,7 +1541,7 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
     #wrapper #body
       margin-bottom 30px
     
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl|id)\/home.*")
+@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/home.*")
     
   aside.sidebar
     width 23%
@@ -1556,13 +1566,13 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
       float right
       margin-top -361px
       margin-right calc(50% - 600px)
-      if ac == "acPurple"
+      if ac == "acPurple" || "acPink"
         content url("https://i.imgur.com/BvgZ9up.png")
     @media (max-width: 1199.98px)
       footer::before
         display none
     
-@-moz-document regexp("https:\/\/9anime\.(to|gs|pl|id)\/(az-list|filter|newest|added|ongoing|updated|completed|genre|studio|country|tv|movie|ona|ova|special|music|trending).*")
+@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/(az-list|filter|newest|added|ongoing|updated|completed|genre|studio|country|tv|movie|ona|ova|special|music|trending).*")
 
   aside.sidebar
     display none
@@ -1714,7 +1724,6 @@ kaz = "AniMixed v1.1.4 🌸 kaz.cx"
     filter brightness(avaLit) saturate(avaSat)
     shad()
   
-  // code adapted from https://userstyles.world/style/7724 (ukr, MIT License)
   .form-refresh .textarea.textarea
     border-radius 20px 20px 0 0 i
   .embed-refresh .comment__header
