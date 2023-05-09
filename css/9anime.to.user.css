@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.1.5 🌸 kaz.cx"
+kaz = "AniMixed v1.1.6 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,7 +9,7 @@ kaz = "AniMixed v1.1.5 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.1.5
+@version      1.1.6
 @license      WTFPL
 ===================
 @var select cs "Color scheme" {
@@ -366,35 +366,34 @@ Attribution:
   .logo
     if setLogo == "logo4"
       filter hue-rotate(300deg) brightness(2)
-      if ac == "acPurple" || "acPink"
-        filter none
+      filter none if ac == "acPurple"
+      filter brightness(2) if ac == "acPink" || cs == "csLuka"
     else if setLogo == "logo1"
       background url("https://i.imgur.com/RgTqX81.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(260deg) brightness(2)
-      if ac == "acPurple" || "acPink"
-        filter none
+      filter none if ac == "acPurple"
+      filter brightness(5) if ac == "acPink" || cs == "csLuka"
     else if setLogo == "logo2"
       background url("https://i.imgur.com/tH7dpBQ.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(280deg) brightness(2)
-      if ac == "acPurple" || "acPink"
-        filter none
+      filter none if ac == "acPurple"
+      filter brightness(2) if ac == "acPink" || cs == "csLuka"
     else if setLogo == "logo3"
       background url("https://i.imgur.com/5l7fCCx.png") no-repeat center
       background-size contain
       margin-top 3px
       filter hue-rotate(300deg) brightness(2)
-      if ac == "acPurple" || "acPink"
-        filter none
+      filter none if ac == "acPurple"
+      filter brightness(3) if ac == "acPink" || cs == "csLuka"
     else if setLogo == "logo5"
       background url("https://i.imgur.com/FFPPYS7.png") no-repeat center
       background-size contain
       margin-top 5px
-      if ac == "acPurple" || "acPink"
-        filter hue-rotate(100deg)
+      filter hue-rotate(100deg) if ac == "acPurple" || ac == "acPink" || cs == "csLuka"
         
   // background stuff
   if bgImg != null
@@ -1566,8 +1565,7 @@ Attribution:
       float right
       margin-top -361px
       margin-right calc(50% - 600px)
-      if ac == "acPurple" || "acPink"
-        content url("https://i.imgur.com/BvgZ9up.png")
+      content url("https://i.imgur.com/BvgZ9up.png") if ac == "acPurple" || ac == "acPink" || cs == "csLuka"
     @media (max-width: 1199.98px)
       footer::before
         display none
