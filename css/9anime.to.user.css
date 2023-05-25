@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.1.6 🌸 kaz.cx"
+kaz = "AniMixed v1.2.0 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,30 +9,23 @@ kaz = "AniMixed v1.1.6 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.1.6
+@version      1.2.0
 @license      WTFPL
 ===================
-@var select cs "Color scheme" {
-  "Lily":"csLily",
-  "Ring*":"csRing",
-  "Miku":"csMiku",
-  "Luka":"csLuka",
-  "Meiko":"csMeiko",
-  "Gumi":"csGumi"
+@var color bc "Base color" hsl(0, 0%, 0%)
+@var select cr ":: Regulated color dimension" {
+  "None":"crNone",
+  "Brightness*":"crLit",
+  "Saturation":"crSat",
+  "Both":"crLitSat"
 }
-@var select ac "Accent color" {
-  "Default*":"acDefault",
-  "Custom":"acCustom",
-  "Blue":"acBlue",
-  "Red":"acRed",
-  "Green":"acGreen",
-  "Purple":"acPurple",
-  "Pink":"acPink",
-  "Cyan":"acCyan",
-  "Yellow":"acYellow",
-  "Orange":"acOrange"
+@var color ac "Accent color" hsl(205, 60%, 80%)
+@var select acr ":: Regulated color dimension" {
+  "None":"acrNone",
+  "Brightness":"acrLit",
+  "Saturation":"acrSat",
+  "Both*":"acrLitSat"
 }
-@var color acColor "— Custom accent" hsl(205, 60%, 80%)
 @var select bgImg "Background image" {
   "None*":"null",
   "Custom":"bgCustom",
@@ -50,7 +43,7 @@ kaz = "AniMixed v1.1.6 🌸 kaz.cx"
   "Background 10":"'https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
   "Random Lain":"'https://signavatar.com/75471_s.png'"
 }
-@var text bgCustom "— Custom image URL (with quotes)" ""https://i.imgur.com/uGB0VHA.jpg""
+@var text bgCustom ":: Custom image URL (with quotes)" ""https://i.imgur.com/uGB0VHA.jpg""
 @var range fxBlur "Panel blur" [0, 0, 20, 1, 'px']
 @var range fxAlpha "Panel opacity" [1, 0, 1, 0.1, '']
 @var range imgSat "Image saturation" [100, 0, 100, 1, '%']
@@ -88,9 +81,9 @@ kaz = "AniMixed v1.1.6 🌸 kaz.cx"
 @var checkbox mascot "Mascot" 1
 @var checkbox shadow "Shadows" 1
 @var checkbox setAvatar "Custom profile avatar" 1
-@var text avaCustom "— Custom image URL (with quotes)" ""https://i.imgur.com/MeYUTRl.png""
+@var text avaCustom ":: Custom image URL (with quotes)" ""https://i.imgur.com/MeYUTRl.png""
 @var checkbox setLayout "Override layout width" 0
-@var range layoutWidth "— Layout width" [1280, 1110, 1800, 10,"px"]
+@var range layoutWidth ":: Layout width" [1280, 1110, 1800, 10,"px"]
 @var checkbox alert "Website notice" 1
 @var checkbox nextEp "Next episode notice" 1
 @var checkbox xrkaz "Userstyle attribution" 1
@@ -98,7 +91,7 @@ kaz = "AniMixed v1.1.6 🌸 kaz.cx"
 Attribution:
 - Some Disqus CSS, ukr (https://userstyles.world/style/7724)
 - Lexend Deca font, Google (https://fonts.google.com/specimen/Lexend+Deca)
-- Lain images, fauxx (https://fauux.neocities.org)
+- Lain images, fauux (https://fauux.neocities.org)
 ==/UserStyle== */
 
 @-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|me|id)\/.*")
@@ -108,212 +101,15 @@ Attribution:
   l = lightness
   s = saturation
   a = alpha
-    
-  // static base colors
-  sBlack  = hsl(0, 0%, 0%)
-  sWhite  = hsl(0, 0%, 100%)
-  sBlue   = hsl(205, 60%, 80%) // animixplay
-  sGreen  = hsl(110, 60%, 80%) // hsl(110, 30%, 40%)
-  sRed    = hsl(0, 60%, 80%)
-  sOrange = hsl(35, 60%, 80%)
-  sPink   = hsl(330, 60%, 80%)
-  sCyan   = hsl(180, 60%, 80%)
-  sYellow = hsl(60, 60%, 80%)
-  sPurple = hsl(265, 60%, 80%) // 9anime
+  t = transparent
   
-  // custom colors
-  sBlueLit = l(s(sBlue, 100%), 90%)
-  sBlueDim = l(s(sBlue, 15%), 20%)
-  sBlueAlt = l(s(sBlue, 40%), 30%)
-  sBlueEps = l(s(sBlue, 40%), 40%)
-  sPurpleLit = l(s(sPurple, 100%), 90%)
-  sPurpleDim = l(s(sPurple, 15%), 20%)
-  sPurpleAlt = l(s(sPurple, 40%), 30%)
-  sPurpleEps = l(s(sPurple, 40%), 40%)
-  sRedLit = l(s(sRed, 100%), 90%)
-  sRedDim = l(s(sRed, 15%), 20%)
-  sRedAlt = l(s(sRed, 40%), 30%)
-  sRedEps = l(s(sRed, 40%), 40%)
-  sPinkLit = l(s(sPink, 100%), 90%)
-  sPinkDim = l(s(sPink, 15%), 20%)
-  sPinkAlt = l(s(sPink, 40%), 30%)
-  sPinkEps = l(s(sPink, 40%), 40%)
-  sGreenLit = l(s(sGreen, 100%), 90%)
-  sGreenDim = l(s(sGreen, 15%), 20%)
-  sGreenAlt = l(s(sGreen, 40%), 30%)
-  sGreenEps = l(s(sGreen, 40%), 40%)
-  sYellowLit = l(s(sYellow, 100%), 90%)
-  sYellowDim = l(s(sYellow, 15%), 20%)
-  sYellowAlt = l(s(sYellow, 40%), 30%)
-  sYellowEps = l(s(sYellow, 40%), 40%)
-  sOrangeLit = l(s(sOrange, 100%), 90%)
-  sOrangeDim = l(s(sOrange, 15%), 20%)
-  sOrangeAlt = l(s(sOrange, 40%), 30%)
-  sOrangeEps = l(s(sOrange, 40%), 40%)
-  sCyanLit = l(s(sCyan, 100%), 90%)
-  sCyanDim = l(s(sCyan, 15%), 20%)
-  sCyanAlt = l(s(sCyan, 40%), 30%)
-  sCyanEps = l(s(sCyan, 40%), 40%)
-  
-  // complementary colors
-  cc1 = sGreenAlt
-  cc2 = sYellowAlt
-  cc3 = sRedAlt
-  
-  // color schemes
-  if cs == "csRing"
-    bg1 = l(sBlack, 10%)
-    bg2 = l(sBlack, 5%)
-    bg3 = l(sBlack, 15%)
-    bg4 = l(sBlack, 20%)
-    bg5 = l(sBlack, 25%)
-    bg6 = l(sBlack, 45%)
-    ac1 = sBlue
-    ac2 = sBlueLit
-    ac3 = sBlueDim
-    ac4 = sBlueAlt
-    ac5 = sBlueEps
-  else if cs == "csMiku"
-    bg1 = l(s(sCyan, 20%), 10%)
-    bg2 = l(s(sCyan, 20%), 5%)
-    bg3 = l(s(sCyan, 30%), 15%)
-    bg4 = l(s(sCyan, 30%), 20%)
-    bg5 = l(s(sCyan, 40%), 25%)
-    bg6 = l(s(sCyan, 40%), 45%)
-    ac1 = sCyan
-    ac2 = sCyanLit
-    ac3 = sCyanDim
-    ac4 = sCyanAlt
-    ac5 = sCyanEps
-  else if cs == "csLuka"
-    bg1 = l(s(sPink, 20%), 10%)
-    bg2 = l(s(sPink, 20%), 5%)
-    bg3 = l(s(sPink, 30%), 15%)
-    bg4 = l(s(sPink, 30%), 20%)
-    bg5 = l(s(sPink, 40%), 25%)
-    bg6 = l(s(sPink, 40%), 45%)
-    ac1 = sPink
-    ac2 = sPinkLit
-    ac3 = sPinkDim
-    ac4 = sPinkAlt
-    ac5 = sPinkEps
-  else if cs == "csMeiko"
-    bg1 = l(s(sRed, 20%), 10%)
-    bg2 = l(s(sRed, 20%), 5%)
-    bg3 = l(s(sRed, 30%), 15%)
-    bg4 = l(s(sRed, 30%), 20%)
-    bg5 = l(s(sRed, 40%), 25%)
-    bg6 = l(s(sRed, 40%), 45%)
-    ac1 = sRed
-    ac2 = sRedLit
-    ac3 = sRedDim
-    ac4 = sRedAlt
-    ac5 = sRedEps
-  else if cs == "csGumi"
-    bg1 = l(s(sGreen, 20%), 10%)
-    bg2 = l(s(sGreen, 20%), 5%)
-    bg3 = l(s(sGreen, 30%), 15%)
-    bg4 = l(s(sGreen, 30%), 20%)
-    bg5 = l(s(sGreen, 40%), 25%)
-    bg6 = l(s(sGreen, 40%), 45%)
-    ac1 = sGreen
-    ac2 = sGreenLit
-    ac3 = sGreenDim
-    ac4 = sGreenAlt
-    ac5 = sGreenEps
-    cc1 = sBlueAlt
-    if ac != "acDefault"
-      cc1 = sGreenAlt
-  else if cs == "csLily"
-    bg1 = sBlack
-    bg2 = sBlack
-    bg3 = l(sBlack, 5%)
-    bg4 = l(sBlack, 10%)
-    bg5 = l(sBlack, 15%)
-    bg6 = l(sBlack, 20%)
-    ac1 = sYellow
-    ac2 = sYellowLit
-    ac3 = sYellowDim
-    ac4 = sYellowAlt
-    ac5 = sYellowEps
-    cc2 = sBlueAlt
-    if ac != "acDefault"
-      cc2 = sYellowAlt
-  
-  // text colors
-  fg1 = a(sWhite, 0.8) // default
-  fg2 = sWhite         // emphasis
-  fg3 = a(sWhite, 0.5) // subtext
-  fg4 = a(sWhite, 0.3) // placeholder
-  
-  // accent colors
-  if ac == "acDefault"
-    null
-  else if ac == "acCustom"
-    ac1 = acColor
-    ac2 = l(s(acColor, 100%), 90%)
-    ac3 = l(s(acColor, 15%), 20%)
-    ac4 = l(s(acColor, 40%), 30%)
-    ac5 = l(s(acColor, 40%), 40%)
-  else if ac == "acBlue"
-    ac1 = sBlue
-    ac2 = sBlueLit
-    ac3 = sBlueDim
-    ac4 = sBlueAlt
-    ac5 = sBlueEps
-  else if ac == "acPurple"
-    ac1 = sPurple
-    ac2 = sPurpleLit
-    ac3 = sPurpleDim
-    ac4 = sPurpleAlt
-    ac5 = sPurpleEps
-  else if ac == "acRed"
-    ac1 = sRed
-    ac2 = sRedLit
-    ac3 = sRedDim
-    ac4 = sRedAlt
-    ac5 = sRedEps
-  else if ac == "acPink"
-    ac1 = sPink
-    ac2 = sPinkLit
-    ac3 = sPinkDim
-    ac4 = sPinkAlt
-    ac5 = sPinkEps
-  else if ac == "acOrange"
-    ac1 = sOrange
-    ac2 = sOrangeLit
-    ac3 = sOrangeDim
-    ac4 = sOrangeAlt
-    ac5 = sOrangeEps
-    cc2 = sBlueAlt
-  else if ac == "acCyan"
-    ac1 = sCyan
-    ac2 = sCyanLit
-    ac3 = sCyanDim
-    ac4 = sCyanAlt
-    ac5 = sCyanEps
-  else if ac == "acYellow"
-    ac1 = sYellow
-    ac2 = sYellowLit
-    ac3 = sYellowDim
-    ac4 = sYellowAlt
-    ac5 = sYellowEps
-    cc2 = sBlueAlt
-  else if ac == "acGreen"
-    ac1 = sGreen
-    ac2 = sGreenLit
-    ac3 = sGreenDim
-    ac4 = sGreenAlt
-    ac5 = sGreenEps
-    cc1 = sBlueAlt
-  
-  // mixins
+  // mixins & functions
   ava()
     if setAvatar
       content url(avaCustom)
   shad()
     if shadow
-      box-shadow a(sBlack, 0.12) 0px 1px 3px, a(sBlack, 0.24) 0px 1px 2px //box-shadow 0 1px 3px hsla(0, 0%, 0%, .5)
+      box-shadow a(hsl(0, 0%, 0%), 0.12) 0px 1px 3px, a(hsl(0, 0%, 0%), 0.24) 0px 1px 2px
   rad()
     border-radius prad
   shard()
@@ -330,6 +126,91 @@ Attribution:
       background k
     bgc(k)
       background-color k i
+  // check if color is "greenish" (falls within range 80-180)
+  greenish(k)
+    h = hue(k)
+    return h >= 80 && h <= 180
+  yellowish(k)
+    h = hue(k)
+    return h >= 40 && h <= 80
+  purplish(k)
+    h = hue(k)
+    return h >= 260 && h <= 340
+    
+  // base colors
+  sBlue   = hsl(205, 60%, 80%)
+  sGreen  = hsl(110, 60%, 80%)
+  sRed    = hsl(0, 60%, 80%)
+  sOrange = hsl(35, 60%, 80%)
+  sPink   = hsl(330, 60%, 80%)
+  sCyan   = hsl(180, 60%, 80%)
+  sYellow = hsl(60, 60%, 80%)
+  sPurple = hsl(265, 60%, 80%)
+  
+  // (un)regulate colors
+  if cr == "crNone"
+    bg1 = bg2 = bg3 = bg4 = bg5 = bg6 = bc
+  if cr == "crLit"
+    bg1 = l(bc, 10%)
+    bg2 = l(bc, 5%)
+    bg3 = l(bc, 15%)
+    bg4 = l(bc, 20%)
+    bg5 = l(bc, 25%)
+    bg6 = l(bc, 45%)
+  if cr == "crSat"
+    bg1 = s(bc, 20%)
+    bg2 = s(bc, 20%)
+    bg3 = s(bc, 30%)
+    bg4 = s(bc, 30%)
+    bg5 = s(bc, 40%)
+    bg6 = s(bc, 40%)
+  if cr == "crLitSat"
+    bg1 = l(s(bc, 20%), 10%)
+    bg2 = l(s(bc, 20%), 5%)
+    bg3 = l(s(bc, 30%), 15%)
+    bg4 = l(s(bc, 30%), 20%)
+    bg5 = l(s(bc, 40%), 25%)
+    bg6 = l(s(bc, 40%), 45%)
+  
+  // (un)regulate accent colors
+  if acr == "acrNone"
+    ac1 = ac2 = ac3 = ac4 = ac5 = ac
+  if acr == "acrLit"
+    ac1 = l(ac, 80%)
+    ac2 = l(ac, 90%)
+    ac3 = l(ac, 20%)
+    ac4 = l(ac, 30%)
+    ac5 = l(ac, 40%)
+  if acr == "acrSat"
+    ac1 = s(ac, 60%)
+    ac2 = s(ac, 100%)
+    ac3 = s(ac, 15%)
+    ac4 = s(ac, 40%)
+    ac5 = s(ac, 40%)
+  if acr == "acrLitSat"
+    ac1 = l(s(ac, 60%), 80%)
+    ac2 = l(s(ac, 100%), 90%)
+    ac3 = l(s(ac, 15%), 20%)
+    ac4 = l(s(ac, 40%), 30%)
+    ac5 = l(s(ac, 40%), 40%)
+    
+  // complementary colors
+  if greenish(ac5)
+    cc1 = l(s(sYellow, 40%), 30%)
+  else
+    cc1 = l(s(sGreen, 40%), 30%)
+  if yellowish(ac4)
+    cc2 = l(s(sBlue, 40%), 30%)
+  else
+    cc2 = l(s(sYellow, 40%), 30%)
+  cc3 = l(s(sRed, 40%), 30%)
+  
+  // text colors
+  fg = hsl(0, 0%, 100%)
+  fg1 = a(fg, 0.8) // default
+  fg2 = fg         // emphasis
+  fg3 = a(fg, 0.5) // subtext
+  fg4 = a(fg, 0.3) // placeholder
     
   // font stuff
   if fontAnimix
@@ -366,34 +247,30 @@ Attribution:
   .logo
     if setLogo == "logo4"
       filter hue-rotate(300deg) brightness(2)
-      filter none if ac == "acPurple"
-      filter brightness(2) if ac == "acPink" || cs == "csLuka"
+      filter brightness(2) if purplish(ac)
     else if setLogo == "logo1"
       background url("https://i.imgur.com/RgTqX81.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(260deg) brightness(2)
-      filter none if ac == "acPurple"
-      filter brightness(5) if ac == "acPink" || cs == "csLuka"
+      filter brightness(5) if purplish(ac)
     else if setLogo == "logo2"
       background url("https://i.imgur.com/tH7dpBQ.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(280deg) brightness(2)
-      filter none if ac == "acPurple"
-      filter brightness(2) if ac == "acPink" || cs == "csLuka"
+      filter brightness(2) if purplish(ac)
     else if setLogo == "logo3"
       background url("https://i.imgur.com/5l7fCCx.png") no-repeat center
       background-size contain
       margin-top 3px
       filter hue-rotate(300deg) brightness(2)
-      filter none if ac == "acPurple"
-      filter brightness(3) if ac == "acPink" || cs == "csLuka"
+      filter brightness(3) if purplish(ac)
     else if setLogo == "logo5"
       background url("https://i.imgur.com/FFPPYS7.png") no-repeat center
       background-size contain
       margin-top 5px
-      filter hue-rotate(100deg) if ac == "acPurple" || ac == "acPink" || cs == "csLuka"
+      filter hue-rotate(100deg) if purplish(ac)
         
   // background stuff
   if bgImg != null
@@ -484,18 +361,18 @@ Attribution:
     background-color ac4
   .btn-secondary
     background-color bg4
-    border-color transparent
+    border-color t
   .btn-secondary:hover
     background-color bg4
-    border-color transparent
+    border-color t
   .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle
     background-color bg4
-    border-color transparent
+    border-color t
   .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover
     color fg1 i
   .btn-secondary.focus, .btn-secondary:focus
     background-color bg4
-    border-color transparent
+    border-color t
     box-shadow none
   .show > .btn-secondary.dropdown-toggle
     color fg1
@@ -742,7 +619,7 @@ Attribution:
     transition none
     background none
   .ani.items .item .poster .meta
-    background a(sBlack, .3)
+    background a(bg2, .3)
     color fg1
   .ani.items
     margin 0 -3px
@@ -765,7 +642,7 @@ Attribution:
     left -1px
     right -1px
     bottom -1px
-    background linear-gradient(0deg,#202020,#2020204a 15%,transparent 30%)
+    background linear-gradient(0deg,#202020,#2020204a 15%,t 30%)
     top 0
     opacity 1
     width unset
@@ -832,7 +709,7 @@ Attribution:
     bg(bg4)
     color fg1
     transition none
-    border-top 1px solid transparent
+    border-top 1px solid t
   section#schedule .body .more:hover
     bg(bg5)
     color fg1
@@ -847,17 +724,17 @@ Attribution:
     padding 10px
     shard()
   .side.items .item .inner
-    background transparent
+    background t
     transition none
     border-radius 0
   .side.items .item:hover .inner
     bg(bg4)
   section#top-anime .side.items .item.rank3 .inner .rank
-    filter saturate(0) brightness(0.48)
+    filter saturate(0) brightness(0.7)
   section#top-anime .side.items .item.rank3 .inner
     border-right 0
   section#top-anime .side.items .item.rank2 .inner .rank
-    filter saturate(0) brightness(0.75)
+    filter saturate(0) brightness(1.0)
   section#top-anime .side.items .item.rank2 .inner
     border-right 0
   section#top-anime .side.items .item.rank1 .inner .rank
@@ -892,7 +769,7 @@ Attribution:
     display unset
   // sidebar tabs (day/week/month)
   .with-tabs.with-more.head > .tabs
-    background transparent
+    background t
   .tabs .tab
     border-radius 0
     transition none
@@ -1085,6 +962,7 @@ Attribution:
     border 1px solid ac1
     color ac1
     transition none
+    rad()
   #w-player #w-servers .servers .type ul li.active
     background ac4
     color fg1
@@ -1137,7 +1015,7 @@ Attribution:
     &:hover
       color fg4
   #w-episodes .body .episodes.number ul li a.active, #w-episodes .body .episodes.number ul li a.active:visited
-    border-color transparent i
+    border-color t i
     background cc1 i
     color fg1 i
     &:hover
@@ -1198,7 +1076,7 @@ Attribution:
       background ac3
       color fg4 i
   #w-episodes .body .episodes.name ul li a.active, #w2g-episodes .modal-content .body .episodes ul li a.active
-    border-color transparent i
+    border-color t i
     background cc1 i
     color fg1 i
   
@@ -1218,7 +1096,7 @@ Attribution:
     bg(bg3)
   footer .container
     background none
-    background-color transparent
+    background-color t
     padding 20px 10px 20px 10px
   footer .azlist
     margin-bottom 15px
@@ -1310,7 +1188,7 @@ Attribution:
   .page-link
     background-color bg4
     color fg1
-    border 1px solid transparent
+    border 1px solid t
     
   // watch2gether page
   .w2g-item > .inner
@@ -1393,7 +1271,7 @@ Attribution:
     color fg1
     bgc(bg1)
     shard()
-    border 1px solid transparent
+    border 1px solid t
     
   // uncategorized clutter
   #quick-menu a[style="font-size: 1.1rem; font-weight: 600;"]
@@ -1407,7 +1285,7 @@ Attribution:
   .alert.notice
     if alert
       display block
-      border 1px solid transparent
+      border 1px solid t
       margin-bottom 10px i
       color fg3
       bgc(bg3)
@@ -1565,7 +1443,7 @@ Attribution:
       float right
       margin-top -361px
       margin-right calc(50% - 600px)
-      content url("https://i.imgur.com/BvgZ9up.png") if ac == "acPurple" || ac == "acPink" || cs == "csLuka"
+      content url("https://i.imgur.com/BvgZ9up.png") if purplish(ac)
     @media (max-width: 1199.98px)
       footer::before
         display none
@@ -1674,7 +1552,7 @@ Attribution:
   .btn:focus
     outline none
   .form-refresh .post-action__button.post-action__button
-    background-color transparent
+    background-color t
     color ac1
     box-shadow none
     &:hover
@@ -1828,7 +1706,7 @@ Attribution:
     background bg3
     color fg1
   .rc-anchor-light.rc-anchor-normal, .rc-anchor-light.rc-anchor-compact
-    border 1px solid transparent
+    border 1px solid t
   .rc-anchor-light .rc-anchor-logo-text, .rc-anchor-light div a:link, .rc-anchor-light div a:visited
     color fg3
   .recaptcha-checkbox-border
