@@ -1,4 +1,4 @@
-kaz = "AniMixed v1.2.0 🌸 kaz.cx"
+kaz = "AniMixed v1.2.1 🌸 kaz.cx"
 
 /* ==UserStyle==
 @name         9anime.to - AniMixed
@@ -9,7 +9,7 @@ kaz = "AniMixed v1.2.0 🌸 kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.2.0
+@version      1.2.1
 @license      WTFPL
 ===================
 @var color bc "Base color" hsl(0, 0%, 0%)
@@ -60,6 +60,9 @@ kaz = "AniMixed v1.2.0 🌸 kaz.cx"
   "9anime 2018":"logo2",
   "9anime 2020":"logo3",
   "9anime 2022":"logo4",
+  "AniMixed 1":"logo7",
+  "AniMixed 2":"logo8",
+  "AniMixReplay":"logo6",
   "AniMixPlay*":"logo5"
 }
 @var select aninfoPanel "Anime info panel" {
@@ -77,7 +80,6 @@ kaz = "AniMixed v1.2.0 🌸 kaz.cx"
   "Sharp*":"0"
 }
 @var checkbox stickyNav "Sticky navbar" 1
-@var checkbox fontAnimix "AniMixPlay font" 1
 @var checkbox mascot "Mascot" 1
 @var checkbox shadow "Shadows" 1
 @var checkbox setAvatar "Custom profile avatar" 1
@@ -86,6 +88,25 @@ kaz = "AniMixed v1.2.0 🌸 kaz.cx"
 @var range layoutWidth ":: Layout width" [1280, 1110, 1800, 10,"px"]
 @var checkbox alert "Website notice" 1
 @var checkbox nextEp "Next episode notice" 1
+@var text fontName "Font name" "Lexend Deca"
+@var select fontWeight "Font weight" {
+  "Default*":"null",
+  "100 ":"100",
+  "200 ":"200",
+  "300 ":"300",
+  "400 (Normal)":"400",
+  "500 ":"500",
+  "600 ":"600",
+  "700 (Bold)":"700",
+  "800 ":"800",
+  "900 ":"900"
+}
+@var select fontStyle "Font style" {
+  "Default*":"null",
+  "Normal":"normal",
+  "Italic":"italic",
+  "Oblique":"oblique"
+}
 @var checkbox xrkaz "Userstyle attribution" 1
 ==============
 Attribution:
@@ -213,35 +234,50 @@ Attribution:
   fg4 = a(fg, 0.3) // placeholder
     
   // font stuff
-  if fontAnimix
-    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
-    b, strong
-      font-weight 700
-    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
-    .fw-bold, header .main-menu, .switch > span, #hotest .item .info .title,
-    #hotest .item .info .actions .btn.play, section .head .text-tabs,
-    section .head .title, section#schedule .body .items a.item .title,
-    .ani.items .item .info .name, .scaff.items .item .info .name,
-    #w-seasons .seasons .season a .name, #w-player #w-servers .servers .type ul li::before,
-    #comment-rules .head, footer .azlist .head .title, footer .azlist ul li a,
-    footer .inline-links label, .user-menu a, #w-episodes .body .episodes.number ul li a, #w-episodes .body .episodes.name ul li a, #w-episodes .body .episodes.name ul li a b
-      font-weight 400
-    section#schedule .body .items a.item .title, .ani.items .item .info .name,
-    .scaff.items .item .info .name, header .main-menu
-      font-size 13px
-    #w-episodes .body .episodes.number ul li a, #w-episodes .body .episodes.name ul li a
-      font-size 15px
-    #w-info .binfo .info .title
-      font-size 22px
-    #w-info .brating .rating .message, #search .search-popup .foot
-      font-size .9rem
-    // prevent clipping
-    @media (min-width: 1449.98px)
-      #hotest .item .info .title
-        font-size 4rem
-    @media (min-width: 1199.98px)
-      #hotest .item .info .title
-        font-size 2.9rem
+  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
+  body
+    font-family fontName, sans-serif if fontName
+    font-style fontStyle if fontStyle
+    font-weight fontWeight if fontWeight
+  b, strong
+    font-weight 700
+    font-weight fontWeight if fontWeight
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
+  .fw-bold, header .main-menu, .switch > span, #hotest .item .info .title,
+  #hotest .item .info .actions .btn.play, section .head .text-tabs,
+  section .head .title, section#schedule .body .items a.item .title,
+  .ani.items .item .info .name, .scaff.items .item .info .name,
+  #w-seasons .seasons .season a .name, #w-player #w-servers .servers .type ul li::before,
+  #comment-rules .head, footer .azlist .head .title, footer .azlist ul li a,
+  footer .inline-links label, .user-menu a, #w-episodes .body .episodes.number ul li a, #w-episodes .body .episodes.name ul li a, #w-episodes .body .episodes.name ul li a b
+    font-weight 400
+    font-weight fontWeight if fontWeight
+  section#schedule .body .items a.item .title, .ani.items .item .info .name,
+  .scaff.items .item .info .name, header .main-menu
+    font-size 13px
+  #w-episodes .body .episodes.number ul li a, #w-episodes .body .episodes.name ul li a
+    font-size 15px
+  #w-info .binfo .info .title
+    font-size 22px
+  #w-info .brating .rating .message, #search .search-popup .foot
+    font-size .9rem
+  .tooltipster-sidetip .tooltipster-content .actions .watch
+    font-weight 400
+    font-weight fontWeight if fontWeight
+  #w-episodes .body .episodes.name ul li a
+    font-weight 600
+    font-weight fontWeight if fontWeight
+  // prevent clipping
+  @media (min-width: 1449.98px)
+    #hotest .item .info .title
+      font-size 4rem
+  @media (min-width: 1199.98px)
+    #hotest .item .info .title
+      font-size 2.9rem
+  // ignore font change on schedule weekday text
+  section#schedule .head .days .items .day .inner .wday
+    font-style normal
+    font-weight normal
   
   // logo selector
   .logo
@@ -268,6 +304,20 @@ Attribution:
       filter brightness(3) if purplish(ac)
     else if setLogo == "logo5"
       background url("https://i.imgur.com/FFPPYS7.png") no-repeat center
+      background-size contain
+      margin-top 5px
+      filter hue-rotate(100deg) if purplish(ac)
+    else if setLogo == "logo6"
+      background url("https://i.imgur.com/V7gTiEM.png") no-repeat center
+      background-size contain
+      margin-top 5px
+      filter hue-rotate(100deg) if purplish(ac)
+    else if setLogo == "logo7"
+      background url("https://i.imgur.com/VRntaHn.png") no-repeat center
+      background-size contain
+      margin-top 5px
+    else if setLogo == "logo8"
+      background url("https://i.imgur.com/NaqPMsS.png") no-repeat center
       background-size contain
       margin-top 5px
       filter hue-rotate(100deg) if purplish(ac)
@@ -320,7 +370,6 @@ Attribution:
   body
     background url(bgImg) no-repeat fixed center
     background-size cover
-    font-family "Lexend Deca",Nunito,Archivo,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
     background-color bg1
     color fg1
   a
@@ -501,9 +550,11 @@ Attribution:
   header .main-menu:hover .icon, header .main-menu:hover i
     color fg1
   // search result
-  #search .search-popup .body .items .item.active, #search .search-popup .body .items .item:focus, #search .search-popup .body .items .item:focus-within, #search .search-popup .body .items .item:hover
+  #search .search-popup .body .items .item.active, #search .search-popup .body .items .item:focus,
+  #search .search-popup .body .items .item:focus-within, #search .search-popup .body .items .item:hover
     background ac3
-  #search .search-popup .body .items .item.active .info .name, #search .search-popup .body .items .item:focus .info .name, #search .search-popup .body .items .item:focus-within .info .name, #search .search-popup .body .items .item:hover .info .name
+  #search .search-popup .body .items .item.active .info .name, #search .search-popup .body .items .item:focus .info .name,
+  #search .search-popup .body .items .item:focus-within .info .name, #search .search-popup .body .items .item:hover .info .name
     color ac2
   // en/jp switcher
   .switch > span
@@ -795,7 +846,6 @@ Attribution:
     color fg1
     border 1px solid ac1
     transition none
-    font-weight 400
   .tooltipster-sidetip .tooltipster-content .actions .favourite span
     transition none
   .tooltipster-sidetip .tooltipster-content .actions .w2g
@@ -1060,7 +1110,6 @@ Attribution:
     line-height 2.15rem
     height 2.15rem
     text-align center
-    font-weight 600
     position relative
     overflow hidden
     padding 0 5px
@@ -1138,7 +1187,8 @@ Attribution:
     border 1px solid bg4
   .dropdown-menu > li > label
     color fg3
-  .dropdown-menu > .active > label, .dropdown-menu > .active > label:focus, .dropdown-menu > .active > label:hover, .dropdown-menu > li > input:checked ~ label, .dropdown-menu > li > input:checked ~ label:focus, .dropdown-menu > li > input:checked ~ label:hover
+  .dropdown-menu > .active > label, .dropdown-menu > .active > label:focus, .dropdown-menu > .active > label:hover,
+  .dropdown-menu > li > input:checked ~ label, .dropdown-menu > li > input:checked ~ label:focus, .dropdown-menu > li > input:checked ~ label:hover
     color ac1
   .list-info
     color fg1
@@ -1444,11 +1494,12 @@ Attribution:
       margin-top -361px
       margin-right calc(50% - 600px)
       content url("https://i.imgur.com/BvgZ9up.png") if purplish(ac)
+      content url("https://i.imgur.com/ITjzaSA.png") if setLogo == "logo7"
     @media (max-width: 1199.98px)
       footer::before
         display none
     
-@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/(az-list|filter|newest|added|ongoing|updated|completed|genre|studio|country|tv|movie|ona|ova|special|music|trending).*")
+@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/(az-list|filter|newest|added|ongoing|updated|completed|genre|producer|studio|country|tv|movie|ona|ova|special|music|trending).*")
 
   aside.sidebar
     display none
@@ -1460,12 +1511,15 @@ Attribution:
 // disqus stuff
 @-moz-document url-prefix("https://disqus.com/embed/comments/?base=default&f=9anime-to")
   
-  if fontAnimix
-    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
-    
-      
+  // font stuff
+  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
   body.roboto, body.roboto input, body.roboto select, body.roboto textarea
-    font-family "Lexend Deca", Roboto, sans-serif
+    font-family fontName, sans-serif if fontName
+  a, abbr, acronym, address, blockquote, button, caption, cite, code, dd, del, dfn, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6,
+  img, label, legend, li, ol, p, pre, q, s, samp, small, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var
+    font-style fontStyle if fontStyle
+    font-weight fontWeight if fontWeight
+    
   a
     color ac1
     transition none
@@ -1668,7 +1722,8 @@ Attribution:
     padding 10.5px 0 i
   .nav-primary
     margin 0 0 5px i
-  #reactions .reaction-items .reaction-item .reaction-item__button .reaction-item__image-wrapper .reaction-item__image, #reactions-promotion .reaction-items .reaction-item .reaction-item__button .reaction-item__image-wrapper .reaction-item__image
+  #reactions .reaction-items .reaction-item .reaction-item__button .reaction-item__image-wrapper .reaction-item__image,
+  #reactions-promotion .reaction-items .reaction-item .reaction-item__button .reaction-item__image-wrapper .reaction-item__image
     width 25px i
     height 25px i
   .post-content .post-menu .dropdown-menu .dropdown-item .dropdown-link
