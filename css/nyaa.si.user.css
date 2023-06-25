@@ -1,75 +1,61 @@
-kaz = "Lunar Duck v3.0.0 🌸 kaz.cx"
+kaz = "Manami v4.0.0 ✿ kaz.cx"
 
 /* ==UserStyle==
-@name         nyaa.si - Lunar Duck
+/ma'namiʔ/ means "nice, beautiful" in Hiligaynon.
+================
+@name         nyaa.si - Manami
 @namespace    kaz.cx
-@description  DDG inspired theme for nyaa.si
+@description  Matte, nano, minimal.
 @author       kaz <x@kaz.cx> (https://kaz.cx)
-@homepageURL  https://kaz.cx/lunar-duck
+@homepageURL  https://github.com/xrkaz/personal-stylesheets
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      3.0.0
+@version      4.0.0
 @license      WTFPL
 ===================
-@var select cs "Color scheme" {
-  "Mayu":"csMayu",
-  "Kiyoteru*":"csKiyoteru",
-  "Miku":"csMiku",
-  "Luka":"csLuka",
-  "Ren":"csRen",
-  "Meiko":"csMeiko",
-  "Kaito":"csKaito",
-  "Gumi":"csGumi"
+@var color bc "Base color" hsl(0, 0%, 0%)
+@var checkbox bcReg ":: Regulate" 0
+@var color ac "Accent color" hsl(210, 50%, 55%)
+@var select bgImg "Background image" {
+  "None*":"null",
+  "Custom":"bgCustom",
+  "Hatsune Miku":"'https://i.imgur.com/EwRKF6L.jpg'",
+  "Kasane Teto":"'https://i.imgur.com/hbyADPt.jpg'",
+  "Background 1":"'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 2":"'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 3":"'https://images.unsplash.com/photo-1594671581654-cc7ed83167bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 4":"'https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 5":"'https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 6":"'https://images.unsplash.com/photo-1607499699372-7bb722dff7e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 7":"'https://images.unsplash.com/photo-1605478264999-8d1cd66e9c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 8":"'https://images.unsplash.com/photo-1657215373362-3183c0495f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 9":"'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
+  "Background 10":"'https://images.unsplash.com/photo-1531761535209-180857e963b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=100'",
 }
-@var select ac "Accent color" {
-  "Default":"acDefault",
-  "Blue":"acBlue",
-  "Cyan":"acCyan",
-  "Pink":"acPink",
-  "Yellow":"acYellow",
-  "Red":"acRed",
-  "Green":"acGreen"
-}
+@var text bgCustom ":: Custom URL (with quotes)" ""https://i.imgur.com/uGB0VHA.jpg""
+@var range panBlur "Panel blur" [0, 0, 20, 1, 'px']
+@var range panAlpha "Panel opacity" [1, 0, 1, 0.1, '']
 @var range imgSat "Image saturation" [100, 0, 100, 1, '%']
 @var range imgLit "Image brightness" [100, 0, 100, 1, '%']
-@var range avaSat "Avatar saturation" [100, 0, 100, 1, '%']
-@var range avaLit "Avatar brightness" [100, 0, 100, 1, '%']
+@var select bdRad "Corners" ["Sharp*", "Round"]
 @var select avaShape "Avatar shape" {
   "Circle*":"100%",
   "Square":"0",
-  "Squircle":"25%",
+  "Squircle":"25%"
 }
-@var select tbDensity "Table density" {
-  "Default*":"none",
-  "Comfortable":"10px",
-  "Compact":"tbCompact"
-}
-@var select comDensity "Comment density" {
-  "Default*":"none",
-  "Compact":"comCompact"
-}
-@var select prad "Corners" {
-  "Sharp":"0",
-  "Rounded*":"4px"
-}
+@var select anchor "Links on hover" ["Lighten*", "Underline", "Both"]
+@var select torrentlist "Torrent list" ["Default*", "Compact"]
+@var select comment "Comment panel" ["Default*", "Compact"]
 @var checkbox navTop "Sticky navbar" 1
-@var checkbox imgShad "Image shadows" 1
-@var checkbox avaShad "Avatar shadows" 1
-@var checkbox hilitRows "Highlight rows on hover" 1
-@var checkbox tColors "Torrent colors" 1
-@var checkbox tMarks "Torrent color marks" 0
-@var checkbox uLinks "Underline links on hover" 0
-@var checkbox splitrows "Split same-colored rows" 0
-@var checkbox setLayout "Override layout width" 0
-@var range layoutWidth "— Layout width" [1400, 1150, 1900, 1,"px"]
-@var text fontName "Font name" "Default"
-@var select fontStyle "Font style" {
-  "Default*":"null",
-  "Normal":"normal",
-  "Italic":"italic",
-  "Oblique":"oblique"
-}
+@var checkbox scroll "Thin scrollbar" 1
+@var checkbox torrentlistHover "Torrent list lighten on hover" 1
+@var checkbox torrentlistStripe "Torrent list stripes" 1
+@var checkbox torrentlistColor "Torrent list colors" 1
+@var checkbox shadow "Shadows" 1
+@var checkbox laySet "Override layout width" 0
+@var range layWide ":: Layout width" [1280, 1280, 1900, 10,"px"]
+@var text fontName "Font name" "Inter"
 @var select fontWeight "Font weight" {
   "Default*":"null",
   "100 ":"100",
@@ -82,228 +68,217 @@ kaz = "Lunar Duck v3.0.0 🌸 kaz.cx"
   "800 ":"800",
   "900 ":"900"
 }
+@var select fontStyle "Font style" {
+  "Default*":"null",
+  "Normal":"normal",
+  "Italic":"italic",
+  "Oblique":"oblique"
+}
+@var checkbox xFap "Explicit links" 1
 @var checkbox xrkaz "Userstyle attribution" 1
 ==/UserStyle== */
 
-@-moz-document regexp("https?:\\/\\/(.+\\.)?(nyaa|fap(?!\\.lol))\\.(si|lol|iss\\.(one|ink))\\/.*")
+// aliases
+i = !important
+l = lightness
+s = saturation
+a = alpha
+t = transparent
+x = none
+
+// shadow values
+dshad = a(black, 0.12) 0px 1px 3px, a(black, 0.24) 0px 1px 3px
+ishad = inset a(black, 0.5) 0 0 5px
+dishad = inset a(black, 0.5) 0 0 5px, a(black, 0.12) 0px 1px 3px, a(black, 0.24) 0px 1px 3px
+
+// functions
+anc() // anchor:hover style
+  if anchor == "Lighten" {color ac2; text-decoration x}
+  else if anchor == "Underline" {color ac1; text-decoration underline}
+  else {color ac2; text-decoration underline}
+shad(k = dshad) // shadows
+  if shadow {box-shadow k}
+  else {box-shadow x}
+rad(k = 5px) // border-radius
+  if bdRad == "Round" {border-radius k}
+  else {border-radius 0}
+shard() {shad();rad()} // combo of shad() & rad()
+prad(k = 5px) // same as rad() but for units
+  if bdRad == "Round" {k}
+  else {0}
+bdc(k = t) {border-color k} // border-color
+// background function
+bgc(k, z = null)
+  if bgImg != null
+    backdrop-filter blur(panBlur) if panBlur != 0 && panAlpha != 1
+    background-color a(k, panAlpha)
+    color z if z
+  else
+    background-color k
+    color z if z
   
-  // aliases
-  i = !important
-  l = lightness
-  s = saturation
-  a = alpha
-  Default = null
+// base colors
+blue   = hsl(210, 50%, 55%)
+green  = hsl(120, 50%, 55%)
+red    = hsl(0,   50%, 55%)
+orange = hsl(40,  50%, 55%)
+pink   = hsl(330, 50%, 55%)
+cyan   = hsl(180, 50%, 55%)
+yellow = hsl(60,  50%, 55%)
+purple = hsl(265, 50%, 55%)
   
-  :root
-    color-scheme dark
-      
-  // mixins
-  transit(k = 0.3s)
-    if setTransit
-      transition all k ease
-  shad()
-    box-shadow 0 1px 3px hsla(0, 0%, 0%, .5)
-  rad()
-    border-radius prad
-  shard()
-    shad();rad()
-        
-  // static base colors
-  sBlack = hsl(0, 0%, 0%)
-  sWhite = hsl(0, 0%, 100%)
-  sBlue = hsl(225, 100%, 70%)
-  sGreen = hsl(120, 50%, 50%)
-  sRed = hsl(0, 50%, 50%)
-  sOrange = hsl(35, 50%, 50%)
-  sPink = hsl(330, 50%, 50%)
-  sCyan = hsl(180, 50%, 50%)
-  sYellow = hsl(60, 50%, 50%)
+// color regulation
+if bcReg
+  bg1 = l(s(bc, 20%), 10%)
+  bg2 = l(s(bc, 20%), 5%)
+  bg3 = l(s(bc, 30%), 15%)
+  bg4 = l(s(bc, 30%), 20%)
+  bg5 = l(s(bc, 40%), 25%)
+  bg6 = l(s(bc, 40%), 45%)
+else
+  bg1 = l(bc, 10%)
+  bg2 = l(bc, 5%)
+  bg3 = l(bc, 15%)
+  bg4 = l(bc, 20%)
+  bg5 = l(bc, 25%)
+  bg6 = l(bc, 45%)
   
-  sBlue1 = l(s(sBlue, 30%), 20%) // darker
-  sBlue2 = l(sBlue, 80%) // lighter
-  sGreen1 = l(s(sGreen, 30%), 20%)
-  sGreen2 = l(sGreen, 80%)
-  sRed1 = l(s(sRed, 30%), 20%)
-  sRed2 = l(sRed, 80%)
-  sOrange1 = l(s(sOrange, 30%), 20%)
-  sOrange2 = l(sOrange, 80%)
-  sPink1 = l(s(sPink, 30%), 20%)
-  sPink2 = l(sPink, 80%)
-  sCyan1 = l(s(sCyan, 30%), 20%)
-  sCyan2 = l(sCyan, 80%)
-  sYellow1 = l(s(sYellow, 30%), 20%)
-  sYellow2 = l(sYellow, 80%)
-  
-  fg1 = a(sWhite, 0.8) // default
-  fg2 = sWhite // active
-  fg3 = a(sWhite, 0.5) // subtext
-  fg4 = a(sWhite, 0.3) // placeholder
-  
-  // color schemes
-  if cs == "csKiyoteru"
-    bg1 = l(sBlack, 10%)
-    bg2 = l(sBlack, 5%)
-    bg3 = l(sBlack, 15%)
-    bg4 = l(sBlack, 20%)
-    bg5 = l(sBlack, 25%)
-    bg6 = l(sBlack, 45%)
-    ac1 = sBlue
-    ac2 = sBlue2
-  else if cs == "csLuka"
-    bg1 = l(s(sPink, 20%), 10%)
-    bg2 = l(s(sPink, 20%), 5%)
-    bg3 = l(s(sPink, 30%), 15%)
-    bg4 = l(s(sPink, 30%), 20%)
-    bg5 = l(s(sPink, 40%), 25%)
-    bg6 = l(s(sPink, 40%), 45%)
-    ac1 = sPink
-    ac2 = sPink2
-  else if cs == "csMiku"
-    bg1 = l(s(sCyan, 20%), 10%)
-    bg2 = l(s(sCyan, 20%), 5%)
-    bg3 = l(s(sCyan, 30%), 15%)
-    bg4 = l(s(sCyan, 30%), 20%)
-    bg5 = l(s(sCyan, 40%), 25%)
-    bg6 = l(s(sCyan, 40%), 45%)
-    ac1 = sCyan
-    ac2 = sCyan2
-  else if cs == "csRen"
-    bg1 = l(s(sYellow, 20%), 10%)
-    bg2 = l(s(sYellow, 20%), 5%)
-    bg3 = l(s(sYellow, 30%), 15%)
-    bg4 = l(s(sYellow, 30%), 20%)
-    bg5 = l(s(sYellow, 40%), 25%)
-    bg6 = l(s(sYellow, 40%), 45%)
-    ac1 = sYellow
-    ac2 = sYellow2
-  else if cs == "csMeiko"
-    bg1 = l(s(sRed, 20%), 10%)
-    bg2 = l(s(sRed, 20%), 5%)
-    bg3 = l(s(sRed, 30%), 15%)
-    bg4 = l(s(sRed, 30%), 20%)
-    bg5 = l(s(sRed, 40%), 25%)
-    bg6 = l(s(sRed, 40%), 45%)
-    ac1 = sRed
-    ac2 = sRed2
-  else if cs == "csGumi"
-    bg1 = l(s(sGreen, 20%), 10%)
-    bg2 = l(s(sGreen, 20%), 5%)
-    bg3 = l(s(sGreen, 30%), 15%)
-    bg4 = l(s(sGreen, 30%), 20%)
-    bg5 = l(s(sGreen, 40%), 25%)
-    bg6 = l(s(sGreen, 40%), 45%)
-    ac1 = sGreen
-    ac2 = sGreen2
-  else if cs == "csKaito"
-    bg1 = l(s(sBlue, 20%), 10%)
-    bg2 = l(s(sBlue, 20%), 5%)
-    bg3 = l(s(sBlue, 30%), 15%)
-    bg4 = l(s(sBlue, 30%), 20%)
-    bg5 = l(s(sBlue, 40%), 25%)
-    bg6 = l(s(sBlue, 40%), 45%)
-    ac1 = sBlue
-    ac2 = sBlue2
-  else if cs == "csMayu"
-    bg1 = sBlack
-    bg2 = sBlack
-    bg3 = l(sBlack, 5%)
-    bg4 = l(sBlack, 10%)
-    bg5 = l(sBlack, 15%)
-    bg6 = l(sBlack, 20%)
-    ac1 = sRed
-    ac2 = sRed2
-  
-  // accent colors
-  if ac == "acDefault"
-    null
-  else if ac == "acBlue"
-    ac1 = sBlue
-    ac2 = sBlue2
-  else if ac == "acPink"
-    ac1 = sPink
-    ac2 = sPink2
-  else if ac == "acCyan"
-    ac1 = sCyan
-    ac2 = sCyan2
-  else if ac == "acYellow"
-    ac1 = sYellow
-    ac2 = sYellow2
-  else if ac == "acRed"
-    ac1 = sRed
-    ac2 = sRed2
-  else if ac == "acGreen"
-    ac1 = sGreen
-    ac2 = sGreen2
-  
-  // make torrent colors discernible
-  if tMarks
-    tr.danger > td:nth-of-type(8)
-      border-right 5px solid red
-    tr.success > td:nth-of-type(8)
-      border-right 5px solid green
-    tr.warn > td:nth-of-type(8)
-      border-right 5px solid orange
-      
-  // custom font code integrated from https://userstyles.world/style/85 (vednoc, MIT License)
-  // Exclude default code areas.
-  n ?= ':not(code):not(pre):not(pre > span):not(code > span)'
-  // Exclude icon fonts.
-  n += ':not(.i):not(.icon)'
-  n += ':not(.fa):not(.fab):not(.fad):not(.fal):not(.far):not(.fas)'
-  n += ':not(.fa-solid):not(.fa-regular):not(.fa-light):not(.fa-duotone):not(.fa-thin):not(.fa-sharp):not(.fa-brands)'
-  n += ':not([class*="octicon-"])' // github
-  n += ':not(.glyphicon)' // searx
-  n += ':not([aria-hidden=true])' // google meet
-  n += ':not([class*=material-icons])' // material icons
-  n += ':not([class*=icofont])' // icofont icons
-  n += ':not([class*=selector__glyph][data-bind])' // fontello icons
-  // Exclude icons on DuckDuckGo.
-  n += ':not(input[id^="search"][type=submit][value=S])' // search bar
-  n += ':not([class*="js-side-menu-"])' // navbar menu
-  n += ':not(.ddgsi):not(.btn--icon)' // misc icons
-  // Exclude code areas on GitHub.
-  n += ':not([class^="blob-"]):not([class^="blob-"] span)'
-  // Exclude code areas on GitLab.
-  n += ':not(.diff-line-num):not(pre > code > span span)'
-  n += ':not(.diff-viewer *)' // commit diff
-  // Exclude various text editors.
-  n += ':not(.ace_editor):not(.ace_editor *)' // #2
-  n += ':not(.CodeMirror):not(.CodeMirror *)'
-  n += ':not(.monaco-editor *)'
-  n += ':not(#squire *)' // protonmail
-  // Exclude Gmail composer and font menu. #3
-  n += ':not(div[jsaction][jslog] *)'
-  n += ':not([id][style*="font-family"]):not([id][style*="font-family"] *)'
-  // Exclude utility classes for fonts.
-  n += ':not(.monospace):not(.text-mono)'
-  { n } // apply only if values are not null
-    font-family fontName i if fontName
-    font-style fontStyle i if fontStyle
-    font-weight fontWeight i if fontWeight
-  
-  // adjust container width
-  if setLayout
-    .container
-      width layoutWidth
+// accent colors
+ac1 = l(ac, 55%)
+ac2 = l(ac, 80%)
+
+// complementary colors
+cc1 = red
+cc2 = green
+cc3 = orange
+cc4 = blue
+
+// color hierarchy
+ch1(k) {l(s(k, 30%), 20%)}
+ch2(k) {lighten(ch1(k), 5%)}
+ch3(k) {lighten(ch1(k), 10%)}
+ch4(k) {lighten(ch1(k), 20%)}
+ch5(k) {l(k, 80%)}
+
+// text colors
+fg = white
+fg1 = a(fg, 0.7) // default
+fg2 = fg         // emphasis
+fg3 = a(fg, 0.5) // subtext
+fg4 = a(fg, 0.3) // disabled, placeholder
     
-  // hide dark mode toggle
-  footer p
-    display none
+// global
+@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/.*")
   
-  // show alert if onsite dark theme is enabled
-  .dark::before
-    content "Theme conflict. Press the button below to fix it."
+  // import inter font from google
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap') if fontName == "Inter"
+  
+  * // scrollbar
+    color-scheme dark
+    if scroll
+      scrollbar-width thin
+      scrollbar-color bg5 t
+  if scroll // for chromium
+    ::-webkit-scrollbar
+      width 8px
+    ::-webkit-scrollbar-track
+      background-color t
+    ::-webkit-scrollbar-thumb
+      background-color bg5
+    ::-webkit-scrollbar-thumb:hover
+      background-color bg6
+  
+  body
+    background url(bgImg) no-repeat fixed center
+    background-size cover
+    background-color bg1
+    font-family fontName, system-ui, sans-serif if fontName
+    font-style fontStyle if fontStyle
+    font-weight fontWeight if fontWeight
+    color fg1
+  a
+    color ac1
+    &:hover, &:focus
+      anc()
+    &:focus
+      outline x
+  blockquote
+    background-color bg4
+    bdc(bg6)
     shad()
+  blockquote blockquote
+    shad(x)
+  pre
+    background-color bg4
+    color fg1
+    bdc()
+    shard()
+  code
+    background-color bg4
+    color red
+    shard()
+  pre code
+    shad(x)
+  kbd
+    background-color bg4
+    color fg1
+    shard()
+  hr
+    border-top 1px solid bg4
+  option
+    background-color bg3
+    
+  // torrent list suppress visit state
+  table.torrent-list tbody tr td a:visited
+    color ac1
+    &:hover, &:focus
+      anc()
+    
+  img // images
+    filter saturate(imgSat) brightness(imgLit)
+  .category-icon // category icons
+    filter saturate(50%)
+    
+  // seed/leech colors
+  .col-md-5 span[style="color: green;"] // torrent meta
+    color green i
+  .col-md-5 span[style="color: red;"]
+    color red i
+  // torrent list
+  table.torrent-list td:nth-child(6),
+  body.dark table.torrent-list > tbody > tr.success > td:nth-child(6),
+  body.dark table.torrent-list > tbody > tr.danger > td:nth-child(6)
+    color green
+  table.torrent-list td:nth-child(7),
+  body.dark table.torrent-list > tbody > tr.success > td:nth-child(7),
+  body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7)
+    color red
+  
+  .text-success // user class
+    color cc2
+    a&:hover, a&:focus
+      color ch5(cc2)
+      
+  .container // set layout width
+    width layWide if laySet
+    
+  footer p // hide dark mode toggle
+    display x
+  
+  .dark .navbar-inverse::before // show alert if dark theme enabled
+    content "Style conflict. Press the button below to fix it."
+    background-color bg2
+    color fg1
+    display block
     font-family monospace
     font-size 14px
-    padding 10px 10px 10px 10px
-    background sCyan1
-    color fg1
+    padding 10px
+    border-bottom 1px solid bg3
     white-space pre-wrap
-    display block
-    z-index 1001
-    position sticky
-    top 0
+    visibility visible
+    shad()
+  .dark .navbar
+    visibility hidden
   .dark footer p
     position fixed
     top 50px
@@ -316,510 +291,544 @@ kaz = "Lunar Duck v3.0.0 🌸 kaz.cx"
     margin-top -20px
     visibility hidden
     &:hover::after
-      background-color bg6
+      background-color bg4
   .dark #themeToggle::after
     content "Fix me, Senpai (◕︿◕✿)"
     display block
-    color sWhite
-    margin-top -20px
+    color fg1
+    font-family monospace
+    margin-top -15px
     visibility visible
     background-color bg1
     border 1px solid bg6
-    background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QwGBBwIHvKt6QAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAL0lEQVQI12NoaGgQZ2JgYGBkYmBgYGZiYGBggrMY4VxsYsyoskQQCB2MWAxAMhkADVECDhlW9CoAAAAASUVORK5CYII=')
-    padding 5px 10px 5px 10px
+    padding 5px 10px
+    visibility visible
+    animation rainbow 1s infinite
+    padding 5px 10px
     shad()
-    transit()
-  
-  body
-    background-color bg1
-    color fg1
-  a
-    color ac1
+    
+  .navbar-inverse // navbar
+    bgc(bg1)
+    bdc(bg3)
+    shad()
+  .navbar-inverse .navbar-toggle
+    bdc()
     &:hover, &:focus
-      color ac2
-      text-decoration none
-      outline none // for categories in search
-      if uLinks
-        text-decoration underline
-  blockquote
-    shard()
-    background-color bg1
-    border-left 5px solid bg5
-  pre
-    shard()
-    background-color bg1
-    color fg1
-    border-color bg1
-  code
-    shard()
-    background-color bg5
-    color fg1
-  pre code
-    box-shadow none
-  kbd
-    shard()
-    color fg1
-    background-color bg4
-  hr
-    border-top 1px solid bg4
-  
-  // navbar
-  .navbar
-    shad()
-  .navbar-inverse
-    background-color bg2
-    border-color bg3
-  .navbar-inverse .navbar-brand
-    color fg1
-  .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus
-    color fg2
-    background-color transparent
-  .navbar-inverse .navbar-nav > li > a
-    color fg1
-  .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus
-    background-color transparent
-    color fg2
-  .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus
-    background-color bg3
-    color fg2
-  .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus
-    background-color bg3
-    color fg2
-  // navbar mobile
+      background-color bg5
   .navbar-toggle
     background-color bg4
-    rad()
-  .navbar-inverse .navbar-toggle
-    border-color bg4
-  .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus
-    background-color bg6
-  // dropdown menu
-  .dropdown-menu
     shard()
-    background-color bg3
-    border 1px solid bg3
-    li a
-      color fg1
-  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
-    background-color bg5
+  .navbar-inverse .navbar-brand
     color fg1
-  .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus
-    background-color bg5
+    &:hover, &:focus
+      color fg2
+  .navbar-inverse .navbar-nav>li>a
     color fg1
-  .bootstrap-select .dropdown-toggle:focus
-    outline none i
-  // searchbar
-  .form-control
-    shard()
-    background-color bg4
-    color fg1
-    border 1px solid bg4
-    transition none
-    &:focus
-      box-shadow none
-      border-color bg4
-  .form-control::placeholder
-    color fg4
-    opacity 1 // firefox
-  .form-control.search-bar
-    box-shadow none
-  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
-    background-color bg3
-  .input-group .form-control:last-child, .input-group-addon:last-child
-    border 1px solid bg3
-  .navbar-form .input-group
+    &:hover, &:focus
+      color fg2
+  .navbar-inverse .navbar-nav>.open>a
+    bgc(bg3, fg1)
+    &:hover, &:focus
+      bgc(bg3, fg2)
+  .navbar-inverse .navbar-nav>.active>a
+    bgc(bg3, fg1)
+    &:hover, &:focus
+      bgc(bg3, fg2)
+  // add shadows on searchbar
+  .hidden-sm.hidden-xs.search-container.input-group
     shad()
-  .input-group-btn .btn // suppress shadow in search button
-    box-shadow none
   #navFilter-criteria > .bootstrap-select:first-child > button
-    border-top-left-radius prad i
-    border-bottom-left-radius prad i
-    
-  // make navbar sticky
-  if navTop
-    .navbar
+    border-top-left-radius prad() i
+    border-bottom-left-radius prad() i
+  // suppress shadows on search buttons
+  #navFilter-criteria > .show-tick.bootstrap-select.btn-group > .btn-default.dropdown-toggle.btn,
+  #navFilter-category > .show-tick.bootstrap-select.btn-group > .btn-default.dropdown-toggle.btn,
+  .search-btn.input-group-btn > .btn-primary.btn
+    shad(x)
+  .navbar-static-top // stick navbar to top
+    if navTop
       position sticky
       top 0
-    
-  // buttons
-  .btn
+      
+  .form-control // forms
+    background-color bg4
+    color fg1
+    transition x
+    shad(dishad)
     rad()
+    bdc()
+    &:focus
+      bdc()
+      shad(dishad)
+    input&:focus
+      bdc(bg4)
+      shad(dishad)
+    button&:focus
+      shad()
+    select&
+      shad()
+    select&:focus
+      bdc()
+      shad()
+  .form-control.search-bar
+    border-right x
+    shad(ishad)
+    &:focus
+      shad(ishad)
+  .form-control::placeholder // input placeholder
+    color fg4
+    opacity 1 // firefox
+      
+  .btn // buttons
+    shard()
+  .btn:focus, .btn:active:focus, .btn.active:focus,
+  .btn.focus, .btn:active.focus, .btn.active.focus
+    outline x
+  .btn:active, .btn.active
+    shad(x)
+  .btn-danger // red button
+    background-color ch3(cc1)
+    color fg1
+    bdc()
+    &:hover
+      background-color ch4(cc1)
+      color fg1
+      bdc()
+  .btn-danger:focus, .btn-danger.focus
+    background-color ch4(cc1)
+    color fg1
+    bdc()
+  .btn-danger:active, .btn-danger.active, .open>.dropdown-toggle.btn-danger
+    background-color ch4(cc1)
+    color fg1
+    bdc()
+  .btn-danger:active:hover, .btn-danger.active:hover, .open>.dropdown-toggle.btn-danger:hover,
+  .btn-danger:active:focus, .btn-danger.active:focus, .open>.dropdown-toggle.btn-danger:focus,
+  .btn-danger:active.focus, .btn-danger.active.focus, .open>.dropdown-toggle.btn-danger.focus
+    background-color ch4(cc1)
+    color fg1
+    bdc()
+  .btn-warning // orange button
+    background-color ch3(cc3)
+    color fg1
+    bdc()
+    &:hover
+      background-color ch4(cc3)
+      color fg1
+      bdc()
+  .btn-warning:focus, .btn-warning.focus
+    background-color ch4(cc3)
+    color fg1
+    bdc()
+  .btn-warning:active, .btn-warning.active, .open>.dropdown-toggle.btn-warning
+    background-color ch4(cc3)
+    color fg1
+    bdc()
+  .btn-warning:active:hover, .btn-warning.active:hover, .open>.dropdown-toggle.btn-warning:hover,
+  .btn-warning:active:focus, .btn-warning.active:focus, .open>.dropdown-toggle.btn-warning:focus,
+  .btn-warning:active.focus, .btn-warning.active.focus, .open>.dropdown-toggle.btn-warning.focus
+    background-color ch4(cc3)
+    color fg1
+    bdc()
+  .btn-grey // grey button
+    background-color bg4
+    color fg1
+    bdc()
+    &:hover
+      background-color bg5
+      color fg1
+      bdc()
+  .btn-grey:focus, .btn-grey.focus
+    background-color bg5
+    color fg1
+    bdc()
+  .btn-grey:active, .btn-grey.active, .open>.dropdown-toggle.btn-grey
+    background-color bg5
+    color fg1
+    bdc()
+  .btn-grey:active:hover, .btn-grey.active:hover, .open>.dropdown-toggle.btn-grey:hover,
+  .btn-grey:active:focus, .btn-grey.active:focus, .open>.dropdown-toggle.btn-grey:focus,
+  .btn-grey:active.focus, .btn-grey.active.focus, .open>.dropdown-toggle.btn-grey.focus
+    background-color bg5
+    color fg1
+    bdc()
   .btn-default
     background-color bg4
     color fg1
-    border-color bg4
-  .btn-default:hover, .btn-default:active:hover, .btn-default.active:hover, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus
-    background-color bg6
-    color fg1
-    border 1px solid bg6
-  .btn-default:focus, .btn-default.focus
-    background-color bg4
-    color fg1
-    border: 1px solid bg4
+    bdc()
     &:hover
-      background-color bg6
-  .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus
-    outline none
-  .btn-primary
-    shad()
+      background-color bg5
+      color fg1
+      bdc()
+  .btn-default:focus, .btn-default.focus
+    background-color bg5
     color fg1
+    bdc()
+  .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default
+    background-color bg5
+    color fg1
+    bdc()
+  .btn-default:active:hover, .btn-default.active:hover, .open>.dropdown-toggle.btn-default:hover,
+  .btn-default:active:focus, .btn-default.active:focus, .open>.dropdown-toggle.btn-default:focus,
+  .btn-default:active.focus, .btn-default.active.focus, .open>.dropdown-toggle.btn-default.focus
+    background-color bg5
+    color fg1
+    bdc()
+  // disabled buttons
+  .btn.disabled, .btn[disabled], fieldset[disabled] .btn
+    background-color bg3
+    color fg4
+    opacity 1
+    bdc(bg4)
+  .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover,
+  .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus,
+  .btn-default.disabled.focus, .btn-default[disabled].focus, fieldset[disabled] .btn-default.focus
+    background-color bg3
+    color fg4
+    bdc(bg4)
+  .btn-primary // primary buttons
     background-color bg4
-    border 1px solid bg4
-  .btn-primary:hover, .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus, .btn-primary:focus, .btn-primary.focus
     color fg1
-    background-color bg6
-    border: 1px solid bg6
-  
+    bdc()
+    &:hover
+      background-color bg5
+      color fg1
+      bdc()
+  .btn-primary:focus, .btn-primary.focus
+    background-color bg5
+    color fg1
+    bdc()
+  .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary
+    background-color bg5
+    color fg1
+    bdc()
+  .btn-primary:active:hover, .btn-primary.active:hover, .open>.dropdown-toggle.btn-primary:hover,
+  .btn-primary:active:focus, .btn-primary.active:focus, .open>.dropdown-toggle.btn-primary:focus,
+  .btn-primary:active.focus, .btn-primary.active.focus, .open>.dropdown-toggle.btn-primary.focus
+    background-color bg5
+    color fg1
+    bdc()
+  .dropdown-menu // dropdown
+    bgc(bg3)
+    bdc()
+    shard()
+  .dropdown-menu>li>a
+    color fg1
+    &:hover, &:focus
+      bgc(bg4, fg1)
+  .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus
+    bgc(bg4, fg1)
+  .btn-group.open .dropdown-toggle
+    shad(x)
+  .bootstrap-select .dropdown-toggle:focus
+    outline x i
+  .btn.dropdown-toggle.btn-default[style="border-radius:0;border-left:0;"]
+    border-left 1px solid t i
+    
+    
+  .panel // panels
+    bgc(bg3)
+    shard()
+  .panel-default
+    bdc()
+  .panel-danger
+    bdc(ch1(cc1))
+  .panel-success
+    bdc(ch1(cc2))
+  .panel-heading
+    border-top-right-radius prad(3px)
+    border-top-left-radius prad(3px)
+  .panel-default>.panel-heading
+    bgc(bg4, fg1)
+    bdc()
+  .panel-danger>.panel-heading
+    bgc(ch1(cc1), cc1)
+    bdc()
+  .panel-success>.panel-heading
+    bgc(ch1(cc2), cc2)
+    bdc()
+  .panel-footer
+    border-bottom-right-radius prad(3px)
+    border-bottom-left-radius prad(3px)
+    bgc(bg4)
+    bdc()
+    
+  .table-striped>tbody>tr:nth-of-type(odd) // tables
+    if torrentlistStripe {bgc(bg3)}
+    else {bgc(bg1)}
+  .table-striped>tbody>tr:nth-of-type(even)
+    bgc(bg1)
+  @media screen and (max-width: 991px)
+    .table-responsive
+      border 5px solid bg3
+      shard()
+  .table-bordered
+    border-collapse separate
+    border 5px solid
+    bdc(bg3)
+    shard()
+  .table-bordered thead
+    bgc(bg1)
+  .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th,
+  .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td
+    border x
+  // torrent list colors
+  if torrentlistColor
+    .table>thead>tr>td.success, .table>tbody>tr>td.success, .table>tfoot>tr>td.success,
+    .table>thead>tr>th.success, .table>tbody>tr>th.success, .table>tfoot>tr>th.success,
+    .table>thead>tr.success>td, .table>tbody>tr.success>td, .table>tfoot>tr.success>td,
+    .table>thead>tr.success>th, .table>tbody>tr.success>th, .table>tfoot>tr.success>th
+      bgc(ch1(cc2))
+    .table>thead>tr>td.danger, .table>tbody>tr>td.danger, .table>tfoot>tr>td.danger,
+    .table>thead>tr>th.danger, .table>tbody>tr>th.danger, .table>tfoot>tr>th.danger,
+    .table>thead>tr.danger>td, .table>tbody>tr.danger>td, .table>tfoot>tr.danger>td,
+    .table>thead>tr.danger>th, .table>tbody>tr.danger>th, .table>tfoot>tr.danger>th
+      bgc(ch1(cc1))
+  else
+    .table>thead>tr>td.success, .table>tbody>tr>td.success, .table>tfoot>tr>td.success,
+    .table>thead>tr>th.success, .table>tbody>tr>th.success, .table>tfoot>tr>th.success,
+    .table>thead>tr.success>td, .table>tbody>tr.success>td, .table>tfoot>tr.success>td,
+    .table>thead>tr.success>th, .table>tbody>tr.success>th, .table>tfoot>tr.success>th
+      background-color unset
+    .table>thead>tr>td.danger, .table>tbody>tr>td.danger, .table>tfoot>tr>td.danger,
+    .table>thead>tr>th.danger, .table>tbody>tr>th.danger, .table>tfoot>tr>th.danger,
+    .table>thead>tr.danger>td, .table>tbody>tr.danger>td, .table>tfoot>tr.danger>td,
+    .table>thead>tr.danger>th, .table>tbody>tr.danger>th, .table>tfoot>tr.danger>th
+      background-color unset
+    .table-hover>tbody>tr>td.success:hover, .table-hover>tbody>tr>th.success:hover,
+    .table-hover>tbody>tr.success:hover>td, .table-hover>tbody>tr:hover>.success,
+    .table-hover>tbody>tr.success:hover>th
+      background-color unset i
+    .table-hover>tbody>tr>td.danger:hover, .table-hover>tbody>tr>th.danger:hover,
+    .table-hover>tbody>tr.danger:hover>td, .table-hover>tbody>tr:hover>.danger,
+    .table-hover>tbody>tr.danger:hover>th
+      background-color unset i
+  // set table padding
+  .table>tbody>tr>th, .table>tfoot>tr>th, .table>tbody>tr>td, .table>tfoot>tr>td
+    padding 0 5px if torrentlist == "Compact"
+  // torrent list hover
+  if torrentlistHover
+    .table-hover>tbody>tr:hover
+      bgc(bg4)
+    .table-hover>tbody>tr>td.success:hover, .table-hover>tbody>tr>th.success:hover,
+    .table-hover>tbody>tr.success:hover>td, .table-hover>tbody>tr:hover>.success,
+    .table-hover>tbody>tr.success:hover>th
+      bgc(ch2(cc2))
+    .table-hover>tbody>tr>td.danger:hover, .table-hover>tbody>tr>th.danger:hover,
+    .table-hover>tbody>tr.danger:hover>td, .table-hover>tbody>tr:hover>.danger,
+    .table-hover>tbody>tr.danger:hover>th
+      bgc(ch2(cc1))
+  else
+    .table-hover>tbody>tr:hover
+      bgc(bg1)
+    .table-striped>tbody>tr:nth-of-type(odd)
+      if torrentlistStripe {bgc(bg3)}
+      else {bgc(bg1)}
+    .table-hover>tbody>tr>td.success:hover, .table-hover>tbody>tr>th.success:hover,
+    .table-hover>tbody>tr.success:hover>td, .table-hover>tbody>tr:hover>.success,
+    .table-hover>tbody>tr.success:hover>th
+      bgc(ch1(cc2))
+    .table-hover>tbody>tr>td.danger:hover, .table-hover>tbody>tr>th.danger:hover,
+    .table-hover>tbody>tr.danger:hover>td, .table-hover>tbody>tr:hover>.danger,
+    .table-hover>tbody>tr.danger:hover>th
+      bgc(ch1(cc1))
+  // torrent description tables
+  #torrent-description .table-striped>tbody>tr:nth-of-type(odd)
+    bgc(bg4)
+  #torrent-description .table-striped>tbody>tr:nth-of-type(even)
+    bgc(bg3)
+  #torrent-description .table-bordered
+    bdc(bg4)
+  // ignore "set table padding"
+  #torrent-description .table>tbody>tr>th, #torrent-description .table>tfoot>tr>th,
+  #torrent-description .table>tbody>tr>td, #torrent-description .table>tfoot>tr>td
+    padding 8px
+    
   // pagination
   .pagination
     shad()
-  .pagination-page-info
-    margin-top 20px
-  .pagination > li > a, .pagination > li > span
+  .pagination>li>a, .pagination>li>span
     background-color bg4
     color fg1
-    border 0
-  .pagination > li:first-child > a, .pagination > li:first-child > span
-    border-top-left-radius prad
-    border-bottom-left-radius prad
-  .pagination > li:last-child > a, .pagination > li:last-child > span
-    border-top-right-radius prad
-    border-bottom-right-radius prad
-  .pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus
-    background-color bg3
-  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
+    bdc()
+    &:hover, &:focus
+      background-color bg5
+      color fg1
+      bdc()
+  .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+  .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus
     background-color bg5
-  .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus
-    background-color bg6
     color fg1
-    
-  // table
-  // torrent list odd row
-  .table-striped > tbody > tr:nth-of-type(2n+1)
+    bdc()
+  .pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus,
+  .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus
     background-color bg3
-    if hilitRows != 1
-      background-color bg3 i
-  // torrent list remake
-  .table > thead > tr > td.danger, .table > tbody > tr > td.danger, .table > tfoot > tr > td.danger, .table > thead > tr > th.danger, .table > tbody > tr > th.danger, .table > tfoot > tr > th.danger, .table > thead > tr.danger > td, .table > tbody > tr.danger > td, .table > tfoot > tr.danger > td, .table > thead > tr.danger > th, .table > tbody > tr.danger > th, .table > tfoot > tr.danger > th
-    background-color transparent
-    if tColors
-      background-color sRed1
-  .table-hover>tbody>tr>td.danger:hover, .table-hover>tbody>tr>th.danger:hover, .table-hover>tbody>tr.danger:hover>td, .table-hover>tbody>tr:hover>.danger, .table-hover>tbody>tr.danger:hover>th
-    if hilitRows != 1 && tColors != 1
-      background-color transparent i
-  // torrent list trusted
-  .table > thead > tr > td.success, .table > tbody > tr > td.success, .table > tfoot > tr > td.success, .table > thead > tr > th.success, .table > tbody > tr > th.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > tbody > tr.success > td, .table > tfoot > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr.success > th, .table > tfoot > tr.success > th
-    background-color transparent
-    if tColors
-      background-color sGreen1
-  .table-hover>tbody>tr>td.success:hover, .table-hover>tbody>tr>th.success:hover, .table-hover>tbody>tr.success:hover>td, .table-hover>tbody>tr:hover>.success, .table-hover>tbody>tr.success:hover>th
-    if hilitRows != 1 && tColors != 1
-      background-color transparent i
-  // torrent list comments
-  table.torrent-list tbody .comments
-    shard()
+    color fg4
+    bdc()
+  .pagination>li:first-child>a, .pagination>li:first-child>span
+    border-bottom-left-radius prad()
+    border-top-left-radius prad()
+  .pagination>li:last-child>a, .pagination>li:last-child>span
+    border-bottom-right-radius prad()
+    border-top-right-radius prad()
+    
+  // comments
+  table.torrent-list tbody .comments // torrent list comment button
     background-color bg4
     color fg1 i
-    border 1px solid transparent
-    &:hover
-      background-color bg6
-  // torrent list borders
-  .table
-    margin-bottom 0
-  .table-bordered
-    border 5px solid bg3
-  .table-responsive
+    bdc()
     shard()
-  @media screen and (max-width: 991px)
-    .table-responsive
-      border 5px solid bg3    
-  .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td
-    border 0
-  // split same-colored rows
-  if splitrows
-    tr.success, tr.danger
-      border 1px solid bg3
-  // torrent list suppress visited link state
-  table.torrent-list tbody tr td a:visited
-    color ac1
-    &:hover, &:focus
-      color ac2
-  // torrent list selection highlighting
-  .table-hover>tbody>tr:hover
-    background-color bg1
-    if hilitRows
-      background-color bg5
-  .table-hover>tbody>tr>td.success:hover, .table-hover>tbody>tr>th.success:hover, .table-hover>tbody>tr.success:hover>td, .table-hover>tbody>tr:hover>.success, .table-hover>tbody>tr.success:hover>th
-    background-color sGreen1
-    if hilitRows
-      background-color bg5
-  .table-hover>tbody>tr>td.danger:hover, .table-hover>tbody>tr>th.danger:hover, .table-hover>tbody>tr.danger:hover>td, .table-hover>tbody>tr:hover>.danger, .table-hover>tbody>tr.danger:hover>th
-    background-color sRed1
-    if hilitRows
-      background-color bg5
-  // torrent description
-  #torrent-description .table-bordered
-    shard()
-    border 5px solid bg4
-    border-collapse separate
-  #torrent-description .table-bordered thead
-    background-color bg1
-  #torrent-description .table-striped > tbody > tr:nth-of-type(2n+1)
-    background-color bg4
-  #torrent-description .table
-    margin-bottom 20px
-    
-  // adjust torrent list padding
-  .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td
-  table.torrent-list td:first-child
-    if tbDensity == "tbCompact"
-      padding 0 5px 0 5px
-    padding tbDensity
-  
-  // seed/leech colors
-  // individual torrent meta
-  .col-md-5 span[style="color: green;"]
-    color sGreen i
-  .col-md-5 span[style="color: red;"]
-    color sRed i
-  // torrent list
-  table.torrent-list td:nth-child(6), body.dark table.torrent-list > tbody > tr.success > td:nth-child(6), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(6)
-    color sGreen
-  table.torrent-list td:nth-child(7), body.dark table.torrent-list > tbody > tr.success > td:nth-child(7), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7)
-    color sRed
-    
-  // panels
-  .panel
-    shard()
-    background-color bg3
-  .panel-default
-    border-color bg3
-  .panel-success
-    border-color sGreen1
-  .panel-danger
-    border-color sRed1
-  // panel headings
-  .panel-heading
-    border-top-right-radius prad - 1px
-    border-top-left-radius prad - 1px
-    if prad == 0
-      border-top-right-radius 0
-      border-top-left-radius 0
-  .panel-default .panel-heading
-    shad()
-    background-color bg4
-    color fg1
-    border-color bg3
-  .panel-success .panel-heading
-    shad()
-    background-color sGreen1
-    color sGreen
-    border-color sGreen1
-  .panel-danger .panel-heading
-    shad()
-    background-color sRed1
-    color sRed
-    border-color sRed1
-  // panel footer
-  .panel-footer
-    background-color bg4
-    border-top 1px solid bg3
-    border-bottom-right-radius prad - 1px
-    border-bottom-left-radius prad - 1px
-    if prad == 0
-      border-bottom-right-radius 0
-      border-bottom-left-radius 0
-    
-  // notification panels
-  .alert-info
-    background-color sBlue1
-    color sBlue
-    border-color sBlue1
-  // comment panel
-  .comment-panel
-    shad()
-    background-color bg4
-    border-color bg4
+  .comment-panel .panel-body // torrent description comments
+    background-color t
+    rad()
+  #comments .panel-default
+    bdc(bg4)
   // targeted comment (if user clicks on timestamp)
   .comment-panel:target
+    border-width 1px
+    bgc(ch1(ac))
+  .avatar
+    border-radius avaShape
     shad()
-    background-color sBlue1
-    border-color sBlue1
-  // adjust comment density
-  if comDensity == "comCompact"
+  if comment == "Compact" // set comment style
     .comment-panel
-      background-color unset
       width 100%
-      border-radius 0
       margin 0
-      box-shadow none
-      border-color transparent
+      border x
       border-bottom 1px solid bg4
+      shad(x)
+      rad(0)
       &:last-child
-        border-bottom 0
-      
+        border-bottom x
+    .comment-panel .panel-body
+      background-color t
     .comment-panel .col-md-2
       padding 0
     .comment-details
       margin-bottom 0
     .avatar
       max-width 48px
-  
-  // category icons
-  .category-icon
-    filter saturate(50%)
+      
+  //pagination page info
+  .pagination-page-info
+    width 300px
+    padding 5px
+    margin 0 auto
+    bgc(bg3)
+    shard()
     
-  // submitter colors
-  .text-success
-    color sGreen
-    &:hover, &:focus
-      color sGreen2 i
+  // notification panels
+  .alert-info
+    bgc(ch1(cc4), cc4)
+    bdc()
   
-  // upload page
-  // markdown preview
-  .well
-    shard()
+  .nav-tabs // upload page
+    bdc()
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
+    background-color bg4
+    color fg1
+    bdc()
+    shad()
+  .nav-tabs>li>a
+    border-radius prad() prad() 0 0
+    &:hover
+      bdc()
+  .nav>li>a:hover, .nav>li>a:focus
+    background-color t
+  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
     background-color bg3
-    border 1px solid bg3
-  .well blockquote
-    border-color bg5
-  .well .table-bordered
+    bdc(bg4)
+  .form-group > .input-group > .form-control
+    border-left x
+    color fg4
+  // supress shadows in torrent flag buttons
+  .btn-danger.btn, .btn-warning.btn, .btn-grey.btn
+    shad(x)
+  // add shadows in groups of flag buttons
+  div.col-md-6 > div.btn-group
+    shad()
+  .markdown-source // markdown preview
+    position relative
+    z-index 1
+  .tab-content .form-control
+    border-radius 0 prad() prad() prad()
+  .well
+    position relative
+    z-index 1
+    background-color bg3
+    border 1px solid
+    bdc(bg4)
     shard()
+  .well blockquote
+    background-color bg4
+    border-color bg6
+    shad()
+  .well blockquote blockquote
+    shad(x)
+  .well .table-bordered
     border 5px solid bg4
     border-collapse separate
+    shard()
   .well .table-bordered thead
     background-color bg1
-  .well .table-striped > tbody > tr:nth-of-type(2n+1)
+  .well .table-striped>tbody>tr:nth-of-type(odd)
     background-color bg4
-  .well .table
-    margin-bottom 20px
+  .well .table-striped>tbody>tr:nth-of-type(even)
+    background-color bg3
   .well img
+    shad(x)
     rad()
-    box-shadow none
-  // input
-  #description.form-control
-    background-color bg3
-    border 1px solid bg3
-    border-radius 0px prad prad prad
-  .nav-tabs
-    border-bottom 0
-  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
-    shad()
-    color fg1
-    background-color bg3
-    border-bottom-color bg3
-    border 1px solid bg3
-    z-index -1
-  .nav-tabs > li > a
-    border-radius prad prad 0 0
-  .nav-tabs > li > a:hover
-    border-color bg3
-  .nav > li > a:hover, .nav > li > a:focus
-    background-color bg2
-  // buttons
-  .btn-danger
-    color fg1
-    background-color sRed1
-    border-color sRed1
-  .btn-warning
-    color fg1
-    background-color sOrange1
-    border-color sOrange1
-  .btn-grey
-    color fg1
-    background-color bg4
-    border-color bg4
-  
-  // images
-  // torrent description
-  #torrent-description img
-    rad()
-    box-shadow none
-  // user avatars
-  .avatar
-    rad()
-    box-shadow none
-  .comment-content img
-    rad()
-    box-shadow none
-  .avatar
-    border-radius avaShape
-  // adjust image saturation
-  #torrent-description img, .comment-content img, .well img
-    filter saturate(imgSat) brightness(imgLit)
-  .avatar
-    filter saturate(avaSat) brightness(avaLit)
-  // img box shadows
-  if imgShad
-    #torrent-description img, .comment-content img, .well img
-      shad()
-  if avaShad
-    .avatar
-      shad()
-
-  // rotating color animation
-  @keyframes rainbow
-    0%
-      color sPink
-      text-shadow 0 0 10px sPink
-    10%
-      color sBlue
-      text-shadow 0 0 10px sBlue
+      
+  // explicit links
+  .nav.navbar-nav [href="//sukebei.nyaa.si"], .nav.navbar-nav [href^="https://theporndude.com/"]
+    display x if !xFap
+      
+  @keyframes rainbow // rotating color animation
+    rba(k)
+      color k
+      text-shadow 0 0 10px k
+    0%, 100%
+      rba(pink)
+    10%, 80%
+      rba(blue)
     20%
-      color sCyan
-      text-shadow 0 0 10px sCyan
-    30%
-      color sYellow
-      text-shadow 0 0 10px sYellow
+      rba(cyan)
+    30%, 90%
+      rba(yellow)
     40%
-      color sRed
-      text-shadow 0 0 10px sRed
+      rba(red)
     50%
-      color sGreen
-      text-shadow 0 0 10px sGreen
+      rba(green)
     60%
-      color sOrange
-      text-shadow 0 0 10px sOrange
+      rba(orange)
     70%
-      color sBlue
-      text-shadow 0 0 10px sBlue
-    80%
-      color sCyan
-      text-shadow 0 0 10px sCyan
-    90%
-      color sYellow
-      text-shadow 0 0 10px sYellow
-    100%
-      color sPink
-      text-shadow 0 0 10px sPink
-
-  // show userstyle attribution
-  html
-    margin-bottom 49px
-  if xrkaz
-    html
-      margin-bottom 0
-    html::after
+      rba(purple)
+      
+  html::after // userstyle attribution
+    if xrkaz
       content kaz
-      font-family monospace
-      font-size 14px
+      font 14px monospace
       display block
       text-align center
-      margin-bottom 30px
-      animation rainbow 5s infinite
+      width 230px
+      padding 5px
+      margin 0 auto 20px auto
+      animation rainbow 10s infinite
+      bgc(bg3)
+      shard()
 
-@-moz-document url-prefix("https://nyaa.si/rules"), url-prefix("https://sukebei.nyaa.si/rules")
+// info pages
+@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/(rules|help|upload|login)")
   
   body > .container
-    shard()
-    background-color bg3
+    bgc(bg3)
     padding 0 20px 20px 20px
-    margin-bottom 30px
+    margin-bottom 20px
+    shard()
     
-@-moz-document url-prefix("https://nyaa.si/help"), url-prefix("https://sukebei.nyaa.si/help")
-  
-  body > .container
-    shard()
-    background-color bg3
-    padding 0 20px 20px 20px
-    margin-bottom 30px
+  [style="color:green; font-weight: bold;"]
+    color cc2 i
+  [style="color:red; font-weight: bold;"]
+    color cc1 i
+  [style="color:orange; font-weight: bold;"]
+    color cc3 i
