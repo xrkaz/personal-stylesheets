@@ -1,4 +1,4 @@
-kaz = "Manami v4.0.0 ✿ kaz.cx"
+kaz = "Manami v4.0.1 ✿ kaz.cx"
 
 /* ==UserStyle==
 /ma'namiʔ/ means "nice, beautiful" in Hiligaynon.
@@ -11,7 +11,7 @@ kaz = "Manami v4.0.0 ✿ kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      4.0.0
+@version      4.0.1
 @license      WTFPL
 ===================
 @var color bc "Base color" hsl(0, 0%, 0%)
@@ -87,16 +87,17 @@ t = transparent
 x = none
 
 // shadow values
-dshad = a(black, 0.12) 0px 1px 3px, a(black, 0.24) 0px 1px 3px
-ishad = inset a(black, 0.5) 0 0 5px
-dishad = inset a(black, 0.5) 0 0 5px, a(black, 0.12) 0px 1px 3px, a(black, 0.24) 0px 1px 3px
+extShad = a(black, 0.12) 0px 1px 3px, a(black, 0.24) 0px 1px 3px
+intShad = inset a(black, 0.5) 0 0 5px
+frmShad = inset a(black, 0.5) 0 0 5px, a(black, 0.12) 0px 1px 3px, a(black, 0.24) 0px 1px 3px
+imgShad = 0 1px 2px a(black, 0.3)
 
 // functions
 anc() // anchor:hover style
   if anchor == "Lighten" {color ac2; text-decoration x}
   else if anchor == "Underline" {color ac1; text-decoration underline}
   else {color ac2; text-decoration underline}
-shad(k = dshad) // shadows
+shad(k = extShad) // shadows
   if shadow {box-shadow k}
   else {box-shadow x}
 rad(k = 5px) // border-radius
@@ -235,7 +236,11 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       anc()
     
   img // images
-    filter saturate(imgSat) brightness(imgLit)
+    rad()
+    if shadow
+      filter saturate(imgSat) brightness(imgLit) drop-shadow(imgShad)
+    else
+      filter saturate(imgSat) brightness(imgLit)
   .category-icon // category icons
     filter saturate(50%)
     
@@ -354,15 +359,15 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     background-color bg4
     color fg1
     transition x
-    shad(dishad)
+    shad(frmShad)
     rad()
     bdc()
     &:focus
       bdc()
-      shad(dishad)
+      shad(frmShad)
     input&:focus
       bdc(bg4)
-      shad(dishad)
+      shad(frmShad)
     button&:focus
       shad()
     select&
@@ -372,9 +377,9 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       shad()
   .form-control.search-bar
     border-right x
-    shad(ishad)
+    shad(intShad)
     &:focus
-      shad(ishad)
+      shad(intShad)
   .form-control::placeholder // input placeholder
     color fg4
     opacity 1 // firefox
@@ -538,6 +543,8 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   .panel-heading
     border-top-right-radius prad(3px)
     border-top-left-radius prad(3px)
+    clip-path inset(0 0 -5px 0)
+    shad()
   .panel-default>.panel-heading
     bgc(bg4, fg1)
     bdc()
@@ -689,7 +696,6 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     bgc(ch1(ac))
   .avatar
     border-radius avaShape
-    shad()
   if comment == "Compact" // set comment style
     .comment-panel
       width 100%
