@@ -1,4 +1,4 @@
-kaz = "Manami v4.0.2 ✿ kaz.cx"
+kaz = "Manami v4.0.3 ✿ kaz.cx"
 
 /* ==UserStyle==
 /ma'namiʔ/ means "nice, beautiful" in Hiligaynon.
@@ -11,7 +11,7 @@ kaz = "Manami v4.0.2 ✿ kaz.cx"
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/nyaa.si.user.css
 @preprocessor stylus
-@version      4.0.2
+@version      4.0.3
 @license      WTFPL
 ===================
 @var color bc "Base color" hsl(0, 0%, 0%)
@@ -227,7 +227,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   hr
     border-top 1px solid bg4
   option
-    background-color bg3
+    background-color bg4
     
   // torrent list suppress visit state
   table.torrent-list tbody tr td a:visited
@@ -514,15 +514,17 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     color fg1
     bdc()
   .dropdown-menu // dropdown
-    bgc(bg3)
+    background-color bg4
     bdc()
     shard()
   .dropdown-menu>li>a
     color fg1
     &:hover, &:focus
-      bgc(bg4, fg1)
+      background-color bg5
+      color fg1
   .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus
-    bgc(bg4, fg1)
+    background-color bg5
+    color fg1
   .btn-group.open .dropdown-toggle
     shad(x)
   .bootstrap-select .dropdown-toggle:focus
@@ -653,6 +655,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     
   // pagination
   .pagination
+    margin 20px 0 0 0
     shad()
   .pagination>li>a, .pagination>li>span
     background-color bg4
@@ -671,7 +674,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus
     background-color bg3
     color fg4
-    bdc()
+    bdc(bg4)
   .pagination>li:first-child>a, .pagination>li:first-child>span
     border-bottom-left-radius prad()
     border-top-left-radius prad()
@@ -688,6 +691,8 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   .comment-panel .panel-body // torrent description comments
     background-color t
     rad()
+  #comments
+    margin-bottom 0
   #comments .panel-default
     bdc(bg4)
   // targeted comment (if user clicks on timestamp)
@@ -717,7 +722,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       
   //pagination page info
   .pagination-page-info
-    width 300px
+    width 350px
     padding 5px
     margin 0 auto
     bgc(bg3)
@@ -727,6 +732,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   .alert-info
     bgc(ch1(cc4), cc4)
     bdc()
+    shard()
   
   .nav-tabs // upload page
     bdc()
@@ -810,18 +816,39 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     70%
       rba(purple)
       
-  html::after // userstyle attribution
-    if xrkaz
+  if xrkaz // userstyle attribution
+    html::after
       content kaz
       font 14px monospace
       display block
       text-align center
       width 230px
       padding 5px
-      margin 0 auto 20px auto
+      margin 20px auto 20px auto
       animation rainbow 10s infinite
       bgc(bg3)
       shard()
+  else
+    html
+      margin-bottom 20px
+      
+// user search pages
+@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/user\/.*")
+  
+  .row h3
+    margin 0 0 20px 0
+    padding 20px
+    bgc(bg3)
+    shard()
+
+// no results found
+@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/\?f\=.*")
+  
+  .container h3
+    margin 0 0 20px 0
+    padding 20px
+    bgc(bg3)
+    shard()
 
 // info pages
 @-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/(rules|help|upload|login)")
