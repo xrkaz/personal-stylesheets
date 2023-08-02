@@ -1,15 +1,15 @@
-kaz = "AniMixed v1.2.1 🌸 kaz.cx"
+kaz = "AniMixed v1.3 ✿ kaz.cx"
 
 /* ==UserStyle==
-@name         9anime.to - AniMixed
+@name         aniwave.to - AniMixed
 @namespace    kaz.cx
-@description  AniMixPlay inspired theme for 9anime.to
+@description  AniMixPlay inspired theme for aniwave.to
 @author       kaz <x@kaz.cx> (https://kaz.cx)
 @homepageURL  https://github.com/xrkaz/personal-stylesheets
 @supportURL   https://github.com/xrkaz/personal-stylesheets/issues
 @updateURL    https://raw.githubusercontent.com/xrkaz/personal-stylesheets/master/css/9anime.to.user.css
 @preprocessor stylus
-@version      1.2.1
+@version      1.3
 @license      WTFPL
 ===================
 @var color bc "Base color" hsl(0, 0%, 0%)
@@ -60,6 +60,7 @@ kaz = "AniMixed v1.2.1 🌸 kaz.cx"
   "9anime 2018":"logo2",
   "9anime 2020":"logo3",
   "9anime 2022":"logo4",
+  "AniWave":"logo9",
   "AniMixed 1":"logo7",
   "AniMixed 2":"logo8",
   "AniMixReplay":"logo6",
@@ -86,7 +87,6 @@ kaz = "AniMixed v1.2.1 🌸 kaz.cx"
 @var text avaCustom ":: Custom image URL (with quotes)" ""https://i.imgur.com/MeYUTRl.png""
 @var checkbox setLayout "Override layout width" 0
 @var range layoutWidth ":: Layout width" [1280, 1110, 1800, 10,"px"]
-@var checkbox alert "Website notice" 1
 @var checkbox nextEp "Next episode notice" 1
 @var text fontName "Font name" "Lexend Deca"
 @var select fontWeight "Font weight" {
@@ -115,7 +115,7 @@ Attribution:
 - Lain images, fauux (https://fauux.neocities.org)
 ==/UserStyle== */
 
-@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|me|id)\/.*")
+@-moz-document regexp("https:\/\/aniwave\.to\/.*")
   
   // aliases
   i = !important
@@ -280,47 +280,49 @@ Attribution:
     font-weight normal
   
   // logo selector
+  .logo img
+    visibility hidden
   .logo
     if setLogo == "logo4"
+      background url("https://i.imgur.com/8n2PfR3.png") no-repeat center
+      background-size contain
       filter hue-rotate(300deg) brightness(2)
       filter brightness(2) if purplish(ac)
     else if setLogo == "logo1"
       background url("https://i.imgur.com/RgTqX81.png") no-repeat center
       background-size contain
-      margin-top 5px
       filter hue-rotate(260deg) brightness(2)
       filter brightness(5) if purplish(ac)
     else if setLogo == "logo2"
       background url("https://i.imgur.com/tH7dpBQ.png") no-repeat center
       background-size contain
-      margin-top 5px
       filter hue-rotate(280deg) brightness(2)
       filter brightness(2) if purplish(ac)
     else if setLogo == "logo3"
       background url("https://i.imgur.com/5l7fCCx.png") no-repeat center
       background-size contain
-      margin-top 3px
       filter hue-rotate(300deg) brightness(2)
       filter brightness(3) if purplish(ac)
     else if setLogo == "logo5"
       background url("https://i.imgur.com/FFPPYS7.png") no-repeat center
       background-size contain
-      margin-top 5px
       filter hue-rotate(100deg) if purplish(ac)
     else if setLogo == "logo6"
       background url("https://i.imgur.com/V7gTiEM.png") no-repeat center
       background-size contain
-      margin-top 5px
       filter hue-rotate(100deg) if purplish(ac)
     else if setLogo == "logo7"
       background url("https://i.imgur.com/VRntaHn.png") no-repeat center
       background-size contain
-      margin-top 5px
     else if setLogo == "logo8"
       background url("https://i.imgur.com/NaqPMsS.png") no-repeat center
       background-size contain
-      margin-top 5px
       filter hue-rotate(100deg) if purplish(ac)
+    else if setLogo == "logo9"
+      background url("https://s2.bunnycdn.ru/assets/sites/aniwave/logo3.png")
+      background-size contain
+      filter hue-rotate(300deg) brightness(2)
+      filter brightness(2) if purplish(ac)
         
   // background stuff
   if bgImg != null
@@ -794,7 +796,7 @@ Attribution:
     border-right 0
   .ep-status::before
     transform none
-  .ep-status.sub::before
+  .ep-status.sub::after, .ep-status.sub::before
     background ac4
   .ep-status.dub::before
     background cc2
@@ -1330,18 +1332,20 @@ Attribution:
     display none
   .bsharing
     display none
+  .adx
+    display none
   [src="https://s2.bunnycdn.ru/assets/_bnx/mangafire_7xx.gif"]
     display none
-  .alert.notice
-    if alert
-      display block
-      border 1px solid t
-      margin-bottom 10px i
-      color fg3
-      bgc(bg3)
-      shard()
-    else
-      display none
+  //.alert.notice
+  //  if alert
+  //    display block
+  //    border 1px solid t
+  //    margin-bottom 10px i
+  //    color fg3
+  //    bgc(bg3)
+  //    shard()
+  //  else
+  //    display none
     
   // rotating color animation
   @keyframes rainbow
@@ -1365,10 +1369,10 @@ Attribution:
       font-size 14px
       white-space pre-wrap
       display block
-      animation rainbow 5s infinite
+      animation rainbow 10s infinite
       margin-top 10px
     
-@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/(?!watch2gether)watch.*")
+@-moz-document regexp("https:\/\/aniwave\.to\/(?!watch2gether)watch.*")
   
   header
     bg(bg1)
@@ -1391,7 +1395,7 @@ Attribution:
       white-space pre-wrap
       text-align center
       display block
-      animation rainbow 5s infinite
+      animation rainbow 10s infinite
       padding 10px
       shard()
       margin-top -30px
@@ -1399,7 +1403,7 @@ Attribution:
     #wrapper #body
       margin-bottom 30px
       
-@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/watch2gether.*")
+@-moz-document regexp("https:\/\/aniwave\.to\/watch2gether.*")
 
   .container
     max-width 1280px
@@ -1438,7 +1442,7 @@ Attribution:
   #chat-input
     margin-right 10px
 
-@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/watch2gether\/room\/.*")
+@-moz-document regexp("https:\/\/aniwave\.to\/watch2gether\/room\/.*")
   
   footer
     display none
@@ -1460,7 +1464,7 @@ Attribution:
       white-space pre-wrap
       text-align center
       display block
-      animation rainbow 5s infinite
+      animation rainbow 10s infinite
       padding 10px
       shard()
       margin-top 30px
@@ -1468,7 +1472,7 @@ Attribution:
     #wrapper #body
       margin-bottom 30px
     
-@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/home.*")
+@-moz-document regexp("https:\/\/aniwave\.to\/home.*")
     
   aside.sidebar
     width 23%
@@ -1499,7 +1503,7 @@ Attribution:
       footer::before
         display none
     
-@-moz-document regexp("https:\/\/9anime(hq)?\.(to|gs|pl|id)\/(az-list|filter|newest|added|ongoing|updated|completed|genre|producer|studio|country|tv|movie|ona|ova|special|music|trending).*")
+@-moz-document regexp("https:\/\/aniwave\.to\/(az-list|filter|newest|added|ongoing|updated|completed|genre|producer|studio|country|tv|movie|ona|ova|special|music|trending).*")
 
   aside.sidebar
     display none
@@ -1513,7 +1517,7 @@ Attribution:
   
   // font stuff
   @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap')
-  body.roboto, body.roboto input, body.roboto select, body.roboto textarea
+  body, body.roboto, body.roboto input, body.roboto select, body.roboto textarea
     font-family fontName, sans-serif if fontName
   a, abbr, acronym, address, blockquote, button, caption, cite, code, dd, del, dfn, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6,
   img, label, legend, li, ol, p, pre, q, s, samp, small, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var
@@ -1525,6 +1529,10 @@ Attribution:
     transition none
     &:hover
       color ac2
+  p
+    color fg1
+  .embed-refresh-v2.embed-refresh .post-list .post.highlighted > .post-content
+    rad()
   .compose-wrapper .avatar .user--refresh
     ava()
   .authored-by-session-user .avatar .user--refresh
@@ -1751,27 +1759,3 @@ Attribution:
     top 3.5px i
   .time-ago.icon-clock::before
     display none i
-    
-// recaptcha stuff
-@-moz-document regexp("https:\/\/.*google.*recaptcha.*aHR0cHM6Ly85YW5pbWUu(dG8|cGw|Z3M|aWQ).*")
-  
-  .rc-anchor
-    shard()
-  .rc-anchor-light
-    background bg3
-    color fg1
-  .rc-anchor-light.rc-anchor-normal, .rc-anchor-light.rc-anchor-compact
-    border 1px solid t
-  .rc-anchor-light .rc-anchor-logo-text, .rc-anchor-light div a:link, .rc-anchor-light div a:visited
-    color fg3
-  .recaptcha-checkbox-border
-    shard()
-    background-color bg2
-    border 2px solid ac1
-  .recaptcha-checkbox-focused .recaptcha-checkbox-border, .recaptcha-checkbox-focused .recaptcha-checkbox-spinner-gif
-    border 2px solid ac1
-  .recaptcha-checkbox-hover .recaptcha-checkbox-border, .recaptcha-checkbox-hover .recaptcha-checkbox-spinner-gif
-    shad()
-    border 2px solid ac2
-  .recaptcha-checkbox-spinner
-    border 6px solid ac1
