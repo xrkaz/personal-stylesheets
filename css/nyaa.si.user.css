@@ -117,7 +117,7 @@ bgc(k, z = null)
   else
     background-color k
     color z if z
-  
+
 // base colors
 blue   = hsl(210, 50%, 55%)
 green  = hsl(120, 50%, 55%)
@@ -127,7 +127,7 @@ pink   = hsl(330, 50%, 55%)
 cyan   = hsl(180, 50%, 55%)
 yellow = hsl(60,  50%, 55%)
 purple = hsl(265, 50%, 55%)
-  
+
 // color regulation
 if bcReg
   bg1 = l(s(bc, 20%), 10%)
@@ -143,7 +143,7 @@ else
   bg4 = l(bc, 20%)
   bg5 = l(bc, 25%)
   bg6 = l(bc, 45%)
-  
+
 // accent colors
 ac1 = l(ac, 55%)
 ac2 = l(ac, 80%)
@@ -167,13 +167,13 @@ fg1 = a(fg, 0.7) // default
 fg2 = fg         // emphasis
 fg3 = a(fg, 0.5) // subtext
 fg4 = a(fg, 0.3) // disabled, placeholder
-    
+
 // global
-@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/.*")
-  
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/\\S*")
+
   // import inter font from google
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap') if fontName == "Inter"
-  
+
   * // scrollbar
     color-scheme dark
     if scroll
@@ -188,7 +188,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       background-color bg5
     ::-webkit-scrollbar-thumb:hover
       background-color bg6
-  
+
   body
     background url(bgImg) no-repeat fixed center
     background-size cover
@@ -228,13 +228,13 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     border-top 1px solid bg4
   option
     background-color bg4
-    
+
   // torrent list suppress visit state
   table.torrent-list tbody tr td a:visited
     color ac1
     &:hover, &:focus
       anc()
-    
+
   img // images
     rad()
     if shadow
@@ -243,7 +243,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       filter saturate(imgSat) brightness(imgLit)
   .category-icon // category icons
     filter saturate(50%)
-    
+
   // seed/leech colors
   .col-md-5 span[style="color: green;"] // torrent meta
     color green i
@@ -258,18 +258,18 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   body.dark table.torrent-list > tbody > tr.success > td:nth-child(7),
   body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7)
     color red
-  
+
   .text-success // user class
     color cc2
     a&:hover, a&:focus
       color ch5(cc2)
-      
+
   .container // set layout width
     width layWide if laySet
-    
+
   footer p // hide dark mode toggle
     display x
-  
+
   .dark .navbar-inverse::before // show alert if dark theme enabled
     content "Style conflict. Press the button below to fix it."
     background-color bg2
@@ -311,7 +311,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     animation rainbow 1s infinite
     padding 5px 10px
     shad()
-    
+
   .navbar-inverse // navbar
     bgc(bg2)
     bdc(bg3)
@@ -354,7 +354,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     if navTop
       position sticky
       top 0
-      
+
   .form-control // forms
     background-color bg4
     color fg1
@@ -383,7 +383,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   .form-control::placeholder // input placeholder
     color fg4
     opacity 1 // firefox
-      
+
   .btn // buttons
     shard()
   .btn:focus, .btn:active:focus, .btn.active:focus,
@@ -531,8 +531,8 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     outline x i
   .btn.dropdown-toggle.btn-default[style="border-radius:0;border-left:0;"]
     border-left 1px solid t i
-    
-    
+
+
   .panel // panels
     bgc(bg3)
     shard()
@@ -561,7 +561,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     border-bottom-left-radius prad(3px)
     bgc(bg4)
     bdc()
-    
+
   .table-striped>tbody>tr:nth-of-type(odd) // tables
     if torrentlistStripe {bgc(bg3)}
     else {bgc(bg1)}
@@ -652,7 +652,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   #torrent-description .table>tbody>tr>th, #torrent-description .table>tfoot>tr>th,
   #torrent-description .table>tbody>tr>td, #torrent-description .table>tfoot>tr>td
     padding 8px
-    
+
   // pagination
   .pagination
     margin 20px 0 0 0
@@ -681,7 +681,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   .pagination>li:last-child>a, .pagination>li:last-child>span
     border-bottom-right-radius prad()
     border-top-right-radius prad()
-    
+
   // comments
   table.torrent-list tbody .comments // torrent list comment button
     background-color bg4
@@ -719,7 +719,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       margin-bottom 0
     .avatar
       max-width 48px
-      
+
   //pagination page info
   .pagination-page-info
     width 350px
@@ -727,13 +727,13 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     margin 0 auto
     bgc(bg3)
     shard()
-    
+
   // notification panels
   .alert-info
     bgc(ch1(cc4), cc4)
     bdc()
     shard()
-  
+
   .nav-tabs // upload page
     bdc()
   .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
@@ -790,11 +790,11 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   .well img
     shad(x)
     rad()
-      
+
   // explicit links
   .nav.navbar-nav [href="//sukebei.nyaa.si"], .nav.navbar-nav [href^="https://theporndude.com/"]
     display x if !xFap
-      
+
   @keyframes rainbow // rotating color animation
     rba(k)
       color k
@@ -815,7 +815,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       rba(orange)
     70%
       rba(purple)
-      
+
   if xrkaz // userstyle attribution
     html::after
       content kaz
@@ -831,10 +831,10 @@ fg4 = a(fg, 0.3) // disabled, placeholder
   else
     html
       margin-bottom 20px
-      
+
 // user search pages
-@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/user\/.*")
-  
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/user/\\S*")
+
   .row h3
     margin 0 0 20px 0
     padding 20px
@@ -842,8 +842,8 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     shard()
 
 // no results found
-@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/\?f\=.*")
-  
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/\\?f=\\S*")
+
   .container h3
     margin 0 0 20px 0
     padding 20px
@@ -851,14 +851,14 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     shard()
 
 // info pages
-@-moz-document regexp("https:\/\/(.*\.)?nyaa\.si\/(rules|help|upload|login)")
-  
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/(?:rules|help|upload|login)")
+
   body > .container
     bgc(bg3)
     padding 0 20px 20px 20px
     margin-bottom 20px
     shard()
-    
+
   [style="color:green; font-weight: bold;"]
     color cc2 i
   [style="color:red; font-weight: bold;"]
