@@ -102,7 +102,7 @@ else if bgImg == "miku"
 else if bgImg == "custom"
   img-custom = bgurl
 
-@-moz-document domain("nyaa.si")
+@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/\\S*")
 
   :root
     --sub-clr hsla(0, 0%, 100%, .5)
@@ -160,7 +160,7 @@ else if bgImg == "custom"
       --search-act hsl(185, 30%, 45%)
       --link-clr hsl(190, 45%, 60%)
       --link-act hsl(190, 45%, 80%)
-      
+
   glass()
     backdrop-filter blur(pblur) saturate(180%)
     -webkit-backdrop-filter blur(pblur) saturate(180%) // safari
@@ -170,7 +170,7 @@ else if bgImg == "custom"
     box-shadow pshad
     border-radius prad i
     border 1px solid hsla(0, 0%, 100%, .125)
-      
+
   body
     background-image url(img-custom)
     background-repeat no-repeat
@@ -183,7 +183,7 @@ else if bgImg == "custom"
     &:hover, &:focus
       color var(--link-act)
       text-decoration none
-      
+
   // navbar
   .navbar
     box-shadow pshad
@@ -264,7 +264,7 @@ else if bgImg == "custom"
     .navbar
       position sticky
       top 0
-      
+
   // buttons
   .btn
     border-radius prad
@@ -293,7 +293,7 @@ else if bgImg == "custom"
     color var(--main-clr)
     background-color var(--search-act)
     border: 1px solid var(--search-act)
-  
+
   // panels
   .panel
     glass-panel()
@@ -319,7 +319,7 @@ else if bgImg == "custom"
     border-top 1px solid hsla(0, 0%, 100%, .1)
     border-bottom-right-radius prad
     border-bottom-left-radius prad
-    
+
   // tables
   .table
     glass()
@@ -366,7 +366,7 @@ else if bgImg == "custom"
     background-color var(--danger-bg)
   .table-hover > tbody > tr > td.success:hover, .table-hover > tbody > tr > th.success:hover, .table-hover > tbody > tr.success:hover > td, .table-hover > tbody > tr:hover > .success, .table-hover > tbody > tr.success:hover > th
     background-color var(--success-bg)
-    
+
   // seed/leech colors
   // individual torrent meta
   .col-md-5 span[style="color: green;"]
@@ -378,46 +378,45 @@ else if bgImg == "custom"
     color var(--success-clr)
   table.torrent-list td:nth-child(7), body.dark table.torrent-list > tbody > tr.success > td:nth-child(7), body.dark table.torrent-list > tbody > tr.danger > td:nth-child(7)
     color var(--danger-clr)
-    
+
   // category icons
   .category-icon
     filter saturate(50%)
-    
+
   // submitter colors
   .text-success
     color var(--success-clr)
     &:hover, &:focus
       color var(--success-clr-act) i
-    
+
   // dark mode toggle visibility
   if nodarkbtn
     footer p
       visibility hidden
-      
+
   // show userstyle attribution
   if about
     footer::before
       glass-panel()
       padding 5px 10px 5px 10px
       content attrib
-        
-@-moz-document url("https://nyaa.si/upload")
+
+@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/upload")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
 
-@-moz-document url("https://nyaa.si/rules")
+@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/rules")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
 
-@-moz-document url("https://nyaa.si/help")
+@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/help")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
 
-@-moz-document url("https://nyaa.si/login")
+@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/login")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
-    
