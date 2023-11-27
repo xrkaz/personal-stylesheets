@@ -169,7 +169,7 @@ fg3 = a(fg, 0.5) // subtext
 fg4 = a(fg, 0.3) // disabled, placeholder
 
 // global
-@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/\\S*")
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/\\S*")
 
   // import inter font from google
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap') if fontName == "Inter"
@@ -833,7 +833,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
       margin-bottom 20px
 
 // user search pages
-@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/user/\\S*")
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/user/\\S*")
 
   .row h3
     margin 0 0 20px 0
@@ -842,7 +842,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     shard()
 
 // no results found
-@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/\\?f=\\S*")
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/\\?f=\\S*")
 
   .container h3
     margin 0 0 20px 0
@@ -851,7 +851,7 @@ fg4 = a(fg, 0.3) // disabled, placeholder
     shard()
 
 // info pages
-@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/(?:rules|help|upload|login)")
+@-moz-document regexp("^https://(?:[^/\\s.]+\\.)?ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/(?:rules|help|upload|login)")
 
   body > .container
     bgc(bg3)
