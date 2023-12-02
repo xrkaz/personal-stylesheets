@@ -102,7 +102,7 @@ else if bgImg == "miku"
 else if bgImg == "custom"
   img-custom = bgurl
 
-@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/\\S*")
+@-moz-document regexp("^https://ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/\\S*")
 
   :root
     --sub-clr hsla(0, 0%, 100%, .5)
@@ -401,22 +401,22 @@ else if bgImg == "custom"
       padding 5px 10px 5px 10px
       content attrib
 
-@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/upload")
+@-moz-document regexp("^https://ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/upload")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
 
-@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/rules")
+@-moz-document regexp("^https://ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/rules")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
 
-@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/help")
+@-moz-document regexp("^https://ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/help")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
 
-@-moz-document regexp("^https://nyaa\\.(?:si|(?:iss\\.)?(?:ink|one))/login")
+@-moz-document regexp("^https://ny(?:aa\\.(?:si|land|(?:iss\\.)?(?:ink|one))|\\.iss\\.one)/login")
   body > .container
     glass-panel()
     padding 0 20px 20px 20px
